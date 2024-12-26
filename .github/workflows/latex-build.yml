@@ -1,0 +1,53 @@
+name: LaTeX Build
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: main.tex
+
+    - name: Check for LaTeX errors and warnings
+      run: |
+        if grep -q "^!" main.log; then
+          echo "LaTeX errors found:"
+          grep "^!" main.log
+          exit 1
+        elif grep -q "Warning:" main.log; then
+          echo "LaTeX warnings found:"
+          grep "Warning:" main.log
+          echo "Build completed with warnings."
+        else
+          echo "LaTeX build completed successfully without errors or warnings."
+        fi
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: main.pdf
+        path: main.pdf
+
+    # Only create release when a tag is pushed
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: main.pdf
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
