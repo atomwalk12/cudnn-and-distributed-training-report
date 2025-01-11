@@ -1,202 +1,64 @@
+% ===== STEP 1: Getting Started =====
+% This section covers:
+% - Goals and expected outputs
+% - Initial constraints
+% - Search terms and keywords
 \section{Introduction}
 \label{sec:intro}
 
-Please follow the steps outlined below when submitting your manuscript to the IEEE Computer Society Press.
-This style guide now has several important modifications (for example, you are no longer warned against the use of sticky tape to attach your artwork to the paper), so all authors should read this new version.
+\subsection{Background}
+Machine learning (ML) has become essential for extracting knowledge from data across diverse applications. Deep learning, a subfield of ML using artificial neural networks, is increasingly important, especially with the massive amounts of data now available \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{langer_distributed_2020}. Distributed deep learning (DDL) has become crucial due to the increasing size of datasets and model complexity \cite{berloco_systematic_2022}, \cite{dehghani_distributed_2023}. This literature review focuses on the core concepts, techniques, and frameworks used to implement and optimise DDL. Challenges in scaling deep learning include distributing ML programs, bridging computation with communication, and determining what to communicate between machines \cite{xing_strategies_2015}. This systematic review will provide a comprehensive overview of the current state of DDL and address these questions, identify gaps, and give direction for future research \cite{langer_distributed_2020}, \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{verbraeken_survey_2021} \TODO{Review citations}.
 
-%-------------------------------------------------------------------------
-\subsection{Language}
+\subsection{Importance of the Topic}
+The increasing volume of data necessitates advanced analysis techniques, making distributed deep learning essential. Efficiently training deep learning models is vital for research and development \cite{dehghani_distributed_2023}, \cite{chahal_hitchhikers_2018}, \cite{xing_strategies_2015}. This review is important for both practitioners and researchers, providing an overview of techniques and frameworks for implementing DDL solutions \cite{dehghani_distributed_2023}, \cite{berloco_systematic_2022} and also highlighting current research trends and future opportunities \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}. This review addresses gaps in existing surveys by focusing on practical implementation and a detailed analysis of the performance and efficiency of different DDL techniques \cite{berloco_systematic_2022} \TODO{review citation}. The outcomes of this review will aid software engineers in selecting and implementing appropriate DDL techniques.
 
-All manuscripts must be in English.
+\subsection{Research Questions}
+\label{sec:research_questions}
+This review addresses the following primary research questions \TODO{Review citations below}:
 
-\subsection{Dual submission}
+\begin{itemize}
+  \item What are the different techniques for parallelising deep learning models and data (e.g., data and model parallelism) \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}, \cite{langer_distributed_2020}?
+  \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+  \item How is stochastic gradient descent (SGD) computed in distributed environments, and what are the associated challenges \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}?
+  \item What are the key frameworks currently available for implementing DDL, and how do their features and capabilities compare \cite{berloco_systematic_2022}?
+  \item Finally, what are the main challenges and future research directions in distributed deep learning \cite{dehghani_distributed_2023,ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+\end{itemize}
 
-Please refer to the author guidelines on the \confName\ \confYear\ web page for a
-discussion of the policy on dual submissions.
+% TODO Razvan
+% \begin{enumerate}
+%     \item What distributed techniques have been developed for parallelizing stochastic descent backpropagation?
+%     \begin{itemize}
+%         \item How does CUDA enable data parallelization on single-machine GPUs?
+%         \item What methods are available for parallelizing learning across PC clusters, particularly using PyTorch's DDP?
+%     \end{itemize}
 
-\subsection{Paper length}
-Papers, excluding the references section, must be no longer than eight pages in length.
-The references section will not be included in the page count, and there is no limit on the length of the references section.
-For example, a paper of eight pages with two pages of references would have a total length of 10 pages.
-{\bf There will be no extra page charges for \confName\ \confYear.}
+%     \item How do these techniques compare in terms of convergence speed and computational efficiency?
+%     \begin{itemize}
+%         \item What are the performance differences between CUDA-based GPU implementations and CPU-only approaches?
+%         \item How does data parallelization scale in GPU clusters, and what are its limitations?
+%     \end{itemize}
 
-Overlength papers will simply not be reviewed.
-This includes papers where the margins and formatting are deemed to have been significantly altered from those laid down by this style guide.
-Note that this \LaTeX\ guide already sets figure captions and references in a smaller font.
-The reason such papers will not be reviewed is that there is no provision for supervised revisions of manuscripts.
-The reviewing process cannot determine the suitability of the paper for presentation in eight pages if it is reviewed in eleven.
+%     \item What are the primary challenges and solutions in implementing distributed training systems?
+%     \begin{itemize}
+%         \item What are the key considerations when implementing cluster parallelization using DDP?
+%         \item How can data parallelization be effectively implemented on GPUs using CUDA?
+%     \end{itemize}
+% \end{enumerate}
 
-%-------------------------------------------------------------------------
-\subsection{The ruler}
-The \LaTeX\ style defines a printed ruler which should be present in the version submitted for review.
-The ruler is provided in order that reviewers may comment on particular lines in the paper without circumlocution.
-If you are preparing a document using a non-\LaTeX\ document preparation system, please arrange for an equivalent ruler to appear on the final output pages.
-The presence or absence of the ruler should not change the appearance of any other content on the page.
-The camera-ready copy should not contain a ruler.
-(\LaTeX\ users may use options of \texttt{cvpr.sty} to switch between different versions.)
+\subsection{Scope and Methodology}
+This systematic review will focus on peer-reviewed articles and conference papers about DDL published from 2015 to 2023 \cite{berloco_systematic_2022}. The scope includes studies that investigate parallelisation of deep learning algorithms and techniques for distributed parameter updates \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}, and also the use of different frameworks and architectures for training large models \cite{berloco_systematic_2022,langer_distributed_2020}. Studies on single-machine learning and applications not related to distributed training will be excluded, alongside papers lacking substantial technical contributions. The methodology will involve a systematic literature search across SCOPUS and Google Scholar using specific keywords related to DDL \cite{berloco_systematic_2022}. The selection process will involve screening titles, abstracts, and full texts \cite{ben-nun_demystifying_2020}, and a formal protocol will guide each stage of the analysis. Data extraction will involve recording details such as model architecture and performance metrics. Data synthesis will involve a narrative synthesis of findings.
 
-Reviewers:
-note that the ruler measurements do not align well with lines in the paper --- this turns out to be very difficult to do well when the paper contains many figures and equations, and, when done, looks ugly.
-Just use fractional references (\eg, this line is $087.5$), although in most cases one would expect that the approximate location will be adequate.
+% TODO Razvan
+% Our investigation includes practical implementations and experimental work:
+% \begin{itemize}
+%     \item Cluster parallelization demonstrations using PyTorch's DDP module
+%     \item GPU implementations with CUDA, including:
+%     \begin{itemize}
+%         \item Code examples showing data parallelization on GPUs
+%         \item Comparative implementations using CPUs
+%         \item Performance analysis and benchmarking
+%     \end{itemize}
+% \end{itemize}
 
-
-\subsection{Paper ID}
-Make sure that the Paper ID from the submission system is visible in the version submitted for review (replacing the ``*****'' you see in this document).
-If you are using the \LaTeX\ template, \textbf{make sure to update paper ID in the appropriate place in the tex file}.
-
-
-\subsection{Mathematics}
-
-Please number all of your sections and displayed equations as in these examples:
-\begin{equation}
-  E = m\cdot c^2
-  \label{eq:important}
-\end{equation}
-and
-\begin{equation}
-  v = a\cdot t.
-  \label{eq:also-important}
-\end{equation}
-It is important for readers to be able to refer to any particular equation.
-Just because you did not refer to it in the text does not mean some future reader might not need to refer to it.
-It is cumbersome to have to use circumlocutions like ``the equation second from the top of page 3 column 1''.
-(Note that the ruler will not be present in the final copy, so is not an alternative to equation numbers).
-All authors will benefit from reading Mermin's description of how to write mathematics:
-\url{http://www.pamitc.org/documents/mermin.pdf}.
-
-\subsection{Blind review}
-
-Many authors misunderstand the concept of anonymizing for blind review.
-Blind review does not mean that one must remove citations to one's own work---in fact it is often impossible to review a paper unless the previous citations are known and available.
-
-Blind review means that you do not use the words ``my'' or ``our'' when citing previous work.
-That is all.
-(But see below for tech reports.)
-
-Saying ``this builds on the work of Lucy Smith [1]'' does not say that you are Lucy Smith;
-it says that you are building on her work.
-If you are Smith and Jones, do not say ``as we show in [7]'', say ``as Smith and Jones show in [7]'' and at the end of the paper, include reference 7 as you would any other cited work.
-
-An example of a bad paper just asking to be rejected:
-\begin{quote}
-\begin{center}
-    An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of our previous paper [1], and show it to be inferior to all previously known methods.
-   Why the previous paper was accepted without this analysis is beyond me.
-
-   [1] Removed for blind review
-\end{quote}
-
-
-An example of an acceptable paper:
-\begin{quote}
-\begin{center}
-     An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of the  paper of Smith \etal [1], and show it to be inferior to all previously known methods.
-   Why the previous paper was accepted without this analysis is beyond me.
-
-   [1] Smith, L and Jones, C. ``The frobnicatable foo filter, a fundamental contribution to human knowledge''. Nature 381(12), 1-213.
-\end{quote}
-
-If you are making a submission to another conference at the same time, which covers similar or overlapping material, you may need to refer to that submission in order to explain the differences, just as you would if you had previously published related work.
-In such cases, include the anonymized parallel submission~\cite{Authors14} as supplemental material and cite it as
-\begin{quote}
-[1] Authors. ``The frobnicatable foo filter'', F\&G 2014 Submission ID 324, Supplied as supplemental material {\tt fg324.pdf}.
-\end{quote}
-
-Finally, you may feel you need to tell the reader that more details can be found elsewhere, and refer them to a technical report.
-For conference submissions, the paper must stand on its own, and not {\em require} the reviewer to go to a tech report for further details.
-Thus, you may say in the body of the paper ``further details may be found in~\cite{Authors14b}''.
-Then submit the tech report as supplemental material.
-Again, you may not assume the reviewers will read this material.
-
-Sometimes your paper is about a problem which you tested using a tool that is widely known to be restricted to a single institution.
-For example, let's say it's 1969, you have solved a key problem on the Apollo lander, and you believe that the 1970 audience would like to hear about your
-solution.
-The work is a development of your celebrated 1968 paper entitled ``Zero-g frobnication: How being the only people in the world with access to the Apollo lander source code makes us a wow at parties'', by Zeus \etal.
-
-You can handle this paper like any other.
-Do not write ``We show how to improve our previous work [Anonymous, 1968].
-This time we tested the algorithm on a lunar lander [name of lander removed for blind review]''.
-That would be silly, and would immediately identify the authors.
-Instead write the following:
-\begin{quotation}
-\noindent
-   We describe a system for zero-g frobnication.
-   This system is new because it handles the following cases:
-   A, B.  Previous systems [Zeus et al. 1968] did not  handle case B properly.
-   Ours handles it by including a foo term in the bar integral.
-
-   ...
-
-   The proposed system was integrated with the Apollo lunar lander, and went all the way to the moon, don't you know.
-   It displayed the following behaviours, which show how well we solved cases A and B: ...
-\end{quotation}
-As you can see, the above text follows standard scientific convention, reads better than the first version, and does not explicitly name you as the authors.
-A reviewer might think it likely that the new paper was written by Zeus \etal, but cannot make any decision based on that guess.
-He or she would have to be sure that no other authors could have been contracted to solve problem B.
-\medskip
-
-\noindent
-FAQ\medskip\\
-{\bf Q:} Are acknowledgements OK?\\
-{\bf A:} No.  Leave them for the final copy.\medskip\\
-{\bf Q:} How do I cite my results reported in open challenges?
-{\bf A:} To conform with the double-blind review policy, you can report results of other challenge participants together with your results in your paper.
-For your results, however, you should not identify yourself and should not mention your participation in the challenge.
-Instead present your results referring to the method proposed in your paper and draw conclusions based on the experimental comparison to other results.\medskip\\
-
-\begin{figure}[t]
-  \centering
-  \fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-   %\includegraphics[width=0.8\linewidth]{egfigure.eps}
-
-   \caption{Example of caption.
-   It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.}
-   \label{fig:onecol}
-\end{figure}
-
-\subsection{Miscellaneous}
-
-\noindent
-Compare the following:\\
-\begin{tabular}{ll}
- \verb'$conf_a$' &  $conf_a$ \\
- \verb'$\mathit{conf}_a$' & $\mathit{conf}_a$
-\end{tabular}\\
-See The \TeX book, p165.
-
-The space after \eg, meaning ``for example'', should not be a sentence-ending space.
-So \eg is correct, {\em e.g.} is not.
-The provided \verb'\eg' macro takes care of this.
-
-When citing a multi-author paper, you may save space by using ``et alia'', shortened to ``\etal'' (not ``{\em et.\ al.}'' as ``{\em et}'' is a complete word).
-If you use the \verb'\etal' macro provided, then you need not worry about double periods when used at the end of a sentence as in Alpher \etal.
-However, use it only when there are three or more authors.
-Thus, the following is correct:
-   ``Frobnication has been trendy lately.
-   It was introduced by Alpher~\cite{Alpher02}, and subsequently developed by
-   Alpher and Fotheringham-Smythe~\cite{Alpher03}, and Alpher \etal~\cite{Alpher04}.''
-
-This is incorrect: ``... subsequently developed by Alpher \etal~\cite{Alpher03} ...'' because reference~\cite{Alpher03} has just two authors.
-
-\begin{figure*}
-  \centering
-  \begin{subfigure}{0.68\linewidth}
-    \fbox{\rule{0pt}{2in} \rule{.9\linewidth}{0pt}}
-    \caption{An example of a subfigure.}
-    \label{fig:short-a}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}{0.28\linewidth}
-    \fbox{\rule{0pt}{2in} \rule{.9\linewidth}{0pt}}
-    \caption{Another example of a subfigure.}
-    \label{fig:short-b}
-  \end{subfigure}
-  \caption{Example of a short caption, which should be centered.}
-  \label{fig:short}
-\end{figure*}
+\subsection{Paper Organization}
+The remainder of this paper is organized as follows: Section \ref{sec:protocol} presents our systematic review protocol including the study selection framework and search process documentation, Section \ref{sec:methods} describes our systematic review methodology, including the search strategy across digital libraries, inclusion/exclusion criteria, and quality assessment protocol. Section \ref{sec:results} presents our findings, Section \ref{sec:discussion} discusses the implications, and Section \ref{sec:conclusion} concludes with future research directions. This structure ensures a logical flow from background to findings and recommendations.

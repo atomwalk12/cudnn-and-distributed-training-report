@@ -2,16 +2,322 @@
 \setcounter{page}{1}
 \maketitlesupplementary
 
+\section{Supplementary Materials}
+\label{sec:supplementary}
 
-\section{Rationale}
-\label{sec:rationale}
-% 
-Having the supplementary compiled together with the main paper means that:
-% 
+\subsection{Detailed Search Strategy}
+\label{sec:search_strategy}
+
+\subsubsection{Search Documentation}
+
+The search string was constructed using the terms shown in Table \ref{tab:search_terms}.
+\begin{table*}[htbp!]
+    \centering
+    \caption{Core Search Terms for Distributed Deep Learning and GPU Programming}
+    \label{tab:search_terms}
+    \begin{tabularx}{\textwidth}{|l|X|X|}
+        \hline
+        \textbf{Category} & \textbf{Distributed Learning} & \textbf{GPU Computing} \\
+        \hline
+        Core Terms & 
+        \textbf{"Distributed Deep Learning"},
+        \textbf{"Parallel Deep Learning"},
+        "Large-Scale Deep Learning" &
+        \textbf{"GPU Programming"},
+        \textbf{"CUDA Programming"} \\
+        \hline
+        Technical Approach & 
+        \textbf{"Data Parallelism"},
+        \textbf{"Model Parallelism"},
+        \textbf{"Hybrid Parallelism"} &
+        \textbf{"CUDA"},
+        "GPU Optimization",
+        "Parallel Computing" \\
+        \hline
+        Implementation & 
+        \textbf{"Parameter Server"},
+        \textbf{"All-Reduce"},
+        \textbf{"SGD"} &
+        \textbf{"CUDA Toolkit"},
+        \textbf{"cuDNN"},
+        "Multi-GPU" \\
+        \hline
+        Frameworks & 
+        "TensorFlow",
+        "PyTorch",
+        "Horovod" &
+        "TensorRT",
+        "PyCUDA",
+        "Numba" \\
+        \hline
+    \end{tabularx}
+    \caption*{Note: Bold terms indicate primary search terms that will be prioritized.}
+\end{table*}
+
+The starting date used for the analysis starts from 2014 till 2024. The reason for utilizing this range
+is due to the publishing date of \cite{SierraCanto2010ParallelTO}, which acts as a key paper in the domain. As a result,
+I'd like to analyze the advancement of the field starting from this age. The key The following table 
+documents our complete search process:
+
+\begin{table*}[htbp!]
+    \centering
+    \caption{Detailed Search Documentation}
+    \label{tab:search_documentation}
+    \begin{tabularx}{\textwidth}{|l|X|c|c|c|}
+        \hline
+        \textbf{Database} & \textbf{Search String} & \textbf{Years Covered} & \textbf{Results} & \textbf{Filtered} \\
+        \hline
+        Scopus & ("Distributed Deep Learning" OR "Parallel Deep Learning") AND "Data Parallelism" & 2017-2024 & 82 & 11 \\
+        \hline
+        ACM Digital Library & ("GPU Programming" OR "GPGPU Programming") AND ("CUDA" OR "CUDA Programming") AND ("Parallel Computing") & 2015-2022 & 2024-05-10 & 210 \\
+        \hline
+        Science Direct & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
+        \hline
+        arXiv & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
+        \hline
+    \end{tabularx}
+\end{table*}
+
+
+\subsubsection{Search Process Details}
 \begin{itemize}
-\item The supplementary can back-reference sections of the main paper, for example, we can refer to \cref{sec:intro};
-\item The main paper can forward reference sub-sections within the supplementary explicitly (e.g. referring to a particular experiment); 
-\item When submitted to arXiv, the supplementary will already included at the end of the paper.
+    \item \textbf{Years Covered:} 2015-2022
+    \item \textbf{Language Restrictions:} English only
+    \item \textbf{Document Types:} Journal articles, conference papers, and high-quality preprints
 \end{itemize}
-% 
-To split the supplementary pages from the main paper, you can use \href{https://support.apple.com/en-ca/guide/preview/prvw11793/mac#:~:text=Delete%20a%20page%20from%20a,or%20choose%20Edit%20%3E%20Delete).}{Preview (on macOS)}, \href{https://www.adobe.com/acrobat/how-to/delete-pages-from-pdf.html#:~:text=Choose%20%E2%80%9CTools%E2%80%9D%20%3E%20%E2%80%9COrganize,or%20pages%20from%20the%20file.}{Adobe Acrobat} (on all OSs), as well as \href{https://superuser.com/questions/517986/is-it-possible-to-delete-some-pages-of-a-pdf-document}{command line tools}.
+
+\subsubsection{Manual Searches}
+The following additional sources were manually searched:
+\begin{itemize}
+    \item Key conference proceedings (e.g., NeurIPS, ICLR, ICML)
+    \item Reference lists of included studies (snowballing)
+    \item Citations of included studies (forward snowballing)
+\end{itemize}
+
+\subsection{Study Selection Details}
+\label{sec:study_selection}
+
+\subsubsection{Included Studies}
+Table \ref{tab:included_studies} lists all studies that met our inclusion criteria:
+
+\begin{table*}[htbp!]
+    \centering
+    \caption{Detailed List of Included Studies}
+    \label{tab:included_studies}
+    \begin{tabularx}{\textwidth}{|l|l|X|c|c|X|}
+        \hline
+        \textbf{ID} & \textbf{Authors} & \textbf{Title} & \textbf{Year} & \textbf{Quality Score} & \textbf{Key Findings} \\
+        \hline
+        S1 & Author et al. & Title of study 1 & 20XX & X.X & Brief summary of main findings \\
+        \hline
+        S2 & Author et al. & Title of study 2 & 20XX & X.X & Brief summary of main findings \\
+        \hline
+    \end{tabularx}
+\end{table*}
+
+\subsubsection{Excluded Studies}
+Table \ref{tab:excluded_studies} lists studies that were excluded during the screening process:
+
+\begin{table*}[htbp!]
+    \centering
+    \caption{List of Excluded Studies with Reasons}
+    \label{tab:excluded_studies}
+    \begin{tabularx}{\textwidth}{|l|l|X|c|X|}
+        \hline
+        \textbf{ID} & \textbf{Authors} & \textbf{Title} & \textbf{Year} & \textbf{Reason for Exclusion} \\
+        \hline
+        E1 & Author et al. & Title of excluded study 1 & 20XX & Does not meet inclusion criterion 1 \\
+        \hline
+        E2 & Author et al. & Title of excluded study 2 & 20XX & Insufficient technical details \\
+        \hline
+    \end{tabularx}
+\end{table*}
+
+\subsubsection{Study Quality Assessment}
+Table \ref{tab:quality_assessment} provides detailed quality scores for included studies:
+
+\begin{table*}[htbp!]
+    \centering
+    \caption{Quality Assessment Scores for Included Studies}
+    \label{tab:quality_assessment}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|c|X|}
+        \hline
+        \textbf{Study ID} & \textbf{Methodology} & \textbf{Implementation} & \textbf{Evaluation} & \textbf{Total Score} & \textbf{Notes} \\
+        \hline
+        S1 & X.X & X.X & X.X & X.X & Brief quality notes \\
+        \hline
+        S2 & X.X & X.X & X.X & X.X & Brief quality notes \\
+        \hline
+    \end{tabularx}
+\end{table*}
+
+\subsection{Data Extraction Forms}
+\label{sec:data_extraction}
+
+The following template was used for data extraction:
+\begin{itemize}
+    \item \textbf{Study ID:} [Unique identifier]
+    \item \textbf{Authors:} [Author names]
+    \item \textbf{Year:} [Publication year]
+    \item \textbf{Venue:} [Publication venue]
+    \item \textbf{Distribution Strategy:} [Description]
+    \item \textbf{Implementation Details:} [Technical details]
+    \item \textbf{Evaluation Metrics:} [Performance measures]
+    \item \textbf{Results:} [Key findings]
+\end{itemize}
+
+\subsection{Quality Assessment Checklist}
+\label{sec:quality_checklist}
+
+Each study was evaluated using the following criteria:
+\begin{enumerate}
+    \item \textbf{Problem Definition} (0-2 points)
+        \begin{itemize}
+            \item 2: Clear and well-motivated problem statement
+            \item 1: Partially clear problem statement
+            \item 0: Unclear problem statement
+        \end{itemize}
+    \item \textbf{Methodology Description} (0-2 points)
+        \begin{itemize}
+            \item 2: Detailed and replicable methodology
+            \item 1: Partial methodology description
+            \item 0: Insufficient methodology description
+        \end{itemize}
+    % Add more quality criteria as needed
+\end{enumerate}
+
+\subsection{Raw Data}
+\label{sec:raw_data}
+
+\subsubsection{Performance Metrics}
+[Tables or figures showing raw performance data]
+
+\subsubsection{Statistical Analysis}
+[Detailed statistical analysis of the results]
+
+\section{Conflicts of Interest}
+\label{sec:conflicts}
+
+The authors declare no conflicts of interest that could have appeared to influence the work reported in this paper. This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+
+% NOTE not needed
+% \section{Author Contributions}
+% \label{sec:contributions}
+
+% \begin{itemize}
+%     \item \textbf{First Author:} Conceptualization, Methodology, Writing - Original draft
+%     \item \textbf{Second Author:} Data curation, Formal analysis, Writing - Review \& editing
+% \end{itemize}
+
+% All authors have read and agreed to the published version of the manuscript.
+
+
+\subsection{Review Protocol}
+This systematic review follows the guidelines proposed by Kitchenham and Charters for software engineering research. The protocol was developed and reviewed by all authors before beginning the review process.
+
+\subsection{Data Sources and Search Strategy}
+We searched the following digital libraries:
+\begin{itemize}
+    \item IEEE Xplore
+    \item ACM Digital Library
+    \item Science Direct
+    \item arXiv (for preprints)
+\end{itemize}
+
+
+% TODO Razvan: remove this table
+% \begin{table*}[htbp]
+%     \centering
+%     \caption{Search Terms by Category for Distributed Deep Learning and GPU Programming}
+%     \label{tab:search_terms}
+%     \begin{tabularx}{\textwidth}{|l|X|X|}
+%         \hline
+%         \textbf{Facet} & \textbf{Distributed Deep Learning Terms} & \textbf{GPU Programming Terms} \\
+%         \hline
+%         Core Concept & 
+%         \textbf{"Distributed Deep Learning"}, \textbf{"Parallel Deep Learning"}, 
+%         "Deep Learning on Clusters", "Large-Scale Deep Learning", 
+%         "Scalable Deep Learning" &
+%         \textbf{"GPU Programming"}, \textbf{"General-Purpose GPU Programming"}, 
+%         \textbf{"GPGPU Programming"} \\
+%         \hline
+%         Specific Technology / 
+%         Parallelization Techniques & 
+%         \textbf{"Data Parallelism"}, \textbf{"Model Parallelism"}, 
+%         \textbf{"Hybrid Parallelism"}, "Data-Parallel", "Model-Parallel" &
+%         \textbf{"CUDA"}, \textbf{"CUDA Programming"}, "Nvidia CUDA", 
+%         "Compute Unified Device Architecture" \\
+%         \hline
+%         Training Methods / 
+%         Programming Aspects & 
+%         \textbf{"Stochastic Gradient Descent"}, \textbf{"SGD"}, "Mini-batch SGD", 
+%         "Asynchronous SGD", "Synchronous SGD", "Distributed Stochastic Gradient Descent", 
+%         "Elastic Averaging SGD", "Byzantine-tolerant gradient descent" &
+%         "Parallel Computing", "Parallel Programming", "High-Performance Computing", 
+%         "Kernel Programming", "GPU Memory Management", "GPU Optimisation", 
+%         "CUDA Libraries" \\
+%         \hline
+%         Communication Strategies & 
+%         \textbf{"Parameter Server"}, \textbf{"All-Reduce"}, 
+%         \textbf{"Collective Communication"}, "Decentralized Optimization", 
+%         "Decentralized Parameter Sharing", "Gradient Compression", 
+%         "Sparse Communication" & -- \\
+%         \hline
+%         Frameworks & 
+%         "TensorFlow", "PyTorch", "Horovod", "DistBelief", "Parameter Server", 
+%         "SparkNet", "Petuum", "BigDL", "MXNet", "CaffeOnSpark" &
+%         \textbf{"CUDA Toolkit"}, \textbf{"cuDNN"}, "TensorRT", "Thrust", 
+%         "OpenACC", "RAPIDS", "PyCUDA", "Numba", "JAX", "TensorFlow with CUDA", 
+%         "PyTorch with CUDA", "Caffe with CUDA", "Theano with CUDA", 
+%         "MxNet with CUDA", "Darknet with CUDA" \\
+%         \hline
+%         Hardware & 
+%         "GPUs", "CPUs", "Accelerators", "Cluster Computing", "Supercomputers", 
+%         "Multi-GPU" &
+%         "GPUs", "Nvidia GPUs", "Multi-GPU", "CUDA-enabled GPUs" \\
+%         \hline
+%         Performance Aspects & 
+%         "Scalability", "Convergence", "Latency", "Communication Overhead", 
+%         "Fault Tolerance" &
+%         "GPU Acceleration", "Parallel Speedup", "Throughput", 
+%         "Memory Bandwidth", "Latency", "Performance Optimisation" \\
+%         \hline
+%     \end{tabularx}
+%     \caption*{Note: Bold terms indicate primary search terms that will be prioritized in the search strategy. A dash (--) indicates no specific terms for that category.}
+% \end{table*}
+
+
+\subsection{Study Selection}
+\subsubsection{Inclusion Criteria}
+\begin{itemize}
+    \item Studies published between 2013 and 2023
+    \item Peer-reviewed articles
+    \item Studies focusing on distributed training techniques
+    \item Articles written in English
+\end{itemize}
+
+\subsubsection{Exclusion Criteria}
+\begin{itemize}
+    \item Studies not focused on neural network training
+    \item Pure theoretical papers without implementation
+    \item Secondary studies (surveys, reviews)
+\end{itemize}
+
+\subsection{Quality Assessment}
+Studies were evaluated using the following quality criteria:
+\begin{enumerate}
+    \item Clear description of the distributed technique
+    \item Empirical evaluation of the proposed method
+    \item Comparison with existing approaches
+    \item Discussion of limitations and threats to validity
+\end{enumerate}
+
+\subsection{Data Extraction}
+Data was extracted using a standardized form capturing:
+\begin{itemize}
+    \item Publication details
+    \item Distributed training approach
+    \item Implementation details
+    \item Performance metrics
+    \item Experimental setup
+\end{itemize} 

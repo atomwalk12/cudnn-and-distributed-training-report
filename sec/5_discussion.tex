@@ -1,0 +1,79 @@
+% ===== STEP 7: Synthesize Findings =====
+% This section covers:
+% - Re-express ideas, concepts and findings
+% - Integration of both studies
+\section{Discussion}
+\label{sec:discussion}
+
+% PLACEHOLDER: Synthesis of Studies
+\TODO{PLACEHOLDER: Synthesis of Studies}
+\subsection{Integration of Approaches}
+\subsubsection{Complementary Aspects}
+\begin{itemize}
+    \item Combining distributed training with GPU acceleration
+    \item Trade-offs between communication and computation
+    \item Hybrid approaches for large-scale deployment
+    \item Optimization strategies across scales
+\end{itemize}
+
+\subsection{Key Findings Synthesis}
+\subsubsection{Common Themes}
+\begin{itemize}
+    \item Scalability challenges in both approaches
+    \item Impact of hardware architecture
+    \item Importance of efficient memory management
+    \item Balance between parallelism and overhead
+\end{itemize}
+
+\subsection{Practical Applications}
+\begin{itemize}
+    \item Guidelines for implementation choices
+    \item Best practices for hybrid systems
+    \item Performance optimization strategies
+    \item Resource allocation recommendations
+\end{itemize}
+\TODO{Placeholder-end}
+
+\subsection{Interpretation of Findings}
+Our systematic review answers the research questions posed in Section \ref{sec:research_questions} and reveals several key patterns in distributed training approaches:
+\begin{itemize}
+    \item Data parallelism remains the dominant paradigm for distributed training
+    \item Communication overhead is a critical bottleneck in most implementations
+    \item Synchronous approaches generally provide better convergence guarantees
+    \item Asynchronous methods offer better scaling but with potential accuracy trade-offs
+\end{itemize}
+
+\subsection{Implications}
+\subsubsection{Theoretical Implications}
+The findings suggest several theoretical implications:
+\begin{itemize}
+    \item Need for better theoretical understanding of convergence in asynchronous settings
+    \item Importance of communication-computation trade-offs
+    \item Role of batch size in distributed training
+\end{itemize}
+
+\subsubsection{Practical Implications}
+For practitioners, our review suggests:
+\begin{itemize}
+    \item Guidelines for choosing between synchronous and asynchronous approaches
+    \item Best practices for implementing distributed training systems
+    \item Common pitfalls and their solutions
+\end{itemize}
+
+\subsection{Limitations}
+This review has several limitations:
+\begin{itemize}
+    \item Focus on published literature may miss industrial implementations
+    \item Rapid pace of development in the field
+    \item Limited access to implementation details in some studies
+    \item Potential publication bias towards successful approaches
+\end{itemize}
+
+\subsection{Future Research Directions}
+Based on our analysis, we identify several promising directions for future research:
+\begin{enumerate}
+    \item Development of adaptive communication strategies
+    \item Integration of federated learning approaches
+    \item Improved fault tolerance mechanisms
+    \item Novel compression techniques for gradient communication
+\end{enumerate} 

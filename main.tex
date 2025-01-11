@@ -4,7 +4,7 @@
 
 %%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
 % \usepackage{cvpr}              % To produce the CAMERA-READY version
-\usepackage[review]{cvpr}      % To produce the REVIEW version
+\usepackage{cvpr}      % To produce the REVIEW version
 % \usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
 
 % Import additional packages in the preamble file, before hyperref
@@ -26,38 +26,57 @@
 \def\confYear{2025}
 
 %%%%%%%%% TITLE - PLEASE UPDATE
-\title{\LaTeX\ Author Guidelines for \confName~Proceedings}
+\title{A Systematic Literature Review of Distributed Techniques for Parallelizing Stochastic Descent Backpropagation}
 
 %%%%%%%%% AUTHORS - PLEASE UPDATE
 \author{First Author\\
-Institution1\\
-Institution1 address\\
-{\tt\small firstauthor@i1.org}
-% For a paper whose authors are all at the same institution,
-% omit the following lines up until the closing ``}''.
-% Additional authors and addresses can be added with ``\and'',
-% just like the second author.
-% To save space, use either the email address or home page, not both
+Department of Computer Science\\
+University Name\\
+{\tt\small firstauthor@university.edu}
 \and
 Second Author\\
-Institution2\\
-First line of institution2 address\\
-{\tt\small secondauthor@i2.org}
-}
+Department of Computer Science\\
+University Name\\
+{\tt\small secondauthor@university.edu}}
 
 \begin{document}
 \maketitle
 \input{sec/0_abstract}    
+
+% Step 1: Getting started
+% - Goals, expected outputs, constraints, search terms and keywords
 \input{sec/1_intro}
-\input{sec/2_formatting}
-\input{sec/3_finalcopy}
+
+% Step 2: Define search strategy & 
+% Step 3: Selection of relevant studies
+\input{sec/2_protocol}
+
+% Step 4: Skimming the studies
+% Details of Study 1: Literature survey on distributed learning techniques
+% Details of Study 2: Literature review on parallel GPU methods with CUDA
+%\input{sec/3_methods}
+
+% Step 5: Find relationships across concepts
+% Step 6: Translate concepts
+% Step 7: Synthesize findings
+%\input{sec/4_results}
+
+% Step 7: Synthesize findings (continued)
+% - Re-express ideas, concepts and findings
+%\input{sec/5_discussion}
+
+% Step 7: Wrap-up the report
+%\input{sec/6_conclusion}
 {
     \small
     \bibliographystyle{ieeenat_fullname}
     \bibliography{main}
 }
 
-% WARNING: do not forget to delete the supplementary pages from your submission 
-% \input{sec/X_suppl}
+% Supplementary material including:
+% - Detailed validation metrics (Table 3)
+% - Overview of papers (Table 2.1, Table 3.1)
+% - Additional documentation
+\input{sec/X_suppl}
 
 \end{document}
