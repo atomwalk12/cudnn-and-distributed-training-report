@@ -7,21 +7,58 @@
 \label{sec:intro}
 
 \subsection{Background}
-Machine learning (ML) has become essential for extracting knowledge from data across diverse applications. Deep learning, a subfield of ML using artificial neural networks, is increasingly important, especially with the massive amounts of data now available \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{langer_distributed_2020}. Distributed deep learning (DDL) has become crucial due to the increasing size of datasets and model complexity \cite{berloco_systematic_2022}, \cite{dehghani_distributed_2023}. This literature review focuses on the core concepts, techniques, and frameworks used to implement and optimise DDL. Challenges in scaling deep learning include distributing ML programs, bridging computation with communication, and determining what to communicate between machines \cite{xing_strategies_2015}. This systematic review will provide a comprehensive overview of the current state of DDL and address these questions, identify gaps, and give direction for future research \cite{langer_distributed_2020}, \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{verbraeken_survey_2021} \TODO{Review citations}.
+Machine learning (ML) has become essential for extracting knowledge from data across diverse
+applications. Deep learning, a subfield of ML using artificial neural networks, is increasingly
+important, especially with the massive amounts of data now available
+\cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{langer_distributed_2020}.
+Distributed deep learning (DDL) has become crucial due to the increasing size of datasets and model
+complexity \cite{berloco_systematic_2022}, \cite{dehghani_distributed_2023}. This literature review
+focuses on the core concepts, techniques, and frameworks used to implement and optimise DDL.
+Challenges in scaling deep learning include distributing ML programs, bridging computation with
+communication, and determining what to communicate between machines \cite{xing_strategies_2015}.
+This systematic review will provide a comprehensive overview of the current state of DDL and
+address these questions, identify gaps, and give direction for future research
+\cite{langer_distributed_2020}, \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023},
+\cite{verbraeken_survey_2021} \TODO{Review citations}.
 
 \subsection{Importance of the Topic}
-The increasing volume of data necessitates advanced analysis techniques, making distributed deep learning essential. Efficiently training deep learning models is vital for research and development \cite{dehghani_distributed_2023}, \cite{chahal_hitchhikers_2018}, \cite{xing_strategies_2015}. This review is important for both practitioners and researchers, providing an overview of techniques and frameworks for implementing DDL solutions \cite{dehghani_distributed_2023}, \cite{berloco_systematic_2022} and also highlighting current research trends and future opportunities \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}. This review addresses gaps in existing surveys by focusing on practical implementation and a detailed analysis of the performance and efficiency of different DDL techniques \cite{berloco_systematic_2022} \TODO{review citation}. The outcomes of this review will aid software engineers in selecting and implementing appropriate DDL techniques.
+\label{sec:importance_of_topic}
+The increasing volume of data necessitates advanced analysis techniques, making distributed deep
+learning essential. Efficiently training deep learning models is vital for research and development
+\cite{dehghani_distributed_2023}, \cite{chahal_hitchhikers_2018}, \cite{xing_strategies_2015}. This
+review is important for both practitioners and researchers, providing an overview of techniques and
+frameworks for implementing DDL solutions \cite{dehghani_distributed_2023},
+\cite{berloco_systematic_2022} and also highlighting current research trends and future
+opportunities \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}. This review
+addresses gaps in existing surveys by focusing on practical implementation and a detailed analysis
+of the performance and efficiency of different DDL techniques \cite{berloco_systematic_2022}
+\TODO{review citation}. The outcomes of this review will aid software engineers in selecting and
+implementing appropriate DDL techniques.
 
 \subsection{Research Questions}
 \label{sec:research_questions}
-This review addresses the following primary research questions \TODO{Review citations below}:
+This review addresses the following research questions. Below are listed the key questions concerning DDL:
 
 \begin{itemize}
-  \item What are the different techniques for parallelising deep learning models and data (e.g., data and model parallelism) \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}, \cite{langer_distributed_2020}?
-  \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
-  \item How is stochastic gradient descent (SGD) computed in distributed environments, and what are the associated challenges \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}?
-  \item What are the key frameworks currently available for implementing DDL, and how do their features and capabilities compare \cite{berloco_systematic_2022}?
-  \item Finally, what are the main challenges and future research directions in distributed deep learning \cite{dehghani_distributed_2023,ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+	\item What are the different techniques for parallelising deep learning models and data
+	      \cite{berloco_systematic_2022, ben-nun_demystifying_2020, langer_distributed_2020}?
+	      % NOTE \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+	\item How is stochastic gradient descent (SGD) computed in distributed environments
+	      \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}? % NOTE and what are the associated challenges 
+	\item What are the key frameworks currently available for implementing DDL, and how do their features
+	      compare \cite{berloco_systematic_2022}?
+\end{itemize}
+
+Concerning GPU parallelization, the following questions are of interest: \TODO{Could be improved}
+\begin{itemize}
+	\item How does CUDA enable data parallelization on single-machine GPUs?
+	\item What are key frameworks for implementing CUDA parallelization?
+	\item What similarities are there between CUDA and DDL techniques?
+\end{itemize}
+
+Of particular interest is to check for intertwined connections between the two topics:
+\begin{itemize}
+	\item In what ways are the techniques used in DDL also useful in GPU parallelization?
 \end{itemize}
 
 % TODO Razvan
@@ -46,7 +83,14 @@ This review addresses the following primary research questions \TODO{Review cita
 % \end{enumerate}
 
 \subsection{Scope and Methodology}
-This systematic review will focus on peer-reviewed articles and conference papers about DDL published from 2015 to 2023 \cite{berloco_systematic_2022}. The scope includes studies that investigate parallelisation of deep learning algorithms and techniques for distributed parameter updates \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}, and also the use of different frameworks and architectures for training large models \cite{berloco_systematic_2022,langer_distributed_2020}. Studies on single-machine learning and applications not related to distributed training will be excluded, alongside papers lacking substantial technical contributions. The methodology will involve a systematic literature search across SCOPUS and Google Scholar using specific keywords related to DDL \cite{berloco_systematic_2022}. The selection process will involve screening titles, abstracts, and full texts \cite{ben-nun_demystifying_2020}, and a formal protocol will guide each stage of the analysis. Data extraction will involve recording details such as model architecture and performance metrics. Data synthesis will involve a narrative synthesis of findings.
+% First introduce the workflow
+This systematic review follows a rigorous methodology outlined in Figure \ref{fig:workflow}. The
+workflow consists of seven main steps, starting with getting started (Step 1), through to the final
+wrap-up of the report (Step 7). Reproducibility and transparency of the review process is a
+priority. As a result multiple artifacts will be produced at each phase. These artifacts are
+reported separately in the appendix.
+
+\TODO{Too many subsections}
 
 % TODO Razvan
 % Our investigation includes practical implementations and experimental work:
@@ -61,4 +105,10 @@ This systematic review will focus on peer-reviewed articles and conference paper
 % \end{itemize}
 
 \subsection{Paper Organization}
-The remainder of this paper is organized as follows: Section \ref{sec:protocol} presents our systematic review protocol including the study selection framework and search process documentation, Section \ref{sec:methods} describes our systematic review methodology, including the search strategy across digital libraries, inclusion/exclusion criteria, and quality assessment protocol. Section \ref{sec:results} presents our findings, Section \ref{sec:discussion} discusses the implications, and Section \ref{sec:conclusion} concludes with future research directions. This structure ensures a logical flow from background to findings and recommendations.
+The remainder of this paper is organized as follows: Section \ref{sec:protocol} presents our
+systematic review protocol including the study selection framework and search process
+documentation, Section \ref{sec:methods} describes our systematic review methodology, including the
+search strategy across digital libraries, inclusion/exclusion criteria, and quality assessment
+protocol. Section \ref{sec:results} presents our findings, Section \ref{sec:discussion} discusses
+the implications, and Section \ref{sec:conclusion} concludes with future research directions. This
+structure ensures a logical flow from background to findings and recommendations.

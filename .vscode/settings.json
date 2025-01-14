@@ -2,5 +2,14 @@
     "cSpell.words": [
         "timeframe",
         "Zotero"
+    ],
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latexindent.path": "latexindent",
+    "latex-workshop.formatting.latexindent.args": [
+        "-c=%DIR%/",
+        "%TMPFILE%",
+        "-m",
+        "-l=%DIR%/latexindent.yaml"
     ]
-}
+                                                    }
