@@ -36,30 +36,16 @@ of the performance and efficiency of different DDL techniques \cite{berloco_syst
 implementing appropriate DDL techniques.
 
 \subsection{Research Questions}
-\label{sec:research_questions}
-This review addresses the following research questions. Below are listed the key questions concerning DDL:
+\label{sec:initial_research_questions}
+A set of research questions were determined prior to initiating the review process. However, the questions
+were subsequently refined as a result of piloting the review protocol. The initial questions are listed below,
+however will be expanded on in Section \ref{sec:research_questions}.
 
 \begin{itemize}
-	\item What are the different techniques for parallelising deep learning models and data
-	      \cite{berloco_systematic_2022, ben-nun_demystifying_2020, langer_distributed_2020}?
-	      % NOTE \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
-	\item How is stochastic gradient descent (SGD) computed in distributed environments
-	      \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}? % NOTE and what are the associated challenges 
-	\item What are the key frameworks currently available for implementing DDL, and how do their features
-	      compare \cite{berloco_systematic_2022}?
+	\item How does data parallelization work in GPU clusters and what are the limitations of these tools?
+	\item How effective is the learning algorithm when parallelized using CUDA compared to relying solely on CPUs?
 \end{itemize}
 
-Concerning GPU parallelization, the following questions are of interest: \TODO{Could be improved}
-\begin{itemize}
-	\item How does CUDA enable data parallelization on single-machine GPUs?
-	\item What are key frameworks for implementing CUDA parallelization?
-	\item What similarities are there between CUDA and DDL techniques?
-\end{itemize}
-
-Of particular interest is to check for intertwined connections between the two topics:
-\begin{itemize}
-	\item In what ways are the techniques used in DDL also useful in GPU parallelization?
-\end{itemize}
 
 % TODO Razvan
 % \begin{enumerate}

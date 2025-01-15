@@ -25,6 +25,10 @@ provide practical guidance on running a small neural network in CUDA and facilit
 Distributed Data Parallel (DDP) programming using Docker, addressing a practical implementation gap
 not covered in the previous work. \TODO{Highlight related surveys concerning CUDA}
 
+This study follows primarily the guidelines described in \cite{keele_systematic_2007}, however
+advice for conducting the review is synthesized from a wider range of related articles
+\cite{brereton_lessons_2007-1,kitchenham_procedures_nodate,budgen_reporting_2018,dos_santos_sustainable_2024}.
+
 Distributed training of neural networks has become essential for modern deep learning applications
 due to increasing model complexity and dataset sizes \cite{chahal_hitchhikers_2018}. The main
 approaches for distributing neural network training can be categorized into several key strategies
@@ -58,116 +62,94 @@ techniques depends on factors including model architecture, available hardware, 
 requirements. For a comprehensive review of these techniques and their implementations, readers are
 referred to \cite{chahal_hitchhikers_2018}.
 
-\section{Review Protocol and Process}
+\section{Review Protocol}
 \label{sec:protocol}
 
-This section outlines the methodology that will be used to conduct the systematic literature
-review, following the guidelines described in
-\cite{brereton_lessons_2007-1,kitchenham_procedures_nodate,budgen_reporting_2018,dos_santos_sustainable_2024,keele_systematic_2007}.
-\textbf{The primary goal is to ensure that the review process is both transparent and replicable}.
-To ensure this, the process is documented and most of the resulting artifacts are present in the
-Appendix. The key stages include defining the search strategy, study selection criteria, quality
-assessment process, and data extraction methods.
-
-\subsection{Review Workflow}
+The review protocol is a key component of the review process, as it represents the planning phase
+that enables the conduction of a review that is both transparent and replicable. To ensure this,
+the process is documented and most of the resulting artifacts are present in the text and in the
+Appendix.
 
 % Now detail Step 1 content
-As shown in Step 1 of Figure \ref{fig:workflow}, we begin by establishing the following key
-elements which expand on the research questions defined in Section \ref{sec:research_questions}:
+The workflow is shown in Figure \ref{fig:workflow} where the key phases are annotated as: Planning
+the Review (W1, W2), Conducting the Review (W3, W4, W5), and Reporting the Review (W6, W7, W8).
+
+Parts of the review protocol have already been defined, such as the incentive for conducting a
+systematic review in Section \ref{sec:importance_of_topic}.
+
+\subsection{P1. Research Questions}
+\label{sec:research_questions}
+Following the workflow diagram (Step P1), the initial research questions described in Section
+\ref{sec:initial_research_questions} are expanded as a result of iterating over the review protocol
+and investigating some of the known information sources.
 
 \begin{itemize}
-	\item \textbf{Goals:}
-	\item To analyze parallelization frameworks in DDL.
-	\item To evaluate libraries that support CUDA programming.
-	\item To find out how these concepts are intertwined.
-	\item To get practical experience with popular frameworks. \\
-	\item \textbf{Expected Outputs:}
-	\item Experience for conducting a systematic review.
-	\item Systematic mapping of programming frameworks.
-	\item Comparative analysis with strengths and weaknesses.
-	\item Identification of research gaps. \\
-	\item \textbf{Constraints:}
-	\item Time period limited to 2015-2024.
-	\item Peer-reviewed articles and conference papers only.
-	\item English language publications only.
-	\item Technical implementation details must be present. \\
-	\item \textbf{Search Terms and Keywords:}
-	\item Listed in Table \ref{tab:search_terms}.
+	\item What are the different techniques for parallelising deep learning models and data
+	      \cite{berloco_systematic_2022, ben-nun_demystifying_2020, langer_distributed_2020}?
+	      % NOTE \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+	\item How is stochastic gradient descent (SGD) computed in distributed environments
+	      \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}? % NOTE and what are the associated challenges 
+	\item What are the key frameworks currently available for implementing DDL, and how do their features
+	      compare \cite{berloco_systematic_2022}?
 \end{itemize}
 
-The workflow shown in Figure \ref{fig:workflow} can be mapped to the three main phases of a
-systematic review: Planning the Review (Steps 1-2), Conducting the Review (Steps 3-5), and
-Reporting the Review (Steps 6-8).
+Concerning GPU parallelization, the following questions : \TODO{Could be improved}
+\begin{itemize}
+	\item How does CUDA enable data parallelization on single-machine GPUs?
+	\item What are key frameworks for implementing CUDA parallelization?
+	\item What similarities are there between CUDA and DDL techniques?
+\end{itemize}
+
+Of particular interest is to check for intertwined connections between the two topics:
+\begin{itemize}
+	\item In what ways are the techniques used in DDL also useful in GPU parallelization?
+\end{itemize}
+
+The questions play a key role in guiding the search strategy, data extraction process and results
+synthesis phases.
 
 % The workflow also shows the documentation artifacts and validation processes that occur throughout the review, ensuring rigor and transparency.
 
-\subsection{The Review Process}
+\subsection{P2. Search Strategy}
+
 % Moved the explanation of the phases here
 % A systematic literature review involves several discrete activities. Existing guidelines for systematic reviews have slightly different suggestions about the number and order of activities. This document summarises the stages in a systematic review into three main phases: Planning the Review, Conducting the Review, Reporting the Review.
 
-\subsubsection{Planning the Review}
-As suggested in \cite{keele_systematic_2007}, the review protocol is developed in the first phase
-of the review process. Parts of the review protocol have already been defined, such as the
-incentive for conducting a systematic review in Section \ref{sec:importance_of_topic}, and the
-research questions in Section \ref{sec:research_questions}.
+As suggested by \cite{keele_systematic_2007}, search strategy is used (P2 in Step
+\ref{fig:workflow}).
 
-\paragraph{Defining the review protocol.}
-Now, we will define the remaining key components which include the search and data extraction
-strategies, study selection criteria, quality assessment procedure, and synthesis approach.
-\TODO{Is this fine?}
+\textbf{Search Strategy.}
+The search process includes a manual search of specific citation databases that include conference
+proceedings and journal papers. The nominated databases are shown in Table \ref{tab:databases}. A
+number of search strings were constructed using relevant terms based on the research questions.
 
-\subsubsection{Conducting the Review}
-The stages associated with conducting the review are:
-\begin{itemize}
-	\item Identification of research (See Section \TODO{Reference section number}).
-	      \begin{itemize}
-		      \item \textbf{Initial Search:} This stage involves using the defined search terms within selected
-		            databases to identify relevant studies, as further detailed in section \ref{sec:search_process_documentation} (Search Process Documentation). The process of how these terms are combined to create search
-		            strings is described in section \ref{sec:search_process_documentation}, and the search results will be stored using \textbf{Zotero}.
-	      \end{itemize}
-	\item Selection of primary studies (See Section \TODO{Reference section number}).
-	      \begin{itemize}
-		      \item \textbf{Screening:} This stage involves an initial screening of titles and abstracts to remove
-		            irrelevant studies, which is part of the study selection process described in section \ref{sec:study-selection-criteria} (Study Selection Criteria).
-		      \item \textbf{Full-Text Review:} All potentially relevant studies will have their full texts retrieved,
-		            and the full texts will then be assessed against pre-defined inclusion and exclusion criteria (see section \ref{sec:study-selection-criteria}).
-	      \end{itemize}
-	\item Study quality assessment (See Section \TODO{Reference section number}).
-	\item Data extraction and monitoring (See Section \TODO{Reference section number}).
-	      \begin{itemize}
-		      \item \textbf{Data Extraction:} The final step is data extraction, where relevant information will be
-		            extracted from the included studies using a predefined data extraction form (detailed in section \ref{sec:data-extraction-strategy}).
-	      \end{itemize}
-	\item Data synthesis (See Section \TODO{Reference section number}).
-\end{itemize}
+The search was restricted to papers published between $\yearstartcuda$ and $\yearendcuda$ for the
+CUDA task and between $\yearstartddl$ and $\yearendddl$ for the DDL task. The former start year
+($\yearstartcuda$) was chosen as the baseline as this was the year when AlexNet was published (the
+key paper which started the deep learning revolution). The latter start year ($\yearstartddl$) was
+chosen as a result of an initial survey of the literature that determined when the first papers in
+distributed deep learning started to appear. \TODO{To review}
 
-\subsubsection{Reporting the Review}
-The stages associated with reporting the review are:
-\begin{itemize}
-	\item Specifying dissemination mechanisms (See Section \TODO{Reference section number}).
-	\item Formatting the main report (See Section \TODO{Reference section number}).
-	\item Evaluating the report (See Section \TODO{Reference section number}).
-\end{itemize}
-
-We consider all the above stages to be mandatory except:
-\begin{itemize}
-	\item Commissioning a review which depends on whether or not the systematic review is being done on a
-	      commercial basis.
-	\item Evaluating the review protocol and Evaluating the report which are optional and depend on the
-	      quality assurance procedures decided by the systematic review team (and any other stakeholders).
-\end{itemize}
-
-The stages listed above may appear to be sequential, but it is important to recognise that many of
-the stages involve iteration. In particular, many activities are initiated during the protocol
-development stage, and refined when the review proper takes place. For example:
-\begin{itemize}
-	\item The selection of primary studies is governed by inclusion and exclusion criteria. These criteria
-	      are initially specified when the protocol is drafted but may be refined after quality criteria are
-	      defined.
-	\item Data extraction forms initially prepared during construction of the protocol will be amended when
-	      quality criteria are agreed.
-	\item Data synthesis methods defined in the protocol may be amended once data has been collected.
-\end{itemize}
+\begin{table}[htbp]
+	\centering
+	\caption{Search Engines Used}
+	\label{tab:databases}
+	\begin{tabular}{|l|r|}
+		\hline
+		\textbf{Search Engine} & \textbf{Number of uses} \\
+		\hline
+		IEEExplore             & 33                      \\
+		ACM                    & 30                      \\
+		ScienceDirect          & 24                      \\
+		Web of Science         & 19                      \\
+		Google Scholar         & 18                      \\
+		SpringerLink           & 17                      \\
+		Scopus                 & 14                      \\
+		Compendex              & 11                      \\
+		CiteSeer               & 5                       \\
+		\hline
+	\end{tabular}
+\end{table}
 
 % ===== STEP 3: Selection of Relevant Studies =====
 % This section details:
@@ -431,3 +413,27 @@ The complete lists of included and excluded studies, along with detailed informa
 	\end{tabular}
 \end{table*}
 
+\subsection{Learning outcomes}
+As a result of defining the review protocol, shown in Step 1 of Figure \ref{fig:workflow}, we begin
+by establishing the following key elements which expand on the research questions defined in
+Section \ref{sec:research_questions}:
+
+\begin{itemize}
+	\item \textbf{Goals:}
+	\item To analyze parallelization frameworks in DDL.
+	\item To evaluate libraries that support CUDA programming.
+	\item To find out how these concepts are intertwined.
+	\item To get practical experience with popular frameworks. \\
+	\item \textbf{Expected Outputs:}
+	\item Experience for conducting a systematic review.
+	\item Systematic mapping of programming frameworks.
+	\item Comparative analysis with strengths and weaknesses.
+	\item Identification of research gaps. \\
+	\item \textbf{Constraints:}
+	\item Time period limited to 2015-2024.
+	\item Peer-reviewed articles and conference papers only.
+	\item English language publications only.
+	\item Technical implementation details must be present. \\
+	\item \textbf{Search Terms and Keywords:}
+	\item Listed in Table \ref{tab:search_terms}.
+\end{itemize}
