@@ -13,6 +13,7 @@
 \end{figure*}
 
 \section{Related Work}
+\label{sec:related_work}
 
 \TODO{Reference the related work on survying the present methods both in DDL and CUDA}
 
@@ -62,91 +63,203 @@ techniques depends on factors including model architecture, available hardware, 
 requirements. For a comprehensive review of these techniques and their implementations, readers are
 referred to \cite{chahal_hitchhikers_2018}.
 
-\section{Review Protocol}
+\section{Research method}
 \label{sec:protocol}
 
-The review protocol is a key component of the review process, as it represents the planning phase
-that enables the conduction of a review that is both transparent and replicable. To ensure this,
-the process is documented and most of the resulting artifacts are present in the text and in the
-Appendix.
+Multiple studies in the literature emphasize that a literature survey should be both transparent
+and replicable \cite{keele_systematic_2007, dos_santos_sustainable_2024-1}, the main reason being
+that this allows to minimize reviewer bias. This is a valid concern in general, however especially
+so in this survey since it is conducted by only one person. In a broader study, bias would normally
+be minimized by having multiple iterations with more than one reviewer involved. In this paper,
+steps have been taken to mitigate this bias, acknowledging that it is not possible to eliminate it
+completely. To ensure this, the process is documented and most of the resulting artifacts are
+present in the text and in the Appendix.
+
+% TODO these are all good but was hoping to minimize the number of citations
+% TODO \cite{keele_systematic_2007,brereton_lessons_2007-1,budgen_reporting_2018, dos_santos_sustainable_2024-1},
 
 % Now detail Step 1 content
-The workflow is shown in Figure \ref{fig:workflow} where the key phases are annotated as: Planning
-the Review (W1, W2), Conducting the Review (W3, W4, W5), and Reporting the Review (W6, W7, W8).
+The workflow is shown in Figure \ref{fig:workflow} where the key phases are annotated as follows:
+Getting Started (M.1, M.2), Planning the Review (M.3, M.4), Conducting the Review (M.5, M.6), and
+Reporting the Review (M.7, M.8). M.2 calls an auxiliary process composed of S.1 and S.2 to select
+the appropriate studies \TODO{add references across the paper}.
 
-Parts of the review protocol have already been defined, such as the incentive for conducting a
-systematic review in Section \ref{sec:importance_of_topic}.
+\subsection{M.1 -- The need for a survey}
+\label{sec:need_for_survey}
 
-\subsection{P1. Research Questions}
+\textbf{Importance of the topic.}
+Distributed techniques are important in neural networks because they allow models with billions of
+parameters to perform a large number of computations in a reasonable amount of time. One of the
+pioneering papers in machine learning that made use of GPUs to train neural networks in parallel
+(AlexNet \cite{krizhevsky_imagenet_2012}), mentioned that the network took "between five and six days to
+train on two GTX 580 3GB GPUs", suggesting that the training time would have taken much longer on a
+CPU.
+
+One key property of distributing neural network architectures to a larger number of parameters, is
+that one can achieve better generalization and lower error rates even when training on smaller
+datasets \cite{kaplan_scaling_2020}. This gives the impression of intelligence due to the model's
+ability to make predictions that seem insightful. Understanding innate details on how these
+libraries function, can provides a fertile foundation for future ideas.
+
+\textbf{Learning outcomes.}
+As a result of conducting the survey I expect the following learning outcomes: learn from the primary
+studies, improve writing and research skills, gain practical experimental expertise using CUDA and
+Pytorch DDP and identify potential research ideas for future projects.
+
+\subsection{M.2 -- Getting started}
 \label{sec:research_questions}
-Following the workflow diagram (Step P1), the initial research questions described in Section
-\ref{sec:initial_research_questions} are expanded as a result of iterating over the review protocol
-and investigating some of the known information sources.
+Building on the learning outcomes defined in Section \ref{sec:need_for_survey}, we define
+the goals, expected outputs and constraints. The main goal was to analyze parallelization frameworks in DDL and CUDA.
+The expected results were to identify key frameworks for each category. For this, we defined two main constraints: (i)
+we only considered frameworks that introduce CUDA and DDL frameworks and (ii) we included only primary
+studies that were peer-reviewed, i.e. literature surveys were used to gain familiarity with the topic,
+however they are only discussed in Section \ref{sec:related_work}. These ideas are formally defined
+in Section \TODO{...} and \TODO{...}.
+
+\subsection{M.3 -- Selection of Relevant Studies}
+This step identified and selected studies from both areas (CUDA programming and DDL). I collected
+studies of the state of the art of both CUDA frameworks (in Step S.1) and DDL libraries (in Step
+S.2).
+
+\subsubsection{S.1 -- Survey on CUDA programming libraries}
+\paragraph{S.1.1 -- Problem definition.}
+In order to identify interesting frameworks and broaden the understanding of the topic, I conducted
+a secondary study\footnote{A secondary study synthesizes primary papers to provide a comprehensive
+	overview. This contrasts with tertiary studies which analyze secondary studies.}. This decision was
+made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study}). In order to do this
+systematically, this section defines a research protocol during the planning phase, which is then
+used to find related studies. The research protocol is essentially a framework for conducting the
+review. This section outlines the key decisions that were made with to create the protocol by
+identifying the research questions and search strategy.
+
+\begin{figure*}[th]
+	\centering
+	\includegraphics[width=\linewidth]{figures/workflow3}
+	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
+		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
+		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
+	\label{fig:workflow-study}
+\end{figure*}
+
+\paragraph{S.1.2 -- Research questions.}
+After an initial literature review, the research questions (RQ) defined in Section
+\ref{sec:initial_research_questions} are refined using the guidelines defined in
+\cite{kitchenham_evidence-based_2015} and \cite{keele_systematic_2007}. Specifically, the PICOC
+(Population, Intervention, Comparison, Outcome, Context) criterion is used to transform the
+questions into a format that ensures them to be specific, measurable and well-defined. The
+questions below are ordered based on their significance in the survey:
+
+% TODO: remove this
+% \begin{itemize}
+% 	\item \textbf{RQ\textsubscript{1}} What are the most common frameworks currently available for 
+% 		  GPU programming with CUDA, and how do their usability compare?
+% 		  % NOTE implementing distributed deep learning, and how does their usability compare?
+% 	      % NOTE \cite{berloco_systematic_2022, ben-nun_demystifying_2020, langer_distributed_2020}?
+% 	      % NOTE \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
+% 	\item How is stochastic gradient descent (SGD) computed in distributed environments
+% 	      \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}? % NOTE and what are the associated challenges 
+% 	\item What are the key frameworks currently available for implementing DDL, and how do their features 
+% 	      compare \cite{berloco_systematic_2022}?
+%  	\item In what ways are the techniques used in DDL also useful in GPU parallelization?
+% \end{itemize}
+
+% TODO: \TODO{RQ1: ease of learning, ease of use and documentation compare?}
 
 \begin{itemize}
-	\item What are the different techniques for parallelising deep learning models and data
-	      \cite{berloco_systematic_2022, ben-nun_demystifying_2020, langer_distributed_2020}?
-	      % NOTE \item How do parameter update strategies impact distributed deep learning systems (e.g., Parameter Server and decentralised approaches) \cite{ben-nun_demystifying_2020,berloco_systematic_2022,langer_distributed_2020}?
-	\item How is stochastic gradient descent (SGD) computed in distributed environments
-	      \cite{berloco_systematic_2022,ben-nun_demystifying_2020,langer_distributed_2020,verbraeken_survey_2021}? % NOTE and what are the associated challenges 
-	\item What are the key frameworks currently available for implementing DDL, and how do their features
-	      compare \cite{berloco_systematic_2022}?
-\end{itemize}
+	\item \textbf{RQ\textsubscript{1}:} In the context of Deep Learning, what are the most common
+	      frameworks (based on mentions in the literature) currently available for GPU CUDA programming,
+	      and how do their user base compare? \\
+	      \textit{Rationale:} By identifying the most common frameworks, we can identify which are the gaps
+	      in the literature they cover and which are the most promising areas for future research.
 
-Concerning GPU parallelization, the following questions : \TODO{Could be improved}
-\begin{itemize}
-	\item How does CUDA enable data parallelization on single-machine GPUs?
-	\item What are key frameworks for implementing CUDA parallelization?
-	\item What similarities are there between CUDA and DDL techniques?
-\end{itemize}
+	\item \textbf{RQ\textsubscript{2}:} What are the most common frameworks (also based on mentions in the literature)
+	      currently available for implementing DDL, and how do their features (in terms of distributed training techniques) and user base compare? \\
+	      \textit{Rationale:} By identifying the most common frameworks, we can trace the years in which they were published
+	      and form a unified timeline of the evolution of the field with respect to the related CUDA programming advancements.
 
-Of particular interest is to check for intertwined connections between the two topics:
-\begin{itemize}
-	\item In what ways are the techniques used in DDL also useful in GPU parallelization?
+	\item \textbf{RQ\textsubscript{3}:} What practical applications of these technologies have been reported in the literature? \\
+	      \textit{Rationale:} This can yield hands-on experience on the topic which is helpful for practical applications.
+	\item \textbf{RQ\textsubscript{4}:} What are the overlaps in data/model optimization strategies used in DDL and GPU parallelization? \\
+	      \textit{Rationale:} By identifying the overlaps, it offers a more unified view of how the concepts are interrelated.
 \end{itemize}
 
 The questions play a key role in guiding the search strategy, data extraction process and results
-synthesis phases.
+synthesis phase.
 
-% The workflow also shows the documentation artifacts and validation processes that occur throughout the review, ensuring rigor and transparency.
+\paragraph{S.1.3 -- Search Strategy.}
+The search strategy represents represents a systematic approach for identifying relevant studies that
+adequately answer the research questions.
 
-\subsection{P2. Search Strategy}
-
-% Moved the explanation of the phases here
-% A systematic literature review involves several discrete activities. Existing guidelines for systematic reviews have slightly different suggestions about the number and order of activities. This document summarises the stages in a systematic review into three main phases: Planning the Review, Conducting the Review, Reporting the Review.
-
-As suggested by \cite{keele_systematic_2007}, search strategy is used (P2 in Step
-\ref{fig:workflow}).
-
-\textbf{Search Strategy.}
+\textbf{Databases.}
 The search process includes a manual search of specific citation databases that include conference
-proceedings and journal papers. The nominated databases are shown in Table \ref{tab:databases}. A
-number of search strings were constructed using relevant terms based on the research questions.
+proceedings and journal papers in four electronic libraries -- \href{https://ieeexplore.ieee.org/}{IEEE Xplore}, \href{https://dl.acm.org/}{ACM Digital Library}, \href{https://www.sciencedirect.com/}{Science Direct}, and \href{https://www.scopus.com/}{Scopus} -- 
+and considering three metadata fields (title, abstract, and keywords).
 
-The search was restricted to papers published between $\yearstartcuda$ and $\yearendcuda$ for the
-CUDA task and between $\yearstartddl$ and $\yearendddl$ for the DDL task. The former start year
-($\yearstartcuda$) was chosen as the baseline as this was the year when AlexNet was published (the
-key paper which started the deep learning revolution). The latter start year ($\yearstartddl$) was
-chosen as a result of an initial survey of the literature that determined when the first papers in
-distributed deep learning started to appear. \TODO{To review}
+\textbf{Search terms.}
+A number of search strings were constructed using relevant terms deduced from the research. The initial
+search strings are shown in the Appendix in Table \ref{tab:search_terms}. These terms are combined in Table \ref{tab:search_documentation},
+using boolean operators to generate query strings, which are then used to search each individual database.
+
+The search was restricted to papers published between $\yearstartcuda$-$\yearendcuda$ for the CUDA
+task and $\yearstartddl$-$\yearendddl$ for the DDL task. The former start year ($\yearstartcuda$)
+was chosen as the baseline due to being the year when AlexNet \cite{krizhevsky_imagenet_2012} was
+published. This paper revolutionized research in neural networks by allowing advanced AI models to
+be trained on GPUs.
+
+The latter start year ($\yearstartddl$) was chosen as at this point there was a shift towards
+resource conservation, which resulted in a focus on concurrency within mini-batches
+\cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
+algorithms was more widely recognized and more research was published that focused on scalability.
+
+\textbf{Inclusion/Exclusion Criteria.}
+There were also defined two inclusion criteria (IC) and five exclusion criteria (EC). In
+particular, I decided to select only primary studies, however secondary studies were mentioned in
+Section \ref{sec:related_work}. The identification of secondary studies can be a good strategy,
+since the selected studies synthesize evidence and can make it possible to access primary studies:
+
+\begin{itemize}
+	\item \textbf{IC\textsubscript{1}} Study is a primary study and is peer-reviewed.
+	\item \textbf{IC\textsubscript{2}} Study addresses distributed frameworks in DL.
+	\item \textbf{IC\textsubscript{3}} Study addresses GPU programming with CUDA.
+	\item \textbf{IC\textsubscript{4}} Study introduces a library or a framework. \\
+	\item \textbf{EC\textsubscript{1}} Study does not discuss implementation details.
+	\item \textbf{EC\textsubscript{2}} Study is not a primary study.
+	\item \textbf{EC\textsubscript{3}} Study is not written in English.
+\end{itemize}
 
 \begin{table}[htbp]
 	\centering
-	\caption{Search Engines Used}
+	\caption{The Search Engines Used in this Survey}
 	\label{tab:databases}
-	\begin{tabular}{|l|r|}
+	\begin{tabular}{llllr}
 		\hline
-		\textbf{Search Engine} & \textbf{Number of uses} \\
+		ID & Tool & Stage & Mode & Number of uses \\
 		\hline
-		IEEExplore             & 33                      \\
-		ACM                    & 30                      \\
-		ScienceDirect          & 24                      \\
-		Web of Science         & 19                      \\
-		Google Scholar         & 18                      \\
-		SpringerLink           & 17                      \\
-		Scopus                 & 14                      \\
-		Compendex              & 11                      \\
-		CiteSeer               & 5                       \\
+		1 & IEEExplore & Search & Web & 33 \\
+		2 & ACM & Search & Web & 30 \\
+		3 & ScienceDirect & Search & Web & 24 \\
+		4 & Web of Science & Search & Web & 19 \\
+		5 & Google Scholar & Search & Web & 18 \\
+		6 & SpringerLink & Search & Web & 17 \\
+		7 & Scopus & Search & Web & 14 \\
+		8 & Compendex & Search & Desktop & 11 \\
+		9 & CiteSeer & Search & Web & 5 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[htbp]
+	\centering
+	\caption{\footnotesize Number of studies before and after applying the IC and EC}
+	\label{tab:criteria}
+	\begin{tabular}{lrrrrr}
+		\hline
+		 & \footnotesize IEEE & \footnotesize Science & \footnotesize Scopus & \footnotesize ACM Dig & \footnotesize Total \\
+		 & \footnotesize Xplore & \footnotesize Direct & & \footnotesize Library & \\
+		\hline
+		\footnotesize Before IC/EC & 22 & 10 & 10 & 30 & 72 \\
+		\footnotesize After IC/EC & 10 & 10 & 10 & 30 & 60 \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -413,11 +526,6 @@ The complete lists of included and excluded studies, along with detailed informa
 	\end{tabular}
 \end{table*}
 
-\subsection{Learning outcomes}
-As a result of defining the review protocol, shown in Step 1 of Figure \ref{fig:workflow}, we begin
-by establishing the following key elements which expand on the research questions defined in
-Section \ref{sec:research_questions}:
-
 \begin{itemize}
 	\item \textbf{Goals:}
 	\item To analyze parallelization frameworks in DDL.
@@ -430,7 +538,8 @@ Section \ref{sec:research_questions}:
 	\item Comparative analysis with strengths and weaknesses.
 	\item Identification of research gaps. \\
 	\item \textbf{Constraints:}
-	\item Time period limited to 2015-2024.
+	\item Time period limited to 2012-2024\footnote{CUDA: 2012 is the year when AlexNet was published.} and
+	      2015-2024\footnote{DDL: 2015 is the year when the shift towards scalability was noticed.}.
 	\item Peer-reviewed articles and conference papers only.
 	\item English language publications only.
 	\item Technical implementation details must be present. \\
