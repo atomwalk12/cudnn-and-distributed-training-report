@@ -73,7 +73,9 @@ so in this survey since it is conducted by only one person. In a broader study, 
 be minimized by having multiple iterations with more than one reviewer involved. In this paper,
 steps have been taken to mitigate this bias, acknowledging that it is not possible to eliminate it
 completely. To ensure this, the process is documented and most of the resulting artifacts are
-present in the text and in the Appendix.
+present in the text and in the Appendix. Moreover, AI classifiers were used during the screening
+process to make the selection manageable by one person. The details are provided in Section
+\ref{sec:ai-screening}.
 
 % TODO these are all good but was hoping to minimize the number of citations
 % TODO \cite{keele_systematic_2007,brereton_lessons_2007-1,budgen_reporting_2018, dos_santos_sustainable_2024-1},
@@ -112,7 +114,7 @@ Building on the learning outcomes defined in Section \ref{sec:need_for_survey}, 
 the goals, expected outputs and constraints. The main goal was to analyze parallelization frameworks in DDL and CUDA.
 The expected results were to identify key frameworks for each category. For this, we defined two main constraints: (i)
 we only considered frameworks that introduce CUDA and DDL frameworks and (ii) we included only primary
-studies that were peer-reviewed, i.e. literature surveys were used to gain familiarity with the topic,
+studies that were peer-reviewed, although literature surveys were used to gain familiarity with the topic,
 however they are only discussed in Section \ref{sec:related_work}. These ideas are formally defined
 in Section \TODO{...} and \TODO{...}.
 
@@ -166,17 +168,18 @@ questions below are ordered based on their significance in the survey:
 % TODO: \TODO{RQ1: ease of learning, ease of use and documentation compare?}
 
 \begin{itemize}
-	\item \textbf{RQ\textsubscript{1}:} In the context of Deep Learning, what are the most common
-	      frameworks (based on mentions in the literature) currently available for GPU CUDA programming,
-	      and how do their user base compare? \\
+	\item \textbf{RQ\textsubscript{1}:} In the field of Deep Learning, what are the most frequently cited
+	      frameworks for GPU programming using CUDA, and how do their user communities differ in size? \\
 	      \textit{Rationale:} By identifying the most common frameworks, we can identify which are the gaps
 	      in the literature they cover and which are the most promising areas for future research.
 
-	\item \textbf{RQ\textsubscript{2}:} What are the most common frameworks (also based on mentions in the literature)
-	      currently available for implementing DDL, and how do their features (in terms of distributed training techniques) and user base compare? \\
+	\item \textbf{RQ\textsubscript{2}:} In the field of Deep Learning, what are the most commonly cited
+	      frameworks for distributed training of neural networks across clusters, and how do their respective user communities vary in size? \\
 	      \textit{Rationale:} By identifying the most common frameworks, we can trace the years in which they were published
 	      and form a unified timeline of the evolution of the field with respect to the related CUDA programming advancements.
 
+	      % NOTE Razvan I am conducting a literature review in the field of deep learning, specifically focusing on distributed training of 
+	      % NOTE neural networks across clusters. I need to identify the most commonly cited frameworks used for this purpose.
 	\item \textbf{RQ\textsubscript{3}:} What practical applications of these technologies have been reported in the literature? \\
 	      \textit{Rationale:} This can yield hands-on experience on the topic which is helpful for practical applications.
 	\item \textbf{RQ\textsubscript{4}:} What are the overlaps in data/model optimization strategies used in DDL and GPU parallelization? \\
@@ -187,19 +190,55 @@ The questions play a key role in guiding the search strategy, data extraction pr
 synthesis phase.
 
 \paragraph{S.1.3 -- Search Strategy.}
-The search strategy represents represents a systematic approach for identifying relevant studies that
-adequately answer the research questions.
+The search strategy represents represents a systematic approach for identifying relevant studies
+that adequately answer the research questions.
 
-\textbf{Databases.}
-The search process includes a manual search of specific citation databases that include conference
-proceedings and journal papers in four electronic libraries -- \href{https://ieeexplore.ieee.org/}{IEEE Xplore}, \href{https://dl.acm.org/}{ACM Digital Library}, \href{https://www.sciencedirect.com/}{Science Direct}, and \href{https://www.scopus.com/}{Scopus} -- 
-and considering three metadata fields (title, abstract, and keywords).
+\paragraph{Databases.}
+The process involves a manual search of four citation databases --
+\href{https://ieeexplore.ieee.org/}{IEEE Xplore}, \href{https://dl.acm.org/}{ACM Digital Library},
+\href{https://www.sciencedirect.com/}{Science Direct}, and \href{https://www.scopus.com/}{Scopus}
+-- that include conference proceedings and journal papers, considering three metadata fields
+(title, abstract, and keywords).
 
-\textbf{Search terms.}
-A number of search strings were constructed using relevant terms deduced from the research. The initial
-search strings are shown in the Appendix in Table \ref{tab:search_terms}. These terms are combined in Table \ref{tab:search_documentation},
-using boolean operators to generate query strings, which are then used to search each individual database.
+\paragraph{Inclusion/Exclusion Criteria.}
+There were defined four inclusion criteria (IC) and three exclusion criteria (EC). In particular, I
+decided to select only primary studies, however secondary studies were mentioned in Section
+\ref{sec:related_work}. The identification of secondary studies was useful since the selected
+studies synthesize evidence and can make it possible to access primary studies:
 
+\begin{itemize}
+	\item \textbf{IC\textsubscript{1}}: Study is a primary study and is peer-reviewed.
+	\item \textbf{IC\textsubscript{2}}: Study addresses distributed frameworks in DL.
+	\item \textbf{IC\textsubscript{3}}: Study addresses GPU programming with CUDA.
+	\item \textbf{IC\textsubscript{4}}: Study introduces a library or a framework. \\
+	\item \textbf{EC\textsubscript{1}}: Study does not discuss implementation details.
+	\item \textbf{EC\textsubscript{2}}: Study is not a primary study.
+	\item \textbf{EC\textsubscript{3}}: Study is not written in English.
+\end{itemize}
+
+\paragraph{Search terms.}
+In Step S.1.3, I inquired about the literature using the following search string:
+\begin{quote}
+	\textit{( "machine learning" OR "deep learning" )
+		AND
+		( "Data parallelism" OR "model parallelism")
+		AND
+		( "framework" OR "implementation" )}
+\end{quote}
+
+While in Step S.2.3, the following search string was used \TODO{review string}:
+\begin{quote}
+	\textit{( "machine learning" OR "deep learning" )
+		AND
+		( "Data parallelism" OR "model parallelism")
+		AND
+		( "framework" OR "implementation" )}
+\end{quote}
+
+The details and justification to define this search string can be found in the supplementary
+material in Section \ref{sec:search_strategy}.
+
+\paragraph{Publication year criteria.}
 The search was restricted to papers published between $\yearstartcuda$-$\yearendcuda$ for the CUDA
 task and $\yearstartddl$-$\yearendddl$ for the DDL task. The former start year ($\yearstartcuda$)
 was chosen as the baseline due to being the year when AlexNet \cite{krizhevsky_imagenet_2012} was
@@ -211,21 +250,16 @@ resource conservation, which resulted in a focus on concurrency within mini-batc
 \cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
 algorithms was more widely recognized and more research was published that focused on scalability.
 
-\textbf{Inclusion/Exclusion Criteria.}
-There were also defined two inclusion criteria (IC) and five exclusion criteria (EC). In
-particular, I decided to select only primary studies, however secondary studies were mentioned in
-Section \ref{sec:related_work}. The identification of secondary studies can be a good strategy,
-since the selected studies synthesize evidence and can make it possible to access primary studies:
+\paragraph{S1.4 - S1.5 -- Study selection}
+After an initial database search (Step S1.4), \todo{fill-me} studies were retrieved. A selection
+process was initiated by reading the title, abstract and keywords of each study (S.1.5), resulting
+in \todo{fill-me} studies.
 
-\begin{itemize}
-	\item \textbf{IC\textsubscript{1}} Study is a primary study and is peer-reviewed.
-	\item \textbf{IC\textsubscript{2}} Study addresses distributed frameworks in DL.
-	\item \textbf{IC\textsubscript{3}} Study addresses GPU programming with CUDA.
-	\item \textbf{IC\textsubscript{4}} Study introduces a library or a framework. \\
-	\item \textbf{EC\textsubscript{1}} Study does not discuss implementation details.
-	\item \textbf{EC\textsubscript{2}} Study is not a primary study.
-	\item \textbf{EC\textsubscript{3}} Study is not written in English.
-\end{itemize}
+\paragraph{S1.6. -- Semi-automatic selection using AI}
+\label{sec:ai-screening}
+Next, as suggested in \cite{brereton_lessons_2007-1}, I applied
+AI inference engines to filter resulting studies into a more easily digestible set (S.1.6). The technique
+is semi-automatic with a focus on screening and extraction of relevant information.
 
 \begin{table}[htbp]
 	\centering
@@ -233,21 +267,20 @@ since the selected studies synthesize evidence and can make it possible to acces
 	\label{tab:databases}
 	\begin{tabular}{llllr}
 		\hline
-		ID & Tool & Stage & Mode & Number of uses \\
+		ID & Tool           & Stage  & Mode    & Number of uses \\
 		\hline
-		1 & IEEExplore & Search & Web & 33 \\
-		2 & ACM & Search & Web & 30 \\
-		3 & ScienceDirect & Search & Web & 24 \\
-		4 & Web of Science & Search & Web & 19 \\
-		5 & Google Scholar & Search & Web & 18 \\
-		6 & SpringerLink & Search & Web & 17 \\
-		7 & Scopus & Search & Web & 14 \\
-		8 & Compendex & Search & Desktop & 11 \\
-		9 & CiteSeer & Search & Web & 5 \\
+		1  & IEEExplore     & Search & Web     & 33             \\
+		2  & ACM            & Search & Web     & 30             \\
+		3  & ScienceDirect  & Search & Web     & 24             \\
+		4  & Web of Science & Search & Web     & 19             \\
+		5  & Google Scholar & Search & Web     & 18             \\
+		6  & SpringerLink   & Search & Web     & 17             \\
+		7  & Scopus         & Search & Web     & 14             \\
+		8  & Compendex      & Search & Desktop & 11             \\
+		9  & CiteSeer       & Search & Web     & 5              \\
 		\hline
 	\end{tabular}
 \end{table}
-
 
 \begin{table}[htbp]
 	\centering
@@ -255,11 +288,11 @@ since the selected studies synthesize evidence and can make it possible to acces
 	\label{tab:criteria}
 	\begin{tabular}{lrrrrr}
 		\hline
-		 & \footnotesize IEEE & \footnotesize Science & \footnotesize Scopus & \footnotesize ACM Dig & \footnotesize Total \\
-		 & \footnotesize Xplore & \footnotesize Direct & & \footnotesize Library & \\
+		                           & \footnotesize IEEE   & \footnotesize Science & \footnotesize Scopus & \footnotesize ACM     & \footnotesize Total \\
+		                           & \footnotesize Xplore & \footnotesize Direct  &                      & \footnotesize Library &                     \\
 		\hline
-		\footnotesize Before IC/EC & 22 & 10 & 10 & 30 & 72 \\
-		\footnotesize After IC/EC & 10 & 10 & 10 & 30 & 60 \\
+		\footnotesize Before IC/EC & 22                   & 10                    & 10                   & 30                    & 72                  \\
+		\footnotesize After IC/EC  & 10                   & 10                    & 10                   & 30                    & 60                  \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -268,8 +301,6 @@ since the selected studies synthesize evidence and can make it possible to acces
 % This section details:
 % - Study 1: Distributed learning techniques
 % - Study 2: CUDA implementations
-\subsection{Study Selection Framework}
-\label{sec:study-selection}
 
 % Combined "Purpose," "Scope," and "Relationship Between Study Types"
 This section defines the aims and scope of the review, clarifying the types of studies to be
@@ -546,3 +577,22 @@ The complete lists of included and excluded studies, along with detailed informa
 	\item \textbf{Search Terms and Keywords:}
 	\item Listed in Table \ref{tab:search_terms}.
 \end{itemize}
+
+\begin{table*}[htbp]
+	\centering
+	\caption{The DNN papers included in the review}
+	\label{tab:dnn_papers}
+	\begin{tabular}{llp{8.01cm}p{2cm}lll}
+		\hline
+		\textbf{\#} & \textbf{Ref.}           & \textbf{Title}                                                                & \textbf{Type} & \textbf{Year} & \textbf{Citations} & \textbf{Stars}                             \\
+		\hline
+		1           & \cite{huang_gpipe_2019} & GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism & Pipeline      & 2018          & 1446               & 2.8k \cite{noauthor_tensorflowlingvo_2025} \\
+		2           & \cite{chen_mxnet_2015}  & MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems & Hybrid (Data, Model) & 2015 & 2212 & 20.8k \cite{noauthor_apachemxnet_2025} \\
+		3           & \cite{li_pytorch_2020}  & PyTorch Distributed: Experiences on Accelerating Data Parallel Training & Data & 2020 & 175 & 86.1k \cite{noauthor_pytorchpytorch_nodate} \\
+		4           & \cite{xie_optimal_2022} & Optimal distributed parallel algorithms for deep learning framework Tensorflow & Hybrid (Data, Model) & 2022 & 10 & 187k \cite{abadi_tensorflow_2015} \\
+		5           & \cite{rasley_deepspeed_2020} & DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters & Hybrid (Data, Model) & 2020 & 1059 & 36.3k \cite{noauthor_microsoftdeepspeed_2025} \\
+		6           & \cite{sergeev_horovod_2018} & Horovod: fast and easy distributed deep learning in TensorFlow & Data & 2018 & 1152 & 14.3k \cite{noauthor_horovodhorovod_2025} \\
+		\hline
+		% Add more papers as needed
+	\end{tabular}
+\end{table*}

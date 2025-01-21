@@ -1,3 +1,15 @@
 \begin{abstract}
 This paper presents a systematic literature review of distributed techniques for parallelizing stochastic descent backpropagation in neural networks. The review synthesizes research from the past decade, examining various approaches to distributed training, their effectiveness, and implementation challenges. Our analysis covers [X] primary studies, identifying key patterns in algorithmic design, communication strategies, and convergence properties. The findings indicate [brief summary of key findings]. This review contributes to the field by providing a comprehensive overview of current distributed training techniques, highlighting research gaps, and suggesting future research directions. The work serves as a valuable resource for researchers and practitioners working on large-scale neural network training systems.
 \end{abstract}
+
+% Due to its many applications across various fields of research, engineering, and daily life, deep learning has seen a surge in popularity. Therefore, larger and more expressive models have been proposed, with examples like Turing-NLG using as many as 17 billion parameters. Training these very large models becomes increasingly difficult due to the high computational costs and large memory footprint. Therefore, several approaches for distributed training based on data parallelism (e.g., Horovod) and model/pipeline parallelism (e.g., GPipe, PipeDream) have emerged.  In this work, we focus on an in-depth comparison of three different parallelism models that address these needs: data, model and pipeline parallelism.
+
+
+% Because training a deep neural network (DNN) takes arduous amounts of time and computation, often researchers expedite the training process via distributed parallel training on GPUs.
+% On one hand, this lower computing-to-communication ratio makes traditional data parallelism difficult to scale, and traditional model parallelism leads to low GPU utilization. Both make it difficult to obtain a higher speedup. On the other hand, multi-GPU systems exhibit complex connectivity among GPUs.
+
+% Experiments with four different DNN models show that Pipetorch averages 1.4x speedup compared to data parallelism. 
+
+% TODO Razvan: explain model, data, pipeline and hybrid parallelism.
+
+%  We demonstrate FCUBE executing five different learners contributed by three different machine learning groups on a 100 node deployment on Amazon EC2. They collectively solve a publicly available classification problem trained with 11 million exemplars from the Higgs dataset. 
