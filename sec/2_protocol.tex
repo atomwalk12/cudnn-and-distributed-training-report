@@ -580,19 +580,50 @@ The complete lists of included and excluded studies, along with detailed informa
 
 \begin{table*}[htbp]
 	\centering
-	\caption{The DNN papers included in the review}
+	\caption{The DNN papers included in the review. 1 (data), 2 (model), 3 (pipeline)}
 	\label{tab:dnn_papers}
 	\begin{tabular}{llp{8.01cm}p{2cm}lll}
 		\hline
-		\textbf{\#} & \textbf{Ref.}           & \textbf{Title}                                                                & \textbf{Type} & \textbf{Year} & \textbf{Citations} & \textbf{Stars}                             \\
+		\textbf{\#} & \textbf{Ref.}                    & \textbf{Title}                                                                                            & \textbf{Type}  & \textbf{Year} & \textbf{Citations} & \textbf{Stars}                                                \\[1ex]
 		\hline
-		1           & \cite{huang_gpipe_2019} & GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism & Pipeline      & 2018          & 1446               & 2.8k \cite{noauthor_tensorflowlingvo_2025} \\
-		2           & \cite{chen_mxnet_2015}  & MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems & Hybrid (Data, Model) & 2015 & 2212 & 20.8k \cite{noauthor_apachemxnet_2025} \\
-		3           & \cite{li_pytorch_2020}  & PyTorch Distributed: Experiences on Accelerating Data Parallel Training & Data & 2020 & 175 & 86.1k \cite{noauthor_pytorchpytorch_nodate} \\
-		4           & \cite{xie_optimal_2022} & Optimal distributed parallel algorithms for deep learning framework Tensorflow & Hybrid (Data, Model) & 2022 & 10 & 187k \cite{abadi_tensorflow_2015} \\
-		5           & \cite{rasley_deepspeed_2020} & DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters & Hybrid (Data, Model) & 2020 & 1059 & 36.3k \cite{noauthor_microsoftdeepspeed_2025} \\
-		6           & \cite{sergeev_horovod_2018} & Horovod: fast and easy distributed deep learning in TensorFlow & Data & 2018 & 1152 & 14.3k \cite{noauthor_horovodhorovod_2025} \\
+		1           & \cite{li_pytorch_2020}           & PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                   & Hybrid (1,2,3) & 2020          & 175                & 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
+		2           & \cite{abadi_tensorflow_2016}     & TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                             & Data           & 2016          & 9998               & 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
+		3           & \cite{wolf_huggingfaces_2020}    & HuggingFace's Transformers: State-of-the-art Natural Language Processing                                  & Data           & 2020          & 1444               & 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
+		4           & \cite{noauthor_overview_nodate}  & The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & Data           & 2019          & N/A                & 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
+		5           & \cite{frostig_compiling_nodate}  & Compiling machine learning programs via high-level tracing                                                & Hybrid         & 2018          & 297                & 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
+		6           & \cite{shoeybi_megatron-lm_2020}  & Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                      & Hybrid         & 2020          & 1578               & 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
+		7           & \cite{huang_gpipe_2019}          & GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                             & Pipeline       & 2018          & 1446               & 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		8           & \cite{rasley_deepspeed_2020}     & DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters     & Hybrid         & 2020          & 1059               & 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
+		9           & \cite{noauthor_fairscale_nodate} & FairScale:  A general purpose modular PyTorch library for high performance and large scale training       & Hybrid         & 2021          & N/A                & 3.2k \cite{FairScale2021}                                     \\[1ex]
+		10          & \cite{noauthor_amazon_nodate}    & Amazon SageMaker Platform                                                                                 & Data           & 2017          & N/A                & 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
+		11          & \cite{jiang_unified_nodate}      & A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters        & Data           & 2020          & 338                & 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
+		12          & \cite{sdgilley_azure_nodate}     & Microsoft AzureML Platform                                                                                & Data           & 2021          & N/A                & 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
+		13          & \cite{noauthor_vertex_nodate}    & Google Vertex AI Platform                                                                                 & Data           & 2021          & N/A                & 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
+		14          & \cite{lepikhin_gshard_2020}      & GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                          & Model          & 2020          & 931                & 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		15          & \cite{li_colossal-ai_2023}       & Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                             & Hybrid         & 2023          & 118                & 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
+		16          & \cite{moritz_ray_2018}           & Ray: A distributed Framework for Emerging AI Applications                                                 & Hybrid         & 2018          & 1108               & 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
+		17          & \cite{sergeev_horovod_2018}      & Horovod: fast and easy distributed deep learning in TensorFlow                                            & Data           & 2018          & 1152               & 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
 		\hline
-		% Add more papers as needed
 	\end{tabular}
 \end{table*}
+
+% \begin{table*}[htbp]
+% 	\centering
+% 	\caption{The DNN papers included in the review}
+% 	\label{tab2:dnn_papers}
+% 	\begin{tabular}{llp{8.01cm}p{2cm}lll}
+% 		\hline
+% 		\textbf{\#} & \textbf{Ref.}           & \textbf{Title}                                                                & \textbf{Type} & \textbf{Year} & \textbf{Citations} & \textbf{Stars}                             \\
+% 		\hline
+% 		%1           & \cite{huang_gpipe_2019} & GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism & Pipeline      & 2018          & 1446               & 2.8k \cite{noauthor_tensorflowlingvo_2025} \\
+% 		2           & \cite{chen_mxnet_2015}  & MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems & Hybrid (Data, Model) & 2015 & 2212 & 20.8k \cite{noauthor_apachemxnet_2025} \\
+% 		% 3           & \cite{li_pytorch_2020}  & PyTorch Distributed: Experiences on Accelerating Data Parallel Training & Data & 2020 & 175 & 86.1k \cite{noauthor_pytorchpytorch_nodate} \\
+% 		% 4           & \cite{abadi_tensorflow_2016} & TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems & Data & 2016 & 9998 & 187k \cite{abadi_tensorflow_2015} \\
+% 		% 5           & \cite{rasley_deepspeed_2020} & DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters & Hybrid (Data, Model) & 2020 & 1059 & 36.3k \cite{noauthor_microsoftdeepspeed_2025} \\
+% 		% 6           & \cite{sergeev_horovod_2018} & Horovod: fast and easy distributed deep learning in TensorFlow & Data & 2018 & 1152 & 14.3k \cite{noauthor_horovodhorovod_2025} \\
+% 		% 7           & \cite{jiang_unified_nodate} & A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters & Data & 2020 & 10 & 3.7k \cite{noauthor_bytedancebyteps_2025} \\
+% 		% 8           & \cite{frostig_compiling_nodate} & Compiling machine learning programs via high-level tracing & Data & 2018 & 363 & 31k \cite{noauthor_jax-mljax_2025} \\
+% 		\hline
+% 		% Add more papers as needed
+% 	\end{tabular}
+% \end{table*}
