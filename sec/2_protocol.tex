@@ -128,7 +128,7 @@ S.2).
 In order to identify interesting frameworks and broaden the understanding of the topic, I conducted
 a secondary study\footnote{A secondary study synthesizes primary papers to provide a comprehensive
 	overview. This contrasts with tertiary studies which analyze secondary studies.}. This decision was
-made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study}). In order to do this
+made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study-cuda}). In order to do this
 systematically, this section defines a research protocol during the planning phase, which is then
 used to find related studies. The research protocol is essentially a framework for conducting the
 review. This section outlines the key decisions that were made with to create the protocol by
@@ -136,11 +136,11 @@ identifying the research questions and search strategy.
 
 \begin{figure*}[th]
 	\centering
-	\includegraphics[width=\linewidth]{figures/workflow3}
+	\includegraphics[width=\linewidth]{figures/survey-cuda.pdf}
 	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
 		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
 		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
-	\label{fig:workflow-study}
+	\label{fig:workflow-study-dnn}
 \end{figure*}
 
 \paragraph{S.1.2 -- Research questions.}
@@ -250,16 +250,57 @@ resource conservation, which resulted in a focus on concurrency within mini-batc
 \cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
 algorithms was more widely recognized and more research was published that focused on scalability.
 
-\paragraph{S1.4 - S1.5 -- Study selection}
-After an initial database search (Step S1.4), \todo{fill-me} studies were retrieved. A selection
-process was initiated by reading the title, abstract and keywords of each study (S.1.5), resulting
-in \todo{fill-me} studies.
+\paragraph{S1.4 - S1.8 -- Study selection.}
+After an initial database search (Step S1.4), \todo{fill-me} studies were retrieved. Next, as part
+of S.1.5, two methods were applied for reducing the number of studies to a more manageable set.
+Below, I describe each approach, including my evaluation regarding their effectiveness.
+
+\textbf{Swift-Review.}
+I applied Swift-Review\cite{Howard2016SWIFTReviewAT}, a machine learning classifier to filter out
+irrelevant studies (Step S.1.5). The technique is semi-automatic
+with a focus on screening and extraction of relevant information. Prior to initiating the classification,
+I had to manually identify 10 positive and 10 negative examples. These
+acted as input seed samples for the classifier, which helped pinpoint other useful material. The
+identification of the relevant papers was done by reading the title, abstract and keywords of
+each study which had a confidence score above 0.5.
+
+\textbf{Classification using Gemini.}
+The downside of the previous approach is that it still involves a lot of work to manually identify key
+studies. To address this, \cite{bolanos_artificial_2024} suggests many emerging tools that use Large Language Models (LLMs)
+to automatically classify relevant material. However, in my experience, none are particularly effective
+at handling a large corpus of text due to the context window being relatively small. As a result, I decided
+to use Gemini \cite{team_gemini_2024} to classify the studies, which is a particularly strong choice due to its massive
+context window (over 2M tokens). The drawback is that Gemini does not provide citations when using the web interface 
+\cite{noauthor_gemini_nodate}. However, NotebookLM \cite{notebooklm_google_2024} solves the issue by providing references 
+to portions of the text that are relevant to the query. My approach involved downloading the search results in textual format from the
+search engines and then leveraging NotebookLM to classify the studies by utilizing the research questions
+defined in Section \ref{sec:research_questions} as a prompt. This was an iterative process that involved
+reading the abstracts and keywords of each study to ascertain about the reliability of each response.
+
+\textbf{Results.}
+After investigating the results of both approaches, I found that the NotebookLM approach was more
+effective at identifying key studies. This is likely due to Gemini being a much more powerful
+model than the simple classifier used by Swift-Review.
+
+
+\begin{figure*}[th]
+	\centering
+	\includegraphics[width=\linewidth]{figures/survey-dnn.pdf}
+	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
+		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
+		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
+	\label{fig:workflow-study-cuda}
+\end{figure*}
+
+\paragraph{S2.4 - S2.8 -- Study selection.}
+After the database search (S2.4), 182 studies were retrieved. Similarly, in Step S2.5, 32 studies
+were identified as relevant after running the classifier. These were subsequently filtered to 13
+studies, after reading the title, abstract and keywords of each (S.2.6). A more thorough selection 
+process was initiated by reading the papers and setting up a selection process which involved using
+Large Language Models (LLMs)
 
 \paragraph{S1.6. -- Semi-automatic selection using AI}
 \label{sec:ai-screening}
-Next, as suggested in \cite{brereton_lessons_2007-1}, I applied
-AI inference engines to filter resulting studies into a more easily digestible set (S.1.6). The technique
-is semi-automatic with a focus on screening and extraction of relevant information.
 
 \begin{table}[htbp]
 	\centering
@@ -582,30 +623,37 @@ The complete lists of included and excluded studies, along with detailed informa
 	\centering
 	\caption{The DNN papers included in the review. 1 (data), 2 (model), 3 (pipeline)}
 	\label{tab:dnn_papers}
-	\begin{tabular}{llp{8.01cm}p{2cm}lll}
+	\begin{tabular}{llp{8.4cm}lllc}
 		\hline
-		\textbf{\#} & \textbf{Ref.}                    & \textbf{Title}                                                                                            & \textbf{Type}  & \textbf{Year} & \textbf{Citations} & \textbf{Stars}                                                \\[1ex]
+		\small \textbf{\#} & \small \textbf{Ref.}                    & \small \textbf{Title}                                                                                            & \small \textbf{Type} & \small \textbf{Year} & \small \textbf{Citations} & \small \textbf{Stars}                                                \\[1ex]
 		\hline
-		1           & \cite{li_pytorch_2020}           & PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                   & Hybrid (1,2,3) & 2020          & 175                & 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
-		2           & \cite{abadi_tensorflow_2016}     & TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                             & Data           & 2016          & 9998               & 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
-		3           & \cite{wolf_huggingfaces_2020}    & HuggingFace's Transformers: State-of-the-art Natural Language Processing                                  & Data           & 2020          & 1444               & 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
-		4           & \cite{noauthor_overview_nodate}  & The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & Data           & 2019          & N/A                & 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
-		5           & \cite{frostig_compiling_nodate}  & Compiling machine learning programs via high-level tracing                                                & Hybrid         & 2018          & 297                & 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
-		6           & \cite{shoeybi_megatron-lm_2020}  & Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                      & Hybrid         & 2020          & 1578               & 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
-		7           & \cite{huang_gpipe_2019}          & GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                             & Pipeline       & 2018          & 1446               & 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		8           & \cite{rasley_deepspeed_2020}     & DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters     & Hybrid         & 2020          & 1059               & 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
-		9           & \cite{noauthor_fairscale_nodate} & FairScale:  A general purpose modular PyTorch library for high performance and large scale training       & Hybrid         & 2021          & N/A                & 3.2k \cite{FairScale2021}                                     \\[1ex]
-		10          & \cite{noauthor_amazon_nodate}    & Amazon SageMaker Platform                                                                                 & Data           & 2017          & N/A                & 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
-		11          & \cite{jiang_unified_nodate}      & A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters        & Data           & 2020          & 338                & 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
-		12          & \cite{sdgilley_azure_nodate}     & Microsoft AzureML Platform                                                                                & Data           & 2021          & N/A                & 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
-		13          & \cite{noauthor_vertex_nodate}    & Google Vertex AI Platform                                                                                 & Data           & 2021          & N/A                & 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
-		14          & \cite{lepikhin_gshard_2020}      & GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                          & Model          & 2020          & 931                & 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		15          & \cite{li_colossal-ai_2023}       & Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                             & Hybrid         & 2023          & 118                & 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
-		16          & \cite{moritz_ray_2018}           & Ray: A distributed Framework for Emerging AI Applications                                                 & Hybrid         & 2018          & 1108               & 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
-		17          & \cite{sergeev_horovod_2018}      & Horovod: fast and easy distributed deep learning in TensorFlow                                            & Data           & 2018          & 1152               & 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
+		\small 1           & \small \cite{li_pytorch_2020}           & \small PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                   & \small Hybrid        & \small 2020          & \small 175                & \small 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
+		\small 2           & \small \cite{abadi_tensorflow_2016}     & \small TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                             & \small Data          & \small 2016          & \small 9998               & \small 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
+		\small 3           & \small \cite{wolf_huggingfaces_2020}    & \small HuggingFace's Transformers: State-of-the-art Natural Language Processing                                  & \small Data          & \small 2020          & \small 1444               & \small 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
+		\small 4           & \small \cite{noauthor_overview_nodate}  & \small The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & \small Data          & \small 2019          & \small N/A                & \small 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
+		\small 5           & \small \cite{frostig_compiling_nodate}  & \small Compiling machine learning programs via high-level tracing                                                & \small Hybrid        & \small 2018          & \small 297                & \small 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
+		\small 6           & \small \cite{shoeybi_megatron-lm_2020}  & \small Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                      & \small Hybrid        & \small 2020          & \small 1578               & \small 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
+		\small 7           & \small \cite{huang_gpipe_2019}          & \small GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                             & \small Pipeline      & \small 2018          & \small 1446               & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small 8           & \small \cite{rasley_deepspeed_2020}     & \small DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters     & \small Hybrid        & \small 2020          & \small 1059               & \small 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
+		\small 9           & \small \cite{noauthor_fairscale_nodate} & \small FairScale:  A general purpose modular PyTorch library for high performance and large scale training       & \small Hybrid        & \small 2021          & \small N/A                & \small 3.2k \cite{FairScale2021}                                     \\[1ex]
+		\small 10          & \small \cite{noauthor_amazon_nodate}    & \small Amazon SageMaker Platform                                                                                 & \small Data          & \small 2017          & \small N/A                & \small 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
+		\small 11          & \small \cite{jiang_unified_nodate}      & \small A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters        & \small Data          & \small 2020          & \small 338                & \small 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
+		\small 12          & \small \cite{sdgilley_azure_nodate}     & \small Microsoft AzureML Platform                                                                                & \small Data          & \small 2021          & \small N/A                & \small 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
+		\small 13          & \small \cite{noauthor_vertex_nodate}    & \small Google Vertex AI Platform                                                                                 & \small Data          & \small 2021          & \small N/A                & \small 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
+		\small 14          & \small \cite{lepikhin_gshard_2020}      & \small GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                          & \small Model         & \small 2020          & \small 931                & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small 15          & \small \cite{li_colossal-ai_2023}       & \small Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                             & \small Hybrid        & \small 2023          & \small 118                & \small 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
+		\small 16          & \small \cite{moritz_ray_2018}           & \small Ray: A distributed Framework for Emerging AI Applications                                                 & \small Hybrid        & \small 2018          & \small 1108               & \small 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
+		\small 17          & \small \cite{sergeev_horovod_2018}      & \small Horovod: fast and easy distributed deep learning in TensorFlow                                            & \small Data          & \small 2018          & \small 1152               & \small 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
 		\hline
 	\end{tabular}
 \end{table*}
+
+\begin{figure*}[th]
+	\centering
+	\includegraphics[width=\linewidth]{figures/mindmap}
+	\caption{Mindmap.}
+	\label{fig:mindmap}
+\end{figure*}
 
 % \begin{table*}[htbp]
 % 	\centering
