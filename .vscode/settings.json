@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
+        "AMDGPU",
+        "BLAS",
+        "Kokkos",
+        "NCCL",
+        "Numba",
+        "RCCL",
+        "SYCL",
         "timeframe",
         "Xplore",
         "Zotero"

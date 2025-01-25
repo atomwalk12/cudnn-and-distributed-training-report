@@ -128,10 +128,10 @@ S.2).
 In order to identify interesting frameworks and broaden the understanding of the topic, I conducted
 a secondary study\footnote{A secondary study synthesizes primary papers to provide a comprehensive
 	overview. This contrasts with tertiary studies which analyze secondary studies.}. This decision was
-made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study-cuda}). In order to do this
-systematically, this section defines a research protocol during the planning phase, which is then
-used to find related studies. The research protocol is essentially a framework for conducting the
-review. This section outlines the key decisions that were made with to create the protocol by
+made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study-cuda}). In order to do
+this systematically, this section defines a research protocol during the planning phase, which is
+then used to find related studies. The research protocol is essentially a framework for conducting
+the review. This section outlines the key decisions that were made with to create the protocol by
 identifying the research questions and search strategy.
 
 \begin{figure*}[th]
@@ -250,19 +250,20 @@ resource conservation, which resulted in a focus on concurrency within mini-batc
 \cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
 algorithms was more widely recognized and more research was published that focused on scalability.
 
-\paragraph{S1.4 - S1.8 -- Study selection.}
-After an initial database search (Step S1.4), \todo{fill-me} studies were retrieved. Next, as part
-of S.1.5, two methods were applied for reducing the number of studies to a more manageable set.
-Below, I describe each approach, including my evaluation regarding their effectiveness.
+\paragraph{S1.4 - S1.5 -- Automatic selection.}
+After an initial database search (Step S1.4), 182 studies were retrieved. Next, as part of S.1.5,
+two methods were applied for reducing the number of studies to a more manageable set. Below, I
+describe each approach, including my evaluation regarding their effectiveness.
 
 \textbf{Swift-Review.}
-I applied Swift-Review\cite{Howard2016SWIFTReviewAT}, a machine learning classifier to filter out
+As suggest in \cite{bolanos_artificial_2024},
+I applied Swift-Review \cite{Howard2016SWIFTReviewAT}, a machine learning classifier to filter out
 irrelevant studies (Step S.1.5). The technique is semi-automatic
 with a focus on screening and extraction of relevant information. Prior to initiating the classification,
 I had to manually identify 10 positive and 10 negative examples. These
-acted as input seed samples for the classifier, which helped pinpoint other useful material. The
-identification of the relevant papers was done by reading the title, abstract and keywords of
-each study which had a confidence score above 0.5.
+acted as input seed samples for the classifier, which helped pinpoint other useful material. Then
+the classifier identified other relevant papers by screening the title, abstract and keywords of
+each study. All papers with a confidence score above 0.5 are selected.
 
 \textbf{Classification using Gemini.}
 The downside of the previous approach is that it still involves a lot of work to manually identify key
@@ -270,8 +271,8 @@ studies. To address this, \cite{bolanos_artificial_2024} suggests many emerging 
 to automatically classify relevant material. However, in my experience, none are particularly effective
 at handling a large corpus of text due to the context window being relatively small. As a result, I decided
 to use Gemini \cite{team_gemini_2024} to classify the studies, which is a particularly strong choice due to its massive
-context window (over 2M tokens). The drawback is that Gemini does not provide citations when using the web interface 
-\cite{noauthor_gemini_nodate}. However, NotebookLM \cite{notebooklm_google_2024} solves the issue by providing references 
+context window (over 2M tokens). The drawback is that Gemini does not provide citations when using the web interface
+\cite{noauthor_gemini_nodate}. However, NotebookLM \cite{notebooklm_google_2024} solves the issue by providing references
 to portions of the text that are relevant to the query. My approach involved downloading the search results in textual format from the
 search engines and then leveraging NotebookLM to classify the studies by utilizing the research questions
 defined in Section \ref{sec:research_questions} as a prompt. This was an iterative process that involved
@@ -280,8 +281,16 @@ reading the abstracts and keywords of each study to ascertain about the reliabil
 \textbf{Results.}
 After investigating the results of both approaches, I found that the NotebookLM approach was more
 effective at identifying key studies. This is likely due to Gemini being a much more powerful
-model than the simple classifier used by Swift-Review.
+model than the simple classifier used by Swift-Review. The number of selected studies was 32.
 
+\paragraph{S.1.6 - S.1.9 -- Manual selection.}
+In Step S.1.6, a manual inspection over the the title, abstract and keywords was done. This
+resulted in a total of 13 studies that appeared to be relevant. After checking their full text,
+this number was reduced to 5. I performed backward snowballing \cite{jalali_systematic_2012} by
+revisiting the references of the 5 studies, as well as checking available preprint articles and
+identified other 8 studies (Step 1.8). Hence, a total of 13 studies (4 + 8) remained. A subsequent
+5 frameworks were found with no accompanying papers. All 18 libraries are listed in Table
+\ref{tab:dnn_papers}.
 
 \begin{figure*}[th]
 	\centering
@@ -292,12 +301,13 @@ model than the simple classifier used by Swift-Review.
 	\label{fig:workflow-study-cuda}
 \end{figure*}
 
-\paragraph{S2.4 - S2.8 -- Study selection.}
-After the database search (S2.4), 182 studies were retrieved. Similarly, in Step S2.5, 32 studies
-were identified as relevant after running the classifier. These were subsequently filtered to 13
-studies, after reading the title, abstract and keywords of each (S.2.6). A more thorough selection 
-process was initiated by reading the papers and setting up a selection process which involved using
-Large Language Models (LLMs)
+\paragraph{S2.4 - S2.8 -- Article/Tutorial selection.}
+This process was done by identifying popular frameworks that facilitate programming on the GPU. It
+was not possible to perform a systematic review in the traditional sense due to the nature of the
+available tools. These available libraries are frequently proprietary and are rarely accompanied by
+academic papers. Also, the libraries are implementation-focused with documentation and tutorials
+being the main source of information. As a result, of the lack of the formal introduction in the
+literature, I focused on identifying documentation and tutorials most relevant for each framework.
 
 \paragraph{S1.6. -- Semi-automatic selection using AI}
 \label{sec:ai-screening}
@@ -650,6 +660,13 @@ The complete lists of included and excluded studies, along with detailed informa
 
 \begin{figure*}[th]
 	\centering
+	\includegraphics[width=\linewidth]{figures/mindmap-cuda}
+	\caption{Mindmap.}
+	\label{fig:mindmap-cuda}
+\end{figure*}
+
+\begin{figure*}[th]
+	\centering
 	\includegraphics[width=\linewidth]{figures/mindmap}
 	\caption{Mindmap.}
 	\label{fig:mindmap}
@@ -675,3 +692,44 @@ The complete lists of included and excluded studies, along with detailed informa
 % 		% Add more papers as needed
 % 	\end{tabular}
 % \end{table*}
+
+\begin{table*}[htbp]
+	\centering
+	\caption{Critical factors of GPU Programming Libraries and Frameworks}
+	\label{tab:gpu_libraries}
+	\begin{tabular}{llp{8cm}lll}
+		\hline
+		\small \textbf{Category} & \small \textbf{ID} & \small \textbf{Library/Framework}                                 & \small \textbf{Vendor} & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
+		\hline
+		\multirow{4}{*}{\small NVIDIA}
+		                         & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra    & \small NVIDIA          & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
+		                         & \small NV2         & \small cuDNN: Optimized deep neural network primitives            & \small NVIDIA          & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
+		                         & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                   & \small NVIDIA          & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
+		                         & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication & \small NVIDIA          & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
+		\hline
+		\multirow{4}{*}{\small AMD}
+		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                         & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
+		                         & \small AMD3        & \small MIOpen: Deep learning primitives                           & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
+		                         & \small CP4         & \small HIP: Portable API for CUDA-like code                       & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
+		                         & \small AMD4        & \small RCCL: Multi-GPU communication                              & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
+		\hline
+		\multirow{3}{*}{\small Intel}
+		                         & \small INT1        & \small oneMKL: Math Kernel Library                                & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
+		                         & \small INT2        & \small oneDNN: Deep learning primitives                           & \small Intel           & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
+		                         & \small INT3        & \small oneCCL: Collective communication library                   & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
+		\hline
+		\multirow{3}{*}{\small Cross-Platform}
+		                         & \small CP1         & \small OpenCL: Open standard for heterogeneous computing          & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
+		                         & \small CP2         & \small SYCL: C++-based multi-device programming                   & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
+		                         & \small CP3         & \small Kokkos: Performance-portable C++ framework                 & \small Multiple        & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
+
+		\hline
+		\multirow{5}{*}{\small High-Level}
+		                         & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                      & \small NVIDIA          & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
+		                         & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                       & \small AMD             & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
+		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                     & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
+		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD           & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
+		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)     & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
+		\hline
+	\end{tabular}
+\end{table*}
