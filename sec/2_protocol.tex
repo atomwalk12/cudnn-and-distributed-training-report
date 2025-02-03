@@ -3,6 +3,8 @@
 % - Search strategy development
 % - Documentation of search process
 
+\input{tables/taxonomy}
+
 \begin{figure*}[th]
 	\centering
 	\includegraphics[width=\linewidth]{figures/workflow2}
@@ -17,23 +19,29 @@
 
 \TODO{Reference the related work on survying the present methods both in DDL and CUDA}
 
-Related work focuses on techniques and algorithms for training deep learning models across multiple
-machines \cite{dehghani_distributed_2023, chahal_hitchhikers_2018, berloco_systematic_2022}. These
-sources explore various aspects of DDL, such as parallelization techniques and communication
-methods. However, our contribution emphasizes the connection between DDL and GPU programming with
-CUDA. Furthermore, this study details the main libraries for DDL and GPU programming. We will also
-provide practical guidance on running a small neural network in CUDA and facilitating PyTorch
-Distributed Data Parallel (DDP) programming using Docker, addressing a practical implementation gap
-not covered in the previous work. \TODO{Highlight related surveys concerning CUDA}
-
-This study follows primarily the guidelines described in \cite{keele_systematic_2007}, however
-advice for conducting the review is synthesized from a wider range of related articles
+For documenting the review process, this study follows primarily the guidelines laid out in
+\cite{keele_systematic_2007}, however advice for conducting the review is synthesized from a wider
+range of related articles
 \cite{brereton_lessons_2007-1,kitchenham_procedures_nodate,budgen_reporting_2018,dos_santos_sustainable_2024}.
 
-Distributed training of neural networks has become essential for modern deep learning applications
-due to increasing model complexity and dataset sizes \cite{chahal_hitchhikers_2018}. The main
-approaches for distributing neural network training can be categorized into several key strategies
-\cite{dehghani_distributed_2023}:
+\textbf{Limitations of existing work.}
+Our study differs from previous surveys in a few different aspects. First, concerning the DNN part,
+related work focuses on techniques and algorithms for training models across multiple machines
+\cite{dehghani_distributed_2023, chahal_hitchhikers_2018, berloco_systematic_2022}, where themes
+such as data and model parallelization techniques and communication protocols are explored. As a
+result, existing literature tackles architectural patterns and design choices, none focusing
+explicitly on providing a broad review of the available frameworks. Secondly, although existing
+repositories do provide examples on how to use the CUDA library
+\cite{noauthor_nvidiacuda-samples_2025}, as well as DDP
+\cite{noauthor_examplesdistributedddpreadmemd_nodate}, none provide end-to-end implementations that
+would allow the community to build upon. This study aims to answer both of these concerns.
+
+Another relevant article which aims to provide an overview of massive parallel frameworks available
+for deep learning is \cite{nguyen_machine_2019}. It describes specialized tools for hardware
+accelerators (GPUs, FPGAs, TPUs), however does not focus on auxiliary libraries for linear algebra,
+numerical computing and GPU communication, gap which this study aims to fill.
+
+Below are summarized some of the key concepts that the rest of this review builds upon:
 
 \begin{itemize}
 	\item \textbf{Data Parallelism:}
@@ -66,25 +74,23 @@ referred to \cite{chahal_hitchhikers_2018}.
 \section{Research method}
 \label{sec:protocol}
 
-Multiple studies in the literature emphasize that a literature survey should be both transparent
-and replicable \cite{keele_systematic_2007, dos_santos_sustainable_2024-1}, the main reason being
-that this allows to minimize reviewer bias. This is a valid concern in general, however especially
-so in this survey since it is conducted by only one person. In a broader study, bias would normally
-be minimized by having multiple iterations with more than one reviewer involved. In this paper,
-steps have been taken to mitigate this bias, acknowledging that it is not possible to eliminate it
-completely. To ensure this, the process is documented and most of the resulting artifacts are
-present in the text and in the Appendix. Moreover, AI classifiers were used during the screening
-process to make the selection manageable by one person. The details are provided in Section
-\ref{sec:ai-screening}.
+Multiple studies emphasize that a literature survey should be both transparent and replicable
+\cite{keele_systematic_2007, dos_santos_sustainable_2024-1}, as this can ensure that review bias is
+minimized. This is a valid concern in general, however especially so in this survey since it is
+conducted by only one person. In a broader study, bias would normally be minimized by having
+multiple iterations with more than one reviewer involved. In this paper, steps have been taken to
+mitigate this problem, nonetheless it is acknowledged that it is not possible to eliminate it
+completely. To ensure this, the process is documented, most of the resulting artifacts being
+available in the text as well as in the Appendix.
 
 % TODO these are all good but was hoping to minimize the number of citations
 % TODO \cite{keele_systematic_2007,brereton_lessons_2007-1,budgen_reporting_2018, dos_santos_sustainable_2024-1},
 
 % Now detail Step 1 content
-The workflow is shown in Figure \ref{fig:workflow} where the key phases are annotated as follows:
-Getting Started (M.1, M.2), Planning the Review (M.3, M.4), Conducting the Review (M.5, M.6), and
-Reporting the Review (M.7, M.8). M.2 calls an auxiliary process composed of S.1 and S.2 to select
-the appropriate studies \TODO{add references across the paper}.
+The process workflow is shown in Figure \ref{fig:workflow} where the key phases are annotated as
+follows: Getting Started (M.1, M.2), Planning the Review (M.3, M.4), Conducting the Review (M.5,
+M.6), and Reporting the Review (M.7, M.8). M.2 calls an auxiliary process composed of S.1 and S.2
+to select the appropriate studies.
 
 \subsection{M.1 -- The need for a survey}
 \label{sec:need_for_survey}
@@ -99,40 +105,34 @@ CPU.
 
 One key property of distributing neural network architectures to a larger number of parameters, is
 that one can achieve better generalization and lower error rates even when training on smaller
-datasets \cite{kaplan_scaling_2020}. This gives the impression of intelligence due to the model's
-ability to make predictions that seem insightful. Understanding innate details on how these
-libraries function, can provides a fertile foundation for future ideas.
+datasets \cite{kaplan_scaling_2020}. This has applications in many domains, among which natural
+language processing, computer vision and speech recognition \cite{noauthor_papers_nodate}.
 
 \textbf{Learning outcomes.}
-As a result of conducting the survey I expect the following learning outcomes: learn from the primary
-studies, improve writing and research skills, gain practical experimental expertise using CUDA and
-Pytorch DDP and identify potential research ideas for future projects.
+As a result of conducting the survey I expect the following learning outcomes: generally get accustomed
+with the frameworks that enable distributed training of neural networks and gain practical experience
+conducting experiments with CUDA and Pytorch DDP.
 
 \subsection{M.2 -- Getting started}
 \label{sec:research_questions}
-Building on the learning outcomes defined in Section \ref{sec:need_for_survey}, we define
-the goals, expected outputs and constraints. The main goal was to analyze parallelization frameworks in DDL and CUDA.
-The expected results were to identify key frameworks for each category. For this, we defined two main constraints: (i)
-we only considered frameworks that introduce CUDA and DDL frameworks and (ii) we included only primary
-studies that were peer-reviewed, although literature surveys were used to gain familiarity with the topic,
-however they are only discussed in Section \ref{sec:related_work}. These ideas are formally defined
-in Section \TODO{...} and \TODO{...}.
+The main goal is to analyze parallelization frameworks in DNNs and GPU programming. This entails two distinct
+constraints: (i) consider only frameworks that introduce GPU programming and DNN frameworks and (ii) include
+only primary studies.
 
 \subsection{M.3 -- Selection of Relevant Studies}
-This step identified and selected studies from both areas (CUDA programming and DDL). I collected
-studies of the state of the art of both CUDA frameworks (in Step S.1) and DDL libraries (in Step
-S.2).
+This step identified and selected studies from both areas (GPU programming in S.1 and DNN
+frameworks). I collected studies of the state of the art of both GPU programming (in Step S.1) and
+DNN frameworks (in Step S.2).
 
 \subsubsection{S.1 -- Literature Survey on DNN libraries}
 \paragraph{S.1.1 -- Problem definition.}
-In order to identify interesting frameworks and broaden the understanding of the topic, I conducted
-a secondary study\footnote{A secondary study synthesizes primary papers to provide a comprehensive
-	overview. This contrasts with tertiary studies which analyze secondary studies.}. This decision was
-made in the problem definition step (S.1.1 in Figure \ref{fig:workflow-study-cuda}). In order to do
-this systematically, this section defines a research protocol defined during the planning phase,
-which is then used to find related studies. The research protocol is essentially a framework for
-conducting the review. This section outlines the key decisions that were made with to create the
-protocol by identifying the research questions and search strategy.
+In order to identify relevant studies, I conducted a secondary study\footnote{A secondary study
+	synthesizes primary papers to provide a comprehensive overview. This contrasts with tertiary
+	studies which analyze secondary studies.}. This decision was made in the problem definition step
+(S.1.1 in Figure \ref{fig:workflow-study-cuda}). To ensure a methodical approach, this section
+defines a research protocol which formally defines the key attributes of the search process. This
+basically entails expanding on the research questions and search strategy.
+
 \begin{figure*}[th]
 	\centering
 	\includegraphics[width=\linewidth]{figures/survey-dnn.pdf}
@@ -148,7 +148,7 @@ After an initial literature review, the research questions (RQ) defined in Secti
 \cite{kitchenham_evidence-based_2015} and \cite{keele_systematic_2007}. Specifically, the PICOC
 (Population, Intervention, Comparison, Outcome, Context) criterion is used to transform the
 questions into a format that ensures them to be specific, measurable and well-defined. The
-questions below are ordered based on their significance in the survey:
+questions below are ordered based on their priority in the survey:
 
 % TODO: remove this
 % \begin{itemize}
@@ -165,12 +165,12 @@ questions below are ordered based on their significance in the survey:
 % \end{itemize}
 
 % TODO: \TODO{RQ1: ease of learning, ease of use and documentation compare?}
-
+\label{sec:research_questions_refined}
 \begin{itemize}
 	\item \textbf{RQ\textsubscript{1}:} In the field of Deep Learning, what are the most commonly cited
-	      frameworks for distributed training of neural networks across clusters, and how do their respective user communities vary in size? \\
+	      frameworks for distributed training of neural networks across clusters, and how do their respective communities vary in size? \\
 	      \textit{Rationale:} By identifying the most common frameworks, we can trace the years in which they were published
-	      and form a unified timeline of the evolution of the field with respect to the related CUDA programming advancements.
+	      and form a unified timeline of the evolution of the field with respect to the related GPU programming advancements.
 
 	      % NOTE Razvan I am conducting a literature review in the field of deep learning, specifically focusing on distributed training of 
 	      % NOTE neural networks across clusters. I need to identify the most commonly cited frameworks used for this purpose.
@@ -178,7 +178,7 @@ questions below are ordered based on their significance in the survey:
 	      \textit{Rationale:} This can yield hands-on experience on the topic which is helpful for practical applications.
 
 	\item \textbf{RQ\textsubscript{3}:} What are the overlaps in data/model optimization strategies used in DDL and GPU parallelization? \\
-	      \textit{Rationale:} By identifying the overlaps, it offers a more unified view of how the concepts are interrelated.
+	      \textit{Rationale:} By identifying the overlaps, this can lead to a more comprehensive understanding of the field.
 \end{itemize}
 
 The questions play a key role in guiding the search strategy, data extraction process and results
@@ -188,7 +188,7 @@ synthesis phase.
 The search strategy represents represents a systematic approach for identifying relevant studies
 that adequately answer the research questions.
 
-\paragraph{Databases.}
+\textbf{Databases.}
 The process involves a manual search of three citation databases --
 \href{https://www.scopus.com/}{Scopus}, \href{https://www.semanticscholar.org/}{Semantic Scholar}
 and \href{https://arxiv.org/}{arXiv}\footnote{Other relevant databases that could have been used
@@ -196,8 +196,8 @@ and \href{https://arxiv.org/}{arXiv}\footnote{Other relevant databases that coul
 		Library} and \href{https://www.sciencedirect.com/}{Science Direct}.} -- that include conference
 proceedings and journal papers, considering three metadata fields (title, abstract, and keywords).
 
-\paragraph{Inclusion/Exclusion Criteria.}
-There were defined four inclusion criteria (IC) and three exclusion criteria (EC). In particular, I
+\textbf{Inclusion/Exclusion Criteria.}
+There were defined three inclusion criteria (IC) and three exclusion criteria (EC). In particular, I
 decided to select only primary studies, however secondary studies were mentioned in Section
 \ref{sec:related_work}. The identification of secondary studies was useful since the selected
 studies synthesize evidence and can make it possible to access primary studies:
@@ -211,7 +211,7 @@ studies synthesize evidence and can make it possible to access primary studies:
 	\item \textbf{EC\textsubscript{3}}: Study is not written in English.
 \end{itemize}
 
-\paragraph{Search terms.}
+\textbf{Search terms.}
 In Step S.1.3, I inquired about the literature using the following search string:
 \begin{quote}
 	\textit{( "machine learning" OR "deep learning" )
@@ -221,34 +221,20 @@ In Step S.1.3, I inquired about the literature using the following search string
 		( "framework" OR "implementation" )}
 \end{quote}
 
-While in Step S.2.3, the following search string was used \TODO{review string}:
-\begin{quote}
-	\textit{( "machine learning" OR "deep learning" )
-		AND
-		( "Data parallelism" OR "model parallelism")
-		AND
-		( "framework" OR "implementation" )}
-\end{quote}
-
 The details and justification to define this search string can be found in the supplementary
-material in Section \ref{sec:search_strategy}.
+material in Section \ref{sec:search_strategy}. \TODO{...}
 
 \paragraph{Publication year criteria.}
-The search was restricted to papers published between $\yearstartcuda$-$\yearendcuda$ for the CUDA
-task and $\yearstartddl$-$\yearendddl$ for the DDL task. The former start year ($\yearstartcuda$)
-was chosen as the baseline due to being the year when AlexNet \cite{krizhevsky_imagenet_2012} was
-published. This paper revolutionized research in neural networks by allowing advanced AI models to
-be trained on GPUs.
+For the DDL task, papers were considered between $\yearstartddl$-$\yearendddl$. The start year
+($\yearstartddl$) was chosen as at this point there was a shift towards resource conservation,
+which resulted in a focus on concurrency within mini-batches \cite{ben-nun_demystifying_2020}. This
+is the year by which the effectiveness of deep learning algorithms was more widely recognized and
+more research was published that focused on scalability.
 
-The latter start year ($\yearstartddl$) was chosen as at this point there was a shift towards
-resource conservation, which resulted in a focus on concurrency within mini-batches
-\cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
-algorithms was more widely recognized and more research was published that focused on scalability.
-
-\paragraph{S1.4 - S1.5 -- Automatic selection.}
-After an initial database search (Step S1.4), 182 studies were retrieved. Next, as part of S.1.5,
-two methods were applied for reducing the number of studies to a more manageable set. Below, I
-describe each approach, including my evaluation regarding their effectiveness.
+\paragraph{S1.4 - S1.5 -- Semi-Automatic selection.}
+After an initial database search (Step S1.4), 182 studies were retrieved. Subsequently, as part of
+S.1.5, two methods were applied for reducing the number of studies to a more manageable set. Below,
+I describe each approach, including my evaluation regarding their effectiveness.
 
 \textbf{Swift-Review.}
 As suggest in \cite{bolanos_artificial_2024},
@@ -279,13 +265,13 @@ effective at identifying key studies. This is likely due to Gemini being a more 
 model than the classifier used by Swift-Review. The number of selected studies was 32.
 
 \paragraph{S.1.6 - S.1.8 -- Manual selection.}
-In Step S.1.6, a manual inspection over the the title, abstract and keywords was done. This
+In Step S.1.6, a manual inspection over the the title, abstract and keywords was made. This
 resulted in a total of 13 studies that appeared to be relevant. After checking their full text,
-this number was reduced to 5. I performed backward snowballing \cite{jalali_systematic_2012} by
+this number was reduced to 4. I performed backward snowballing \cite{jalali_systematic_2012} by
 revisiting the references of the 4 studies, as well as checking available preprint articles and
-identified other 8 studies (Step 1.8). Hence, a total of 12 studies (4 + 8) remained. A subsequent
-5 frameworks were found with no accompanying papers. All 17 libraries are listed in Table
-\ref{tab:dnn_papers}.
+identified other 8 studies (Step 1.8). Hence, a total of 12 studies (4 + 8) were selected. A
+subsequent 5 frameworks were found with no accompanying papers by reviewing the references. All 17
+libraries are listed in Table \ref{tab:dnn_papers}.
 
 \begin{table}[h!]
 	\centering
@@ -293,23 +279,24 @@ identified other 8 studies (Step 1.8). Hence, a total of 12 studies (4 + 8) rema
 	\label{tab:databases}
 	\begin{tabular}{llllr}
 		\hline
-		ID    & Tool                                        & Stage & Results & Filtered \\
+		ID    & Tool             & Step  & Results & Filtered \\
 		\hline
-		1     & Scopus                                      & S.1.4 & 182     & 4        \\
-		2     & Semantic Scholar                            & S.1.8 & --      & 10       \\
-		3     & DeepSeek AI \cite{noauthor_deepseek_nodate} & S.1.8 & --      & 3        \\
+		1     & Scopus           & S.1.4 & 182     & 4        \\
+		2     & Semantic Scholar & S.1.8 & --      & 8        \\
+		3     & Proprietary      & S.1.8 & --      & 5        \\
 		\hline
-		Total &                                             &       &         & 17       \\
+		Total &                  &       &         & 17       \\
 	\end{tabular}
 \end{table}
 
 \paragraph{S.1.9 -- Quality assessment.}
-To evaluate the quality of these studies (in Step S.1.9), I adapted the quality appraisal
-instrument suggested by \cite{zhou_map_2016}, considering 2 main aspects: report and relevance.
-Regarding report, I checked whether the studies clearly tackled the problem, research questions and
+To evaluate the quality of these studies (Step S.1.9), I adapted the quality appraisal instrument
+suggested by \cite{zhou_map_2016}, considering 2 main aspects: report and relevance. Regarding
+report, I checked whether the studies clearly tackled the problem, research questions and
 inclusion/exclusion criteria defined in Steps S.1.1, S.1.2 and S.1.3 respectively. Concerning
-relevance, I verified whether the studies presented relevant information to ensure its value for
-practitioners. Finally, all 17 studies identified in the previous steps passed the quality checks.
+relevance, I verified whether the studies presented relevant information to ensure their value for
+practitioners and researchers. Finally, all 17 studies identified in the previous steps passed the
+quality checks.
 
 \begin{table*}[h!]
 	\centering
@@ -319,28 +306,29 @@ practitioners. Finally, all 17 studies identified in the previous steps passed t
 		\hline
 		\small \textbf{\#} & \small \textbf{Ref.}                    & \small \textbf{Title}                                                                                            & \small \textbf{Type} & \small \textbf{Year} & \small \textbf{Citations} & \small \textbf{Stars}                                                \\[1ex]
 		\hline
-		\small 1           & \small \cite{li_pytorch_2020}           & \small PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                   & \small Hybrid        & \small 2020          & \small 175                & \small 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
-		\small 2           & \small \cite{abadi_tensorflow_2016}     & \small TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                             & \small Data          & \small 2016          & \small 9998               & \small 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
-		\small 3           & \small \cite{wolf_huggingfaces_2020}    & \small HuggingFace's Transformers: State-of-the-art Natural Language Processing                                  & \small Data          & \small 2020          & \small 1444               & \small 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
-		\small 4           & \small \cite{noauthor_overview_nodate}  & \small The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & \small Data          & \small 2019          & \small N/A                & \small 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
-		\small 5           & \small \cite{frostig_compiling_nodate}  & \small Compiling machine learning programs via high-level tracing                                                & \small Hybrid        & \small 2018          & \small 297                & \small 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
-		\small 6           & \small \cite{shoeybi_megatron-lm_2020}  & \small Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                      & \small Hybrid        & \small 2020          & \small 1578               & \small 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
-		\small 7           & \small \cite{huang_gpipe_2019}          & \small GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                             & \small Pipeline      & \small 2018          & \small 1446               & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		\small 8           & \small \cite{rasley_deepspeed_2020}     & \small DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters     & \small Hybrid        & \small 2020          & \small 1059               & \small 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
-		\small 9           & \small \cite{noauthor_fairscale_nodate} & \small FairScale:  A general purpose modular PyTorch library for high performance and large scale training       & \small Hybrid        & \small 2021          & \small N/A                & \small 3.2k \cite{FairScale2021}                                     \\[1ex]
-		\small 10          & \small \cite{noauthor_amazon_nodate}    & \small Amazon SageMaker Platform                                                                                 & \small Data          & \small 2017          & \small N/A                & \small 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
-		\small 11          & \small \cite{jiang_unified_nodate}      & \small A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters        & \small Data          & \small 2020          & \small 338                & \small 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
-		\small 12          & \small \cite{sdgilley_azure_nodate}     & \small Microsoft AzureML Platform                                                                                & \small Data          & \small 2021          & \small N/A                & \small 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
-		\small 13          & \small \cite{noauthor_vertex_nodate}    & \small Google Vertex AI Platform                                                                                 & \small Data          & \small 2021          & \small N/A                & \small 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
-		\small 14          & \small \cite{lepikhin_gshard_2020}      & \small GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                          & \small Model         & \small 2020          & \small 931                & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		\small 15          & \small \cite{li_colossal-ai_2023}       & \small Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                             & \small Hybrid        & \small 2023          & \small 118                & \small 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
-		\small 16          & \small \cite{moritz_ray_2018}           & \small Ray: A distributed Framework for Emerging AI Applications                                                 & \small Hybrid        & \small 2018          & \small 1108               & \small 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
-		\small 17          & \small \cite{sergeev_horovod_2018}      & \small Horovod: fast and easy distributed deep learning in TensorFlow                                            & \small Data          & \small 2018          & \small 1152               & \small 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
+		\small SL1         & \small \cite{li_pytorch_2020}           & \small PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                   & \small Hybrid        & \small 2020          & \small 175                & \small 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
+		\small SL2         & \small \cite{abadi_tensorflow_2016}     & \small TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                             & \small Data          & \small 2016          & \small 9998               & \small 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
+		\small SL3         & \small \cite{wolf_huggingfaces_2020}    & \small HuggingFace's Transformers: State-of-the-art Natural Language Processing                                  & \small Data          & \small 2020          & \small 1444               & \small 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
+		\small SL4         & \small \cite{noauthor_overview_nodate}  & \small The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & \small Data          & \small 2019          & \small N/A                & \small 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
+		\small SL5         & \small \cite{frostig_compiling_nodate}  & \small Compiling machine learning programs via high-level tracing                                                & \small Hybrid        & \small 2018          & \small 297                & \small 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
+		\small SL6         & \small \cite{shoeybi_megatron-lm_2020}  & \small Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                      & \small Hybrid        & \small 2020          & \small 1578               & \small 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
+		\small SL7         & \small \cite{huang_gpipe_2019}          & \small GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                             & \small Pipeline      & \small 2018          & \small 1446               & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small SL8         & \small \cite{rasley_deepspeed_2020}     & \small DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters     & \small Hybrid        & \small 2020          & \small 1059               & \small 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
+		\small SL9         & \small \cite{noauthor_fairscale_nodate} & \small FairScale:  A general purpose modular PyTorch library for high performance and large scale training       & \small Hybrid        & \small 2021          & \small N/A                & \small 3.2k \cite{FairScale2021}                                     \\[1ex]
+		\small SL10        & \small \cite{noauthor_amazon_nodate}    & \small Amazon SageMaker Platform                                                                                 & \small Data          & \small 2017          & \small N/A                & \small 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
+		\small SL11        & \small \cite{jiang_unified_nodate}      & \small A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters        & \small Data          & \small 2020          & \small 338                & \small 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
+		\small SL12        & \small \cite{sdgilley_azure_nodate}     & \small Microsoft AzureML Platform                                                                                & \small Data          & \small 2021          & \small N/A                & \small 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
+		\small SL13        & \small \cite{noauthor_vertex_nodate}    & \small Google Vertex AI Platform                                                                                 & \small Data          & \small 2021          & \small N/A                & \small 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
+		\small SL14        & \small \cite{lepikhin_gshard_2020}      & \small GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                          & \small Model         & \small 2020          & \small 931                & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small SL15        & \small \cite{li_colossal-ai_2023}       & \small Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                             & \small Hybrid        & \small 2023          & \small 118                & \small 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
+		\small SL16        & \small \cite{moritz_ray_2018}           & \small Ray: A distributed Framework for Emerging AI Applications                                                 & \small Hybrid        & \small 2018          & \small 1108               & \small 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
+		\small SL17        & \small \cite{sergeev_horovod_2018}      & \small Horovod: fast and easy distributed deep learning in TensorFlow                                            & \small Data          & \small 2018          & \small 1152               & \small 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
 		\hline
 	\end{tabular}
 \end{table*}
 
 \subsubsection{S.2 -- Survey on GPU programming libraries}
+\label{sec:gpu-programming-libraries}
 This step involved identifying popular frameworks that facilitate programming on the GPU. The
 workflow that was followed is shown in Figure \ref{fig:workflow-study-cuda}.
 
@@ -349,12 +337,11 @@ It was not possible to perform a systematic review in the traditional sense due 
 the available tools. The available libraries are frequently proprietary and are rarely accompanied
 by academic papers. Also, the libraries are implementation-focused with documentation and tutorials
 being the main source of information. As a result, I had to widen out the type of articles to
-include in the review by referencing useful tutorials and key documentation articles.
+include in the review by referencing useful tutorials and key documentation pages.
 
 \paragraph{S.2.2 -- Research Questions.}
-Here, the research questions defined in Section \ref{sec:research_questions} were refined using the
-PICOC criterion suggested by \cite{keele_systematic_2007}. Apart from the following question,
-RQ\textsubscript{2} and RQ\textsubscript{3} are also relevant:
+The research questions defined in Section \ref{sec:initial_research_questions} were refined using
+the PICOC criterion suggested by \cite{keele_systematic_2007}. The following question is relevant:
 
 \begin{itemize}
 	\item \textbf{RQ\textsubscript{4}:} In the field of Deep Learning, what are the most frequently cited
@@ -363,45 +350,14 @@ RQ\textsubscript{2} and RQ\textsubscript{3} are also relevant:
 	      in the literature they cover and which are the most promising areas for future research.
 \end{itemize}
 
+Moreover, questions RQ\textsubscript{2} and RQ\textsubscript{3} from Section
+\ref{sec:research_questions_refined} are also relevant.
+
 \paragraph{S.2.3 -- Search strategy.}
-As was already mentioned a series of Github repositories, documentation pages and tutorials are
-reported. The search strategy involved using advanced \href{https://github.com/search/advanced}{Github Search}
-and AI engines \cite{noauthor_deepseek_nodate, noauthor_perplexity_nodate} to identify relevant repositories.
-
-\paragraph{Inclusion/Exclusion criteria.}
-\TODO{Continue from here}
-The following criteria were defined to select the material to include and exclude from the review:
-
-\begin{itemize}
-	\item \textbf{IC\textsubscript{1}}: The material is a repository.
-	\item \textbf{IC\textsubscript{2}}: The material is a documentation page.
-	\item \textbf{IC\textsubscript{3}}: The material is a tutorial.
-	\item \textbf{IC\textsubscript{4}}: The material introduces a library or a framework. \\
-	\item \textbf{EC\textsubscript{1}}: The material is not part of the categories: .
-	\item \textbf{EC\textsubscript{2}}: The material is not a primary study.
-	\item \textbf{EC\textsubscript{3}}: Study is not written in English.
-\end{itemize}
-
-
-\paragraph{S1.6. -- Semi-automatic selection using AI}
-\label{sec:ai-screening}
-
-% ===== STEP 3: Selection of Relevant Studies =====
-% This section details:
-% - Study 1: Distributed learning techniques
-% - Study 2: CUDA implementations
-
-% Combined "Purpose," "Scope," and "Relationship Between Study Types"
-This section defines the aims and scope of the review, clarifying the types of studies to be
-included and the rationale for exploring distributed learning and CUDA implementations together.
-The specific objectives of the review are aligned with the associated research questions to provide
-a clear focus. The boundaries of the review concern the types of distributed learning techniques
-and CUDA implementations considered, with a time period between 2015 and 2022 to ensure currency.
-The review includes studies focusing on the design and analysis of distributed learning algorithms
-and those focusing on CUDA-based parallel implementations to understand the translation of
-theoretical aspects into practical implementations. This approach allows for the exploration of
-patterns and challenges in mapping distributed algorithms onto parallel architectures
-\TODO{Different topics explored together}.
+To find relevant materials (Github repositories, documentation pages and tutorials), the following
+tools were used: \href{https://github.com/search/advanced}{Advanced Github Search} and two AI
+search engines: DeepSeek Search Engine \cite{noauthor_deepseek_nodate} and Perplexity AI
+\cite{noauthor_perplexity_nodate}.
 
 \begin{figure*}[th]
 	\centering
@@ -411,6 +367,67 @@ patterns and challenges in mapping distributed algorithms onto parallel architec
 		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
 	\label{fig:workflow-study-dnn}
 \end{figure*}
+
+\textbf{Inclusion/Exclusion criteria.}
+The following criteria were identified to guide the selection process:
+
+\begin{itemize}
+	\item \textbf{IC\textsubscript{1}}: The material addresses GPU programming.
+	\item \textbf{IC\textsubscript{2}}: The material is official documentation/repository.
+	\item \textbf{IC\textsubscript{3}}: The material is a tutorial.
+	\item \textbf{IC\textsubscript{4}}: The material introduces a library or framework. \\
+	\item \textbf{EC\textsubscript{1}}: The material is not a primary source.
+	\item \textbf{EC\textsubscript{2}}: The material is not written in English.
+\end{itemize}
+
+\textbf{Search terms.}
+The following terms were used to process the search for relevant Github repositories, which are
+linked to the main GPU manufacturers:
+
+\begin{quote}
+	\textit{user:ROCm user:oneAPI-SRC user:NVIDIA}
+\end{quote}
+
+These correspond to AMD, Intel and NVIDIA official repositories in Github.
+
+\textbf{Publication year criteria.}
+The GPU programming search was restricted to papers published between
+$\yearstartcuda$-$\yearendcuda$. The start year ($\yearstartcuda$) was chosen as the baseline due
+to being the year when AlexNet \cite{krizhevsky_imagenet_2012} was published. This paper
+revolutionized research in neural networks by allowing advanced AI models to be trained on GPUs.
+
+\paragraph{S.2.4 - S.2.8 -- Study Selection Framework.}
+\label{sec:ai-screening}
+At this step, I used DeepSeek \cite{noauthor_deepseek_nodate} to identify relevant GPU programming
+keywords and categories (Step S.2.4). This led to identifying \cite{noauthor_enccsgpu-programming_nodate}, which
+offers an excellent introduction to the topic covering general aspects of GPU programming as well
+as specific frameworks.
+
+% ===== STEP 3: Selection of Relevant Studies =====
+% This section details: 
+% - Study 1: Distributed learning techniques
+% - Study 2: CUDA implementations
+
+Given the relevant keywords, I followed an iterative approach using search engines, Github
+repositories and documentation pages to identify relevant material (Step S.2.5). This lead to
+identifying 21 libraries (S.2.6). The libraries had only 2 accompanying papers
+\cite{chetlur_cudnn_2014,okuta_cupy_2017} in the academic literature (S.2.7). The quality
+assessment step (S.2.8) ensured that the libraries are relevant to training neural networks and the
+resulting papers are shown in Table \ref{tab:gpu_libraries}. The categories that were included
+pertain to the main GPU manufacturers: AMD, Intel and NVIDIA. Across each category, libraries for
+algebraic operations include \cite{noauthor_cublas_nodate,noauthor_rocmrocblas_2025,
+	noauthor_uxlfoundationonemath_2025}, which are useful as building blocks for building more complex
+deep learning primitives
+\cite{chetlur_cudnn_2014,noauthor_rocmmiopen_2025,onednn_contributors_oneapi_2025}. Existing
+approaches that bridge the gap between GPU programming and DNNs are related to communication
+protocols such as
+\cite{noauthor_nvidianccl_2025,noauthor_rocmrccl_2025,noauthor_uxlfoundationoneccl_2025}. These
+frameworks are used in distributed training to synchronize calculations by providing a low-level
+API that manages across-GPU communication. Moreover, cross-platform and high-level libraries are
+also reported as they allow to effectively build upon core libraries in a faster and more efficient
+manner.
+
+\subsection{M.4 -- Reading the studies}
 
 \subsubsection{Distributed Learning Techniques Review}
 The review will focus on distributed learning approaches, aligning with "Study 1" in Figure
@@ -748,6 +765,11 @@ The complete lists of included and excluded studies, along with detailed informa
 		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                     & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
 		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD           & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
 		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)     & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
+		\hline
+		\multirow{5}{*}{\small Tutorials}
+		                         & \small T1          & \small CUDA Toolkit Samples                                       & \small NVIDIA          & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
+		                         & \small T2          & \small AMD Lab Notes                                              & \small AMD             & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
+		                         & \small T3          & \small Intel Compute Samples                                      & \small Intel           & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
 		\hline
 	\end{tabular}
 \end{table*}

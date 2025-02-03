@@ -1,0 +1,242 @@
+\tikzstyle{my-box}=[
+    rectangle,
+    draw=hidden-black,
+    rounded corners,
+    text opacity=1,
+    minimum height=1.5em,
+    minimum width=5em,
+    inner sep=2pt,
+    align=center,
+    fill opacity=.5,
+    % line width=0.8pt,
+]
+\tikzstyle{leaf}=[
+    my-box, 
+    minimum height=1.5em,
+    % fill=hidden-orange!60, 
+    fill=hidden-blue!90, 
+    text=black,
+    align=left,
+    font=\normalsize,
+    % font=\scriptsize,
+    inner xsep=2pt,
+    inner ysep=4pt,
+    % line width=0.8pt,
+]
+\begin{figure*}[th!]
+    \vspace{-2mm}
+    \centering
+    \resizebox{\textwidth}{!}{
+        \begin{forest}
+            forked edges,
+            for tree={
+                grow=east,
+                reversed=true,
+                anchor=base west,
+                parent anchor=east,
+                child anchor=west,
+                base=left,
+                font=\large,
+                rectangle,
+                draw=hidden-black,
+                rounded corners,
+                align=left,
+                minimum width=4em,
+                edge+={darkgray, line width=1pt},
+                s sep=3pt,
+                inner xsep=2pt,
+                inner ysep=3pt,
+                line width=0.8pt,
+                ver/.style={rotate=90, child anchor=north, parent anchor=south, anchor=center},
+            },
+            where level=1{text width=10.2em,font=\normalsize,}{},
+            where level=2{text width=8.5em,font=\normalsize,}{},
+            where level=3{text width=10.5em,font=\normalsize,}{},
+            where level=4{text width=12em,font=\normalsize,}{},
+            [
+                Deep Learning, ver
+                [
+                    GPU Programming (\S \ref{sec:task})
+                    [
+                        Core Libraries
+                        [
+                            Linear Algebra
+                            [
+                                \eg cuBLAS (NVIDIA)~\cite{noauthor_cublas_nodate}{,}
+                                rocBLAS (AMD)~\cite{noauthor_rocmrocblas_2025}{,}
+                                oneMKL (Intel)~\cite{noauthor_uxlfoundationonemath_2025}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Deep Learning Primitives
+                            [
+                                \eg cuDNN (NVIDIA)~\cite{chetlur_cudnn_2014}{,}
+                                MIOpen (AMD)~\cite{noauthor_rocmmiopen_2025}{,}
+                                oneDNN (Intel)~\cite{onednn_contributors_oneapi_2025}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Communication
+                            [
+                                \eg NCCL (NVIDIA)~\cite{noauthor_nvidianccl_2025}{,}
+                                RCCL (AMD)~\cite{noauthor_rocmrccl_2025}{,}
+                                oneCCL (Intel)~\cite{noauthor_uxlfoundationoneccl_2025}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Programming \\ Frameworks
+                        [
+                            Cross-Platform APIs
+                            [
+                                \eg OpenCL~\cite{noauthor_khronosgroupopencl-sdk_2025}{,}
+                                SYCL~\cite{noauthor_khronosgroupsycl-docs_2025}{,}
+                                Kokkos~\cite{trott_kokkos_2022}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Vendor-Specific
+                            [
+                                \eg HIP~\cite{noauthor_rocmhip_2025}{,}
+                                CUTLASS~\cite{thakkar_cutlass_2023}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Language Bindings
+                        [
+                            Julia Packages
+                            [
+                                \eg CUDA.jl~\cite{noauthor_juliagpucudajl_2025}{,}
+                                AMDGPU.jl~\cite{noauthor_juliagpuamdgpujl_2025}{,}
+                                oneAPI.jl~\cite{besard_oneapijl_2022}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Python Packages 
+                            [
+                                \eg CuPy~\cite{okuta_cupy_2017}{,}
+                                Numba~\cite{noauthor_numbanumba_2025}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Learning Resources
+                        [
+                            Official Tutorials
+                            [
+                                \eg NVIDIA-Samples~\cite{noauthor_nvidiacuda-samples_2025}{,}
+                                AMD-Lab-Notes~\cite{noauthor_amdamd-lab-notes_2025}{,}
+                                Intel-Compute~\cite{noauthor_intelcompute-samples_2025}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                ]
+                [
+                    Distributed Deep \\ Learning (\S \ref{sec:task})
+                    [
+                        Cloud Solutions
+                        [
+                            Cloud Platforms
+                            [
+                                \eg SageMaker~\cite{noauthor_amazon_nodate}{,}
+                                BytePS~\cite{jiang_unified_nodate}{,}
+                                AzureML~\cite{sdgilley_azure_nodate}{,}
+                                Vertex AI~\cite{noauthor_vertex_nodate}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Framework-Specific
+                        [
+                            Core Frameworks
+                            [
+                                \eg PyTorch~\cite{li_pytorch_2020}{,}
+                                TensorFlow~\cite{abadi_tensorflow_2016}{,}
+                                JAX~\cite{frostig_compiling_nodate}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Extensions
+                            [
+                                \eg Transformers~\cite{wolf_huggingfaces_2020}{,}
+                                Lightning~\cite{noauthor_overview_nodate}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        General-Purpose \\ Solutions
+                        [
+                            Universal Frameworks
+                            [
+                                \eg Colossal-AI~\cite{li_colossal-ai_2023}{,}
+                                Ray~\cite{moritz_ray_2018}{,}
+                                Horovod~\cite{sergeev_horovod_2018}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Specialized \\ Frameworks
+                        [
+                            Large Model Training
+                            [
+                                \eg Megatron-LM~\cite{shoeybi_megatron-lm_2020}{,}
+                                GPipe~\cite{huang_gpipe_2019}{,}
+                                DeepSpeed~\cite{rasley_deepspeed_2020}{,}
+                                FairScale~\cite{noauthor_fairscale_nodate}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Research Solutions
+                            [
+                                \eg GShard~\cite{lepikhin_gshard_2020}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                ]
+                % [
+                %     Discussion (\S \ref{sec:introduction})
+                %     [
+                %         Analysis of Benchmarks (\S \ref{sec:introduction})
+                %     ]
+                %     [
+                %         Analysis of Deep Learning Methods (\S \ref{sec:introduction})
+                %     ]
+                % ]
+                % [
+                %     Future Work (\S \ref{sec:introduction})
+                %     [
+                %         Generalization and Robustness (\S \ref{sec:introduction})
+                %     ]
+                %     [
+                %         Trustworthy Reasoning  (\S \ref{sec:introduction})
+                %     ]
+                %     [
+                %         Learning from Feedback (\S \ref{sec:introduction})
+                %     ]
+                %     [
+                %         Multi-modal Mathematical Reasoning (\S \ref{sec:introduction})
+                %     ]
+                % ]
+            ]
+        \end{forest}
+    }
+    \vspace{-4mm}
+    \caption{Taxonomy of deep learning for mathematical reasoning. The associated tasks are elaborated in \S \ref{sec:task}, with a comprehensive dataset list found in \S \ref{sec:dataset}. Deep learning methods are further discussed in \S \ref{sec:network}, \S \ref{sec:pretrain}, and \S \ref{sec:icl}.}
+    \label{fig:taxonomy}
+    \vspace{-3mm}
+\end{figure*}

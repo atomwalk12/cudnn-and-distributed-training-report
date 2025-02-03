@@ -7,47 +7,54 @@
 \label{sec:intro}
 
 \subsection{Background}
-Machine learning (ML) has become essential for extracting knowledge from data across diverse
-applications. Deep learning, a subfield of ML using artificial neural networks, is increasingly
-important, especially with the massive amounts of data now available
-\cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023}, \cite{langer_distributed_2020}.
-Distributed deep learning (DDL) has become crucial due to the increasing size of datasets and model
-complexity \cite{berloco_systematic_2022}, \cite{dehghani_distributed_2023}. This literature review
-focuses on the core concepts, techniques, and frameworks used to implement and optimise DDL.
-Challenges in scaling deep learning include distributing ML programs, bridging computation with
-communication, and determining what to communicate between machines \cite{xing_strategies_2015}.
-This systematic review will provide a comprehensive overview of the current state of DDL and
-address these questions, identify gaps, and give direction for future research
-\cite{langer_distributed_2020}, \cite{ben-nun_demystifying_2020}, \cite{dehghani_distributed_2023},
-\cite{verbraeken_survey_2021} \TODO{Review citations}.
+Deep Neural Networks have powered a wide spectrum of applications in areas such as computer vision,
+natural language processing, audio progressing, graph knowledge representation and time series
+analysis \cite{noauthor_papers_nodate}. One of the key driving factors that enable the application
+of deep learning models in such a wide range of domains, while still ensuring formidable
+state-of-the-art performance, is the ability to scale-out models to millions or billions of
+parameters. It follows that efficient training techniques to distribute the training process across
+multiple machines are essential. One constraint to using such large models is that the amount of
+data required to train them must be diverse, high-quality and in large quantities
+\cite{ben-nun_demystifying_2020, dehghani_distributed_2023, langer_distributed_2020}. Distributed
+Neural Networks (DNNs) enable the training of large models in distributed environments, effectively
+parallelizing both the model as well as the data in a way that makes the training process tractable
+to a huge number of parameters or a large amount of data.
 
-\TODO{Make it clear what CUDA and DDL are}
+On the other hand, it is valuable to inquire what methods were initially used to parallelize model
+training on GPUs. For instance, \cite{krizhevsky_imagenet_2012} showed how AlexNet, a deep learning
+model for image classification, can parallelize training using two GTX 580 GPUs in five to six
+days. The network achieved top-1 error rate of 37.5\% on the ImageNet dataset, significantly better
+than previous state-of-the-art results at the time. The success of AlexNet sparked significant
+interest in the community and spurred a wave of research.
+
+This literature review focuses on the core concepts and libraries used to implement and optimise
+DNNs. At the same time, key proprietary frameworks are identified (primarily from NVIDIA, AMD and
+Intel) that provide the building blocks for parallelizing the training process on GPUs. I will also
+provide practical guidance on running a small neural network on the GPU using the \texttt{cuDNN}
+primitives, included in the CUDA toolkit. Furthermore, will also demonstrate how it is possible to
+simulate a multi-GPU distributed environment for executing multi-node training using Docker, which
+will be done using the PyTorch Distributed Data Parallel (\texttt{DDP}) library.
 
 \subsection{Importance of the Topic}
 \label{sec:importance_of_topic}
-The increasing volume of data necessitates advanced analysis techniques, making distributed deep
-learning essential. Efficiently training deep learning models is vital for research and development
-\cite{dehghani_distributed_2023}, \cite{chahal_hitchhikers_2018}, \cite{xing_strategies_2015}. This
-review is important for both practitioners and researchers, providing an overview of techniques and
-frameworks for implementing DDL solutions \cite{dehghani_distributed_2023},
-\cite{berloco_systematic_2022} and also highlighting current research trends and future
-opportunities \cite{berloco_systematic_2022}, \cite{ben-nun_demystifying_2020}. This review
-addresses gaps in existing surveys by focusing on practical implementation and a detailed analysis
-of the performance and efficiency of different DDL techniques \cite{berloco_systematic_2022}
-\TODO{review citation}. The outcomes of this review will aid software engineers in selecting and
-implementing appropriate DDL techniques.
+Efficiently training deep learning models is vital both in academic as well as industry settings
+\cite{chahal_hitchhikers_2018, xing_strategies_2015}. The impetus for conducting a review
+is due to multiple factors. As far as GPU programming is concerned, sheer curiosity for the topic is
+the driving motivation; however, the Distributed Neural Networks (DNN) task has more practical benefits.
+Specifically, understanding the underlying technologies can help practitioners and researchers make more
+informed decisions when conducting their work.
 
 \subsection{Research Questions}
 \label{sec:initial_research_questions}
-A set of research questions were determined prior to initiating the review process. However, the questions
+A pair of research questions were determined prior to initiating the review. However, the questions
 were subsequently refined as a result of piloting the review protocol. The initial questions are listed below,
 however will be expanded on in Section \ref{sec:research_questions}.
 
 \begin{itemize}
 	\item How does data parallelization work in GPU clusters and what are the limitations of these tools?
-	\item How effective is the learning algorithm when parallelized using CUDA compared to relying solely on CPUs?
+	\item How effective is the learning algorithm when parallelized using CUDA compared to relying solely on
+	      CPUs?
 \end{itemize}
-
 
 % TODO Razvan
 % \begin{enumerate}
@@ -72,13 +79,9 @@ however will be expanded on in Section \ref{sec:research_questions}.
 
 \subsection{Scope and Methodology}
 % First introduce the workflow
-This systematic review follows a rigorous methodology outlined in Figure \ref{fig:workflow}. The
-workflow consists of seven main steps, starting with getting started (Step 1), through to the final
-wrap-up of the report (Step 7). Reproducibility and transparency of the review process is a
-priority. As a result multiple artifacts will be produced at each phase. These artifacts are
-reported separately in the appendix.
-
-\TODO{Too many subsections}
+This systematic review follows a rigorous methodology outlined in Figure \ref{fig:workflow}. In
+order to ensure partial reproducibility many artifacts are reproduced throughout the review
+process. These artifacts are reported separately in the appendix.
 
 % TODO Razvan
 % Our investigation includes practical implementations and experimental work:
@@ -92,11 +95,12 @@ reported separately in the appendix.
 %     \end{itemize}
 % \end{itemize}
 
-\subsection{Paper Organization}
-The remainder of this paper is organized as follows: Section \ref{sec:protocol} presents our
-systematic review protocol including the study selection framework and search process
-documentation, Section \ref{sec:methods} describes our systematic review methodology, including the
-search strategy across digital libraries, inclusion/exclusion criteria, and quality assessment
-protocol. Section \ref{sec:results} presents our findings, Section \ref{sec:discussion} discusses
-the implications, and Section \ref{sec:conclusion} concludes with future research directions. This
-structure ensures a logical flow from background to findings and recommendations.
+\paragraph{Paper Organization.}
+The remainder of this paper is organized as follows: Section \ref{sec:related_work} introduces
+similar work already present in the literature, Section \ref{sec:protocol} presents our systematic
+review protocol (documenting primarily the search process), Section \ref{sec:methods} describes our
+systematic review methodology, including the search strategy across digital libraries,
+inclusion/exclusion criteria, and quality assessment protocol. Section \ref{sec:results} presents
+our findings, Section \ref{sec:discussion} discusses the implications, and Section
+\ref{sec:conclusion} concludes with future research directions. This structure ensures a logical
+flow from background to findings and recommendations. \TODO{...}
