@@ -23,3 +23,24 @@
 %%%%%%%%%%%%%%%% Define colors
 \definecolor{hidden-black}{RGB}{20,68,106}
 \definecolor{hidden-blue}{RGB}{194,232,247}
+
+
+% Latex table
+\usepackage{booktabs}
+\usepackage{isotope}
+\usepackage{siunitx}
+\usepackage{makecell}
+
+\sisetup{
+ 	per-mode = fraction, 
+ 	load-configurations = abbreviations,
+}
+
+% List in table
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{longtable}
+\usepackage{lipsum}  
+\usepackage{enumitem}
+\usepackage{graphicx}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}

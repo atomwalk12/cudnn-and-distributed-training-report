@@ -3,8 +3,6 @@
 % - Search strategy development
 % - Documentation of search process
 
-\input{tables/taxonomy}
-
 \begin{figure*}[th]
 	\centering
 	\includegraphics[width=\linewidth]{figures/workflow2}
@@ -181,6 +179,7 @@ questions below are ordered based on their priority in the survey:
 	      \textit{Rationale:} By identifying the overlaps, this can lead to a more comprehensive understanding of the field.
 \end{itemize}
 
+\input{tables/taxonomy}
 The questions play a key role in guiding the search strategy, data extraction process and results
 synthesis phase.
 
@@ -265,6 +264,35 @@ however building iteratively over the results and blending together different ph
 After investigating the results of both approaches, I found that the NotebookLM approach was more
 effective at identifying key studies. This is likely due to Gemini being a more powerful
 model than the classifier used by Swift-Review. The number of selected studies was 32.
+\begin{table*}[th!]
+	\centering
+	\caption{The DNN papers included in the review. 1 (data), 2 (model), 3 (pipeline)}
+	\label{tab:dnn_papers}
+	\begin{tabular}{llp{8.4cm}lllc}
+		\hline
+		\small \textbf{\#} & \small \textbf{Ref.}                    & \small \textbf{Title}                                                                                                               & \small \textbf{Type} & \small \textbf{Year} & \small \textbf{Citations} & \small \textbf{Stars}                                                \\[1ex]
+		\hline
+		\small DNN1        & \small \cite{abadi_tensorflow_2016}     & \small TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                                                & \small Data          & \small 2016          & \small 9998               & \small 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
+		\small DNN2        & \small \cite{chen_mxnet_2015}           & \small MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems                               & \small Hybrid        & \small 2015          & \small 2214               & \small 20.8k \cite{noauthor_apachemxnet_2025}                        \\[1ex]
+		\small DNN3        & \small \cite{huang_gpipe_2019}          & \small GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                                                & \small Pipeline      & \small 2018          & \small 1446               & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small DNN4        & \small \cite{jiang_unified_nodate}      & \small BytePS: A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters                   & \small Data          & \small 2020          & \small 338                & \small 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
+		\small DNN5        & \small \cite{lepikhin_gshard_2020}      & \small GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                                             & \small Model         & \small 2020          & \small 931                & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
+		\small DNN6        & \small \cite{li_pytorch_2020}           & \small PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                                      & \small Hybrid        & \small 2020          & \small 175                & \small 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
+		\small DNN7        & \small \cite{li_colossal-ai_2023}       & \small Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                                                & \small Hybrid        & \small 2023          & \small 118                & \small 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
+		\small DNN8        & \small \cite{moritz_ray_2018}           & \small Ray: A distributed Framework for Emerging AI Applications                                                                    & \small Hybrid        & \small 2018          & \small 1108               & \small 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
+		\small DNN9        & \small \cite{rasley_deepspeed_2020}     & \small DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters                        & \small Hybrid        & \small 2020          & \small 1059               & \small 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
+		\small DNN10       & \small \cite{sergeev_horovod_2018}      & \small Horovod: fast and easy distributed deep learning in TensorFlow                                                               & \small Data          & \small 2018          & \small 1152               & \small 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
+		\small DNN11       & \small \cite{shoeybi_megatron-lm_2020}  & \small Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                                         & \small Hybrid        & \small 2020          & \small 1578               & \small 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
+		\small DNN12       & \small \cite{wolf_huggingfaces_2020}    & \small HuggingFace's Transformers: State-of-the-art Natural Language Processing                                                     & \small Data          & \small 2020          & \small 1444               & \small 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
+		\small DNN13       & \small \cite{noauthor_overview_nodate}  & \small Pytorch Lightning: The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & \small Data          & \small 2019          & \small N/A                & \small 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
+		\small DNN14       & \small \cite{noauthor_fairscale_nodate} & \small FairScale:  A general purpose modular PyTorch library for high performance and large scale training                          & \small Hybrid        & \small 2021          & \small N/A                & \small 3.2k \cite{FairScale2021}                                     \\[1ex]
+		\small DNN15       & \small \cite{noauthor_amazon_nodate}    & \small Amazon SageMaker Platform                                                                                                    & \small Data          & \small 2017          & \small N/A                & \small 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
+		\small DNN16       & \small \cite{sdgilley_azure_nodate}     & \small Microsoft AzureML Platform                                                                                                   & \small Data          & \small 2021          & \small N/A                & \small 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
+		\small DNN17       & \small \cite{noauthor_vertex_nodate}    & \small Google Vertex AI Platform                                                                                                    & \small Data          & \small 2021          & \small N/A                & \small 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
+		\small DNN18       & \small \cite{frostig_compiling_nodate}  & \small Jax: Compiling machine learning programs via high-level tracing                                                              & \small Hybrid        & \small 2018          & \small N/A                & \small 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
+		\hline
+	\end{tabular}
+\end{table*}
 
 \paragraph{S.1.6 - S.1.8 -- Manual selection.}
 In Step S.1.6, a manual inspection over the the title, abstract and keywords was made. This
@@ -300,36 +328,14 @@ relevance, I verified whether the studies presented relevant information to ensu
 practitioners and researchers. Finally, all 17 studies identified in the previous steps passed the
 quality checks.
 
-\begin{table*}[h!]
+\begin{figure*}[th]
 	\centering
-	\caption{The DNN papers included in the review. 1 (data), 2 (model), 3 (pipeline)}
-	\label{tab:dnn_papers}
-	\begin{tabular}{llp{8.4cm}lllc}
-		\hline
-		\small \textbf{\#} & \small \textbf{Ref.}                    & \small \textbf{Title}                                                                                                               & \small \textbf{Type} & \small \textbf{Year} & \small \textbf{Citations} & \small \textbf{Stars}                                                \\[1ex]
-		\hline
-		\small DNN1        & \small \cite{abadi_tensorflow_2016}     & \small TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems                                                & \small Data          & \small 2016          & \small 9998               & \small 187k \cite{abadi_tensorflow_2015}                             \\[1ex]
-		\small DNN2        & \small \cite{chen_mxnet_2015}           & \small MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems                               & \small Hybrid        & \small 2015          & \small 2214               & \small 20.8k \cite{noauthor_apachemxnet_2025}                        \\[1ex]
-		\small DNN3        & \small \cite{huang_gpipe_2019}          & \small GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism                                                & \small Pipeline      & \small 2018          & \small 1446               & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		\small DNN4        & \small \cite{jiang_unified_nodate}      & \small BytePS: A Unified Architecture for Accelerating Distributed DNN Training in Heterogeneous GPU/CPU Clusters                   & \small Data          & \small 2020          & \small 338                & \small 3.7k \cite{noauthor_bytedancebyteps_2025}                     \\[1ex]
-		\small DNN5        & \small \cite{lepikhin_gshard_2020}      & \small GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding                                             & \small Model         & \small 2020          & \small 931                & \small 2.8k \cite{noauthor_tensorflowlingvo_2025}                    \\[1ex]
-		\small DNN6        & \small \cite{li_pytorch_2020}           & \small PyTorch Distributed: Experiences on Accelerating Data Parallel Training                                                      & \small Hybrid        & \small 2020          & \small 175                & \small 86.1k \cite{noauthor_pytorchpytorch_nodate}                   \\[1ex]
-		\small DNN7        & \small \cite{li_colossal-ai_2023}       & \small Colossal AI: A Unified Deep Learning System for Large-Scale Parallel Training                                                & \small Hybrid        & \small 2023          & \small 118                & \small 39k \cite{noauthor_hpcaitechcolossalai_2025}                  \\[1ex]
-		\small DNN8        & \small \cite{moritz_ray_2018}           & \small Ray: A distributed Framework for Emerging AI Applications                                                                    & \small Hybrid        & \small 2018          & \small 1108               & \small 35k \cite{noauthor_ray-projectray_2025}                       \\[1ex]
-		\small DNN9        & \small \cite{rasley_deepspeed_2020}     & \small DeepSpeed: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters                        & \small Hybrid        & \small 2020          & \small 1059               & \small 36.3k \cite{noauthor_microsoftdeepspeed_2025}                 \\[1ex]
-		\small DNN10       & \small \cite{sergeev_horovod_2018}      & \small Horovod: fast and easy distributed deep learning in TensorFlow                                                               & \small Data          & \small 2018          & \small 1152               & \small 14.3k \cite{noauthor_horovodhorovod_2025}                     \\[1ex]
-		\small DNN11       & \small \cite{shoeybi_megatron-lm_2020}  & \small Megatron-LM: Training Multi-Billion Parameter Models for Natural Language Processing                                         & \small Hybrid        & \small 2020          & \small 1578               & \small 11.2k \cite{noauthor_nvidiamegatron-lm_2025}                  \\[1ex]
-		\small DNN12       & \small \cite{wolf_huggingfaces_2020}    & \small HuggingFace's Transformers: State-of-the-art Natural Language Processing                                                     & \small Data          & \small 2020          & \small 1444               & \small 8.2k \cite{noauthor_huggingfaceaccelerate_2025}               \\[1ex]
-		\small DNN13       & \small \cite{noauthor_overview_nodate}  & \small Pytorch Lightning: The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate. & \small Data          & \small 2019          & \small N/A                & \small 28.8k \cite{falcon_pytorch_2019}                              \\[1ex]
-		\small DNN14       & \small \cite{noauthor_fairscale_nodate} & \small FairScale:  A general purpose modular PyTorch library for high performance and large scale training                          & \small Hybrid        & \small 2021          & \small N/A                & \small 3.2k \cite{FairScale2021}                                     \\[1ex]
-		\small DNN15       & \small \cite{noauthor_amazon_nodate}    & \small Amazon SageMaker Platform                                                                                                    & \small Data          & \small 2017          & \small N/A                & \small 10.3k \cite{noauthor_awsamazon-sagemaker-examples_2025}       \\[1ex]
-		\small DNN16       & \small \cite{sdgilley_azure_nodate}     & \small Microsoft AzureML Platform                                                                                                   & \small Data          & \small 2021          & \small N/A                & \small 1.8k \cite{noauthor_azureazureml-examples_2025}               \\[1ex]
-		\small DNN17       & \small \cite{noauthor_vertex_nodate}    & \small Google Vertex AI Platform                                                                                                    & \small Data          & \small 2021          & \small N/A                & \small 178 \cite{noauthor_googlecloudplatformvertex-ai-samples_2025} \\[1ex]
-		\small DNN18       & \small \cite{frostig_compiling_nodate}  & \small Jax: Compiling machine learning programs via high-level tracing                                                              & \small Hybrid        & \small 2018          & \small N/A                & \small 31k \cite{noauthor_jax-mljax_2025}                            \\[1ex]
-		\hline
-	\end{tabular}
-\end{table*}
-
+	\includegraphics[width=\linewidth]{figures/survey-cuda3.pdf}
+	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
+		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
+		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
+	\label{fig:workflow-study-dnn}
+\end{figure*}
 \subsubsection{S.2 -- Survey on GPU programming libraries}
 \label{sec:gpu-programming-libraries}
 This step involved identifying popular frameworks that facilitate programming on the GPU. The
@@ -361,15 +367,6 @@ To find relevant materials (Github repositories, documentation pages and tutoria
 tools were used: \href{https://github.com/search/advanced}{Advanced Github Search} and two AI
 search engines: DeepSeek Search Engine \cite{noauthor_deepseek_nodate} and Perplexity AI
 \cite{noauthor_perplexity_nodate}.
-
-\begin{figure*}[th]
-	\centering
-	\includegraphics[width=\linewidth]{figures/survey-cuda3.pdf}
-	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
-		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
-		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
-	\label{fig:workflow-study-dnn}
-\end{figure*}
 
 \textbf{Inclusion/Exclusion criteria.}
 The following criteria were identified to guide the selection process:
@@ -406,6 +403,52 @@ keywords and categories (Step S.2.4). This led to identifying \cite{noauthor_enc
 offers an excellent introduction to the topic covering general aspects of GPU programming as well
 as specific frameworks.
 
+\begin{table*}[htbp]
+	\centering
+	\caption{Critical factors of GPU Programming Libraries and Frameworks}
+	\label{tab:gpu_libraries}
+	\begin{tabular}{llp{8cm}lll}
+		\hline
+		\small \textbf{Category} & \small \textbf{ID} & \small \textbf{Library/Framework}                                 & \small \textbf{Vendor} & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
+		\hline
+		\multirow{4}{*}{\small NVIDIA}
+		                         & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra    & \small NVIDIA          & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
+		                         & \small NV2         & \small cuDNN: Optimized deep neural network primitives            & \small NVIDIA          & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
+		                         & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                   & \small NVIDIA          & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
+		                         & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication & \small NVIDIA          & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
+		\hline
+		\multirow{4}{*}{\small AMD}
+		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                         & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
+		                         & \small AMD3        & \small MIOpen: Deep learning primitives                           & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
+		                         & \small CP4         & \small HIP: Portable API for CUDA-like code                       & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
+		                         & \small AMD4        & \small RCCL: Multi-GPU communication                              & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
+		\hline
+		\multirow{3}{*}{\small Intel}
+		                         & \small INT1        & \small oneMKL: Math Kernel Library                                & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
+		                         & \small INT2        & \small oneDNN: Deep learning primitives                           & \small Intel           & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
+		                         & \small INT3        & \small oneCCL: Collective communication library                   & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
+		\hline
+		\multirow{3}{*}{\small Cross-Platform}
+		                         & \small CP1         & \small OpenCL: Open standard for heterogeneous computing          & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
+		                         & \small CP2         & \small SYCL: C++-based multi-device programming                   & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
+		                         & \small CP3         & \small Kokkos: Performance-portable C++ framework                 & \small Multiple        & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
+
+		\hline
+		\multirow{5}{*}{\small High-Level}
+		                         & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                      & \small NVIDIA          & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
+		                         & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                       & \small AMD             & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
+		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                     & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
+		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD           & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
+		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)     & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
+		\hline
+		\multirow{5}{*}{\small Tutorials}
+		                         & \small T1          & \small CUDA Toolkit Samples                                       & \small NVIDIA          & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
+		                         & \small T2          & \small AMD Lab Notes                                              & \small AMD             & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
+		                         & \small T3          & \small Intel Compute Samples                                      & \small Intel           & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
+		\hline
+	\end{tabular}
+\end{table*}
+
 % ===== STEP 3: Selection of Relevant Studies =====
 % This section details: 
 % - Study 1: Distributed learning techniques
@@ -432,6 +475,245 @@ manner.
 
 \subsection{M.4 -- Reading the studies}
 \label{sec:reading-studies}
+\textbf{Distributed Neural Networks.}
+In order to more easily extract useful information from the studies, I identified four key criteria
+which aim to facilitate answering the research questions defined in Section \ref{sec:research_questions_refined}.
+Basically, by creating an indirect link to the research questions (through the criteria), the process becomes more streamlined
+and the synthesis process more focused. These properties are supported by direct quotes from each paper
+providing context for each criterion. The criteria are as follows:
+
+\begin{figure*}
+	\centering
+	\begin{subfigure}{0.48\linewidth}
+		\includegraphics[width=\textwidth]{figures/mindmap}
+		\caption{Accuracy for the EasyVQA training split.}
+		\label{fig:base-a}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\linewidth}
+		\includegraphics[width=\textwidth]{figures/mindmap-cuda}
+		\caption{Accuracy for the DAQUAR training split.}
+		\label{fig:base-b}
+	\end{subfigure}
+	\caption{Accuracy during training/validation on the baseline generator models.}
+	\label{fig:base}
+\end{figure*}
+
+\begin{itemize}
+	\item C1: Key Motivating Factors
+	\item C2: Critical Factors and Guidelines
+	\item C3: Practical Evaluation Scenarios
+	\item C4: Tool Limitations and challenges
+\end{itemize}
+
+The resulting artifacts are available in the supplementary material in Table \ref{tab:artefacts}.
+
+\paragraph{C1. Key Motivating Factors.}
+The motivating factors for training DNNs include the pursuit of better performance through more
+efficient training and increased usability in practical scenarios. It has been widely regarded that
+by scaling the architectures to a large number of parameters and leveraging larger datasets, the
+evaluation accuracy on many benchmarks would be improved \cite{hestness_deep_2017}. However, it was
+recently demonstrated by Deepseek R1
+\cite{deepseekai2025deepseekr1incentivizingreasoningcapability} that scaling up the computational
+power is not the only possible method of progress. As a result, future research is likely to focus
+not only on distributed training, but also on innovating existing architectures. Nonetheless, below
+is a review of the key properties
+
+\textbf{Performance.}
+For example, this was demonstrated in GShard \cite{kaplan_scaling_2020} and GPipe
+\cite{huang_gpipe_2019} also shows that "by increasing the model capacity from 400M params to 1.3B,
+and further to 6B, leads to significant quality improvements across all languages". In particular,
+the NLP field is particularly sensitive to the model capacity, as shown in Megatron-LM
+\cite{shoeybi_megatron-lm_2020}, noting that "empirical evidence indicates that larger language
+models are dramatically more useful for NLP tasks such as article completion, question answering
+and natural language inference". The need for larger models is not limited to text generation
+tasks, as GPipe was also motivated by the desire to improve translation quality through increased
+model size in low-resource languages \cite{huang_gpipe_2019}.
+
+\textbf{Resource Utilization.}
+However, the pursuit of larger models introduces challenges related to efficient training. The
+BytePS paper \cite{jiang_unified_nodate} shows that existing frameworks that utilize solely the
+CPU or the GPU are suboptimal. It demonstrates that utilizing all available resources leads to
+significant performance improvements, where the CPU is used to perform summation of gradients,
+while the parameter updates are performed on the GPU. BytePS outperforms all-reduce (traditional)
+methods significantly both when CPUs are or are not available.
+
+\textbf{Efficiency.}
+The need for efficient training is also reflected in the development of systems like Tensorflow
+\cite{abadi_tensorflow_2016} and Ray \cite{moritz_ray_2018}, both of which aimed to provide
+general-purpose deep learning frameworks to address the needs of large communities. DeepSpeed
+\cite{rasley_deepspeed_2020} was also created to facilitate training of large models with over 100
+billion parameters. Deepspeed utilizes PyTorch \cite{noauthor_pytorchpytorch_nodate} as the
+underlying framework in order to "make distributed training and inference easy, efficient, and
+effective".
+
+\textbf{Model and Pipeline Parallelism.}
+In frameworks such as Pytorch DDP \cite{li_pytorch_2020}, the technique they used for distributed
+training involved data parallelism (see \ref{sec:related_work}), which required the entire model to
+fit on a single GPU device. This had the inconvenience that if a model did not fit in memory, the
+approach would not be feasible. To address this issue, techniques such as pipeline parallelism
+\cite{huang_gpipe_2019} and model parallelism \cite{shoeybi_megatron-lm_2020} were developed to
+allow the effective training of models that are too large to fit on a single device.
+
+\textbf{Usability.}
+Another key aspect of motivation is practical usability. Frameworks like PyTorch \cite{li_pytorch_2020}
+and Horovod \cite{sergeev_horovod_2018} ensured that distributed training could easily be integrated
+in existing code with minimal changes. Huggingface Transformers \cite{wolf_huggingfaces_2020} was
+explicitly designed to make NLP models easy to download, fine-tune and share. Colossal-AI
+\cite{li_colossal-ai_2023} sought to create a unified system to simplify the complexities of
+large scale distributed training. It was designed to improve on existing work such as the Alpa library
+\cite{noauthor_alpa-projectsalpa_nodate}, which was discontinued in 2024.
+
+Finally, MxNet \cite{chen_mxnet_2015} aimed to provide a uniform programming interface by bridging
+the gap between imperative and declarative programming, allowing users to express computations in a
+variety of styles.
+
+\paragraph{C2. Critical Factors and Guidelines.}
+This section aims to identify which factors were critical in the development of each library, and
+to some degree what each library excels at.
+
+\textbf{Review of key concepts.}
+Scalability can be achieved through two inter-related ideas. First, it is possible to increase the number of parameters in the
+model, yielding more powerful architectures, that tend to be more general-purpose. Second, it is also possible to increase the
+amount of data being used for training, which yields better generalization capabilities and a lesser chance of
+overfitting\footnote{Overfitting relates to the idea that the model learns the training data too well, and as a result,
+	performs poorly on unseen examples.}.
+
+The former approach is implemented through a technique called {\em{Model parallelism}} (and its
+extension {\em{Pipeline parallelism}}) by distributing layers of the model across the GPU cluster,
+where each individual GPU is responsible for computing the gradients of a portion of the model.
+Pipeline parallelism is a technique that extends model parallelism by also dividing the processing
+of a batch of data across the GPUs. This means that while one GPU is working on a segment of the
+data batch through its assigned model layers, the other GPUs may work on different segments through
+the layers that were assigned to them.
+
+On the other hand, the later approach is implemented through {\em{Data parallelism}}. In this case,
+the model is replicated (exact copy) across the GPU cluster, and each GPU is responsible for
+computing the gradients of portions of the dataset. However, in this case, the model must be small
+enough to fit in the memory of a single GPU.
+
+For more information on the differences the reader is invited to refer to
+\cite{dehghani_distributed_2023}.
+
+\textbf{Scalability.}
+GShard \cite{lepikhin_gshard_2020} uses model parallelism to scale up to large
+datasets, innovating existing frameworks with techniques such as conditional computation and
+automatic sharding. The former allows to activate only a sub-network of the larger model on
+per-input basis, while the later allows to automatically partition a neural network model across
+multiple GPUs without the need for human intervention.
+
+Similarly, Colossal-AI \cite{li_colossal-ai_2023} and Megatron-LM \cite{shoeybi_megatron-lm_2020}
+show methods to scale up large architecture through model parallelism, leading to models of up to
+8.3 billion parameters.
+
+Conversely, GPipe \cite{huang_gpipe_2019} introduces pipeline parallelism allowing to "split the
+model into several chunks of consecutive layers and each chunk is allocated to a device" and "as a
+result, this method reduces cross-node communication", leading to higher throughput. This leads to
+training models of up to 83 billion parameters.
+
+\textbf{Performance.}
+The immediate thought that comes to mind when pondering over performance optimizations of a GPU cluster involves
+efficient communication protocols that reduce the communication overhead or optimizations involving the
+both the model or the data. Pytorch DDP \cite{li_pytorch_2020} attempts to optimize data parallelism by
+using techniques like bucketing gradients and overlapping communication with computation.
+
+Megatron-LM \cite{shoeybi_megatron-lm_2020}, aims to reduce communication and keep the GPUs busy by
+duplicating computations across GPUs, technique called fused operations. GShard
+\cite{lepikhin_gshard_2020} aims to give the programmer enough flexibility to easily change the
+parallelisation strategy (through automatic sharding), without having to heavily modify existing
+code.
+
+\textbf{Automatic Configuration.}
+This allows the library to adapt to diverse hardware setups and automatically configure the best
+backend library when executing code. This is a connection between GPU programming and DNN frameworks.
+
+For instance, Tensorflow \cite{abadi_tensorflow_2016} and MxNet \cite{chen_mxnet_2015} can
+autonomously choose the most efficient algorithms considering different hardware configurations,
+allowing seamless integration for mobile devices or large GPU clusters.
+
+However, BytePS \cite{jiang_unified_nodate} attempts to improve the communication overhead by
+leveraging heterogeneous GPU/CPU clusters. This is done by analyzing the network traffic for
+finding the optimal way to allocate resources. Similarly, GPipe \cite{huang_gpipe_2019} can also
+leverage automatic communication strategies achieving task independent parallelism in heterogeneous
+environments (clusters featuring different hardware configurations).
+
+\textbf{Ease of use.}
+This category is primarily focused towards creating tools that enable practitioners and researchers to easily
+use state-of-the-art models. The Huggingface Transformers \cite{wolf_huggingfaces_2020} is a prime example
+that provides access to open-source models through the Huggingface hub \cite{noauthor_hugging_2025}.
+Finally, Tensorflow \cite{abadi_tensorflow_2016} provides Tensorboard, which is a tool for recording
+experimental data in a distributed cluster.
+
+\paragraph{C3. Practical Evaluation Scenarios.}
+This section aims to identify practical evaluation scenarios presented in each paper. This helps
+evaluate how well each library scales in real-world applications.
+
+\textbf{Scalability and Performance.}
+For scaling neural networks across GPU clusters, the ideal scenario involves achieving linear speedup
+with respect to the setting involving a single machines (with possibly multiple GPUs). The difficulties
+that arise as a result of network communication are due to limitations involving the bandwidth of the
+network making linear speedup challenging to achieve. Some libraries have shown demonstrated
+effective techniques for reducing the communication overhead.
+
+% Concepts definition checkpoint
+%\textbf{Near Linear Speedup.}
+GPipe \cite{huang_gpipe_2019}, GShard \cite{lepikhin_gshard_2020} and Pytorch DDP \cite{li_pytorch_2020}
+achieve "near linear" speedup by leveraging pipeline parallelism and model parallelism.
+For example, Pytorch DDP achieved this by aggregating gradients into buckets
+for communication and overlapping communication with computation, over a cluster with 256 GPUs.
+GShard took a practical approach by assessing the trade-offs between model size, training time and
+resulting accuracy.
+
+%\textbf{Heterogeneous Clusters.}
+Other frameworks such as BytePS \cite{jiang_unified_nodate} excel at optimizing communication
+overhead in heterogenous GPU/CPU clusters. They outperformed Parameter Server and All-Reduce
+methods by scaling GPU clusters to 2048 devices and training for a time period of 4 days.
+
+%\textbf{Efficiency Techniques.}
+Effective techniques such as automatic parallelization, sharding and offloading have been proposed by
+Colossal-AI \cite{li_colossal-ai_2023}, effectively training models of up to 13B parameters.
+
+%\textbf{Reinforcement Learning.}
+Other libraries such as Ray \cite{moritz_ray_2018} focused on specialized techniques for training
+reinforcement learning models, where the authors scaled the cluster to 8192 cores.
+
+
+ 
+
+
+\begin{table*}[ht]
+
+	\centering
+	\caption{Concepts recurring in the papers.}
+	\label{tab:concepts}
+    \resizebox{\textwidth}{!}{%
+	\footnotesize
+	\begin{tabular}{lll} % NOTE: concepts definition checkpoint
+		\hline
+		\textbf{Area}    & \textbf{Concept}                           & \textbf{Definition} \\
+		\hline
+		\multirow{8}{*}{DNNs}
+		                 & Bucket Gradient Aggregation                &  \makecell[l]{...}         \\ % Pytorch DDP \cite{li_pytorch_2020}
+		                 & Overlapping Communication with Computation & ...                 \\ % Pytorch DDP \cite{li_pytorch_2020}
+		                 & Heterogeneous Clusters                     & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+		                 & Parameter Server                           & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+		                 & All-Reduce                                 & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+		                 & Automatic Parallelization                  & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+		                 & Offloading                                 & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+		                 & Sharding                                   & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+		\hline
+		\multirow{2}{*}{GPU Programming}
+		                 & Model Parallelism                          &                     \\
+		                 & Model Parallelism                          &                     \\
+		\hline
+		Data Parallelism & Data Parallelism                           &                     \\
+		\hline
+	\end{tabular}
+    }
+\end{table*}
+
+\textbf{Achieved accuracy.}
+
 
 \subsubsection{Distributed Learning Techniques Review}
 The review will focus on distributed learning approaches, aligning with "Study 1" in Figure
@@ -732,48 +1014,3 @@ The complete lists of included and excluded studies, along with detailed informa
 % 	\end{tabular}
 % \end{table*}
 
-\begin{table*}[htbp]
-	\centering
-	\caption{Critical factors of GPU Programming Libraries and Frameworks}
-	\label{tab:gpu_libraries}
-	\begin{tabular}{llp{8cm}lll}
-		\hline
-		\small \textbf{Category} & \small \textbf{ID} & \small \textbf{Library/Framework}                                 & \small \textbf{Vendor} & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
-		\hline
-		\multirow{4}{*}{\small NVIDIA}
-		                         & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra    & \small NVIDIA          & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
-		                         & \small NV2         & \small cuDNN: Optimized deep neural network primitives            & \small NVIDIA          & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
-		                         & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                   & \small NVIDIA          & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
-		                         & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication & \small NVIDIA          & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
-		\hline
-		\multirow{4}{*}{\small AMD}
-		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                         & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
-		                         & \small AMD3        & \small MIOpen: Deep learning primitives                           & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
-		                         & \small CP4         & \small HIP: Portable API for CUDA-like code                       & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
-		                         & \small AMD4        & \small RCCL: Multi-GPU communication                              & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
-		\hline
-		\multirow{3}{*}{\small Intel}
-		                         & \small INT1        & \small oneMKL: Math Kernel Library                                & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
-		                         & \small INT2        & \small oneDNN: Deep learning primitives                           & \small Intel           & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
-		                         & \small INT3        & \small oneCCL: Collective communication library                   & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
-		\hline
-		\multirow{3}{*}{\small Cross-Platform}
-		                         & \small CP1         & \small OpenCL: Open standard for heterogeneous computing          & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
-		                         & \small CP2         & \small SYCL: C++-based multi-device programming                   & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
-		                         & \small CP3         & \small Kokkos: Performance-portable C++ framework                 & \small Multiple        & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
-
-		\hline
-		\multirow{5}{*}{\small High-Level}
-		                         & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                      & \small NVIDIA          & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
-		                         & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                       & \small AMD             & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
-		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                     & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
-		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD           & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
-		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)     & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
-		\hline
-		\multirow{5}{*}{\small Tutorials}
-		                         & \small T1          & \small CUDA Toolkit Samples                                       & \small NVIDIA          & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
-		                         & \small T2          & \small AMD Lab Notes                                              & \small AMD             & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
-		                         & \small T3          & \small Intel Compute Samples                                      & \small Intel           & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
-		\hline
-	\end{tabular}
-\end{table*}
