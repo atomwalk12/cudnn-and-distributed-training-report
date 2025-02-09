@@ -1,47 +1,191 @@
-
 \clearpage
 \onecolumn
 
 {\tiny
-\begin{longtable}{|c|p{13cm}|c|p{1.5cm}|}
-\caption{The passages on distributed neural networks}\label{tab:mytable2} \\
+\begin{longtable}{|l|c|p{11.8cm}|p{0.6cm}|p{2cm}|}
+	\caption{The passages on distributed neural networks}\label{tab:mytable}                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\
 
-\toprule
-Cat. & Text Passages & References & Codes \\
-\midrule
-\endfirsthead
+	\toprule
+	Cat. & ID & Text Passages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              & Ref. & Codes \\
+	\midrule
+	\endfirsthead
 
-\multicolumn{4}{c}{Table \thetable{} -- continued from previous page} \\
-\toprule
-Cat. & Text Passages & References & Codes \\
-\midrule
-\endhead
+	\multicolumn{5}{c}{Table \thetable{} -- continued from previous page}                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \\
+	\toprule
+	Cat. & ID & Text Passages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              & Ref. & Codes \\
+	\midrule
+	\endhead
+    \hline
+	\multirow{44}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{1}: Key Motivating Factors}}
+	     & DNN1 & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others.
+	     & \cite{abadi_tensorflow_2016,li_pytorch_2020}
+	     & \textbullet\ Internal need to scale existing products \\
 
-\multirow{10}{*}{\rotatebox[origin=c]{90}{Key Factors}} 
-    & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others. 
-    & \cite{abadi_tensorflow_2016} 
-    & \textbullet\ asd \newline \textbullet\ as afs d\\
-\cline{2-4}
-    & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others. 
-    & \cite{abadi_tensorflow_2016} 
-    & \textbullet\ asd \newline \textbullet\ a afs d\\
-	\cline{2-4}
-    & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others. 
-    & \cite{abadi_tensorflow_2016} 
-    & \textbullet\ af \newline \textbullet\  afs d\\
-	\cline{2-4}
-    & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others. 
-    & \cite{abadi_tensorflow_2016} 
-    & \textbullet\ asd \newline \textbullet\  afs d\\
-	\cline{2-4}
-    & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others. 
-    & \cite{abadi_tensorflow_2016} 
-    & \textbullet\ asd \newline \textbullet\  afs d\\
-\hline
-2 & 765 & 3000 & 21(6) \\
-3 & 1590(420) & 40000 & 22(5) \\
+	\cline{2-5}
+	     & DNN2 & The scale and complexity of machine learning (ML) algorithms are becoming increasingly large. Almost all recent ImageNet challenge [12] winners employ neural networks with very deep layers, requiring billions of floating-point operations to process one single sample. The rise of structural and computational complexity poses interesting challenges to ML system design and implementation.
+	     & \cite{chen_mxnet_2015,lepikhin_gshard_2020,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Increasingly complex models/datasets\newline \textbullet\ Keen interest for scientific inquiry \\
+	\cline{2-5}
+	     & DNN3 & We scale the architecture along two dimensions to stress the flexibility of GPipe: (i) along the depth by increasing the number of layers in the model and (ii) along the width by increasing the hidden dimension in the feed-forward layers and the number of attention heads (...) We notice that increasing the model capacity, from 400M params (T (6, 8192, 16)) to 1.3B (T (24, 8192, 16)), and further, to 6B (T (64, 16384, 32)), leads to significant quality improvements across all languages.
+	     & \cite{huang_gpipe_2019,lepikhin_gshard_2020}
+	     & \textbullet\ Improve performance \\
+	\cline{2-5}
+	     & DNN4 & Data center clusters that run DNN training jobs are inherently heterogeneous. They have GPUs and CPUs for computation and network bandwidth for distributed training. However, existing distributed DNN training architectures, all-reduce and Parameter Server (PS), cannot fully utilize such heterogeneous resources. In this paper, we present a new distributed DNN training architecture called BytePS. BytePS can leverage spare CPU and bandwidth resources in the cluster to accelerate distributed DNN training tasks running on GPUs.
+	     & \cite{jiang_unified_nodate}
+	     & \textbullet\ Utilization of heterogenous hardware \\
+	\cline{2-5}
+	     & DNN5 & Neural network scaling has been critical for improving the model quality in many real-world machine learning applications with vast amounts of training data and compute. Although this trend of scaling is affirmed to be a sure-fire approach for better model quality, there are challenges on the path such as the computation cost, ease of programming, and efficient implementation on parallel devices. 
+	     & \cite{lepikhin_gshard_2020,chen_mxnet_2015} \newline \cite{huang_gpipe_2019, shoeybi_megatron-lm_2020}
+	     & \textbullet\ Increasingly complex models/datasets \newline \textbullet\ Improve performance \\	\cline{2-5}
+	     & DNN6 & Deep Neural Networks (DNN) have powered a wide spectrum of applications, ranging from image recognition [20], language translation [15], anomaly detection [16], content recommendation [38], to drug discovery [33], art generation [28], game play [18], and self-driving cars [13]. Many applications pursue higher intelligence by optimizing larger models using larger datasets, craving advances in distributed training systems. Among existing solutions, distributed data parallel is a dominant strategy due to its minimally intrusive nature. (...) During the past year, we have seen significant adoption both internally and externally. Within Facebook, a workload study from 05/11/20 to 06/05/20 shows that more than 60\% of production GPU hours during that period were spent on the PyTorch distributed data parallel package across a wide variety of applications, including speech, vision, mobile vision, translation, etc.
+	     & \cite{li_pytorch_2020,abadi_tensorflow_2016}
+	     & \textbullet\ Meeting user's requirements \newline \textbullet\ Emerging applications \newline \textbullet\ Internal need to scale existing products \\	\cline{2-5}
+	     & DNN7 & Methods such as PipeDream [25], GPipe [16], and Chimera [20] were proposed to split the model into several chunks of consecutive layers and each chunk is allocated to a device as shown in Figure 3c. Intermediate activations and gradients are passed between pipeline stages to complete the forward and backward pass. As a result, our method reduces cross-node communication. Pipeline parallelism allows multiple devices to compute simultaneously, leading to a higher throughput. (...) Inspired by Alpa, Colossal-AI has included an experimental automatic parallelism feature to improve upon the Alpa project.
+	     & \cite{li_colossal-ai_2023}
+	     & \textbullet\ Improving/Building on existing frameworks \\ \cline{2-5}
+         & DNN8 & In our evaluation, we study the following questions: (...) 2. What overheads are imposed on distributed primitives (e.g., allreduce) written using Ray's API? (Section 5.1) 3. In the context of RL workloads, how does Ray compare against specialized systems for training, serving, and simulation? (Section 5.2) 4. What advantages does Ray provide for RL applications, compared to custom systems? (Section 5.3)
+	     & \cite{moritz_ray_2018}
+	     & \textbullet\ Extending existing tools to new domains i.e. Reinforcement Learning \\ \cline{2-5}
+         & DNN9 & DeepSpeed is compatible with PyTorch. One piece of our library, called ZeRO, is a new parallelized optimizer that greatly reduces the resources needed for model and data parallelism while massively increasing the number of parameters that can be trained. Researchers have used these breakthroughs to create Turing Natural Language Generation (Turing-NLG), which at the time of its release was the largest publicly known language model at 17 billion parameters.
+	     & \cite{rasley_deepspeed_2020,sergeev_horovod_2018}
+	     & \textbullet\ Cross-framework compatibility \newline \textbullet\ Large-scale training \\ \cline{2-5}
+         & DNN10 & Existing methods for enabling multi-GPU training under the TensorFlow library entail non-negligible communication overhead and require users to heavily modify their model-building code, leading many researchers to avoid the whole mess and stick with slower single-GPU training. In this paper we introduce Horovod, an open source library that improves on both obstructions to scaling: it employs efficient inter-GPU communication via ring reduction and requires only a few lines of modification to user code, enabling faster, easier distributed training in TensorFlow.
+	     & \cite{sergeev_horovod_2018,rasley_deepspeed_2020,wolf_huggingfaces_2020}
+	     & \textbullet\ Cross-framework compatibility \newline \textbullet\ Large-scale training\newline \textbullet\ Usability \\ \cline{2-5}
+         & DNN11 & Natural Language Processing (NLP) is advancing quickly in part due to an increase in available compute and dataset size. The abundance of compute and data enables training increasingly larger language models via unsupervised pretraining... Empirical evidence indicates that larger language models are dramatically more useful for NLP tasks such as article completion, ques-tion answering, and natural language inference (...) In summary, our approach as de-scribed above is simple to implement, requiring only a few extra all-reduce operations added to the forward and back-ward pass. It does not require a compiler, and is orthogonal and complementary to the pipeline model parallelism advo-cated by approaches such as (Huang et al., 2018).
+	     & \cite{shoeybi_megatron-lm_2020,chen_mxnet_2015,lepikhin_gshard_2020}
+	     & \textbullet\ Increasingly complex models/datasets \newline \textbullet\ No need for compilers \\ \cline{2-5}
+         & DNN12 & An increasingly important goal of Transformers is to make it easy to efficiently deploy model to pro-duction. Different users have different production needs, and deployment often requires solving sig-nificantly different challenges than training. The library thereforce allows for several different strate-gies for production deployment.
+         One core propery of the libary is that models are available both in PyTorch and TensorFlow, and there is interoperability between both frameworks. 
+	     & \cite{wolf_huggingfaces_2020,sergeev_horovod_2018,rasley_deepspeed_2020}
+	     & \textbullet\ Ease of use \newline \textbullet\ Cross-framework compatibility \\ \hline
 
-\bottomrule
+    \multirow{33}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{3}: Critical Factors}}
+         & DNN1 & A computation expressed using TensorFlow can be executed with little or no change on a wide variety of heterogeneous systems, ranging from mobile devices such as phones and tablets up to large-scale distributed systems of hundreds of machines and thousands of computational devices such as GPU cards.
+         & \cite{abadi_tensorflow_2016,jiang_unified_nodate}
+	     & \textbullet\ Utilization of heterogenous hardware \\ \cline{2-5}
+         & DNN2 & Most ML systems embed a domain-specific language (DSL) into a host language (e.g. Python, Lua, C++). Possible programming paradigms range from imperative, where the user specifies exactly "how" computation needs to be performed, and declarative, where the user specification focuses on "what" to be done.
+         & \cite{chen_mxnet_2015,lepikhin_gshard_2020}
+	     & \textbullet\ Programming paradigms \\ \cline{2-5}
+        
+         & DNN3 & In many cases, increasing model capacity beyond the memory limit of a single accelerator has required developing special algorithms or infrastructure. These solutions are often architecture-specific and do not transfer to other tasks. To address the need for efficient and task-independent model parallelism, we introduce GPipe, a pipeline parallelism library that allows scaling any network that can be expressed as a sequence of layers.
+         & \cite{huang_gpipe_2019,rasley_deepspeed_2020,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Scaling \\ \cline{2-5}
+
+         & DNN4 & BytePS is a unified distributed DNN training acceleration system that achieves optimal communication efficiency in heterogeneous GPU/CPU clusters.
+         & \cite{jiang_unified_nodate,li_colossal-ai_2023,sergeev_horovod_2018}
+	     & \textbullet\ Communication efficiency \\ \cline{2-5}
+
+         & DNN5 & In automatic sharding model description should be separated from the partitioning implementation and optimization. This separation of concerns let model developers focus on the network architecture and flexibly change the partitioning strategy, while the underlying system applies semantic-preserving transformations and implements efficient parallel execution. 
+         & \cite{lepikhin_gshard_2020,chen_mxnet_2015}
+	     & \textbullet\ Separation of concerns \newline \textbullet\ Programming ease \\ \cline{2-5}
+
+         & DNN6 & PyTorch natively provides several techniques to accelerate distributed data parallel, including bucketing gradients, overlapping compu-tation with communication, and skipping gradient synchronization.
+         & \cite{li_pytorch_2020,li_colossal-ai_2023,rasley_deepspeed_2020,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Performance \\ \cline{2-5}
+
+         & DNN7 & Methods such as PipeDream [25], GPipe [16], and Chimera [20] were proposed to split the model into several chunks of consecutive layers and each chunk is allocated to a device as shown in Figure 3c. Intermediate activations and gradients are passed between pipeline stages to complete the forward and backward pass. As a result, this method reduces cross-node communication. Pipeline parallelism allows multiple devices to compute simultaneously, leading to a higher throughput.
+         & \cite{li_colossal-ai_2023,sergeev_horovod_2018}
+	     & \textbullet\ Performance \newline \textbullet\ Network latency \\ \cline{2-5}
+
+         & DNN8 & To learn a policy, an agent typically employs a two-step process: (1) policy evaluation and (2) policy improvement. To evaluate the policy, the agent interacts with the environment (e.g., with a simulation of the environment) to generate trajectories, where a trajectory consists of a sequence of (state, reward) tuples produced by the current policy.
+         & \cite{moritz_ray_2018}
+	     & \textbullet\ Policy learning in reinforcement learning \\ \cline{2-5}
+
+         & DNN9 & The latest trend in AI is that larger natural language models provide better accuracy; however, larger models are difficult to train because of cost, time, and ease of code integration. With the goal of advancing large model training by improving scale, speed, cost, and usability for model developers across the world, Since then, the DeepSpeed team has been hard at work extending the library to continue pushing the boundaries of scale and speed of deep learning training.
+         & \cite{rasley_deepspeed_2020,huang_gpipe_2019,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Performance \newline \textbullet\ Cost \newline \textbullet\ Scalability \newline \textbullet\ Usability \\ \cline{2-5}
+
+         & DNN10 & In early 2017 Baidu published an article [8] evangelizing a different algorithm for averaging gradients and communicating those gradients to all nodes (Steps 2 and 3 above), called ring-allreduce (...) allows worker nodes to average gradients and disperse them to all nodes without the need for a parameter server (...)  This algorithm is bandwidth-optimal, meaning that if the buffer is large enough, it will optimally utilize the available network.
+         & \cite{sergeev_horovod_2018,li_colossal-ai_2023}
+	     & \textbullet\ Network Latency \\ \cline{2-5}
+
+         & DNN11 & Our approach is to utilize model parallelism to split the model across multiple accelerators. This not only alleviates the memory pressure, but also increases the amount of parallelism independently of the microbatch size. (...) By increasing the minibatch size proportionally to the number of available workers (i.e. weak scaling), one observes near linear scaling in training data throughput. (...)We exploit the inherent structure in transformer based language models to make a simple model-parallel implementation that trains efficiently in PyTorch, with no custom C++ code or compiler required.
+         & \cite{shoeybi_megatron-lm_2020,rasley_deepspeed_2020}
+	     & \textbullet\ Performance \newline \textbullet\ Cross-framework compatibility \newline \textbullet\ Scalability \newline \textbullet\ Usability \\ \cline{2-5}
+         
+         & DNN12 & Each model is made up of a Tokenizer, Transformer, and Head. The model is pretrained with a fixed head and can then be further fine-tuned with alternate heads for different tasks.
+         & \cite{wolf_huggingfaces_2020,rasley_deepspeed_2020,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Ease of use \\ \hline
+
+
+    \multirow{20}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Evaluation Metrics}}
+         & DNN1 & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others.
+         & \cite{abadi_tensorflow_2016}
+	     & \textbullet\ Deployment via Google Apps \\ \cline{2-5}
+         
+         & DNN3 & We demonstrate the advantages of GPipe by training large-scale neural networks on two different tasks with distinct network architectures: (i) Image Classification: We train a 557-million-parameter AmoebaNet model and attain a top-1 accuracy of 84.4\% on ImageNet-2012, (ii) Multilingual Neural Machine Translation: We train a single 6-billion-parameter, 128-layer Transformer model on a corpus spanning over 100 languages and achieve better quality than all bilingual models.
+         & \cite{huang_gpipe_2019,lepikhin_gshard_2020}
+	     & \textbullet\ Image Classification\newline\textbullet\ Multilingual Neural Machine Translation \\ \cline{2-5}
+
+         & DNN4 & We evaluate BytePS using six DNN models and three training frameworks (TensorFlow, PyTorch, MXNet) in production data centers. The results show that with 256 GPUs, BytePS consistently outperform existing all-reduce and PS solutions by up to 84\% and 245\%, respectively.
+         & \cite{jiang_unified_nodate}
+	     & \textbullet\ Cross-platform evaluation (TensorFlow, PyTorch, MXNet) \\ \cline{2-5}
+
+         & DNN5 & GShard enabled us to scale up multilingual neural machine translation Transformer model with Sparsely-Gated Mixture-of-Experts beyond 600 billion parameters using automatic sharding. We demonstrate that such a giant model can efficienctly be trained on 2048 TPU v3 accelerators in 4 days to achieve far superior quality for translation from 100 languages to English compared to the prior art.
+         & \cite{lepikhin_gshard_2020,huang_gpipe_2019}
+	     & \textbullet\ Models: MoEs \\ \cline{2-5}
+
+         & DNN6 & We measure DDP per iteration latency and scalability using two popular models, ResNet50 [20] and BERT [15], to represent typical vision and NLP applications.
+         & \cite{li_pytorch_2020,li_colossal-ai_2023}
+	     & \textbullet\ Tasks: NLP, Vision \newline \textbullet\ Performance \\ \cline{2-5}
+         
+         & DNN7 & To demonstrate the capability of dynamic tensor placement in ColossalAI, we trained GPT-2 model with 10 billion parameters on the Wikipedia dataset on System II. We set the batch size to 4 and scaled the data parallel training from 1 GPU to 8 GPU.
+         & \cite{li_colossal-ai_2023,li_pytorch_2020,moritz_ray_2018,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Performance \\ \cline{2-5}
+         
+         & DNN8 & In our experiments, we demo-strate scaling beyond 1.8 million tasks per second and better performance than existing specialized systems for several challenging reinforcement learning applications.
+         & \cite{moritz_ray_2018,li_colossal-ai_2023,li_pytorch_2020,shoeybi_megatron-lm_2020}
+	     & \textbullet\ Performance \newline \textbullet\ Tasks: RL \\ \cline{2-5}
+         
+         & DNN11 & Using the GPT-2 model we achieve SOTA results on the WikiText103 (10.8 compared to SOTA perplexity of 15.8) and LAMBADA (66.5\% compared to SOTA accuracy of 63.2\%) datasets. Our BERT model achieves SOTA results on the RACE dataset (90.9\% compared to SOTA accuracy of 89.4\%) (...) We demonstrate that scaling the model size results in improved accuracies for both GPT-2 (studied up to 8.3 billion parameters) and BERT (studied up to 3.9B parameters) models.
+         & \cite{shoeybi_megatron-lm_2020,li_pytorch_2020,li_colossal-ai_2023,moritz_ray_2018}
+	     & \textbullet\ Tasks: NLP \newline \textbullet\ Performance \newline \textbullet\ Scaling \\ \hline
+         
+    \multirow{30}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Tool limitations and challenges}} 
+         & DNN1 & Once a system has multiple devices, there are two main complications: deciding which device to place the computation for each node in the graph, and then managing the required communication of data across device boundaries implied by these placement decisions. (...) A future version of this white paper will have a comprehensive performance evaluation section of both the single machine and distributed implementations.
+         & \cite{abadi_tensorflow_2016,li_colossal-ai_2023,sergeev_horovod_2018}
+	     & \textbullet\ Communication overhead \\ \cline{2-5}
+         
+         & DNN2 & Most ML systems embed a domain-specific language (DSL) into a host language (e.g. Python, Lua, C++).  (...)  Comparing to other open-source ML systems, MXNet provides a superset programming interface to Torch7, Theano, Chainer and Caffe, and supports more systems such as GPU clusters.
+         & \cite{chen_mxnet_2015,huang_gpipe_2019}
+	     & \textbullet\ Ease of use \newline \textbullet\ Common API with other frameworks \\ \cline{2-5}
+         
+         & DNN3 & (Other) naive model parallelism strategies lead to severe under-utilization due to the sequential dependency of the network. (...) In many cases, increasing model capacity beyond the memory limit of a single accelerator has required developing special algorithms or infrastructure. These solutions are often architecture-specific and do not transfer to other tasks.
+         & \cite{huang_gpipe_2019,lepikhin_gshard_2020,jiang_unified_nodate,chen_mxnet_2015}
+	     & \textbullet\ Resource under-utilization \newline \textbullet\ No shared API with common frameworks \\ \cline{2-5}
+         
+         & DNN4 & For distributed training, there are two families of data parallelism approaches, i.e., all-reduce and Parameter Server (PS). In all-reduce, no additional CPU machine is involved [to aggregate results from different accelerators] . Ring is the most popular all-reduce algorithm. (...) All-reduce has no way to utilize additional non-worker nodes, since it was designed for homogeneous setup.
+         & \cite{jiang_unified_nodate,huang_gpipe_2019,lepikhin_gshard_2020}
+	     & \textbullet\ Designed for homogeneous setup \newline \textbullet\ Resource under-utilization \\ \cline{2-5}
+         
+         & DNN5 & There is a lack of support for efficient model parallelism algorithms under commonly used deep learning frameworks such as TensorFlow [21] and PyTorch [22]. Naive model parallelism with graph partition is supported but it would lead to severe under-utilization due to the sequential dependency of the network and gradient based optimization.
+         & \cite{lepikhin_gshard_2020,huang_gpipe_2019,jiang_unified_nodate}
+	     & \textbullet\ Resource under-utilization \newline \textbullet\ No efficient model parallelism algorithms \\ \cline{2-5}
+         
+         & DNN6 & Despite the conceptual simplicity of the technique, the subtle dependencies between computation and communication make it non-trivial to optimize the distributed training efficiency. (...) Based on our observations, there is no single configuration that would work for all use cases, as it would highly depend on the model size, model structure, network link bandwidth, etc.
+         & \cite{li_pytorch_2020,abadi_tensorflow_2016,sergeev_horovod_2018,shoeybi_megatron-lm_2020}
+	     & \textbullet\ No optimal algorithm for all use cases \newline \textbullet\ Optimization challenges \\ \cline{2-5}
+         
+         & DNN7 & One drawback of pipeline parallel training is that there will be some bubble time, where some devices are idle when others are engaged in computation, leading to the waste of computational resources. (...) DeepSpeed's static policy will still offload all model data to the CPU memory, leading to low memory efficiency and high communication over-head. 
+         & \cite{li_colossal-ai_2023,abadi_tensorflow_2016,sergeev_horovod_2018}
+	     & \textbullet\ Redundant computation \newline \textbullet\ Communication overhead \\ \cline{2-5}
+         
+         & DNN8 & While in principle one could develop an end-to-end solution by stitching together several existing systems (e.g., Horovod [53] for distributed training, Clipper [19] for serving, and CIEL [40] for simulation), in practice this approach is untenable due to the tight coupling of these components within applications. As a result, researchers and practitioners today build one-off systems for specialized RL applications [58, 41, 54, 44, 49, 5]. (...) To satisfy these requirements, Ray implements a unified interface that can express both task-parallel and actorbased computations.
+         & \cite{moritz_ray_2018,chen_mxnet_2015}
+	     & \textbullet\ Tight coupling of components \newline \textbullet\ Multiple programming paradigms \\ \cline{2-5}
+         
+         & DNN10 & There are a few areas that we are actively working on to improve Horovod, including: Collecting and sharing learnings about adjusting model parameters for distributed deep learning: Facebook's paper [6] describes the adjustments needed to model hyperparameters to achieve the same or greater accuracy in a distributed training job compared to training the same model on a single GPU, demonstrating the feasibility of training a TensorFlow model on 256 GPUs. We believe this area of deep learning research is still in its early stages and hope to collaborate with other teams about approaches to further scale deep learning training.
+         & \cite{sergeev_horovod_2018,abadi_tensorflow_2016,li_colossal-ai_2023}
+	     & \textbullet\ Cross-node communication challenges \newline \textbullet\ Collaboration with external teams \\ \cline{2-5}
+         
+         & DNN11 & However, large batch training introduces complications into the optimization process that can result in reduced accuracy or longer time to convergence, offsetting the benefit of increased training throughput. (...) for BERT models, careful attention to the placement of layer normalization in BERT-like models is critical to achieving increased accuracies as the model size increases.
+         & \cite{shoeybi_megatron-lm_2020,li_pytorch_2020}
+	     & \textbullet\ Error prone utilization \newline \textbullet\ Manual hyperparameter tuning \\  \cline{2-5}
+         
+         
+	\bottomrule
 \end{longtable}
+}
 \clearpage
 \twocolumn
