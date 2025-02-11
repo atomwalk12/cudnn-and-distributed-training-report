@@ -16,73 +16,74 @@ initial search strings are shown in the Appendix in Table \ref{tab:search_terms}
 combined in Table \ref{tab:search_documentation}, using boolean operators to generate query
 strings, which are then used to search each individual database.
 
-\begin{table*}[htbp!]
-    \centering
-    \caption{Core Search Terms for Distributed Deep Learning and GPU Programming}
-    \label{tab:search_terms}
-    \begin{tabularx}{\textwidth}{|l|X|X|}
-        \hline
-        \textbf{Category} & \textbf{Distributed Learning} & \textbf{GPU Computing} \\
-        \hline
-        Core Terms & 
-        \textbf{"Distributed Deep Learning"},
-        \textbf{"Parallel Deep Learning"},
-        "Large-Scale Deep Learning" &
-        \textbf{"GPU Programming"},
-        \textbf{"CUDA Programming"} \\
-        \hline
-        Technical Approach & 
-        \textbf{"Data Parallelism"},
-        \textbf{"Model Parallelism"},
-        \textbf{"Hybrid Parallelism"} &
-        \textbf{"CUDA"},
-        "GPU Optimization",
-        "Parallel Computing" \\
-        \hline
-        Implementation & 
-        \textbf{"Parameter Server"},
-        \textbf{"All-Reduce"},
-        \textbf{"SGD"} &
-        \textbf{"CUDA Toolkit"},
-        \textbf{"cuDNN"},
-        "Multi-GPU" \\
-        \hline
-        Frameworks & 
-        "TensorFlow",
-        "PyTorch", 
-        "Horovod" &
-        "TensorRT",
-        "PyCUDA",
-        "Numba" \\
-        \hline
-    \end{tabularx}
-    \caption*{Note: Bold terms indicate primary search terms that will be prioritized.}
-\end{table*}
+% \begin{table*}[htbp!]
+%     \centering
+%     \caption{Core Search Terms for Distributed Deep Learning and GPU Programming}
+%     \label{tab:search_terms}
+%     \begin{tabularx}{\textwidth}{|l|X|X|}
+%         \hline
+%         \textbf{Category} & \textbf{Distributed Learning} & \textbf{GPU Computing} \\
+%         \hline
+%         Core Terms & 
+%         \textbf{"Distributed Deep Learning"},
+%         \textbf{"Parallel Deep Learning"},
+%         "Large-Scale Deep Learning" &
+%         \textbf{"GPU Programming"},
+%         \textbf{"CUDA Programming"} \\
+%         \hline
+%         Technical Approach & 333
+%         \textbf{"Data Parallelism"},
+%         \textbf{"Model Parallelism"},
+%         \textbf{"Hybrid Parallelism"} &
+%         \textbf{"CUDA"},
+%         "GPU Optimization",
+%         "Parallel Computing" \\
+%         \hline
+%         Implementation & 
+%         \textbf{"Parameter Server"},
+%         \textbf{"All-Reduce"},
+%         \textbf{"SGD"} &
+%         \textbf{"CUDA Toolkit"},
+%         \textbf{"cuDNN"},
+%         "Multi-GPU" \\
+%         \hline
+%         Frameworks & 
+%         "TensorFlow",
+%         "PyTorch", 
+%         "Horovod" &
+%         "TensorRT",
+%         "PyCUDA",
+%         "Numba" \\
+%         \hline
+%     \end{tabularx}
+%     \caption*{Note: Bold terms indicate primary search terms that will be prioritized.}
+% \end{table*}
 
 The starting date used for the analysis starts from 2014 till 2024. The reason for utilizing this range
 is due to the publishing date of \cite{SierraCanto2010ParallelTO}, which acts as a key paper in the domain. As a result,
 I'd like to analyze the advancement of the field starting from this age. The key The following table 
 documents our complete search process:
 
-\begin{table*}[htbp!]
-    \centering
-    \caption{Detailed Search Documentation}
-    \label{tab:search_documentation}
-    \begin{tabularx}{\textwidth}{|l|X|c|c|c|}
-        \hline
-        \textbf{Database} & \textbf{Search String} & \textbf{Years Covered} & \textbf{Results} & \textbf{Filtered} \\
-        \hline
-        Scopus & ("Distributed Deep Learning" OR "Parallel Deep Learning") AND "Data Parallelism" & 2017-2024 & 82 & 11 \\
-               & ( "machine learning" OR "deep learning" ) AND ( "Data parallelism" OR "model parallelism" OR "pipeline parallelism" OR "hybrid parallelism" ) AND ( "framework" OR "implementation" ) & 2012-2024 & 206 & 11 \\
-        \hline
-        ACM Digital Library & ("GPU Programming" OR "GPGPU Programming") AND ("CUDA" OR "CUDA Programming") AND ("Parallel Computing") & 2015-2022 & 2024-05-10 & 210 \\
-        \hline
-        Science Direct & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
-        \hline
-        arXiv & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
-        \hline
-    \end{tabularx}
-\end{table*}
+% TODO Razvan: remove this table
+% \begin{table*}[htbp!]
+%     \centering
+%     \caption{Detailed Search Documentation}
+%     \label{tab:search_documentation}
+%     \begin{tabularx}{\textwidth}{|l|X|c|c|c|}
+%         \hline
+%         \textbf{Database} & \textbf{Search String} & \textbf{Years Covered} & \textbf{Results} & \textbf{Filtered} \\
+%         \hline
+%         Scopus & ("Distributed Deep Learning" OR "Parallel Deep Learning") AND "Data Parallelism" & 2017-2024 & 82 & 11 \\
+%                & ( "machine learning" OR "deep learning" ) AND ( "Data parallelism" OR "model parallelism" OR "pipeline parallelism" OR "hybrid parallelism" ) AND ( "framework" OR "implementation" ) & 2012-2024 & 206 & 11 \\
+%         \hline
+%         ACM Digital Library & ("GPU Programming" OR "GPGPU Programming") AND ("CUDA" OR "CUDA Programming") AND ("Parallel Computing") & 2015-2022 & 2024-05-10 & 210 \\
+%         \hline
+%         Science Direct & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
+%         \hline
+%         arXiv & [Exact search string] & 2015-2022 & 2024-05-10 & XXX \\
+%         \hline
+%     \end{tabularx}
+% \end{table*}
 
 
 \subsubsection{Search Process Details}
@@ -103,59 +104,22 @@ The following additional sources were manually searched:
 \subsection{Study Selection Details}
 \label{sec:study_selection}
 
-\subsubsection{Included Studies}
-Table \ref{tab:included_studies} lists all studies that met our inclusion criteria:
+% TODO Razvan: remove this table: excluded studies are not needed
+% \begin{table*}[htbp!]
+%     \centering
+%     \caption{List of Excluded Studies with Reasons}
+%     \label{tab:excluded_studies}
+%     \begin{tabularx}{\textwidth}{|l|l|X|c|X|}
+%         \hline
+%         \textbf{ID} & \textbf{Authors} & \textbf{Title} & \textbf{Year} & \textbf{Reason for Exclusion} \\
+%         \hline
+%         E1 & Author et al. & Title of excluded study 1 & 20XX & Does not meet inclusion criterion 1 \\
+%         \hline
+%         E2 & Author et al. & Title of excluded study 2 & 20XX & Insufficient technical details \\
+%         \hline
+%     \end{tabularx}
+% \end{table*}
 
-\begin{table*}[htbp!]
-    \centering
-    \caption{Detailed List of Included Studies}
-    \label{tab:included_studies}
-    \begin{tabularx}{\textwidth}{|l|l|X|c|c|X|}
-        \hline
-        \textbf{ID} & \textbf{Authors} & \textbf{Title} & \textbf{Year} & \textbf{Quality Score} & \textbf{Key Findings} \\
-        \hline
-        S1 & Author et al. & Title of study 1 & 20XX & X.X & Brief summary of main findings \\
-        \hline
-        S2 & Author et al. & Title of study 2 & 20XX & X.X & Brief summary of main findings \\
-        \hline
-    \end{tabularx}
-\end{table*}
-
-\subsubsection{Excluded Studies}
-Table \ref{tab:excluded_studies} lists studies that were excluded during the screening process:
-
-\begin{table*}[htbp!]
-    \centering
-    \caption{List of Excluded Studies with Reasons}
-    \label{tab:excluded_studies}
-    \begin{tabularx}{\textwidth}{|l|l|X|c|X|}
-        \hline
-        \textbf{ID} & \textbf{Authors} & \textbf{Title} & \textbf{Year} & \textbf{Reason for Exclusion} \\
-        \hline
-        E1 & Author et al. & Title of excluded study 1 & 20XX & Does not meet inclusion criterion 1 \\
-        \hline
-        E2 & Author et al. & Title of excluded study 2 & 20XX & Insufficient technical details \\
-        \hline
-    \end{tabularx}
-\end{table*}
-
-\subsubsection{Study Quality Assessment}
-Table \ref{tab:quality_assessment} provides detailed quality scores for included studies:
-
-\begin{table*}[htbp!]
-    \centering
-    \caption{Quality Assessment Scores for Included Studies}
-    \label{tab:quality_assessment}
-    \begin{tabularx}{\textwidth}{|l|c|c|c|c|X|}
-        \hline
-        \textbf{Study ID} & \textbf{Methodology} & \textbf{Implementation} & \textbf{Evaluation} & \textbf{Total Score} & \textbf{Notes} \\
-        \hline
-        S1 & X.X & X.X & X.X & X.X & Brief quality notes \\
-        \hline
-        S2 & X.X & X.X & X.X & X.X & Brief quality notes \\
-        \hline
-    \end{tabularx}
-\end{table*}
 
 \subsection{Data Extraction Forms}
 \label{sec:data_extraction}
@@ -294,6 +258,8 @@ We searched the following digital libraries:
 
 
 \input{tables/passages_dnn}
+
+\input{tables/passages_gpu}
 
 \begin{table*}[htbp]
     \centering 

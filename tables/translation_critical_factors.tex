@@ -1,0 +1,65 @@
+\clearpage
+\onecolumn
+
+{\footnotesize
+	\begin{longtable}{|l|p{5cm}|p{5cm}|p{5cm}|}
+		\caption{Translations of the critical factors}\label{tab:translations_critical}   \\
+
+		\toprule
+		ID & Distributed Neural Networks & GPU Programming & Translation \\
+		\midrule
+		\endfirsthead
+
+		\multicolumn{4}{c}{Table \thetable{} -- continued from previous page}           \\
+		\toprule
+		ID & Distributed Neural Networks & GPU Programming & Translation \\
+		\midrule
+		\endhead
+		\midrule
+		CF1
+		   & Generally DNNs are most flexible and use the most common programming style supported by the host language. \cellref{D202}, \cellref{D205}
+           & \textbullet\ Although most GPU frameworks work using the host language as C++, there exist frontend frameworks that enable users to use Python. \cellref{G2021} \newline
+             \textbullet\ Cudnn exposes a C API \cellref{G1015}
+           & \textbf{Programming paradigms, programming ease.} Imperative and declarative programming styles are both supported. DNNs use Python as the most popular host language, while GPU frameworks generally work with C++ and CUDA. 
+           Nonetheless, there do exist frontend frameworks that enable users to write code in higher-level languages, such as Python.\\
+           \midrule
+
+    CF2
+    & \textbullet\ Distributing neural network layers across multiple GPUs is architecture-specific. \cellref{D203} \newline
+      \textbullet\ Scaling is expensive in terms of cost, time and code integration. \cellref{D209} \newline
+      \textbullet\ There is a separation of concerns between GPU programming and DNNs, as there is no need for custom C++ code or compiler required to distribute neural networks over cluster nodes. \cellref{D211}
+        & \textbullet\ Optimized code using NVIDIA GPUs ensures high performance (freeing up auxiliary memory) \cellref{G2011} \newline
+          \textbullet\ CuDNN provides separation of concerns by enabling developers to focus on higher-level optimizations instead of low-level architecture specific code. \cellref{G2012}
+        & \textbf{Scalability, cost, usability.} DNNs: Scalability challenges are related to distributing parts of the network or dataset across multiple nodes. Since the CUDA toolkit provides a separation of concerns, developers generally
+        do not write low-level code for inter-GPU communication. They can focus on higher-level optimizations (i.e. bucket aggregation, overlapping communication with computation, etc).
+        \\
+        \midrule
+
+    CF3
+    & \textbullet\ Specialized techniques for distributed training include: bucketing, overlapping communication with computation, etc. \cellref{D206} \newline
+      \textbullet\ Megatron-LM extentrds optimization techniques to the transformer model. \cellref{D211}
+        & It is a challenge to provide consistent performance as new architectures emerge. \cellref{G2013}
+        & \textbf{!!!Performance.} Although, a lot has been discovered, there exist future challenges in both domains as new architectures are developed.  \newline
+          \\
+        \midrule
+    
+    CF4
+    & There exist algorithms that can optimize network latency. \cellref{D210}
+        & Multi-GPU training is an outstanding challenge. \cellref{G2014}
+        & \textbf{Network latency.} Some challenging problems have optimal algorithms for distributed training. Conversely, multi-GPU training is outstanding work (concurrency is handled by the user). \\
+        \midrule
+
+    CF5
+    & The Transformers library provides modular components that greatly simplify the extension and ease of use of the library \cellref{D212}
+        & \textbullet\ CuPy is NumPy compatible. \cellref{G1022} \newline
+          \textbullet\ CuDNN requires more specialized C and CUDA knowledge. \cellref{G1015}
+        & \textbf{Ease of use.} \textbullet\ Given the rich ecosystem, there exist DNN libraries that are particularly easy to build on and extend (i.e. Pytorch). \newline
+          \textbullet\ In general GPU programming libraries are more challenging to get started with as they require more specialized knowledge. However, CuPy attempts to bridge the gap by being NumPy compatible.\\
+        \midrule
+
+		\bottomrule
+	\end{longtable}
+}
+
+\twocolumn
+

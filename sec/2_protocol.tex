@@ -173,7 +173,7 @@ questions below are ordered based on their priority in the survey:
 	      % NOTE Razvan I am conducting a literature review in the field of deep learning, specifically focusing on distributed training of 
 	      % NOTE neural networks across clusters. I need to identify the most commonly cited frameworks used for this purpose.
 	\item \textbf{RQ\textsubscript{2}:} What practical applications of these technologies have been reported in the literature
-		  and which are their limitations? \\
+	      and which are their limitations? \\
 	      \textit{Rationale:} This can yield hands-on experience on the topic which is helpful for practical applications.
 
 	\item \textbf{RQ\textsubscript{3}:} What are the overlaps in data/model optimization strategies used in DDL and GPU parallelization? \\
@@ -420,8 +420,8 @@ as specific frameworks.
 		\hline
 		\multirow{4}{*}{\small AMD}
 		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                         & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
-		                         & \small AMD3        & \small MIOpen: Deep learning primitives                           & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
-		                         & \small CP4         & \small HIP: Portable API for CUDA-like code                       & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
+		                         & \small AMD2        & \small MIOpen: Deep learning primitives                           & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
+		                         & \small AMD3        & \small HIP: Portable API for CUDA-like code                       & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
 		                         & \small AMD4        & \small RCCL: Multi-GPU communication                              & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
 		\hline
 		\multirow{3}{*}{\small Intel}
@@ -479,9 +479,9 @@ manner.
 \textbf{Distributed Neural Networks.}
 In order to more easily extract useful information from the studies, I identified four key criteria
 which aim to facilitate answering the research questions defined in Section \ref{sec:research_questions_refined}.
-Basically, by creating an indirect link to the research questions (through the criteria), the process becomes more streamlined
-and the synthesis process more focused. These properties are supported by direct quotes from each paper
-providing context for each criterion. The criteria are as follows:
+Basically, by creating an indirect link to the research questions (through the criteria), the process becomes more
+streamlined and the synthesis process more focused. These properties are supported by direct quotes from each paper,
+essentially providing traceable context for each characteristic:
 
 \begin{figure*}
 	\centering
@@ -507,8 +507,18 @@ providing context for each criterion. The criteria are as follows:
 	\item C4: Tool Limitations and challenges
 \end{itemize}
 
-The resulting artifacts are available in the supplementary material in Table \ref{tab:artefacts}.
+The resulting artifacts are available in the supplementary material in Table
+\ref{tab:dnn_passages}.
 
+\subsubsection{Distributed Neural Networks}
+In short, studies about distributed neural networks are quite recent and offer interesting insights
+into the key factors that motivate the development of DNNs. The key factors for developing such
+frameworks range from the drive to improve performance and create general purpose intelligent
+systems \cite{chen_mxnet_2015,lepikhin_gshard_2020,shoeybi_megatron-lm_2020} -- by leveraging 
+increasingly abundant computational resources and data availability -- to \TODO{...}.
+
+\include{tables/translation_motivating_factors}
+\include{tables/translation_critical_factors}
 \paragraph{C1. Key Motivating Factors.}
 The motivating factors for training DNNs include the pursuit of better performance through more
 efficient training and increased usability in practical scenarios. It has been widely regarded that
@@ -646,8 +656,7 @@ Finally, Tensorflow \cite{abadi_tensorflow_2016} provides Tensorboard, which is 
 experimental data in a distributed cluster.
 
 \paragraph{C3. Practical Evaluation Scenarios.}
-This section aims to identify practical evaluation scenarios presented in each paper. This helps
-evaluate how well each library scales in real-world applications.
+The evaluation factors can be classified into the following categories:
 
 \textbf{Scalability and Performance.}
 For scaling neural networks across GPU clusters, the ideal scenario involves achieving linear speedup
@@ -658,11 +667,11 @@ effective techniques for reducing the communication overhead.
 
 % Concepts definition checkpoint
 %\textbf{Near Linear Speedup.}
-GPipe \cite{huang_gpipe_2019}, GShard \cite{lepikhin_gshard_2020} and Pytorch DDP \cite{li_pytorch_2020}
-achieve "near linear" speedup by leveraging pipeline parallelism and model parallelism.
-For example, Pytorch DDP achieved this by aggregating gradients into buckets
-for communication and overlapping communication with computation, over a cluster with 256 GPUs.
-GShard took a practical approach by assessing the trade-offs between model size, training time and
+GPipe \cite{huang_gpipe_2019}, GShard \cite{lepikhin_gshard_2020} and Pytorch DDP
+\cite{li_pytorch_2020} achieve "near linear" speedup by leveraging pipeline parallelism and model
+parallelism. For example, Pytorch DDP achieved this by aggregating gradients into buckets for
+communication and overlapping communication with computation, over a cluster with 256 GPUs. GShard
+took a practical approach by assessing the trade-offs between model size, training time and
 resulting accuracy.
 
 %\textbf{Heterogeneous Clusters.}
@@ -671,50 +680,47 @@ overhead in heterogenous GPU/CPU clusters. They outperformed Parameter Server an
 methods by scaling GPU clusters to 2048 devices and training for a time period of 4 days.
 
 %\textbf{Efficiency Techniques.}
-Effective techniques such as automatic parallelization, sharding and offloading have been proposed by
-Colossal-AI \cite{li_colossal-ai_2023}, effectively training models of up to 13B parameters.
+Effective techniques such as automatic parallelization, sharding and offloading have been proposed
+by Colossal-AI \cite{li_colossal-ai_2023}, effectively training models of up to 13B parameters.
 
 %\textbf{Reinforcement Learning.}
 Other libraries such as Ray \cite{moritz_ray_2018} focused on specialized techniques for training
-reinforcement learning models, where the authors scaled the cluster to 8192 cores.
+reinforcement learning models.
 
-
- 
-
+\textbf{}
 
 \begin{table*}[ht]
 
 	\centering
 	\caption{Concepts recurring in the papers.}
 	\label{tab:concepts}
-    \resizebox{\textwidth}{!}{%
-	\footnotesize
-	\begin{tabular}{lll} % NOTE: concepts definition checkpoint
-		\hline
-		\textbf{Area}    & \textbf{Concept}                           & \textbf{Definition} \\
-		\hline
-		\multirow{8}{*}{DNNs}
-		                 & Bucket Gradient Aggregation                &  \makecell[l]{...}         \\ % Pytorch DDP \cite{li_pytorch_2020}
-		                 & Overlapping Communication with Computation & ...                 \\ % Pytorch DDP \cite{li_pytorch_2020}
-		                 & Heterogeneous Clusters                     & ...                 \\ % BytePS \cite{jiang_unified_nodate}
-		                 & Parameter Server                           & ...                 \\ % BytePS \cite{jiang_unified_nodate}
-		                 & All-Reduce                                 & ...                 \\ % BytePS \cite{jiang_unified_nodate}
-		                 & Automatic Parallelization                  & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
-		                 & Offloading                                 & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
-		                 & Sharding                                   & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
-		\hline
-		\multirow{2}{*}{GPU Programming}
-		                 & Model Parallelism                          &                     \\
-		                 & Model Parallelism                          &                     \\
-		\hline
-		Data Parallelism & Data Parallelism                           &                     \\
-		\hline
-	\end{tabular}
-    }
+	\resizebox{\textwidth}{!}{%
+		\footnotesize
+		\begin{tabular}{lll} % NOTE: concepts definition checkpoint
+			\hline
+			\textbf{Area}    & \textbf{Concept}                           & \textbf{Definition} \\
+			\hline
+			\multirow{8}{*}{DNNs}
+			                 & Bucket Gradient Aggregation                & \makecell[l]{...}   \\ % Pytorch DDP \cite{li_pytorch_2020}
+			                 & Overlapping Communication with Computation & ...                 \\ % Pytorch DDP \cite{li_pytorch_2020}
+			                 & Heterogeneous Clusters                     & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & Parameter Server                           & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & All-Reduce                                 & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & Automatic Parallelization                  & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			                 & Offloading                                 & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			                 & Sharding                                   & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			\hline
+			\multirow{2}{*}{GPU Programming}
+			                 & Model Parallelism                          &                     \\
+			                 & Model Parallelism                          &                     \\
+			\hline
+			Data Parallelism & Data Parallelism                           &                     \\
+			\hline
+		\end{tabular}
+	}
 \end{table*}
 
 \textbf{Achieved accuracy.}
-
 
 \subsubsection{Distributed Learning Techniques Review}
 The review will focus on distributed learning approaches, aligning with "Study 1" in Figure
@@ -980,19 +986,6 @@ The complete lists of included and excluded studies, along with detailed informa
 	\item Listed in Table \ref{tab:search_terms}.
 \end{itemize}
 
-\begin{figure*}[th]
-	\centering
-	\includegraphics[width=\linewidth]{figures/mindmap}
-	\caption{Mindmap.}
-	\label{fig:mindmap}
-\end{figure*}
-
-\begin{figure*}[th]
-	\centering
-	\includegraphics[width=\linewidth]{figures/mindmap-cuda}
-	\caption{Mindmap.}
-	\label{fig:mindmap-cuda}
-\end{figure*}
 
 % \begin{table*}[htbp]
 % 	\centering

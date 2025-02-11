@@ -44,3 +44,14 @@
 \usepackage{graphicx}
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+
+% References
+\usepackage{nameref}
+\usepackage{zref-user}
+
+% Define a custom command for labeled sections
+\newcommand{\cellref}[1]{%
+  [\hyperref[#1]{#1}]%
+}
+
