@@ -1,0 +1,43 @@
+\multirow{15}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{3}: Critical Factors}}
+& \label{G2011} G2011 \newline\centering\cite{chetlur_cudnn_2014}
+& It can provide immediate efficiency gains, and it is rigorously tested and maintained in order to be reliable and performant across a range of different processor architectures. Importantly, our library is designed to use the minimum possible amount of auxiliary memory, which frees up scarce memory for larger models and datasets. We also optimize performance across a wide range of potential use cases, including small mini-batch sizes.
+& \cite{chetlur_cudnn_2014, Jia.EtAl_2014a, Collobert.EtAl_}
+& \textbullet\ Scalability \newline \textbullet\ Performance \\
+
+\cline{2-5}
+& \label{G2012} G2012 \newline\centering\cite{chetlur_cudnn_2014}
+& Firstly, deep learning frameworks can focus on higher-level issues rather than close optimization of parallel kernels to specific hardware platforms. Secondly, as parallel architectures evolve, library providers can provide performance portability, in much the same way as the BLAS routines provide performance portability to diverse applications on diverse hardware. Thirdly, a clearer separation of concerns allows specialization: library providers can take advantage of their deep understanding of parallel architectures to provide optimal efficiency. Our goal is to make it much easier for deep learning frameworks to take advantage of parallel hardware.
+& \cite{chetlur_cudnn_2014, Jia.EtAl_2014a}
+& \textbullet\ Separation of concerns \newline \textbullet\ Focus on higher-level design \newline \textbullet\ Performance portability \\
+
+\cline{2-5}
+& \label{G2014} G2014 \newline\centering\cite{chetlur_cudnn_2014}
+& We are considering several avenues for expanding the performance and functionality of cuDNN. (...) Finally, we would like this library to help people use multiple GPUs to accelerate training.
+& \cite{chetlur_cudnn_2014, krizhevsky_imagenet_2012}
+& \textbullet\ Inter-GPU communication \\
+
+\cline{2-5}
+
+& \label{G2021} G2021 \newline\centering\cite{okuta_cupy_2017} 
+& CuPy implements many functions on cupy.ndarray objects. See the reference 2 for the supported subset of NumPy API. Since CuPy covers most NumPy features, reading the NumPy documentation can be helpful for using CuPy.
+& \cite{okuta_cupy_2017}
+& \textbullet\ Declarative programming\\
+\cline{2-5}
+
+& \label{G2031} G2031 \newline\centering\cite{Jia.EtAl_2014a} 
+&  Caffe fits industry and internet-scale media needs by CUDA GPU computation, processing over 40 million images a day on a single K40 or Titan GPU (...) Switching between a CPU and GPU implementation is exactly one function call. (...) Separation of representation and implementation. Caffe model definitions are written as config files using the Protocol Buffer language. (...) The code is written in clean, efficient C++, with CUDA used for GPU computation, and nearly complete, well-supported bindings to Python/Numpy and MATLAB.
+& \cite{Jia.EtAl_2014a, chetlur_cudnn_2014, Collobert.EtAl_}
+& \textbullet\ Heterogenous hardware \newline \textbullet\ Scalability \newline \textbullet\ Separation of concerns \newline \textbullet\ Usability \\
+
+\cline{2-5}
+
+& \label{G2041} G2041 \newline\centering\cite{Collobert.EtAl_} 
+& Torch7 has been designed with efficiency in mind, leveraging SSE when possible and supporting two ways of parallelization: OpenMP and CUDA. Open Multi-Processing (OpenMP) provides a shared memory CPU parallelization framework on C/C++ and Fortran languages on almost every operating system and compiler toolset. (...) Torch7 is designed to be easily interfaced with third-party software thanks to Lua's interface
+& \cite{Collobert.EtAl_, Jia.EtAl_2014a}
+& \textbullet\ Performance \newline \textbullet\ Cross-framework compatibility \newline \textbullet\ Heterogenous hardware \\
+
+\cline{2-5}
+& \label{G2051} G2051 \newline\centering\cite{krizhevsky_imagenet_2012} 
+& Current GPUs are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to one another's memory directly, without going through host machine memory. The parallelization scheme that we employ essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers.
+& \cite{krizhevsky_imagenet_2012, chetlur_cudnn_2014}
+& \textbullet\ Inter-GPU communication \\

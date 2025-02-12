@@ -1,0 +1,66 @@
+\clearpage
+\onecolumn
+
+{\footnotesize
+	\begin{longtable}{|l|p{5cm}|p{5cm}|p{5cm}|}
+		\caption{Translations of the evaluation metrics}\label{tab:translations_evaluation_metrics}   \\
+
+		\toprule
+		ID & Distributed Neural Networks & GPU Programming & Translation \\
+		\midrule
+		\endfirsthead
+
+		\multicolumn{4}{c}{Table \thetable{} -- continued from previous page}           \\
+		\toprule
+		ID & Distributed Neural Networks & GPU Programming & Translation \\
+		\midrule
+		\endhead
+		\midrule
+    EM1
+        & \textbullet\ Evaluation was initially performed behind closed doors for internal processes (speech recognition systems) and subsequently for external applications (Google Search). \cellref{D301}
+        & \textbullet\ In many frameworks, the GPU libraries can be switched on and off at compile time using a single flag. \cellref{G1014}
+        & \uline{\textbf{Deployment:}} \newline
+          \textbullet\ Large companies can assess new technologies in production without letting the user know about the deployment of new techniques. Allows to rollback to the previous version if the new technique is not effective.
+          \textbullet\ GPU libraries are transparent, but assessing the effectiveness in the real world is not as straightforward as for other companies (i.e. Google).
+        \\
+        \midrule
+
+    EM2
+        & \textbullet\ The evaluation was done by scaling complex networks -- based on Mixture of Experts -- to 600B parameters using automatic sharding. \cellref{D305}
+        & \textbullet\ The cuDNN library is assessed by measuring time and memory usage for convolutional layers. \newline
+          \textbullet\ Mini-batch performance is assessed. \newline
+          \textbullet\ Scalability is not so much a concern as different GPU architectures are benchmarked instead of GPU clusters.
+        & \uline{\textbf{Model Architectures:}} \newline
+          \textbullet\ ...
+        \\
+        \midrule
+
+    EM3
+        & 
+        & 
+        & \uline{\textbf{Task Doamins:}} \newline
+          \textbullet\ ...
+        \\
+        \midrule
+
+    EM4
+        & 
+        & 
+        & \uline{\textbf{Evaluation:}} \newline
+          \textbullet\ ...
+        \\
+        \midrule
+
+    EM5
+        & 
+        & 
+        & \uline{\textbf{Infrastructure:}} \newline
+          \textbullet\ ...
+        \\
+        \midrule
+		\bottomrule
+	\end{longtable}
+}
+
+\twocolumn
+

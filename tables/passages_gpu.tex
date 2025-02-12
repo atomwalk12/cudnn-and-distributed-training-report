@@ -3,7 +3,7 @@
 
 {\tiny
 \begin{longtable}{|l|p{0.6cm}|p{11.8cm}|p{0.6cm}|p{2cm}|}
-	\caption{The passages on distributed neural networks}\label{tab:gpu_passages}                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\
+	\caption{The passages on GPU programming}\label{tab:gpu_passages}                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\
 
 	\toprule
 	Cat. & ID & Text Passages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              & Ref. & Codes \\
@@ -16,31 +16,34 @@
 	\midrule
 	\endhead
     \hline
-	\multirow{32}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{1}: Key Motivating Factors}}
+	\multirow{32}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{4}: Key Motivating Factors}}
 	     & \label{G1011} G1011 \newline\centering\cite{chetlur_cudnn_2014} 
          & Deep learning workloads are computationally intensive, and optimizing their kernels is difficult and time-consuming. As parallel architectures evolve, kernels must be reoptimized, which makes maintaining codebases difficult over time.  The computations that arise when training and using deep neural networks lend themselves naturally to efficient parallel implementations. 
-	     & \cite{chetlur_cudnn_2014}
+	     & \cite{chetlur_cudnn_2014,krizhevsky_imagenet_2012}
 	     & \textbullet\ Optimizing deep-learning kernels \newline \textbullet\ Surging demand for scalability \\
         
          \cline{2-5}
         
          & \label{G1012} G1012 \newline\centering\cite{chetlur_cudnn_2014}
          & Parallel processors such as GPUs have played a significant role in the practical implementation of deep neural net-works. The computations that arise when training and using deep neural networks lend themselves naturally to efficient parallel implementations. The efficiency provided by these implementations al-lows researchers to explore significantly higher capacity networks, training them on larger datasets [7]. 
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,okuta_cupy_2017}
          & \textbullet\ Breakthroughs that provide computational resources \newline \textbullet\ Natural parallelizability \newline \textbullet\ Data availability \\
 
          \cline{2-5}
         
          & \label{G1013} G1013 \newline\centering\cite{chetlur_cudnn_2014}
          & The deep learning community has been successful in finding optimized implementations of these kernels, but as the underlying architectures evolve, these kernels must be re-optimized, which is a significant investment. (...) To address this problem, we have created a library similar in intent to BLAS, with optimized routines for deep learning workloads. Our implementation contains routines for GPUs, although similarly to the BLAS library, these routines could be implemented for other platforms. The library is easy to integrate into existing frameworks, and provides optimized performance and memory usage. 
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,okuta_cupy_2017}
          & \textbullet\ Optimizing deep-learning kernels (investment) \newline \textbullet\ Easy integration into existing frameworks \\
 
          \cline{2-5}
         
          & \label{G1014} G1014 \newline\centering\cite{chetlur_cudnn_2014}
-         & Several deep learning projects at Baidu have integrated cuDNN. For example, it has been integrated into PADDLE, Baidu’s internal deep learning framework. (...) cuDNN computation is transparent to the user through drop-in integration. The model schema and framework interfaces are completely unchanged. Setting a single compilation flag during installation equips Caffe with cuDNN layer implementations and sets cuDNN as the default computation engine. 
-         & \cite{chetlur_cudnn_2014}
+         & Several deep learning projects at Baidu have integrated cuDNN. For example, it has been integrated into PADDLE, Baidu’s internal deep 
+         learning framework. (...) cuDNN computation is transparent to the user through drop-in integration. The model schema and framework interfaces 
+         are completely unchanged. Setting a single compilation flag during installation equips Caffe with cuDNN layer implementations and sets cuDNN 
+         as the default computation engine.
+         & \cite{chetlur_cudnn_2014,okuta_cupy_2017,Jia.EtAl_2014a}
          & \textbullet\ Integration into existing frameworks \newline \textbullet\ Transparent integration \\
 
          \cline{2-5}
@@ -52,53 +55,89 @@
          \cline{2-5}
          & \label{G1016} G1016 \newline\centering\cite{chetlur_cudnn_2014}
          &  With cuDNN, it is possible to write programs that train standard convolutional neural networks without writing any parallel code, but simply using cuDNN and cuBLAS. (...) Firstly, deep learning frameworks can focus on higher-level issues rather than close optimization of parallel kernels to specific hardware platforms. Secondly, as parallel architectures evolve, library providers can provide performance portability, in much the same way as the BLAS routines provide performance portability to diverse applications on diverse hardware. Thirdly, a clearer separation of concerns allows specialization: library providers can take advantage of their deep understanding of parallel architectures to provide optimal efficiency. Our goal is to make it much easier for deep learning frameworks to take advantage of parallel hardware.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,Goodfellow.EtAl_2013}
          & \textbullet\ Meeting user requirements\\
 
          \cline{2-5}
          & \label{G1017} G1017 \newline\centering\cite{chetlur_cudnn_2014}
          & One of the primary goals of cuDNN is to enable the community of neural network frameworks to benefit equally from its APIs. Accordingly, users of cuDNN are not required to adopt any particular software framework, or even data layout. (...) 
          Rather than providing a layer abstraction, we provide lower-level computational primitives, in order to simplify integration with existing deep learning frameworks, each with their own abstractions.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,Collobert.EtAl_}
          & \textbullet\ Self-contained framework \newline \textbullet\ Lower-level abstractions \\
 
          \cline{2-5}
          & \label{G1021} G1021 \newline\centering\cite{okuta_cupy_2017}
-         & NumPy provides multi-dimensional arrays, the fundamental data structure for scientific computing, and a variety of operations and functions. (...) Deep learning computations principally require linear algebra computations, which is one of NumPy’s strengths. However, NumPy does not support calculations on GPUs. This was the motivation to develop CuPy – to fully benefit from fast computations using the latest GPUs with a NumPy-compatible interface.
-         & \cite{okuta_cupy_2017}
+         & NumPy provides multi-dimensional arrays, the fundamental data structure for scientific computing, and a variety of operations and functions. 
+         (...) Deep learning computations principally require linear algebra computations, which is one of NumPy’s strengths. However, NumPy does not 
+         support calculations on GPUs. This was the motivation to develop CuPy – to fully benefit from fast computations using the latest GPUs with a 
+         NumPy-compatible interface.
+         & \cite{okuta_cupy_2017,chetlur_cudnn_2014}
          & \textbullet\ Existing tools not GPU compatible \newline \textbullet\ Deep learning involves linear algebra computations \\
 
          \cline{2-5}
          & \label{G1022} G1022 \newline\centering\cite{okuta_cupy_2017}
-         & CuPy 1 is an open-source library with NumPy syntax that increases speed by doing matrix operations on NVIDIA GPUs. It is accelerated with the CUDA platform from NVIDIA and also uses CUDA-related libraries, including cuBLAS, cuDNN, cuRAND, cuSOLVER, cuSPARSE, and NCCL, to make full use of the GPU architecture. CuPy’s interface is highly compatible with NumPy.
+         & CuPy 1 is an open-source library with NumPy syntax that increases speed by doing matrix operations on NVIDIA GPUs. It is accelerated with 
+         the CUDA platform from NVIDIA and also uses CUDA-related libraries, including cuBLAS, cuDNN, cuRAND, cuSOLVER, cuSPARSE, and NCCL, to make 
+         full use of the GPU architecture. CuPy’s interface is highly compatible with NumPy.
          & \cite{okuta_cupy_2017}
          & \textbullet\ Building on existing tools \\
 
+         \cline{2-5}
+         & \label{G1031} G1031 \newline\centering\cite{Jia.EtAl_2014a}
+         & While deep neural networks have attracted enthusiastic interest within computer vision and beyond, replication of published results can involve months of work by a researcher or engineer. (...) But trained models alone are not sufficient for rapid research progress and emerging commercial applications, and few toolboxes offer truly off-the-shelf deployment of state-of-the-art models—and those that do are often not computationally efficient and thus unsuitable for commercial deployment.
+         & \cite{Jia.EtAl_2014a,Collobert.EtAl_,Goodfellow.EtAl_2013}
+         & \textbullet\ Scalability and deployment \newline \textbullet\ Usability\\
+
+         \cline{2-5}
+         
+         & \label{G1041} G1041 \newline\centering\cite{Jia.EtAl_2014a}
+         & While deep neural networks have attracted enthusiastic interest within computer vision and beyond, replication of published results can involve months of work by a researcher or engineer. (...) But trained models alone are not sufficient for rapid research progress and emerging commercial applications, and few toolboxes offer truly off-the-shelf deployment of state-of-the-art models—and those that do are often not computationally efficient and thus unsuitable for commercial deployment.
+         & \cite{Jia.EtAl_2014a}
+         & \textbullet\ Scalability and deployment \newline \textbullet\ Usability\\
+         \cline{2-5}
+
+         & \label{G1051} G1051 \newline\centering\cite{Collobert.EtAl_}
+         & With Torch7, we aim at providing a framework with three main advantages: (1) it should ease the development of numerical algorithms, (2) it 
+         should be easily extended (including the use of other libraries), and (3) it should be fast. (...) We found that a scripting (interpreted) 
+         language with a good C API appears as a convenient solution to “satisfy” the constraint (2). (...) Among existing scripting languages1 finding 
+         the ones that satisfy condition (3) severely restricted our choice. We chose Lua, the fastest interpreted language (with also the fastest Just 
+         In Time (JIT) compiler2) we could find.
+         & \cite{Collobert.EtAl_,Goodfellow.EtAl_2013,Jia.EtAl_2014a}
+         & \textbullet\ Performance \newline \textbullet\ Usability \newline \textbullet\ Extensibility \\
+         \cline{2-5}
+
+
+         & \label{G1061} G1061 \newline\centering\cite{Goodfellow.EtAl_2013}
+         & The goal of the library is to facilitate machine learning research. This means that the library has a focus on flexibility and extensibility, in order to make sure that nearly any research idea is feasible to implement in the library. The target user base is machine learning researchers. Being "user friendly" for a research user means that it should be easy to understand exactly what the code is doing and configure it very precisely for any desired experiment.
+         & \cite{Goodfellow.EtAl_2013,Collobert.EtAl_}
+         & \textbullet\ Performance \newline \textbullet\ Expert user-base \newline \textbullet\ Flexible and extensible \\
+         \cline{2-5}
+
+
+         & \label{G1071} G1071 \newline\centering\cite{krizhevsky_imagenet_2012}
+         & We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images (...) The specific contributions of this paper are as follows: we trained one of the largest convolutional neural networks to date on the subsets of ImageNet used in the ILSVRC-2010 and ILSVRC-2012 competitions [2] and achieved by far the best results ever reported on these datasets. We wrote a highly-optimized GPU implementation of 2D convolution and all the other operations inherent in training convolutional neural networks, which we make available publicly.
+         & \cite{krizhevsky_imagenet_2012,chetlur_cudnn_2014}
+         & \textbullet\ Task-specific optimizations \newline \textbullet\ Object-recognition \\
          \hline
 
-         \multirow{32}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{1}: Critical Factors}}
+
+         \multirow{15}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{3}: Critical Factors}}
          & \label{G2011} G2011 \newline\centering\cite{chetlur_cudnn_2014}
          & It can provide immediate efficiency gains, and it is rigorously tested and maintained in order to be reliable and performant across a range of different processor architectures. Importantly, our library is designed to use the minimum possible amount of auxiliary memory, which frees up scarce memory for larger models and datasets. We also optimize performance across a wide range of potential use cases, including small mini-batch sizes.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014, Jia.EtAl_2014a, Collobert.EtAl_}
          & \textbullet\ Scalability \newline \textbullet\ Performance \\
 
          \cline{2-5}
          & \label{G2012} G2012 \newline\centering\cite{chetlur_cudnn_2014}
          & Firstly, deep learning frameworks can focus on higher-level issues rather than close optimization of parallel kernels to specific hardware platforms. Secondly, as parallel architectures evolve, library providers can provide performance portability, in much the same way as the BLAS routines provide performance portability to diverse applications on diverse hardware. Thirdly, a clearer separation of concerns allows specialization: library providers can take advantage of their deep understanding of parallel architectures to provide optimal efficiency. Our goal is to make it much easier for deep learning frameworks to take advantage of parallel hardware.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014, Jia.EtAl_2014a}
          & \textbullet\ Separation of concerns \newline \textbullet\ Focus on higher-level design \newline \textbullet\ Performance portability \\
-
-         \cline{2-5}
-         & \label{G2013} G2013 \newline\centering\cite{chetlur_cudnn_2014}
-         & Optimizing and maintaining all these specializations is a difficult task. As we envision this library being maintained for some time, and being ported to yet-to-be-conceived future architectures, we searched for something simpler that would perform more robustly across the parameter space and be easier to port to new architectures.
-         & \cite{chetlur_cudnn_2014}
-         & \textbullet\ Outstanding challenges due to future architectures \\
 
          \cline{2-5}
          & \label{G2014} G2014 \newline\centering\cite{chetlur_cudnn_2014}
          & We are considering several avenues for expanding the performance and functionality of cuDNN. (...) Finally, we would like this library to help people use multiple GPUs to accelerate training.
-         & \cite{chetlur_cudnn_2014}
-         & \textbullet\ Extend to multiple GPU training \\
+         & \cite{chetlur_cudnn_2014, krizhevsky_imagenet_2012}
+         & \textbullet\ Inter-GPU communication \\
 
          \cline{2-5}
 
@@ -107,6 +146,40 @@
 	     & \cite{okuta_cupy_2017}
 	     & \textbullet\ Declarative programming\\
          \cline{2-5}
+
+         & \label{G2031} G2031 \newline\centering\cite{Jia.EtAl_2014a} 
+         &  Caffe fits industry and internet-scale media needs by CUDA GPU computation, processing over 40 million images a day on a single K40 or Titan GPU (...) Switching between a CPU and GPU implementation is exactly one function call. (...) Separation of representation and implementation. Caffe model definitions are written as config files using the Protocol Buffer language. (...) The code is written in clean, efficient C++, with CUDA used for GPU computation, and nearly complete, well-supported bindings to Python/Numpy and MATLAB.
+	     & \cite{Jia.EtAl_2014a, chetlur_cudnn_2014, Collobert.EtAl_}
+	     & \textbullet\ Heterogenous hardware \newline \textbullet\ Scalability \newline \textbullet\ Separation of concerns \newline \textbullet\ Usability \\
+
+         \cline{2-5}
+
+         & \label{G2041} G2041 \newline\centering\cite{Collobert.EtAl_} 
+         & Torch7 has been designed with efficiency in mind, leveraging SSE when possible and supporting two ways of parallelization: OpenMP and CUDA. Open Multi-Processing (OpenMP) provides a shared memory CPU parallelization framework on C/C++ and Fortran languages on almost every operating system and compiler toolset. (...) Torch7 is designed to be easily interfaced with third-party software thanks to Lua's interface
+	     & \cite{Collobert.EtAl_, Jia.EtAl_2014a}
+	     & \textbullet\ Performance \newline \textbullet\ Cross-framework compatibility \newline \textbullet\ Heterogenous hardware \\
+         
+         \cline{2-5}
+         & \label{G2051} G2051 \newline\centering\cite{krizhevsky_imagenet_2012} 
+         & Current GPUs are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to one another's memory directly, without going through host machine memory. The parallelization scheme that we employ essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers.
+	     & \cite{krizhevsky_imagenet_2012, chetlur_cudnn_2014}
+	     & \textbullet\ Inter-GPU communication \\
+
+         \hline
+
+         \multirow{23}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Evaluation Metrics}}
+         & \label{G3011} G3011 \newline\centering\cite{chetlur_cudnn_2014}
+         & The convolution routines in cuDNN provide competitive performance with zero auxiliary memory required.
+         Figure 2 shows the performance on an NVIDIA Tesla K40 of three convolution implementations: cuDNN, Caffe, and cuda-convnet2. We evaluated these implementations using the layer configura-tions shown in table 2, which are commonly used for benchmarking convolution performance [1], and quote average throughput for all these layers. (...) Compared to Caffe, cuDNN per-formance ranges from 1.0× to 1.41×. Importantly, even with a small mini-batch size of only 16, cuDNN performance is still 86\% of maximum performance, which shows that our implementation performs well across the convolution parameter space.
+         & \cite{chetlur_cudnn_2014}
+         & \textbullet\ Convolution performance \newline \textbullet\ Mini-batch evaluation \\
+
+
+         \multirow{23}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations}}
+         & \label{G4011} G4011 \newline\centering\cite{chetlur_cudnn_2014}
+         & Optimizing and maintaining all these specializations is a difficult task. As we envision this library being maintained for some time, and being ported to yet-to-be-conceived future architectures, we searched for something simpler that would perform more robustly across the parameter space and be easier to port to new architectures.
+         & \cite{chetlur_cudnn_2014}
+         & \textbullet\ Outstanding challenges due to future architectures \\
 	\bottomrule
 \end{longtable}
 }

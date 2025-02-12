@@ -19,9 +19,12 @@
 		CF1
 		   & Generally DNNs are most flexible and use the most common programming style supported by the host language. \cellref{D202}, \cellref{D205}
            & \textbullet\ Although most GPU frameworks work using the host language as C++, there exist frontend frameworks that enable users to use Python. \cellref{G2021} \newline
-             \textbullet\ Cudnn exposes a C API \cellref{G1015}
-           & \textbf{Programming paradigms, programming ease.} Imperative and declarative programming styles are both supported. DNNs use Python as the most popular host language, while GPU frameworks generally work with C++ and CUDA. 
-           Nonetheless, there do exist frontend frameworks that enable users to write code in higher-level languages, such as Python.\\
+             \textbullet\ Cudnn exposes a C API \cellref{G1015} \newline
+             \textbullet\ Torch7 is designed for ease of programming through Lua \cellref{G2041} \newline
+             \textbullet\ CuPy implements NumPy-like API \cellref{G2021}
+           & \uline{\textbf{Paradigms, programming ease.}}\newline
+           Imperative and declarative programming styles are both supported. DNNs use Python as the most popular host language, while GPU frameworks generally work with C++ and CUDA. 
+           Nonetheless, there do exist frontend frameworks that enable users to write code in higher-level languages (i.e. Lua, Python), and compatibility libraries (NumPy-like API) to improve accessability.\\
            \midrule
 
     CF2
@@ -29,32 +32,38 @@
       \textbullet\ Scaling is expensive in terms of cost, time and code integration. \cellref{D209} \newline
       \textbullet\ There is a separation of concerns between GPU programming and DNNs, as there is no need for custom C++ code or compiler required to distribute neural networks over cluster nodes. \cellref{D211}
         & \textbullet\ Optimized code using NVIDIA GPUs ensures high performance (freeing up auxiliary memory) \cellref{G2011} \newline
-          \textbullet\ CuDNN provides separation of concerns by enabling developers to focus on higher-level optimizations instead of low-level architecture specific code. \cellref{G2012}
-        & \textbf{Scalability, cost, usability.} DNNs: Scalability challenges are related to distributing parts of the network or dataset across multiple nodes. Since the CUDA toolkit provides a separation of concerns, developers generally
-        do not write low-level code for inter-GPU communication. They can focus on higher-level optimizations (i.e. bucket aggregation, overlapping communication with computation, etc).
-        \\
+          \textbullet\ CuDNN provides separation of concerns by enabling developers to focus on higher-level optimizations instead of low-level architecture specific code \cellref{G2012} \newline
+          \textbullet\ Caffe implements separation of representation and implementation \cellref{G2031}
+        & \uline{\textbf{Scalability, separation of concerns.}}\newline
+        \textbullet\ Scalability challenges are related to distributing parts of the network or dataset across multiple nodes. Frameworks emphasize separation of concerns, allowing developers to focus on higher-level optimizations while library providers handle hardware-specific optimizations.\\
         \midrule
 
     CF3
     & \textbullet\ Specialized techniques for distributed training include: bucketing, overlapping communication with computation, etc. \cellref{D206} \newline
-      \textbullet\ Megatron-LM extentrds optimization techniques to the transformer model. \cellref{D211}
-        & It is a challenge to provide consistent performance as new architectures emerge. \cellref{G2013}
-        & \textbf{!!!Performance.} Although, a lot has been discovered, there exist future challenges in both domains as new architectures are developed.  \newline
-          \\
+      \textbullet\ Megatron-LM extends optimization techniques to the transformer model. \cellref{D211}
+        & \textbullet\ Libraries optimize for wide range of use cases \cellref{G2011} \newline
+          \textbullet\ Frameworks like Torch7 leverage SSE and support multiple parallelization methods \cellref{G2041}
+        & \uline{\textbf{Performance optimization.}}\newline
+        Both domains focus heavily on performance optimization through various techniques. DNNs use specialized distributed training techniques, while GPU frameworks optimize for different architectures and use cases through various parallelization methods.\\
         \midrule
     
     CF4
     & There exist algorithms that can optimize network latency. \cellref{D210} \cellref{D204}
-        & Multi-GPU training is an outstanding challenge. \cellref{G2014}
-        & \textbf{Network latency.} Some challenging problems have optimal algorithms for distributed training. Conversely, multi-GPU training is outstanding work (concurrency is handled by the user). \\
+        & \textbullet\ Multi-GPU training is an outstanding challenge \cellref{G2014} \newline
+          \textbullet\ GPUs can read/write directly to each other's memory \cellref{G2051} \newline
+          \textbullet\ Inter-GPU communication is optimized for specific layers \cellref{G2051}
+        & \uline{\textbf{Network and hardware communication.}}\newline
+        While optimal algorithms exist for network latency optimization, multi-GPU training presents ongoing challenges. AlexNet optimized inter-GPU communication through direct memory access and selective layer communication. The CuDNN leaves multi-GPU communication to the user.\\
         \midrule
 
     CF5
     & The Transformers library provides modular components that greatly simplify the extension and ease of use of the library \cellref{D212}
-        & \textbullet\ CuPy is NumPy compatible. \cellref{G1022} \newline
-          \textbullet\ CuDNN requires more specialized C and CUDA knowledge. \cellref{G1015}
-        & \textbf{Ease of use.} \textbullet\ Given the rich ecosystem, there exist DNN libraries that are particularly easy to build on and extend (i.e. Pytorch). \newline
-          \textbullet\ In general GPU programming libraries are more challenging to get started with as they require more specialized knowledge. However, CuPy attempts to bridge the gap by being NumPy compatible.\\
+        & \textbullet\ CuPy is NumPy compatible \cellref{G1022} \newline
+          \textbullet\ CuDNN requires more specialized C and CUDA knowledge \cellref{G1015} \newline
+          \textbullet\ Caffe provides easy CPU/GPU switching and clean Python/MATLAB bindings \cellref{G2031}
+        & \uline{\textbf{Ease of use and hardware flexibility.}}\newline
+          \textbullet\ DNN libraries emphasize modularity and ease of extension. \newline
+          \textbullet\ GPU frameworks vary in accessibility - some require specialized knowledge while others provide familiar APIs and easy hardware switching capabilities.\\
         \midrule
 
 		\bottomrule
