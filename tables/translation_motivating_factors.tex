@@ -19,7 +19,7 @@
 		MF1
 		   & \textbullet\ Google internally requires their deep learning frameworks to be scalable. \cellref{D101} \newline
              \textbullet\ Internally, other organizations (i.e. Facebook) become more and more reliant on neural networks. \cellref{D106}
-           & Optimizing kernels is difficult and time-consuming. \cellref{G1011}              
+           & \textbullet\ Optimizing kernels is difficult and time-consuming. \cellref{G1011}              
            & \uline{\textbf{Scalability}}\newline 
            %Internal need for scalability
            There is a surging \textbf{need for scalability}, likely due to the increasingly abundant \textbf{data availability} which time consuming to process. 
@@ -30,7 +30,7 @@
             \newline
             \textbullet\ The abundance of computation and data are particularly effective in Natural Language Processing (NLP) tasks. \cellref{D111}
            & \textbullet\ Natural parallelizability of deep learning techniques enables training higher capacity networks on larger datasets. \cellref{G1012} \newline
-             \textbullet\ Early open-source GPU implementations of CNNs set precedent for code sharing. \cellref{G1071}
+             \textbullet\ Early open-source GPU implementations of CNNs set precedent for code sharing. \cellref{G1051}
            & \uline{\textbf{Complexity and performance}}\newline 
            The GPU programming field enabled DNNs through \textbf{easy parallelization} of training. Larger networks consistently provide better \textbf{performance}, leading to widespread adoption, especially in \textbf{NLP tasks}. Open-source implementations have accelerated progress. \\
            \midrule
@@ -40,9 +40,11 @@
              \textbullet\ Frameworks have been extended reinforcement learning \cellref{D208}
 
            & \textbullet\ Deep learning frameworks (Caffe and PADDLE) rely on GPU programming libraries such as cuDNN. \cellref{G1014} \newline
-             \textbullet\ As architectures evolve, underlying code needs to be re-optimized, which poses significant challenges. \cellref{G1013}
+             \textbullet\ As architectures evolve, underlying code needs to be re-optimized. This is standardized by NVidia as they understand better how the GPU architecture works.\cellref{G1013}
            & \uline{\textbf{Critical in many domains}}\newline 
-           GPU programming libraries are used in a more narrow domain, however DNNs have broader applicability in areas such as reinforcement learning. \\
+           \textbullet\ GPU programming libraries are used in a more narrow domain, however DNNs have broader applicability in areas such as reinforcement learning. 
+           \newline
+           \textbullet\ NVidia understands well the GPU architecture and can provide better optimizations in critical areas.\\
 
            \midrule
 		   MF4 
@@ -55,16 +57,16 @@
            \midrule
 		   MF5
            & DDNs have powered a wide range of applications including image recognition, language translation, anomaly detection, and more. \cellref{D106} \newline
-             \textbullet\ Replication of published results can involve months of work by researchers. \cellref{G1031}
+             \textbullet\ Replication of published results can involve months of work by researchers. \cellref{G1041}
            & GPU libraries meet user's needs by reducing the need to write custom code, allowing developers to focus on higher-level issues, improved portability. \cellref{G1016} \newline
-             \textbullet\ Few toolboxes offer truly off-the-shelf deployment of state-of-the-art models that are computationally efficient. \cellref{G1031}
+             \textbullet\ Few toolboxes offer truly off-the-shelf deployment of state-of-the-art models that are computationally efficient. \cellref{G1041}
            & \uline{\textbf{Requirements and applications}}\newline 
            Both topics aim to make it easier for developers to take advantage of parallel hardware. GPU programming facilitates the development of new architectures and DNNs scale models to achieve better accuracy. The need for efficient deployment and replication of research results drives development in both areas. \\
 
            \midrule
 		   MF6
            & Colossal-AI builds on existing open-source frameworks such as PipeDream, GPipe and Chimera. \cellref{D107}, \cellref{D207}
-           & \textbullet\ CuDNN relies on the CUDA toolkit, specifically the cuBLAS library. \cellref{G1016} \newline \textbullet\ CuPy is specifically designed to work with NVidia GPUs. \cellref{G1022}
+           & \textbullet\ CuDNN relies on the CUDA toolkit, specifically the cuBLAS library. \cellref{G1016} \newline \textbullet\ CuPy is specifically designed to work with NVidia GPUs. \cellref{G1062}
            & \uline{\textbf{Leverage existing frameworks}}\newline 
            Since DNN frameworks are generally open-source, this encourages community involvement, which leads to innovation. \newline 
            GPU programming libraries are proprietary. Nonetheless, internally libraries such as cuDNN rely on the CUDA toolkit. \\
@@ -74,8 +76,8 @@
            & \textbullet\ Inter-GPU communication frameworks require minimal code changes and support multiple frontends. \cellref{D110}, \cellref{D112} \newline
             \textbullet\ Libraries can generally be integrated into existing frontend frameworks (i.e. PyTorch). \cellref{D211}
            & \textbullet\ GPU programming libraries provide lower-level primitives and are generally self-contained. \cellref{G1017} \newline
-             \textbullet\ Libraries emphasize compatibility (CuPy with NumPy) or ease of development (Torch7). \cellref{G1022}, \cellref{G1051} \newline
-             \textbullet\ Research-focused libraries prioritize configurability and flexibility. \cellref{G1061}
+             \textbullet\ Libraries emphasize compatibility (CuPy with NumPy) or ease of development (Torch7). \cellref{G1062}, \cellref{G1071} \newline
+             \textbullet\ Research-focused libraries prioritize configurability and flexibility. \cellref{G1031}
            & \uline{\textbf{Cross-framework use}}\newline 
            Open-source DNN libraries promote usability and cross-framework compatibility, fostering innovation. GPU libraries vary between low-level primitives (cuDNN) and user-friendly interfaces (CuPy, Torch7), though being closed-source limits community-driven innovation. This highlights the importance of code sharing for research. \\
 

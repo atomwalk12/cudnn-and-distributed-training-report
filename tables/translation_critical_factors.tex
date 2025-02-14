@@ -18,10 +18,10 @@
 		\midrule
 		CF1
 		   & Generally DNNs are most flexible and use the most common programming style supported by the host language. \cellref{D202}, \cellref{D205}
-           & \textbullet\ Although most GPU frameworks work using the host language as C++, there exist frontend frameworks that enable users to use Python. \cellref{G2021} \newline
+           & \textbullet\ Although most GPU frameworks work using the host language as C++, there exist frontend frameworks that enable users to use Python. \cellref{G2061} \newline
              \textbullet\ Cudnn exposes a C API \cellref{G1015} \newline
-             \textbullet\ Torch7 is designed for ease of programming through Lua \cellref{G2041} \newline
-             \textbullet\ CuPy implements NumPy-like API \cellref{G2021}
+             \textbullet\ Torch7 is designed for ease of programming through Lua \cellref{G2021} \newline
+             \textbullet\ CuPy implements NumPy-like API \cellref{G2061}
            & \uline{\textbf{Paradigms, programming ease.}}\newline
            Imperative and declarative programming styles are both supported. DNNs use Python as the most popular host language, while GPU frameworks generally work with C++ and CUDA. 
            Nonetheless, there do exist frontend frameworks that enable users to write code in higher-level languages (i.e. Lua, Python), and compatibility libraries (NumPy-like API) to improve accessability.\\
@@ -33,7 +33,7 @@
       \textbullet\ There is a separation of concerns between GPU programming and DNNs, as there is no need for custom C++ code or compiler required to distribute neural networks over cluster nodes. \cellref{D211}
         & \textbullet\ Optimized code using NVIDIA GPUs ensures high performance (freeing up auxiliary memory) \cellref{G2011} \newline
           \textbullet\ CuDNN provides separation of concerns by enabling developers to focus on higher-level optimizations instead of low-level architecture specific code \cellref{G2012} \newline
-          \textbullet\ Caffe implements separation of representation and implementation \cellref{G2031}
+          \textbullet\ Caffe implements separation of representation and implementation \cellref{G2041}
         & \uline{\textbf{Scalability, separation of concerns.}}\newline
         \textbullet\ Scalability challenges are related to distributing parts of the network or dataset across multiple nodes. Frameworks emphasize separation of concerns, allowing developers to focus on higher-level optimizations while library providers handle hardware-specific optimizations.\\
         \midrule
@@ -42,7 +42,7 @@
     & \textbullet\ Specialized techniques for distributed training include: bucketing, overlapping communication with computation, etc. \cellref{D206} \newline
       \textbullet\ Megatron-LM extends optimization techniques to the transformer model. \cellref{D211}
         & \textbullet\ Libraries optimize for wide range of use cases \cellref{G2011} \newline
-          \textbullet\ Frameworks like Torch7 leverage SSE and support multiple parallelization methods \cellref{G2041}
+          \textbullet\ Frameworks like Torch7 leverage SSE and support multiple parallelization methods \cellref{G2021}
         & \uline{\textbf{Performance optimization.}}\newline
         Both domains focus heavily on performance optimization through various techniques. DNNs use specialized distributed training techniques, while GPU frameworks optimize for different architectures and use cases through various parallelization methods.\\
         \midrule
@@ -58,9 +58,9 @@
 
     CF5
     & The Transformers library provides modular components that greatly simplify the extension and ease of use of the library \cellref{D212}
-        & \textbullet\ CuPy is NumPy compatible \cellref{G1022} \newline
+        & \textbullet\ CuPy is NumPy compatible \cellref{G1062} \newline
           \textbullet\ CuDNN requires more specialized C and CUDA knowledge \cellref{G1015} \newline
-          \textbullet\ Caffe provides easy CPU/GPU switching and clean Python/MATLAB bindings \cellref{G2031}
+          \textbullet\ Caffe provides easy CPU/GPU switching and clean Python/MATLAB bindings \cellref{G2041}
         & \uline{\textbf{Ease of use and hardware flexibility.}}\newline
           \textbullet\ DNN libraries emphasize modularity and ease of extension. \newline
           \textbullet\ GPU frameworks vary in accessibility - some require specialized knowledge while others provide familiar APIs and easy hardware switching capabilities.\\

@@ -114,31 +114,31 @@
          & \cite{abadi_tensorflow_2016}
 	     & \textbullet\ Deployment via Google Apps \\ \cline{2-5}
          
-         & D303\newline\centering\cite{huang_gpipe_2019} & We demonstrate the advantages of GPipe by training large-scale neural networks on two different tasks with distinct network architectures: (i) Image Classification: We train a 557-million-parameter AmoebaNet model and attain a top-1 accuracy of 84.4\% on ImageNet-2012, (ii) Multilingual Neural Machine Translation: We train a single 6-billion-parameter, 128-layer Transformer model on a corpus spanning over 100 languages and achieve better quality than all bilingual models.
+         & \label{D303}D303\newline\centering\cite{huang_gpipe_2019} & We demonstrate the advantages of GPipe by training large-scale neural networks on two different tasks with distinct network architectures: (i) Image Classification: We train a 557-million-parameter AmoebaNet model and attain a top-1 accuracy of 84.4\% on ImageNet-2012, (ii) Multilingual Neural Machine Translation: We train a single 6-billion-parameter, 128-layer Transformer model on a corpus spanning over 100 languages and achieve better quality than all bilingual models.
          & \cite{huang_gpipe_2019,lepikhin_gshard_2020}
-	     & \textbullet\ Image Classification\newline\textbullet\ Multilingual Neural Machine Translation \\ \cline{2-5}
+	     & \textbullet\ Image Classification\newline\textbullet\ Machine Translation \\ \cline{2-5}
 
-         & D304\newline\centering\cite{jiang_unified_nodate} & We evaluate BytePS using six DNN models and three training frameworks (TensorFlow, PyTorch, MXNet) in production data centers. The results show that with 256 GPUs, BytePS consistently outperform existing all-reduce and PS solutions by up to 84\% and 245\%, respectively.
+         & \label{D304}D304\newline\centering\cite{jiang_unified_nodate} & We evaluate BytePS using six DNN models and three training frameworks (TensorFlow, PyTorch, MXNet) in production data centers. The results show that with 256 GPUs, BytePS consistently outperform existing all-reduce and PS solutions by up to 84\% and 245\%, respectively.
          & \cite{jiang_unified_nodate}
 	     & \textbullet\ Cross-platform evaluation (TensorFlow, PyTorch, MXNet) \\ \cline{2-5}
 
          & \label{D305}D305\newline\centering\cite{lepikhin_gshard_2020} & GShard enabled us to scale up multilingual neural machine translation Transformer model with Sparsely-Gated Mixture-of-Experts beyond 600 billion parameters using automatic sharding. We demonstrate that such a giant model can efficienctly be trained on 2048 TPU v3 accelerators in 4 days to achieve far superior quality for translation from 100 languages to English compared to the prior art.
          & \cite{lepikhin_gshard_2020,huang_gpipe_2019}
-	     & \textbullet\ Models: MoEs \\ \cline{2-5}
+	     & \textbullet\ Models: MoEs \newline \textbullet\ Machine Translation \\ \cline{2-5}
 
-         & D306\newline\centering\cite{li_pytorch_2020} & We measure DDP per iteration latency and scalability using two popular models, ResNet50 [20] and BERT [15], to represent typical vision and NLP applications.
+         & \label{D306}D306\newline\centering\cite{li_pytorch_2020} & We measure DDP per iteration latency and scalability using two popular models, ResNet50 [20] and BERT [15], to represent typical vision and NLP applications.
          & \cite{li_pytorch_2020,li_colossal-ai_2023}
 	     & \textbullet\ Tasks: NLP, Vision \newline \textbullet\ Performance \\ \cline{2-5}
          
-         & D307\newline\centering\cite{li_colossal-ai_2023} & To demonstrate the capability of dynamic tensor placement in ColossalAI, we trained GPT-2 model with 10 billion parameters on the Wikipedia dataset on System II. We set the batch size to 4 and scaled the data parallel training from 1 GPU to 8 GPU.
+         & \label{D307}D307\newline\centering\cite{li_colossal-ai_2023} & To demonstrate the capability of dynamic tensor placement in ColossalAI, we trained GPT-2 model with 10 billion parameters on the Wikipedia dataset on System II. We set the batch size to 4 and scaled the data parallel training from 1 GPU to 8 GPU.
          & \cite{li_colossal-ai_2023,li_pytorch_2020,moritz_ray_2018,shoeybi_megatron-lm_2020}
 	     & \textbullet\ Performance \\ \cline{2-5}
          
-         & D308\newline\centering\cite{moritz_ray_2018} & In our experiments, we demo-strate scaling beyond 1.8 million tasks per second and better performance than existing specialized systems for several challenging reinforcement learning applications.
+         & \label{D308}D308\newline\centering\cite{moritz_ray_2018} & In our experiments, we demonstrate scaling beyond 1.8 million tasks per second and better performance than existing specialized systems for several challenging reinforcement learning applications.
          & \cite{moritz_ray_2018,li_colossal-ai_2023,li_pytorch_2020,shoeybi_megatron-lm_2020}
 	     & \textbullet\ Performance \newline \textbullet\ Tasks: RL \\ \cline{2-5}
          
-         & D311\newline\centering\cite{shoeybi_megatron-lm_2020} & Using the GPT-2 model we achieve SOTA results on the WikiText103 (10.8 compared to SOTA perplexity of 15.8) and LAMBADA (66.5\% compared to SOTA accuracy of 63.2\%) datasets. Our BERT model achieves SOTA results on the RACE dataset (90.9\% compared to SOTA accuracy of 89.4\%) (...) We demonstrate that scaling the model size results in improved accuracies for both GPT-2 (studied up to 8.3 billion parameters) and BERT (studied up to 3.9B parameters) models.
+         & \label{D311}D311\newline\centering\cite{shoeybi_megatron-lm_2020} & Using the GPT-2 model we achieve SOTA results on the WikiText103 (10.8 compared to SOTA perplexity of 15.8) and LAMBADA (66.5\% compared to SOTA accuracy of 63.2\%) datasets. Our BERT model achieves SOTA results on the RACE dataset (90.9\% compared to SOTA accuracy of 89.4\%) (...) We demonstrate that scaling the model size results in improved accuracies for both GPT-2 (studied up to 8.3 billion parameters) and BERT (studied up to 3.9B parameters) models.
          & \cite{shoeybi_megatron-lm_2020,li_pytorch_2020,li_colossal-ai_2023,moritz_ray_2018}
 	     & \textbullet\ Tasks: NLP \newline \textbullet\ Performance \newline \textbullet\ Scaling \\ \hline
          
