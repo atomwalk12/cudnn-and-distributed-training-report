@@ -21,8 +21,8 @@
         & \textbullet\ In many frameworks, the GPU libraries can be switched on and off at compile time using a single flag. \cellref{G1014} \newline
           \textbullet\ Some are designed for both research and industry, run on both CPU and GPU, have bindings for both Python and Matlab. For model architecture portability, Protocol Buffer files are used. \cellref{G3041}
         & \uline{\textbf{Deployment:}} \newline
-          \textbullet\ Large companies like Google employ a staged deployment approach: first testing internally (e.g., speech recognition) before rolling out to external applications (e.g., Search), which enables safe evaluation of new technologies. \newline
-          \textbullet\ Framework designers can rollback frameworks through compile-time flags. Although CUDA code is generally written in C, Python and Matlab bindings ensure portability.
+          \textbullet\ Large companies employ staged deployment: first testing internally before external applications, enabling safe evaluation. \newline
+          \textbullet\ Framework designers can rollback through compile-time flags. CUDA code written in C, with Python and Matlab bindings ensure portability.
         \\
         \midrule
 
@@ -44,9 +44,9 @@
           \textbullet\ MoE models can be scaled up to 600 billion parameters for machine translation.
         & \textbullet\ CuDNN can be used in deep learning, CNNs, speech and language. \cellref{G3012} \newline
           \textbullet\ CuPy can be extended to scientific computing and probabilistic modelling. \cellref{G3061}
-        & \uline{\textbf{Task Doamins:}} \newline
-          \textbullet\ DNN libraries focus on solving deep learning tasks. \newline
-          \textbullet\ CuDNN was designed specifically for deep learning. However, CuPy can be used in broader domains.
+        & \uline{\textbf{Task Domains:}} \newline
+          \textbullet\ DNN libraries focus on deep learning tasks. \newline
+          \textbullet\ CuDNN was designed for deep learning. CuPy can be used in broader domains.
         \\
         \midrule
 
@@ -55,15 +55,58 @@
           \textbullet\ Evaluation is done against vision and NLP tasks \cellref{D306} and RL \cellref{D308}. \newline
           \textbullet\ Wikipedia dataset is often used for evaluation. \cellref{D307} \newline
           \textbullet\ Scaling gives consistent improvements in performance. \cellref{D311}
-        & \textbullet\ The evaluation metric involves assessing performance and matrix multiplication. The speedup is impressive reaching up to 36\% improvements. \cellref{G3013} \newline
-          \textbullet\ CuDNN is assessed against popular libraries like cuda-convnet2 and Caffe. It achieves portability against different GPU architectures. \cellref{G3013} \newline
-          \textbullet\ Qualitative evaluation can offer valuable insights into the performance. \cellref{G3051}
+        & \textbullet\ Evaluation metric involves assessing performance and matrix multiplication. Speedup reaches up to 36\% improvements. \cellref{G3013} \newline
+          \textbullet\ CuDNN is assessed against libraries like cuda-convnet2 and Caffe. Achieves portability across GPU architectures. \cellref{G3013} \newline
+          \textbullet\ Qualitative evaluation can offer valuable insights into performance. \cellref{G3051}
         & \uline{\textbf{Evaluation:}} \newline
-          \textbullet\ Potential for greater gains through hardware-specific optimizations. \newline
-          \textbullet\ Broad applicability of DNNs, while GPU programming is focused on improving specific architectures. \newline
-          \textbullet\ Consistent scaling suggests promising future applications in DNNs, while advancements in GPU programming focus on specific architectures.
+          \textbullet\ Potential for gains through hardware-specific optimizations. \newline
+          \textbullet\ Broad applicability of DNNs, while GPU programming focuses on specific architectures. \newline
+          \textbullet\ Consistent scaling suggests promising future for DNNs, while GPU advances focus on specific implementations.
         \\
         \midrule
+
+    LF1
+      & \textbullet\ To address usability, many libraries provide common APIs with other frameworks. \cellref{D402} \newline
+        \textbullet\ Training DNNs require special algorithms that are often architecture-specific. \cellref{D403} \newline
+        \textbullet\ Optimizations are challenging and error prone, requirement intimate knowledge of the network architecture. \cellref{D411} \newline
+        \textbullet\ Reinforcement learning libraries have bindings that allow both task-parallel and actor-based parallelism. \cellref{D408}
+      & \textbullet\ Replication of results is challenging (can take months of work). \cellref{G4041} \newline
+        \textbullet\ The requirement to manually fine-tune architectures is time-consuming and requires deep knowledge of the GPU architecture. \cellref{G4012} \newline
+        \textbullet\ The memory profiles are used to assess performance. \cellref{G4012}
+      & \uline{\textbf{Usability:}} \newline
+      \textbullet\ To address the replication of SOTA results common APIs are used (Transformers~\cite{wolf_huggingfaces_2020} addresses this issue as it interfaces with \cite{falcon_pytorch_2019}). \newline
+      \textbullet\ Being closed source, open-source frameworks cannot reliably match NVidia SOTA performance, as they have better knowledge of the GPU architecture. \newline
+      \textbullet\ Profiles are key to efficient debugging and optimization in both cases.\\
+      \midrule
+
+    LF2
+        & \textbullet\ No single algorithm that can perform optimally across all cases. \cellref{D406} \newline
+          \textbullet\ Communication overhead leads to resource under-utilization and solutions do not transfer across architectures. \cellref{D403}, \cellref{D405} \newline
+          \textbullet\ Data parallelism models are designed for homogeneous setups. \cellref{D404}
+        & \textbullet\ Main issues relate to memory management around matrix multiplication algorithms. Problems also relate to hyperparameter choice, as some stride sizes perform sub-optimally. \cellref{G4013}
+        & \uline{\textbf{Algorithmic Limitations:}} \newline
+          \textbullet\ No algorithms perform optimally across all cases. \newline
+          \textbullet\ Memory optimizations remain a challenge for both GPU programming and DNNs.
+        \\
+        \midrule
+        
+    LF3
+        & \textbullet\ Tensorflow performs node placement and communication management which results in overhead. \cellref{D401} \newline
+          \textbullet\ Deepspeed incurs communication overhead by allocating data to CPU memory. \cellref{D407} \newline
+          \textbullet\ Some papers emphasize collaboration in the research community to ensure innovation. \cellref{D410}
+        & \textbullet\ Sophisticated techniques to manage communication overhead by not updating parameters across GPUs on each layer. \cellref{G4051} \newline
+          \textbullet\ The cost of transferring data to the GPU outweighs the benefits of using a GPU. \cellref{G4061} \newline
+          \textbullet\ The very existence of CuDNN implies that cross-GPU programming is challenging which requires thorough understanding of the GPU architecture. \cellref{G4012}
+        & \uline{\textbf{Communication Overhead \& Scalability:}} \newline
+          \textbullet\ Tradeoffs between communication overhead and performance. \newline
+          \textbullet\ Both GPUs and DNNs face similar bottlenecks in terms of memory allocation that impacts performance. \newline
+          \textbullet\ There are no simple universal solutions and choosing the right approach depends on model architectures and hardware. \newline
+          \textbullet\ Community is key to success for DNNs.
+        \\
+        \midrule
+
+
+        
 		\bottomrule
 	\end{longtable}
 }

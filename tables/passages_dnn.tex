@@ -46,7 +46,7 @@
          & D108\newline\centering\cite{moritz_ray_2018} & In our evaluation, we study the following questions: (...) 2. What overheads are imposed on distributed primitives (e.g., allreduce) written using Ray's API? (Section 5.1) 3. In the context of RL workloads, how does Ray compare against specialized systems for training, serving, and simulation? (Section 5.2) 4. What advantages does Ray provide for RL applications, compared to custom systems? (Section 5.3)
 	     & \cite{moritz_ray_2018}
 	     & \textbullet\ Extending existing tools to new domains i.e. Reinforcement Learning \\ \cline{2-5}
-         & D109\newline\centering\cite{rasley_deepspeed_2020} & DeepSpeed is compatible with PyTorch. One piece of our library, called ZeRO, is a new parallelized optimizer that greatly reduces the resources needed for model and data parallelism while massively increasing the number of parameters that can be trained. Researchers have used these breakthroughs to create Turing Natural Language Generation (Turing-NLG), which at the time of its release was the largest publicly known language model at 17 billion parameters.
+         & \label{D109}D109\newline\centering\cite{rasley_deepspeed_2020} & DeepSpeed is compatible with PyTorch. One piece of our library, called ZeRO, is a new parallelized optimizer that greatly reduces the resources needed for model and data parallelism while massively increasing the number of parameters that can be trained. Researchers have used these breakthroughs to create Turing Natural Language Generation (Turing-NLG), which at the time of its release was the largest publicly known language model at 17 billion parameters.
 	     & \cite{rasley_deepspeed_2020,sergeev_horovod_2018}
 	     & \textbullet\ Cross-framework compatibility \newline \textbullet\ Large-scale training \\ \cline{2-5}
          & \label{D110}D110\newline\centering\cite{sergeev_horovod_2018} & Existing methods for enabling multi-GPU training under the TensorFlow library entail non-negligible communication overhead and require users to heavily modify their model-building code, leading many researchers to avoid the whole mess and stick with slower single-GPU training. In this paper we introduce Horovod, an open source library that improves on both obstructions to scaling: it employs efficient inter-GPU communication via ring reduction and requires only a few lines of modification to user code, enabling faster, easier distributed training in TensorFlow.
@@ -141,54 +141,54 @@
          & \label{D311}D311\newline\centering\cite{shoeybi_megatron-lm_2020} & Using the GPT-2 model we achieve SOTA results on the WikiText103 (10.8 compared to SOTA perplexity of 15.8) and LAMBADA (66.5\% compared to SOTA accuracy of 63.2\%) datasets. Our BERT model achieves SOTA results on the RACE dataset (90.9\% compared to SOTA accuracy of 89.4\%) (...) We demonstrate that scaling the model size results in improved accuracies for both GPT-2 (studied up to 8.3 billion parameters) and BERT (studied up to 3.9B parameters) models.
          & \cite{shoeybi_megatron-lm_2020,li_pytorch_2020,li_colossal-ai_2023,moritz_ray_2018}
 	     & \textbullet\ Tasks: NLP \newline \textbullet\ Performance \newline \textbullet\ Scaling \\ \hline
-         
+        
     \multirow{30}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Tool limitations and challenges}} 
-         & D401\newline\centering\cite{abadi_tensorflow_2016} & 
+         & \label{D401}D401\newline\centering\cite{abadi_tensorflow_2016} & 
 		 Once a system has multiple devices, there are two main complications: deciding which device to place the computation for each node in the graph, and then managing the required communication of data across device boundaries implied by these placement decisions. (...) A future version of this white paper will have a comprehensive performance evaluation section of both the single machine and distributed implementations.
          & \cite{abadi_tensorflow_2016,li_colossal-ai_2023,sergeev_horovod_2018}
 	     & \textbullet\ Communication overhead \\ \cline{2-5}
          
-         & D402\newline\centering\cite{chen_mxnet_2015} & 
+         & \label{D402}D402\newline\centering\cite{chen_mxnet_2015} & 
 		 Most ML systems embed a domain-specific language (DSL) into a host language (e.g. Python, Lua, C++).  (...)  Comparing to other open-source ML systems, MXNet provides a superset programming interface to Torch7, Theano, Chainer and Caffe, and supports more systems such as GPU clusters.
          & \cite{chen_mxnet_2015,huang_gpipe_2019}
 	     & \textbullet\ Ease of use \newline \textbullet\ Common API with other frameworks \\ \cline{2-5}
          
-         & D403\newline\centering\cite{huang_gpipe_2019} & 
+         & \label{D403}D403\newline\centering\cite{huang_gpipe_2019} & 
 		 (Other) naive model parallelism strategies lead to severe under-utilization due to the sequential dependency of the network. (...) In many cases, increasing model capacity beyond the memory limit of a single accelerator has required developing special algorithms or infrastructure. These solutions are often architecture-specific and do not transfer to other tasks.
          & \cite{huang_gpipe_2019,lepikhin_gshard_2020,jiang_unified_nodate,chen_mxnet_2015}
 	     & \textbullet\ Resource under-utilization \newline \textbullet\ No shared API with common frameworks \\ \cline{2-5}
          
-         & D404\newline\centering\cite{jiang_unified_nodate} & 
+         & \label{D404}D404\newline\centering\cite{jiang_unified_nodate} & 
 		 For distributed training, there are two families of data parallelism approaches, i.e., all-reduce and Parameter Server (PS). In all-reduce, no additional CPU machine is involved [to aggregate results from different accelerators] . Ring is the most popular all-reduce algorithm. (...) All-reduce has no way to utilize additional non-worker nodes, since it was designed for homogeneous setup.
          & \cite{jiang_unified_nodate,huang_gpipe_2019,lepikhin_gshard_2020}
 	     & \textbullet\ Designed for homogeneous setup \newline \textbullet\ Resource under-utilization \\ \cline{2-5}
          
-         & D405\newline\centering\cite{lepikhin_gshard_2020} & 
+         & \label{D405}D405\newline\centering\cite{lepikhin_gshard_2020} & 
 		 There is a lack of support for efficient model parallelism algorithms under commonly used deep learning frameworks such as TensorFlow [21] and PyTorch [22]. Naive model parallelism with graph partition is supported but it would lead to severe under-utilization due to the sequential dependency of the network and gradient based optimization.
          & \cite{lepikhin_gshard_2020,huang_gpipe_2019,jiang_unified_nodate}
 	     & \textbullet\ Resource under-utilization \newline \textbullet\ No efficient model parallelism algorithms \\ \cline{2-5}
          
-         & D406\newline\centering\cite{li_pytorch_2020} & 
+         & \label{D406}D406\newline\centering\cite{li_pytorch_2020} & 
 		 Despite the conceptual simplicity of the technique, the subtle dependencies between computation and communication make it non-trivial to optimize the distributed training efficiency. (...) Based on our observations, there is no single configuration that would work for all use cases, as it would highly depend on the model size, model structure, network link bandwidth, etc.
          & \cite{li_pytorch_2020,abadi_tensorflow_2016,sergeev_horovod_2018,shoeybi_megatron-lm_2020}
 	     & \textbullet\ No optimal algorithm for all use cases \newline \textbullet\ Optimization challenges \\ \cline{2-5}
          
-         & D407\newline\centering\cite{li_colossal-ai_2023} & 
+         & \label{D407}D407\newline\centering\cite{li_colossal-ai_2023} & 
 		 One drawback of pipeline parallel training is that there will be some bubble time, where some devices are idle when others are engaged in computation, leading to the waste of computational resources. (...) DeepSpeed's static policy will still offload all model data to the CPU memory, leading to low memory efficiency and high communication over-head. 
          & \cite{li_colossal-ai_2023,abadi_tensorflow_2016,sergeev_horovod_2018}
 	     & \textbullet\ Redundant computation \newline \textbullet\ Communication overhead \\ \cline{2-5}
         
-         & D408\newline\centering\cite{moritz_ray_2018} & 
+         & \label{D408}D408\newline\centering\cite{moritz_ray_2018} & 
 		 While in principle one could develop an end-to-end solution by stitching together several existing systems (e.g., Horovod [53] for distributed training, Clipper [19] for serving, and CIEL [40] for simulation), in practice this approach is untenable due to the tight coupling of these components within applications. As a result, researchers and practitioners today build one-off systems for specialized RL applications [58, 41, 54, 44, 49, 5]. (...) To satisfy these requirements, Ray implements a unified interface that can express both task-parallel and actorbased computations.
          & \cite{moritz_ray_2018,chen_mxnet_2015}
 	     & \textbullet\ Tight coupling of components \newline \textbullet\ Multiple programming paradigms \\ \cline{2-5}
          
-         & D410\newline\centering\cite{sergeev_horovod_2018} & 
+         & \label{D410}D410\newline\centering\cite{sergeev_horovod_2018} & 
 		 There are a few areas that we are actively working on to improve Horovod, including: Collecting and sharing learnings about adjusting model parameters for distributed deep learning: Facebook's paper [6] describes the adjustments needed to model hyperparameters to achieve the same or greater accuracy in a distributed training job compared to training the same model on a single GPU, demonstrating the feasibility of training a TensorFlow model on 256 GPUs. We believe this area of deep learning research is still in its early stages and hope to collaborate with other teams about approaches to further scale deep learning training.
          & \cite{sergeev_horovod_2018,abadi_tensorflow_2016,li_colossal-ai_2023}
 	     & \textbullet\ Cross-node communication challenges \newline \textbullet\ Collaboration with external teams \\ \cline{2-5}
          
-         & D411\newline\centering\cite{shoeybi_megatron-lm_2020} & 
+         & \label{D411}D411\newline\centering\cite{shoeybi_megatron-lm_2020} & 
 		 However, large batch training introduces complications into the optimization process that can result in reduced accuracy or longer time to convergence, offsetting the benefit of increased training throughput. (...) for BERT models, careful attention to the placement of layer normalization in BERT-like models is critical to achieving increased accuracies as the model size increases.
          & \cite{shoeybi_megatron-lm_2020,li_pytorch_2020}
 	     & \textbullet\ Error prone utilization \newline \textbullet\ Manual hyperparameter tuning \\  \cline{2-5}

@@ -55,4 +55,17 @@
   [\hyperref[#1]{#1}]%
 }
 
+\makeatletter
+\newcommand{\cellrefs}[1]{%
+  (%
+  \def\temp{}%
+  \@for\next:=#1\do{%
+    \ifx\temp\empty\else, \fi%
+    \def\temp{1}%
+    \hyperref[\next]{\next}%
+  }%
+  )%
+}
+\makeatother
+
 \usepackage{ulem}

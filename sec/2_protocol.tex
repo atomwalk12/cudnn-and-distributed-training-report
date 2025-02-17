@@ -410,48 +410,48 @@ as specific frameworks.
 	\label{tab:gpu_libraries}
 	\begin{tabular}{llp{8cm}lll}
 		\hline
-		\small \textbf{Category}       & \small \textbf{ID} & \small \textbf{Library/Framework}                                                               & \small \textbf{Vendor}                     & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
+		\small \textbf{Category} & \small \textbf{ID} & \small \textbf{Library/Framework}                                                     & \small \textbf{Vendor} & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
 		\hline
 		\multirow{4}{*}{\small NVIDIA}
-		                               & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra                                  & \small NVIDIA                              & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
-		                               & \small NV2         & \small cuDNN: Optimized deep neural network primitives                                          & \small NVIDIA                              & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
-		                               & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                                                 & \small NVIDIA                              & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
-		                               & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication                               & \small NVIDIA                              & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
+		                         & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra                        & \small NVIDIA          & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
+		                         & \small NV2         & \small cuDNN: Optimized deep neural network primitives                                & \small NVIDIA          & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
+		                         & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                                       & \small NVIDIA          & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
+		                         & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication                     & \small NVIDIA          & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
 		\hline
 		\multirow{4}{*}{\small AMD}
-		                               & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                                                       & \small AMD                                 & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
-		                               & \small AMD2        & \small MIOpen: Deep learning primitives                                                         & \small AMD                                 & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
-		                               & \small AMD3        & \small HIP: Portable API for CUDA-like code                                                     & \small Multiple                            & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
-		                               & \small AMD4        & \small RCCL: Multi-GPU communication                                                            & \small AMD                                 & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
+		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                                             & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
+		                         & \small AMD2        & \small MIOpen: Deep learning primitives                                               & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
+		                         & \small AMD3        & \small HIP: Portable API for CUDA-like code                                           & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
+		                         & \small AMD4        & \small RCCL: Multi-GPU communication                                                  & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
 		\hline
 		\multirow{3}{*}{\small Intel}
-		                               & \small INT1        & \small oneMKL: Math Kernel Library                                                              & \small Intel                               & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
-		                               & \small INT2        & \small oneDNN: Deep learning primitives                                                         & \small Intel                               & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
-		                               & \small INT3        & \small oneCCL: Collective communication library                                                 & \small Intel                               & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
+		                         & \small INT1        & \small oneMKL: Math Kernel Library                                                    & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
+		                         & \small INT2        & \small oneDNN: Deep learning primitives                                               & \small Intel           & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
+		                         & \small INT3        & \small oneCCL: Collective communication library                                       & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
 		\hline
 		\multirow{3}{*}{\small Cross-Platform}
-		                               & \small CP1         & \small OpenCL: Open standard for heterogeneous computing                                        & \small Multiple                            & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
-		                               & \small CP2         & \small SYCL: C++-based multi-device programming                                                 & \small Multiple                            & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
-		                               & \small CP3         & \small Kokkos: Performance-portable C++ framework                                               & \small Multiple                            & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
+		                         & \small CP1         & \small OpenCL: Open standard for heterogeneous computing                              & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
+		                         & \small CP2         & \small SYCL: C++-based multi-device programming                                       & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
+		                         & \small CP3         & \small Kokkos: Performance-portable C++ framework                                     & \small Multiple        & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
 
 		\hline
 		\multirow{5}{*}{\small High-Level}
-		                               & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                                                    & \small NVIDIA                              & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
-		                               & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                                                     & \small AMD                                 & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
-		                               & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                                                   & \small Intel                               & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
-		                               & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD                                         & \small Multiple                            & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
-		                               & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)                                   & \small NVIDIA                              & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
+		                         & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                                          & \small NVIDIA          & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
+		                         & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                                           & \small AMD             & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
+		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                                         & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
+		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD                               & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
+		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)                         & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
 		\hline
 		\multirow{5}{*}{\small Tutorials}
-		                               & \small T1          & \small CUDA Toolkit Samples                                                                     & \small NVIDIA                              & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
-		                               & \small T2          & \small AMD Lab Notes                                                                            & \small AMD                                 & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
-		                               & \small T3          & \small Intel Compute Samples                                                                    & \small Intel                               & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
+		                         & \small T1          & \small CUDA Toolkit Samples                                                           & \small NVIDIA          & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
+		                         & \small T2          & \small AMD Lab Notes                                                                  & \small AMD             & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
+		                         & \small T3          & \small Intel Compute Samples                                                          & \small Intel           & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
 		\hline
 		\multirow{5}{*}{\small NN Libraries}
-		                               & \small NN1         & \small Caffe: Convolutional Architecture for Fast Feature Embedding                             & \small BVLC                                & \small Library       & \small \cite{Jia.EtAl_2014a}                          \\[1ex]
-		                               & \small NN2         & \small ImageNet Classification with Deep Convolutional Neural Networks (CUDA-Convnet) & \small AlexNet     & \small Library                                                                                  & \small \cite{_ag,krizhevsky_imagenet_2012}                                                                                \\[1ex]
-		                               & \small NN3         & \small Pylearn2: a machine learning research library                                            & \small Pylearn2                            & \small Library       & \small \cite{Goodfellow.EtAl_2013}                    \\
-		                               & \small NN4         & \small Torch7: A Matlab-like Environment for Machine Learning                                   & \small Torch7                              & \small Library       & \small \cite{Collobert.EtAl_}                         \\
+		                         & \small NN1         & \small Caffe: Convolutional Architecture for Fast Feature Embedding                   & \small BVLC            & \small Library       & \small \cite{Jia.EtAl_2014a}                          \\[1ex]
+		                         & \small NN2         & \small ImageNet Classification with Deep Convolutional Neural Networks (CUDA-Convnet) & \small AlexNet         & \small Library       & \small \cite{_ag,krizhevsky_imagenet_2012}            \\[1ex]
+		                         & \small NN3         & \small Pylearn2: a machine learning research library                                  & \small Pylearn2        & \small Library       & \small \cite{Goodfellow.EtAl_2013}                    \\
+		                         & \small NN4         & \small Torch7: A Matlab-like Environment for Machine Learning                         & \small Torch7          & \small Library       & \small \cite{Collobert.EtAl_}                         \\
 		\hline
 	\end{tabular}
 \end{table*}
@@ -482,12 +482,11 @@ manner.
 
 \subsection{M.4 -- Reading the studies}
 \label{sec:reading-studies}
-\textbf{Distributed Neural Networks.}
+\subsubsection{Distributed Neural Networks.}
+
 In order to more easily extract useful information from the studies, I identified four key criteria
-which aim to facilitate answering the research questions defined in Section \ref{sec:research_questions_refined}.
-Basically, by creating an indirect link to the research questions (through the criteria), the process becomes more
-streamlined and the synthesis process more focused. These properties are supported by direct quotes from each paper,
-essentially providing traceable context for each characteristic:
+which aim to facilitate answering the research questions defined in Section
+\ref{sec:research_questions_refined}.
 
 \begin{figure*}
 	\centering
@@ -514,7 +513,76 @@ essentially providing traceable context for each characteristic:
 \end{itemize}
 
 The resulting artifacts are available in the supplementary material in Table
-\ref{tab:dnn_passages}.
+\ref{tab:dnn_passages}. Each contributing factor is associated with an exact passage and various
+codes (categories) that were used to classify the passage. The studies are summarized below.
+
+\textbf{Motivating Factors.}
+The motivation for developing DNNs is to improve performance by increasing the scale and complexity
+both of the datasets and model architectures. Optimizing speed is crucial because by training larger
+models performance is likely to improve \cellrefs{D103} and as a result many applications become viable
+\cellrefs{D105}, which otherwise would be infeasible to train.
+
+It has been shown through empirical evidence that increasing the size of the model or dataset,
+leads to better performance \cellrefs{D102,D105,D111}. This has been applied in industrial settings
+\cellrefs{D101,D106}, and large scale training requirements have been formalized in
+\cellrefs{D109,D110}.
+
+Apart from scalability, performance is also a key motivating factor \cellrefs{D103,D105}. Some
+studies have shown that increasing the depth of the network overcomes performance bottlenecks
+\cellrefs{D103}, ensuring applicability in a wide range of domains. Lastly, resource utilization
+also plays an important role in practical scenarios where clusters typically contain heterogeneous
+hardware \cellrefs{D104}.
+
+Beyond performance and scale, ease of programming and accessability to a wide range of uses also
+play a crucial role. This involves simplifying workflows and enabling access to advanced techniques
+to a wider audience \cellrefs{D110,D111,D112}. Nonetheless, one obstacle for usability is the
+requirement to evolve existing frameworks and support an increasing number of applications as user
+requirements change \cellrefs{D106}. Furthermore, cross-platform and cross-framework support remain
+crucial for wider adoption and flexibility \cellrefs{D109,D112}, while at the same time enforcing
+innovation through scientific curiosity \cellrefs{D102}.
+
+\textbf{Critical Factors.}
+There were considered several critical factors to effectively develop large machine learning systems.
+Performance and scalability are among the central concerns \cellrefs{D203,D206,D207,D209,D212}. These
+can further be trimmed down to efficiency (not waste resources), speed and the ability to handle
+a wide range of architectural choices in distributed environments.
+
+Usability and ease of use are also increasingly considered important for broader adaption and
+developer productivity, which includes intuitive programming paradigms and simplified workflows
+\cellrefs{D202,D205,D209,D211,D212}.
+
+There are also other factors such as cost and communication efficiency which were also considered
+\cellrefs{D209}. Particularly, they have been shown to represent a bottleneck \cellrefs{D204,D210},
+and thus are also crucial.
+
+To facilitate all these factors, effective hardware utilization (using both the CPU and GPU) plays
+an important role \cellrefs{D201}, as well as software engineering principles like separation of
+concerns \cellrefs{D205}, further contribute to robust library design.
+
+\textbf{Evaluation Scenarios.}
+Generally, evaluation is done by assessing task performance metrics, which includes accuracy
+across various tasks like image classification, vision or NLP \cellrefs{D303,D305,D306,D308,D311}.
+Although the measurements regarding the speed, efficiency or resource utilization are important
+\cellrefs{D306,D307,D308,D311}, scalability is a key metric that is largely used in the literature
+\cellrefs{D306,D308,D311}. In particular, studies such as \cellrefs{D301} assess deployment
+in real-world scenarios.
+
+Lately, some algorithms have also focused on cross-framework evaluation to ensure broader
+applicability \cellrefs{D304}.
+
+\textbf{Limitations and Challenges.}
+The main challenges faced by DNNs include communication overhead and resource under-utilization
+\cellrefs{D401,D403,D404,D405,D407,D410}. The lack of standardized tools and frameworks lead
+to difficulties regarding programming complexity and ease of use \cellrefs{D402,D403,D408}.
+
+There exist high-level optimization challenges that prevent achieving peak performance, due to
+different architectures and hardware configurations \cellrefs{D406,D411}. Moreover, there exist
+also algorithmic limitations, tight coupling, and issues related to debugging code
+\cellrefs{D405,D406,D408,D411}, which shows that there is still large room for improvement.
+
+Finally, the need for manual tuning and best-configuration selection points towards the need to
+create more user-friendly machine learning frameworks \cellrefs{D411}.
+
 
 \subsubsection{Distributed Neural Networks}
 In short, studies about distributed neural networks are quite recent and offer interesting insights

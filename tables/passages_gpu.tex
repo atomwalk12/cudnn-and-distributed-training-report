@@ -203,12 +203,45 @@
 
          \hline
 
-         \multirow{23}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations}}
+         \multirow{7}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Challenges}}
          & \label{G4011} G4011 \newline\centering\cite{chetlur_cudnn_2014}
          & Optimizing and maintaining all these specializations is a difficult task. As we envision this library being maintained for some time, and being ported to yet-to-be-conceived future architectures, we searched for something simpler that would perform more robustly across the parameter space and be easier to port to new architectures. (...) We are considering several avenues for expanding the performance and functionality of cuDNN. (...) Finally, we would like this library to help people use multiple GPUs to accelerate training.
          & \cite{chetlur_cudnn_2014}
          & \textbullet\ Outstanding challenges due to future architectures \newline \textbullet\ Multi-GPU training \\
          \cline{2-5}
+
+         & \label{G4012} G4012 \newline\centering\cite{chetlur_cudnn_2014}
+         & The deep learning community has been successful in finding optimized implementations of these kernels, but as the underlying architectures evolve, these kernels must be re-optimized, which is a significant investment. Optimizing these kernels requires a deep understanding of the underlying processor architecture, with careful scheduling of data movement, on-chip memory placement, register blocking, and other optimizations in order to get acceptable performance.
+         & \cite{chetlur_cudnn_2014}
+         & \textbullet\ Usability: Optimization of kernels is time-consuming \\
+         \cline{2-5}
+
+         & \label{G4013} G4013 \newline\centering\cite{chetlur_cudnn_2014}
+         & There are several ways to implement convolutions efficiently. Our goal is to provide performance as close as possible to matrix multiplication, while using no auxiliary memory. GPU memory is high bandwidth, but low capacity, and is therefore a scarce resource. (...) Some approaches, like lowering convolutions to matrix multiplication or using Fast Fourier Transform (FFT), have drawbacks (...) Another common approach is to compute the convolutions directly. This can be very efficient, but requires a large number of specialized implementations to handle the many corner cases implicit in the 11-dimensional parameter space of the convolutions. (...) Additionally, the FFT based approach does not per-form efficiently when the striding parameters u and v are greater than 1, which is common in many state-of-the art networks
+         & \cite{chetlur_cudnn_2014}
+         & \textbullet\ Algorithmic limitation: high memory usage (FFT, matrix multiplication), direct compute (specialized implementations) \\
+         \cline{2-5}
+
+         \multirow{7}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Challenges}}
+         & \label{G4041} G4041 \newline\centering\cite{Jia.EtAl_2014a}
+         & While deep neural networks have attracted enthusiastic interest within computer vision and beyond, replication of published results can involve months of work by a researcher or engineer. Sometimes researchers deem it worthwhile to release trained models along with the paper advertising their performance. But trained models alone are not sufficient for rapid research progress and emerging commercial applications, and few toolboxes offer truly off-the-shelf deployment of state-of-the-art models—and those that do are often not computationally efficient and thus unsuitable for commercial deployment.
+         & \cite{Jia.EtAl_2014a}
+         & \textbullet\ Usability: Replication of results is challenging \\
+         \cline{2-5}
+
+         & \label{G4051} G4051 \newline\centering\cite{krizhevsky_imagenet_2012}
+         & The parallelization scheme that we employ essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers. This means that, for example, the kernels of layer 3 take input from all kernel maps in layer 2. However, kernels in layer 4 take input only from those kernel maps in layer 3 which reside on the same GPU. Choosing the pattern of connectivity is a problem for cross-validation, but this allows us to precisely tune the amount of communication until it is an acceptable fraction of the amount of computation.
+         & \cite{krizhevsky_imagenet_2012}
+         & \textbullet\ Communication overhead \\
+         \cline{2-5}
+
+         & \label{G4061} G4061 \newline\centering\cite{chetlur_cudnn_2014}
+         & It is accelerated with the CUDA platform from NVIDIA and also uses CUDA-related libraries, including cuBLAS, cuDNN, cuRAND, cuSOLVER, cuSPARSE, and NCCL, to make full use of the GPU architecture. For small matrices, CuPy is slower than NumPy since there is some overhead in CuPy from the CUDA kernel launch. For larger matrices, the overhead is small compared to the actual GPU computation, and CuPy is up to six times faster than CPU-based NumPy.
+         & \cite{chetlur_cudnn_2014}
+         & \textbullet\ Limitations: small matrix performance \\
+         \cline{2-5}
+
+
 	\bottomrule
 \end{longtable}
 }
