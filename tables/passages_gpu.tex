@@ -159,14 +159,14 @@
          & \label{G3011} G3011 \newline\centering\cite{chetlur_cudnn_2014}
          & The convolution routines in cuDNN provide competitive performance with zero auxiliary memory required.
          Figure 2 shows the performance on an NVIDIA Tesla K40 of three convolution implementations: cuDNN, Caffe, and cuda-convnet2. We evaluated these implementations using the layer configurations shown in table 2, which are commonly used for benchmarking convolution performance [1], and quote average throughput for all these layers. (...) Compared to Caffe, cuDNN per-formance ranges from 1.0× to 1.41×. Importantly, even with a small mini-batch size of only 16, cuDNN performance is still 86\% of maximum performance, which shows that our implementation performs well across the convolution parameter space.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,Goodfellow.EtAl_2013,Jia.EtAl_2014a}
          & \textbullet\ Model Architecture (convolution performance, mini-batch evaluation, efficiency) \\
 
          \cline{2-5}
 
          & \label{G3012} G3012 \newline\centering\cite{chetlur_cudnn_2014}
-         & We present a library of efficient implementations of deep learning primitives. (...) Convolutional Neural Networks (CNNs) [14] are an important and successful class of deep networks. (...) We are also using cuDNN in other domains besides image processing, such as speech and language. cuDNN’s ability to convolve non-square inputs with asymmetric padding is particularly useful for these other domains. 
-         & \cite{chetlur_cudnn_2014}
+         & We present a library of efficient implementations of deep learning primitives. (...) Convolutional Neural Networks (CNNs) [14] are an important and successful class of deep networks. (...) We are also using cuDNN in other domains besides image processing, such as speech and language. cuDNN's ability to convolve non-square inputs with asymmetric padding is particularly useful for these other domains. 
+         & \cite{chetlur_cudnn_2014,okuta_cupy_2017}
          & \textbullet\ Domains: deep learning, CNNs, general purpose\\
 
          \cline{2-5}
@@ -179,13 +179,13 @@
          \cline{2-5}
          & \label{G3031} G3031 \newline\centering\cite{Goodfellow.EtAl_2013}
          & Because the philosophy that Pylearn2 developers should write features when they are needed, and because most Pylearn2 developers so far have been deep learning researchers, Pylearn2 mostly con-tains deep learning models or models that are used as building blocks for deep architectures. This includes autoencoders [6], RBMs [47] including RBMs with Gaussian visible units [54], DBMs [45], MLPs [44], convolutional networks [33], and local coordinate coding [56]. 
-         & \cite{Goodfellow.EtAl_2013}
+         & \cite{Goodfellow.EtAl_2013,chetlur_cudnn_2014,Jia.EtAl_2014a}
          & \textbullet\ Model architectures \\
 
          \cline{2-5}
          & \label{G3041} G3041 \newline\centering\cite{Jia.EtAl_2014a}
          & It powers on-going research projects, large-scale industrial applications, and startup prototypes in vision, speech, and multimedia. (...)  The same models can be run in CPU or GPU mode on a variety of hardware (...) The code is written in clean, efficient C++, with CUDA used for GPU computation, and nearly complete, well-supported bindings to Python/Numpy and MATLAB. (...) Separation of representation and implementation. Caffe model definitions are written as config files using the Protocol Buffer language.
-         & \cite{Jia.EtAl_2014a}
+         & \cite{Jia.EtAl_2014a,chetlur_cudnn_2014,Goodfellow.EtAl_2013}
          & \textbullet\ Deployment \newline \textbullet\ Model architectures \\
 
          \cline{2-5}
@@ -196,8 +196,8 @@
 
          \cline{2-5}
          & \label{G3061} G3061 \newline\centering\cite{okuta_cupy_2017}
-         & For example, a Python-based probabilistic modeling software, Pomegranate [4], uses CuPy as its GPU backend. We believe this is thanks to CuPy’s NumPy-like design and strong performance based on NVIDIA libraries. (...) CuPy runs NumPy code at GPU calculation speeds. Though developed as the array back-end for the deep learning framework Chainer, it can also be used for general purpose, scientific computing on GPU.
-         & \cite{okuta_cupy_2017}
+         & For example, a Python-based probabilistic modeling software, Pomegranate [4], uses CuPy as its GPU backend. We believe this is thanks to CuPy's NumPy-like design and strong performance based on NVIDIA libraries. (...) CuPy runs NumPy code at GPU calculation speeds. Though developed as the array back-end for the deep learning framework Chainer, it can also be used for general purpose, scientific computing on GPU.
+         & \cite{okuta_cupy_2017,chetlur_cudnn_2014}
          & \textbullet\ Domain: scientific computing, probabilistic modelling\\
 
 
@@ -206,7 +206,7 @@
          %\multirow{23}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations and Challenges}}
          & \label{G4011} G4011 \newline\centering\cite{chetlur_cudnn_2014}
          & Optimizing and maintaining all these specializations is a difficult task. As we envision this library being maintained for some time, and being ported to yet-to-be-conceived future architectures, we searched for something simpler that would perform more robustly across the parameter space and be easier to port to new architectures. (...) We are considering several avenues for expanding the performance and functionality of cuDNN. (...) Finally, we would like this library to help people use multiple GPUs to accelerate training.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,krizhevsky_imagenet_2012}
          & \textbullet\ Outstanding challenges due to future architectures \newline \textbullet\ Multi-GPU training \\
          \cline{2-5}
 
@@ -219,7 +219,7 @@
          \multirow{15}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations \& Challenges}}
          & \label{G4013} G4013 \newline\centering\cite{chetlur_cudnn_2014}
          & There are several ways to implement convolutions efficiently. Our goal is to provide performance as close as possible to matrix multiplication, while using no auxiliary memory. GPU memory is high bandwidth, but low capacity, and is therefore a scarce resource. (...) Some approaches, like lowering convolutions to matrix multiplication or using Fast Fourier Transform (FFT), have drawbacks (...) Another common approach is to compute the convolutions directly. This can be very efficient, but requires a large number of specialized implementations to handle the many corner cases implicit in the 11-dimensional parameter space of the convolutions. (...) Additionally, the FFT based approach does not per-form efficiently when the striding parameters u and v are greater than 1, which is common in many state-of-the art networks
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,chetlur_cudnn_2014}
          & \textbullet\ Algorithmic limitation: high memory usage (FFT, matrix multiplication), direct compute (specialized implementations) \\
          \cline{2-5}
 
@@ -232,13 +232,13 @@
 
          & \label{G4051} G4051 \newline\centering\cite{krizhevsky_imagenet_2012}
          & The parallelization scheme that we employ essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers. This means that, for example, the kernels of layer 3 take input from all kernel maps in layer 2. However, kernels in layer 4 take input only from those kernel maps in layer 3 which reside on the same GPU. Choosing the pattern of connectivity is a problem for cross-validation, but this allows us to precisely tune the amount of communication until it is an acceptable fraction of the amount of computation.
-         & \cite{krizhevsky_imagenet_2012}
+         & \cite{krizhevsky_imagenet_2012,chetlur_cudnn_2014}
          & \textbullet\ Communication overhead \\
          \cline{2-5}
 
          & \label{G4061} G4061 \newline\centering\cite{chetlur_cudnn_2014}
          & It is accelerated with the CUDA platform from NVIDIA and also uses CUDA-related libraries, including cuBLAS, cuDNN, cuRAND, cuSOLVER, cuSPARSE, and NCCL, to make full use of the GPU architecture. For small matrices, CuPy is slower than NumPy since there is some overhead in CuPy from the CUDA kernel launch. For larger matrices, the overhead is small compared to the actual GPU computation, and CuPy is up to six times faster than CPU-based NumPy.
-         & \cite{chetlur_cudnn_2014}
+         & \cite{chetlur_cudnn_2014,chetlur_cudnn_2014}
          & \textbullet\ Limitations: small matrix performance \\
          \cline{2-5}
 
