@@ -203,7 +203,7 @@
 
          \hline
 
-         \multirow{7}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Challenges}}
+         %\multirow{23}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations and Challenges}}
          & \label{G4011} G4011 \newline\centering\cite{chetlur_cudnn_2014}
          & Optimizing and maintaining all these specializations is a difficult task. As we envision this library being maintained for some time, and being ported to yet-to-be-conceived future architectures, we searched for something simpler that would perform more robustly across the parameter space and be easier to port to new architectures. (...) We are considering several avenues for expanding the performance and functionality of cuDNN. (...) Finally, we would like this library to help people use multiple GPUs to accelerate training.
          & \cite{chetlur_cudnn_2014}
@@ -215,14 +215,15 @@
          & \cite{chetlur_cudnn_2014}
          & \textbullet\ Usability: Optimization of kernels is time-consuming \\
          \cline{2-5}
-
+         
+         \multirow{15}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Limitations \& Challenges}}
          & \label{G4013} G4013 \newline\centering\cite{chetlur_cudnn_2014}
          & There are several ways to implement convolutions efficiently. Our goal is to provide performance as close as possible to matrix multiplication, while using no auxiliary memory. GPU memory is high bandwidth, but low capacity, and is therefore a scarce resource. (...) Some approaches, like lowering convolutions to matrix multiplication or using Fast Fourier Transform (FFT), have drawbacks (...) Another common approach is to compute the convolutions directly. This can be very efficient, but requires a large number of specialized implementations to handle the many corner cases implicit in the 11-dimensional parameter space of the convolutions. (...) Additionally, the FFT based approach does not per-form efficiently when the striding parameters u and v are greater than 1, which is common in many state-of-the art networks
          & \cite{chetlur_cudnn_2014}
          & \textbullet\ Algorithmic limitation: high memory usage (FFT, matrix multiplication), direct compute (specialized implementations) \\
          \cline{2-5}
 
-         \multirow{7}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Challenges}}
+        
          & \label{G4041} G4041 \newline\centering\cite{Jia.EtAl_2014a}
          & While deep neural networks have attracted enthusiastic interest within computer vision and beyond, replication of published results can involve months of work by a researcher or engineer. Sometimes researchers deem it worthwhile to release trained models along with the paper advertising their performance. But trained models alone are not sufficient for rapid research progress and emerging commercial applications, and few toolboxes offer truly off-the-shelf deployment of state-of-the-art models—and those that do are often not computationally efficient and thus unsuitable for commercial deployment.
          & \cite{Jia.EtAl_2014a}
@@ -247,8 +248,3 @@
 }
 \clearpage
 \twocolumn
-
-% TODO G1013 talk about easy integration into existing frameworks
-% TODO G1061 talk about tools not GPU compatible and deep learning involves linear algebra computations
-
-% TODO Razzvan performance, network (communication efficiency), ease of use, policy learning in reinforcement learning

@@ -583,7 +583,108 @@ also algorithmic limitations, tight coupling, and issues related to debugging co
 Finally, the need for manual tuning and best-configuration selection points towards the need to
 create more user-friendly machine learning frameworks \cellrefs{D411}.
 
+\subsubsection{GPU Programming.}
+\paragraph{Motivating Factors.}
+Below are summarized the motivating factors for the development of GPU programming libraries,
+making use of the characteristics displayed in Table \ref{tab:gpu_passages}.
 
+\textbf{Scalability and performance optimizations.}
+The development of GPU programming libraries is primarily driven by the need to increase
+performance \cellrefs{G1013,G1031,G1051}. This is most often done through focused % Also G1011,G1071
+optimizations involving the learning kernels, which can be thought of as the ability to perform
+large matrix multiplications quicker or alternatively reducing the need for auxiliary memory. These
+improvements are intrinsically linked to scalability and the ability to develop larger and more
+powerful architectures \cellrefs{G1011,G1012,G1071}. Optimizing speed implies faster training
+on larger datasets, while reducing memory allows to increase the complexity of the network on
+the same hardware.
+
+\textbf{Compatibility.}
+Another important concern is related to the integration and compatibility of GPU libraries with
+existing frameworks \cellrefs{G1013,G1014,G1015,G1062}. This is particularly important as seamless
+compatibility streamlines development and promotes wider adoption. As an example, Caffe \cite{Jia.EtAl_2014a}
+particularly emphasizes how time-consuming developing optimized code for individual architectures is.
+To combat this, frameworks such as CuDNN~\cite{chetlur_cudnn_2014} aim to provide optimized network
+implementations for NVidia GPUs across multiple GPU architectures.
+
+\textbf{Usability and programming experience.}
+Another important factor involves the usability and programming experience \cellrefs{G1031,G1071},
+as they emphasize the creation of tools accessible to a broader audience. This ensures that most
+ML libraries can build fast neural network primitives, which in the end can satisfy an increasing
+need for more complex applications \cellrefs{G1012,G1016,G1017,G1061}.
+
+\paragraph{Critical factors.}
+Performance remains as the key concern encompassing not only raw speed but also portability across
+different hardware architectures \cellrefs{G2011,G2012,G2021}.
+
+\textbf{Scalability.}
+Scalability is equally important for handling increasingly complex models and datasets \cellrefs{G2011,G2041}.
+One factor that greatly contributes to scalability is the ability to fully utilize the available resources
+across heterogeneous hardware. This poses significant design constraints as it requires to integrate
+both CPUs and GPUs simultaneously during training \cellrefs{G2021,G2041}.
+
+Another important factor that influences scalability is to create modular code through the
+separation of concerns as some libraries have highlighted \cellrefs{G2012,G2041}.
+
+One aspect that plays a role in scalability is how efficient inter-GPU communication is in
+multi-GPU setups \cellrefs{G2051}. As we shall see this is tightly linked to the choice of the
+communication library and is a key concern for both GPU programming and DNN frameworks
+\cite{noauthor_uxlfoundationoneccl_2025,noauthor_nvidianccl_2025,noauthor_rocmrccl_2025}.
+
+\textbf{Usability.}
+Moreover, broader adoption requires libraries that are easy to use, as this ensures developer productivity
+\cellrefs{G2041}.
+
+Also, usability is facilitated by the adoption of declarative programming styles and a focus on
+high-level design which excluded boiler-plate code as much as possible \cellrefs{G2012,G2061}.
+
+\paragraph{Evaluation.}
+Both quantitative and qualitative studies are performed to assess the performance.
+
+\textbf{Quantitative evaluation.}
+Specifically, quantitative metrics assess solutions based on measured performance like convolution speed
+and general throughput, frequently benchmarked against established methods \cellrefs{G3011,G3013}.
+One approach to assess raw performance involves varying mini-batch sizes against popular neural network
+architectures \cellrefs{G3011}. This is related also to portability as it allows to reach top
+performance without imposing constraints on architecture choices or the hyperparameters used
+\cellrefs{G3012,G3013,G3061}. This is a metric to assess generalization capabilities.
+
+\textbf{Generalization capabilities.}
+Given that generalization is important, the documents also touch on the effectiveness of the neural
+networks in different domains (i.e. reinforcement learning, computer vision, NLP, etc.), which
+ensures broad applicability~\cellrefs{G3012,G3061}.
+
+To ensure fair assessment, the libraries are often evaluated in deployed environments and serve
+practical real world applications~\cellrefs{G3041}.
+
+\textbf{Qualitative evaluation.}
+These methods are used to assess subjective aspects like the visual quality of the results, as it was
+seen in AlexNet~\cellrefs{G3051}. Lastly, it is crucial to keep in mind the context of the evaluation,
+as they are usually tailored to specific model architectures and application areas. As a result,
+there is always a certain degree of subjectivity involved in the assessment~\cellrefs{G3031}.
+
+\paragraph{Limitations and Challenges.}
+Despite progress, GPU programming faces multiple challenges, which arguably can be attributed to 
+the lack of a large open-source ecosystem and the use of closed-source proprietary hardware.
+
+\textbf{Developer effort.}
+One significant concern is that the kernel optimizations are time-consuming and require specialized
+expertise about the dedicated GPU architecture \cellrefs{G4012,G4041}. Also, unless using standardized
+libraries (i.e. cuDNN~\cite{chetlur_cudnn_2014}), the replication of results can be challenging as 
+execution times can vary significantly \cellrefs{G4041}.
+
+\textbf{Performance bottlenecks.}
+Performance bottlenecks are due to small matrix operations, which are generally inefficient \cellrefs{G4051,G4061}, 
+but also due to communication overhead in cross-GPU communication \cellrefs{G4051}.
+
+Algorithmic and memory constraints are also present, with some algorithms being limited by high memory usage \cellrefs{G4013},
+and others requiring specialized implementations for various corner cases \cellrefs{G4013}.
+
+\textbf{Evolving architectures.}
+The field also faces ongoing challenges with evolving architectures, which involves both hardware advancements
+but also new neural network innovations, requiring continuous adaptation~\cellrefs{G4011}.
+
+
+\subsubsection{Distributed Neural Networks}
 \subsubsection{Distributed Neural Networks}
 In short, studies about distributed neural networks are quite recent and offer interesting insights
 into the key factors that motivate the development of DNNs. The key factors for developing such
