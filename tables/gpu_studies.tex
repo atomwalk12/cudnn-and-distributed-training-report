@@ -1,0 +1,52 @@
+
+\begin{table*}[htbp]
+	\centering
+	\caption{Critical factors of GPU Programming Libraries and Frameworks}
+	\label{tab:gpu_libraries}
+	\begin{tabular}{llp{8cm}lll}
+		\hline
+		\small \textbf{Category} & \small \textbf{ID} & \small \textbf{Library/Framework}                                                     & \small \textbf{Vendor} & \small \textbf{Type} & \small \textbf{Ref.}                                  \\
+		\hline
+		\multirow{4}{*}{\small NVIDIA}
+		                         & \small NV1         & \small cuBLAS: GPU-accelerated BLAS library for linear algebra                        & \small NVIDIA          & \small Core          & \small \cite{noauthor_cublas_nodate}                  \\[1ex]
+		                         & \small NV2         & \small cuDNN: Optimized deep neural network primitives                                & \small NVIDIA          & \small Core          & \small \cite{chetlur_cudnn_2014}                      \\[1ex]
+		                         & \small NV4         & \small NCCL: Multi-GPU/multi-node communication                                       & \small NVIDIA          & \small Core          & \small \cite{noauthor_nvidianccl_2025}                \\[1ex]
+		                         & \small NV5         & \small CUTLASS: Optimized C++ templates for matrix multiplication                     & \small NVIDIA          & \small Core          & \small \cite{thakkar_cutlass_2023}                    \\
+		\hline
+		\multirow{4}{*}{\small AMD}
+		                         & \small AMD1        & \small rocBLAS: AMD's BLAS implementation                                             & \small AMD             & \small Core          & \small \cite{noauthor_rocmrocblas_2025}               \\[1ex]
+		                         & \small AMD2        & \small MIOpen: Deep learning primitives                                               & \small AMD             & \small Core          & \small \cite{noauthor_rocmmiopen_2025}                \\[1ex]
+		                         & \small AMD3        & \small HIP: Portable API for CUDA-like code                                           & \small Multiple        & \small Framework     & \small \cite{noauthor_rocmhip_2025}                   \\[1ex]
+		                         & \small AMD4        & \small RCCL: Multi-GPU communication                                                  & \small AMD             & \small Core          & \small \cite{noauthor_rocmrccl_2025}                  \\
+		\hline
+		\multirow{3}{*}{\small Intel}
+		                         & \small INT1        & \small oneMKL: Math Kernel Library                                                    & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationonemath_2025}      \\[1ex]
+		                         & \small INT2        & \small oneDNN: Deep learning primitives                                               & \small Intel           & \small Core          & \small \cite{onednn_contributors_oneapi_2025}         \\[1ex]
+		                         & \small INT3        & \small oneCCL: Collective communication library                                       & \small Intel           & \small Core          & \small \cite{noauthor_uxlfoundationoneccl_2025}       \\
+		\hline
+		\multirow{3}{*}{\small Cross-Platform}
+		                         & \small CP1         & \small OpenCL: Open standard for heterogeneous computing                              & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupopencl-sdk_2025}    \\[1ex]
+		                         & \small CP2         & \small SYCL: C++-based multi-device programming                                       & \small Multiple        & \small Framework     & \small \cite{noauthor_khronosgroupsycl-docs_2025}     \\[1ex]
+		                         & \small CP3         & \small Kokkos: Performance-portable C++ framework                                     & \small Multiple        & \small Framework     & \small \cite{trott_kokkos_2022}                       \\
+
+		\hline
+		\multirow{5}{*}{\small High-Level}
+		                         & \small HL1         & \small CUDA.jl: Julia GPU package for NVIDIA                                          & \small NVIDIA          & \small Language      & \small \cite{noauthor_juliagpucudajl_2025}            \\[1ex]
+		                         & \small HL2         & \small AMDGPU.jl: Julia GPU package for AMD                                           & \small AMD             & \small Language      & \small \cite{noauthor_juliagpuamdgpujl_2025}          \\[1ex]
+		                         & \small HL3         & \small oneAPI.jl: Julia GPU package for Intel                                         & \small Intel           & \small Language      & \small \cite{besard_oneapijl_2022}                    \\[1ex]
+		                         & \small HL4         & \small CuPy: NumPy-compatible GPU arrays for NVIDIA/AMD                               & \small Multiple        & \small Language      & \small \cite{okuta_cupy_2017, noauthor_cupycupy_2025} \\[1ex]
+		                         & \small HL5         & \small Numba: JIT compiler for GPU acceleration (NVIDIA only)                         & \small NVIDIA          & \small Language      & \small \cite{noauthor_numbanumba_2025}                \\
+		\hline
+		\multirow{5}{*}{\small Tutorials}
+		                         & \small T1          & \small CUDA Toolkit Samples                                                           & \small NVIDIA          & \small Tutorial      & \small \cite{noauthor_nvidiacuda-samples_2025}        \\[1ex]
+		                         & \small T2          & \small AMD Lab Notes                                                                  & \small AMD             & \small Tutorial      & \small \cite{noauthor_amdamd-lab-notes_2025}          \\[1ex]
+		                         & \small T3          & \small Intel Compute Samples                                                          & \small Intel           & \small Tutorial      & \small \cite{noauthor_intelcompute-samples_2025}      \\
+		\hline
+		\multirow{5}{*}{\small NN Libraries}
+		                         & \small NN1         & \small Caffe: Convolutional Architecture for Fast Feature Embedding                   & \small BVLC            & \small Library       & \small \cite{Jia.EtAl_2014a}                          \\[1ex]
+		                         & \small NN2         & \small ImageNet Classification with Deep Convolutional Neural Networks (CUDA-Convnet) & \small AlexNet         & \small Library       & \small \cite{_ag,krizhevsky_imagenet_2012}            \\[1ex]
+		                         & \small NN3         & \small Pylearn2: a machine learning research library                                  & \small Pylearn2        & \small Library       & \small \cite{Goodfellow.EtAl_2013}                    \\
+		                         & \small NN4         & \small Torch7: A Matlab-like Environment for Machine Learning                         & \small Torch7          & \small Library       & \small \cite{Collobert.EtAl_}                         \\
+		\hline
+	\end{tabular}
+\end{table*}

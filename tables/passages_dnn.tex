@@ -1,8 +1,5 @@
-\clearpage
-\onecolumn
-
 {\tiny
-\begin{longtable}{|l|p{0.6cm}|p{11.8cm}|p{0.6cm}|p{2cm}|}
+\begin{longtable}[H]{|l|p{0.6cm}|p{11.8cm}|p{0.6cm}|p{2cm}|}
 	\caption{The passages on distributed neural networks}\label{tab:dnn_passages}                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\
 
 	\toprule
@@ -109,7 +106,7 @@
 	     & \textbullet\ Ease of use \\ \hline
 
 
-    \multirow{20}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Evaluation Metrics}}
+
          & \label{D301}D301\newline\centering\cite{abadi_tensorflow_2016} & In addition, often in close collaboration with the Google Brain team, more than 50 teams at Google and other Alphabet companies have deployed deep neural networks using DistBelief in a wide variety of products, including Google Search [11], our advertising products, our speech recognition systems [50, 6, 46], Google Photos [43], Google Maps and StreetView [19], Google Translate [18], YouTube, and many others.
          & \cite{abadi_tensorflow_2016}
 	     & \textbullet\ Deployment via Google Apps \\ \cline{2-5}
@@ -117,7 +114,7 @@
          & \label{D303}D303\newline\centering\cite{huang_gpipe_2019} & We demonstrate the advantages of GPipe by training large-scale neural networks on two different tasks with distinct network architectures: (i) Image Classification: We train a 557-million-parameter AmoebaNet model and attain a top-1 accuracy of 84.4\% on ImageNet-2012, (ii) Multilingual Neural Machine Translation: We train a single 6-billion-parameter, 128-layer Transformer model on a corpus spanning over 100 languages and achieve better quality than all bilingual models.
          & \cite{huang_gpipe_2019,lepikhin_gshard_2020}
 	     & \textbullet\ Image Classification\newline\textbullet\ Machine Translation \\ \cline{2-5}
-
+		 \multirow{15}{*}{\rotatebox[origin=c]{90}{RQ\textsubscript{2}: Evaluation Metrics}}
          & \label{D304}D304\newline\centering\cite{jiang_unified_nodate} & We evaluate BytePS using six DNN models and three training frameworks (TensorFlow, PyTorch, MXNet) in production data centers. The results show that with 256 GPUs, BytePS consistently outperform existing all-reduce and PS solutions by up to 84\% and 245\%, respectively.
          & \cite{jiang_unified_nodate}
 	     & \textbullet\ Cross-platform evaluation (TensorFlow, PyTorch, MXNet) \\ \cline{2-5}
@@ -197,5 +194,4 @@
 	\bottomrule
 \end{longtable}
 }
-\clearpage
 \twocolumn
