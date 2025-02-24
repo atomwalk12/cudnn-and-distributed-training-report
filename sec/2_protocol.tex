@@ -165,19 +165,22 @@ questions below are ordered based on their priority in the survey:
 % TODO: \TODO{RQ1: ease of learning, ease of use and documentation compare?}
 \label{sec:research_questions_refined}
 \begin{itemize}
-	\item \textbf{RQ\textsubscript{1}:} In the field of Deep Learning, what are the most commonly cited
-	      frameworks for distributed training of neural networks across clusters, and how do their respective communities vary in size? \\
+	\item \textbf{RQ\textsubscript{1}:} What are the most commonly cited
+	      frameworks for distributed neural network training, and how do their communities vary in size? \\
 	      \textit{Rationale:} By identifying the most common frameworks, we can trace the years in which they were published
-	      and form a unified timeline of the evolution of the field. Here key motivating factors influence resulting communities.
+	      and form a unified timeline of the evolution of the field.
 
-	      % NOTE Razvan I am conducting a literature review in the field of deep learning, specifically focusing on distributed training of 
-	      % NOTE neural networks across clusters. I need to identify the most commonly cited frameworks used for this purpose.
-	\item \textbf{RQ\textsubscript{2}:} What practical applications of these technologies have been reported in the literature
-	      and which are their limitations? \\
+	\item \textbf{RQ\textsubscript{2}:} What are the most frequently cited
+	      frameworks for GPU programming, and how do their user communities differ in size?\\
+	      \textit{Rationale:} By identifying the most common frameworks, we can identify which are the gaps
+	      in the literature they cover and which are the most promising areas for future research.
+
+	\item \textbf{RQ\textsubscript{3}:} Which are the overlaps and shared limitations of these areas? \\
+	      \textit{Rationale:} By identifying the overlaps, this can lead to a more comprehensive understanding of the field.
+
+	\item \textbf{RQ\textsubscript{4}:} How can these technologies be applied in practice? \\
 	      \textit{Rationale:} This can yield hands-on experience on the topic which is helpful for practical applications.
 
-	\item \textbf{RQ\textsubscript{3}:} What are the overlaps in data/model optimization strategies used in DDL and GPU parallelization? \\
-	      \textit{Rationale:} By identifying the overlaps, this can lead to a more comprehensive understanding of the field.
 \end{itemize}
 
 \input{tables/taxonomy}
@@ -265,7 +268,7 @@ however building iteratively over the results and blending together different ph
 After investigating the results of both approaches, I found that the NotebookLM approach was more
 effective at identifying key studies. This is likely due to Gemini being a more powerful
 model than the classifier used by Swift-Review. The number of selected studies was 32.
-  
+
 \input{tables/dnn_studies.tex}
 
 \paragraph{S.1.6 - S.1.8 -- Manual selection.}
@@ -324,17 +327,9 @@ include in the review by referencing useful tutorials and key documentation page
 
 \paragraph{S.2.2 -- Research Questions.}
 The research questions defined in Section \ref{sec:initial_research_questions} were refined using
-the PICOC criterion suggested by \cite{keele_systematic_2007}. The following question is relevant:
-
-\begin{itemize}
-	\item \textbf{RQ\textsubscript{4}:} In the field of Deep Learning, what are the most frequently cited
-	      frameworks for GPU programming using CUDA, and how do their user communities differ in size? \\
-	      \textit{Rationale:} By identifying the most common frameworks, we can identify which are the gaps
-	      in the literature they cover and which are the most promising areas for future research.
-\end{itemize}
-
-Moreover, questions RQ\textsubscript{2} and RQ\textsubscript{3} from Section
-\ref{sec:research_questions_refined} are also relevant.
+the PICOC criterion suggested by \cite{keele_systematic_2007}. The final questions --
+RQ\textsubscript{2}, RQ\textsubscript{3} and RQ\textsubscript{4} -- are listed in Section
+\ref{sec:research_questions_refined}.
 
 \paragraph{S.2.3 -- Search strategy.}
 To find relevant materials (Github repositories, documentation pages and tutorials), the following
@@ -450,8 +445,8 @@ recently demonstrated by Deepseek R1
 power is not the only possible method of progress. As a result, future research is likely to focus
 not only on distributed training, but also on innovating existing architectures.
 
-Nonetheless, optimizing speed is crucial because by training larger models, performance is likely to
-improve \cellrefs{D103} and as a result many applications become viable \cellrefs{D105}, which
+Nonetheless, optimizing speed is crucial because by training larger models, performance is likely
+to improve \cellrefs{D103} and as a result many applications become viable \cellrefs{D105}, which
 otherwise would be infeasible to train.
 
 It has been shown through empirical evidence that increasing the size of the model or dataset,
@@ -616,7 +611,12 @@ cases \cellrefs{G4013}.
 The field also faces ongoing challenges with evolving architectures, which involves both hardware advancements
 but also new neural network innovations, requiring continuous adaptation~\cellrefs{G4011}.
 
-\subsection{Determining the relationship between concepts}
+\subsection{M.5 -- Translate concepts}
+The translated results that highlight the relationships between the two topics are shown in Tables
+\ref{tab:translations_motivating_factors}, \ref{tab:translations_critical_factors} and
+\ref{tab:translations_evaluation_metrics}.
+
+\subsection{M.6 -- Relationship between concepts}
 
 \paragraph{Motivating factors.}\
 Below I analyze the relationships between the two topics, while leveraging rows MF1-MF7 from Table
@@ -753,28 +753,9 @@ with this, leading to performance bottlenecks that are challenging to overcome. 
 optimal solutions, as the best approaches are dependent on model architectures and hardware configurations.
 Community involvement is essential for progress as this has proven to promote innovation and faster progress.
 
-\subsection{Study Selection Results}
+\subsection{M.7 -- Report findings}
 \label{sec:study_selection_results}
-The complete lists of included and excluded studies, along with detailed information about each study, can be found in the supplementary materials (Section \ref{sec:study_selection}). A total of XXX studies were initially identified, with XXX studies meeting our inclusion criteria after screening. Table \ref{tab:study_types} provides an overview of the types of studies included in our review.
 
-% \begin{table*}[ht]
-% 	\centering
-% 	\caption{Overview of Included Study Types}
-% 	\label{tab:study_types}
-% 	\begin{tabular}{|l|c|p{8cm}|}
-% 		\hline
-% 		\textbf{Study Type}    & \textbf{Count} & \textbf{Description}                                                     \\
-% 		\hline
-% 		Empirical Studies      & XXX            & Studies with experimental evaluations of distributed learning techniques \\
-% 		\hline
-% 		Implementation Studies & XXX            & Studies focusing on CUDA implementations and optimizations               \\
-% 		\hline
-% 		Hybrid Studies         & XXX            & Studies covering both theoretical and implementation aspects             \\
-% 		\hline
-% 		\textbf{Total}         & XXX            &                                                                          \\
-% 		\hline
-% 	\end{tabular}
-% \end{table*}
 
 \begin{itemize}
 	\item \textbf{Goals:}
@@ -793,7 +774,5 @@ The complete lists of included and excluded studies, along with detailed informa
 	\item Peer-reviewed articles and conference papers only.
 	\item English language publications only.
 	\item Technical implementation details must be present. \\
-	\item \textbf{Search Terms and Keywords:}
-	\item Listed in Table \ref{tab:search_terms}.
 \end{itemize}
 

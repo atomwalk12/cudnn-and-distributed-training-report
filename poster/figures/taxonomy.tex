@@ -41,7 +41,7 @@
                 draw=hidden-black,
                 rounded corners,
                 align=left,
-                minimum width=4em,
+                minimum width=5em,
                 edge+={darkgray, line width=1pt},
                 s sep=3pt,
                 inner xsep=2pt,
@@ -54,55 +54,55 @@
             where level=3{text width=10.5em,font=\normalsize,}{},
             where level=4{text width=12em,font=\normalsize,}{},
             [
-                Deep Learning, ver
+                Deep Learning (DL), ver
                 [
-                    GPU Programming (\S \ref{sec:task})
+                    GPU Programming
                     [
                         Core Libraries
                         [
                             Linear Algebra
                             [
-                                \eg cuBLAS (NVIDIA)~\cite{noauthor_cublas_nodate}{,}
-                                rocBLAS (AMD)~\cite{noauthor_rocmrocblas_2025}{,}
-                                oneMKL (Intel)~\cite{noauthor_uxlfoundationonemath_2025}
+                                \eg cuBLAS (NVIDIA){,}
+                                rocBLAS (AMD){,}
+                                oneMKL (Intel)
                                 , leaf, text width=32em
                             ]
                         ]
                         [
-                            Deep Learning Primitives
+                            DL. Primitives
                             [
-                                \eg cuDNN (NVIDIA)~\cite{chetlur_cudnn_2014}{,}
-                                MIOpen (AMD)~\cite{noauthor_rocmmiopen_2025}{,}
-                                oneDNN (Intel)~\cite{onednn_contributors_oneapi_2025}
+                                \eg cuDNN (NVIDIA){,}
+                                MIOpen (AMD){,}
+                                oneDNN (Intel)
                                 , leaf, text width=32em
                             ]
                         ]
                         [
                             Communication
                             [
-                                \eg NCCL (NVIDIA)~\cite{noauthor_nvidianccl_2025}{,}
-                                RCCL (AMD)~\cite{noauthor_rocmrccl_2025}{,}
-                                oneCCL (Intel)~\cite{noauthor_uxlfoundationoneccl_2025}
+                                \eg NCCL (NVIDIA){,}
+                                RCCL (AMD){,}
+                                oneCCL (Intel)
                                 , leaf, text width=32em
                             ]
                         ]
                     ]
                     [
-                        Programming \\ Frameworks
+                        Programming Libs.
                         [
                             Cross-Platform APIs
                             [
-                                \eg OpenCL~\cite{noauthor_khronosgroupopencl-sdk_2025}{,}
-                                SYCL~\cite{noauthor_khronosgroupsycl-docs_2025}{,}
-                                Kokkos~\cite{trott_kokkos_2022}
+                                \eg OpenCL{,}
+                                SYCL{,}
+                                Kokkos
                                 , leaf, text width=32em
                             ]
                         ]
                         [
                             Vendor-Specific
                             [
-                                \eg HIP~\cite{noauthor_rocmhip_2025}{,}
-                                CUTLASS~\cite{thakkar_cutlass_2023}
+                                \eg HIP{,}
+                                CUTLASS
                                 , leaf, text width=32em
                             ]
                         ]
@@ -112,17 +112,17 @@
                         [
                             Julia Packages
                             [
-                                \eg CUDA.jl~\cite{noauthor_juliagpucudajl_2025}{,}
-                                AMDGPU.jl~\cite{noauthor_juliagpuamdgpujl_2025}{,}
-                                oneAPI.jl~\cite{besard_oneapijl_2022}
+                                \eg CUDA.jl{,}
+                                AMDGPU.jl{,}
+                                oneAPI.jl
                                 , leaf, text width=32em
                             ]
                         ]
                         [
                             Python Packages 
                             [
-                                \eg CuPy~\cite{okuta_cupy_2017}{,}
-                                Numba~\cite{noauthor_numbanumba_2025}
+                                \eg CuPy{,}
+                                Numba
                                 , leaf, text width=32em
                             ]
                         ]
@@ -132,9 +132,9 @@
                         [
                             Official Tutorials
                             [
-                                \eg NVIDIA-Samples~\cite{noauthor_nvidiacuda-samples_2025}{,}
-                                AMD-Lab-Notes~\cite{noauthor_amdamd-lab-notes_2025}{,}
-                                Intel-Compute~\cite{noauthor_intelcompute-samples_2025}
+                                \eg NVIDIA-Samples{,}
+                                AMD-Lab-Notes{,}
+                                Intel-Compute
                                 , leaf, text width=32em
                             ]
                         ]
@@ -142,23 +142,23 @@
                         [
                             Literature Reviews
                             [
-                                \eg Large Scale Deep Learning~\cite{nguyen_machine_2019}{,}
+                                \eg See Table \ref{tab:surveys}
                                 , leaf, text width=32em
                             ]
                         ]
                     ]
                 ]
                 [
-                    Distributed Deep \\ Learning (\S \ref{sec:task})
+                    Distributed DL.
                     [
                         Cloud Solutions
                         [
                             Cloud Platforms
                             [
-                                \eg SageMaker~\cite{noauthor_amazon_nodate}{,}
-                                BytePS~\cite{jiang_unified_nodate}{,}
-                                AzureML~\cite{sdgilley_azure_nodate}{,}
-                                Vertex AI~\cite{noauthor_vertex_nodate}
+                                \eg SageMaker{,}
+                                BytePS{,}
+                                AzureML{,}
+                                Vertex AI
                                 , leaf, text width=32em
                             ]
                         ]
@@ -168,18 +168,18 @@
                         [
                             Core Frameworks
                             [
-                                \eg PyTorch~\cite{li_pytorch_2020}{,}
-                                TensorFlow~\cite{abadi_tensorflow_2016}{,}
-                                MXNet~\cite{chen_mxnet_2015}{,}
-                                JAX~\cite{frostig_compiling_nodate}
+                                \eg PyTorch{,}
+                                TensorFlow{,}
+                                MXNet{,}
+                                JAX
                                 , leaf, text width=32em
                             ]
                         ]
                         [
                             Extensions
                             [
-                                \eg Transformers~\cite{wolf_huggingfaces_2020}{,}
-                                Lightning~\cite{noauthor_overview_nodate}
+                                \eg Transformers{,}
+                                Lightning
                                 , leaf, text width=32em
                             ]
                         ]
@@ -189,9 +189,9 @@
                         [
                             Universal Frameworks
                             [
-                                \eg Colossal-AI~\cite{li_colossal-ai_2023}{,}
-                                Ray~\cite{moritz_ray_2018}{,}
-                                Horovod~\cite{sergeev_horovod_2018}
+                                \eg Colossal-AI{,}
+                                Ray{,}
+                                Horovod
                                 , leaf, text width=32em
                             ]
                         ]
@@ -201,17 +201,17 @@
                         [
                             Large Model Training
                             [
-                                \eg Megatron-LM~\cite{shoeybi_megatron-lm_2020}{,}
-                                GPipe~\cite{huang_gpipe_2019}{,}
-                                DeepSpeed~\cite{rasley_deepspeed_2020}{,}
-                                FairScale~\cite{noauthor_fairscale_nodate}
+                                \eg Megatron-LM{,}
+                                GPipe{,}
+                                DeepSpeed{,}
+                                FairScale
                                 , leaf, text width=32em
                             ]
                         ]
                         [
                             Research
                             [
-                                \eg GShard~\cite{lepikhin_gshard_2020}
+                                \eg GShard
                                 , leaf, text width=32em
                             ]
                         ]
@@ -221,7 +221,10 @@
                         [
                             Distributed
                             [
-                                \eg Pylearn2~\cite{Goodfellow.EtAl_2013}{,} Torch7~\cite{Collobert.EtAl_}{,} Caffe~\cite{Jia.EtAl_2014a}{,} Cuda-Convnet~\cite{krizhevsky_imagenet_2012}
+                                \eg Pylearn2{,}
+                                Torch7{,}
+                                Caffe{,}
+                                Cuda-Convnet
                                 , leaf, text width=32em
                             ]
                         ]
@@ -231,7 +234,7 @@
                         [
                             Official Tutorials
                             [
-                                \eg Pytorch DDP~\cite{noauthor_examplesdistributedddpreadmemd_nodate}
+                                \eg Pytorch DDP
                                 , leaf, text width=32em
                             ]
                         ]
@@ -251,7 +254,7 @@
         \end{forest}
     }
     \vspace{-4mm}
-    \caption{Taxonomy of deep learning for mathematical reasoning. The associated tasks are elaborated in \S \ref{sec:task}, with a comprehensive dataset list found in \S \ref{sec:dataset}. Deep learning methods are further discussed in \S \ref{sec:network}, \S \ref{sec:pretrain}, and \S \ref{sec:icl}.}
+    \caption{Taxonomy of distributed deep learning frameworks and GPU programming libraries. References were clear-out due to space constraints but are available in the report.}
     \label{fig:taxonomy}
     \vspace{-3mm}
 \end{figure}

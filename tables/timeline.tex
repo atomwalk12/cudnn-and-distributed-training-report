@@ -8,31 +8,31 @@
         },
         event/.style={
             circle,
-            fill=blue!40,
-            draw=blue,
+            fill=blue!20,  % Hex: #d9e6fc
+            draw=blue!60!black,
             text width=1cm,
             align=center,
             font=\footnotesize
         },
         levent/.style={
             circle,
-            fill=blue!40,
-            draw=blue,
+            fill=blue!20,  % Hex: #d9e6fc
+            draw=blue!60!black,
             text width=1.2cm,
             align=center,
             font=\footnotesize
         },
         llevent/.style={
             circle,
-            fill=blue!40,
-            draw=blue,
+            fill=blue!20,  % Hex: #d9e6fc
+            draw=blue!60!black,
             text width=1.3cm,
             align=center,
             font=\footnotesize
         },
         core/.style={
             circle,
-            fill=green!20,
+            fill={rgb,255:red,212; green,228; blue,210},  % Hex: #d4e4d2
             draw=green!50!black,
             text width=1cm,
             align=center,
@@ -40,7 +40,7 @@
         },
         lcore/.style={
             circle,
-            fill=green!20,
+            fill={rgb,255:red,212; green,228; blue,210},  % Hex: #d4e4d2
             draw=green!50!black,
             text width=1.2cm,
             align=center,
@@ -48,7 +48,7 @@
         },
         framework/.style={
             circle,
-            fill=red!20,
+            fill={rgb,255:red,229; green,213; blue,230},  % Hex: #e5d5e6
             draw=red!50!black,
             text width=1cm,
             align=center,
@@ -64,7 +64,7 @@
         },
         eventg/.style={
             circle,
-            fill=blue!20,
+            fill={rgb,255:red,217; green,230; blue,252},
             draw=blue,
             text width=1cm,
             align=center,
@@ -129,7 +129,7 @@
         }
         
         % Original events
-        \node[eventg, above] at (2,1) {CUDA Convnet (2012)};
+        \node[eventg, above] at (2,1) {CUDA-Convnet (2012)};
         \node[eventg, below] at (3,-1) {Caffe (2013)};
         \node[eventg, below] at (5,2) {Torch7 (2015)};
         
@@ -140,7 +140,7 @@
         \node[event, below] at (6,-2.1) {PyTorch (2016)};
         \node[event, above] at (8,2.5) {JAX (2018)};
         \node[llevent, above] at (10,2) {{\scriptsize Transformers (2020)}};
-        \node[levent, below] at (10,-2) {{\scriptsize DeepSpeed (2020)}};
+        \node[event, below] at (10,-2) {{\scriptsize DeepSpeed (2020)}};
         \node[levent, above] at (11,0.8) {{\scriptsize FairScale (2021)}};
         \node[levent, above] at (13,0.8) {{\scriptsize Colossal-AI (2023)}};
         
@@ -149,7 +149,7 @@
         \node[core, above] at (1,-3) {cuBLAS (2011)};
         \node[core, above] at (4,2) {cuDNN (2014)};
         \node[core, above] at (7,-2.5) {NCCL (2017)};
-        \node[lcore, below] at (10,-0.7) {{\scriptsize CUTLASS (2020)}};
+        \node[core, below] at (10,-0.7) {{\scriptsize CUTLASS (2020)}};
         \node[lcore, below] at (5,-1) {rocBLAS (2015)};
         \node[core, below] at (6,3) {MIOpen (2016)};
         
@@ -164,11 +164,11 @@
         
         % ============== Legend ==============
         % Type color coding
-        \node[draw=none, fill=blue!20, right] at (12,-1.5) {\footnotesize ML Framework};
-        \node[draw=none, fill=green!20, right] at (12,-2) {\footnotesize GPU Primitives};
-        \node[draw=none, fill=red!20, right] at (12,-2.5) {\footnotesize Cross-platform Framework};
-        \node[draw=none, fill=gray!20, right] at (12,-3) {\footnotesize High-level Language};
-        \node[draw=none, fill=blue!40, right] at (12,-3.5) {\footnotesize DNN Framework};
+        \node[draw=none, fill={rgb,255:red,217; green,230; blue,252}, right] at (11.5, -1.3) {\footnotesize ML Framework};  % Hex: #d9e6fc
+        \node[draw=none, fill={rgb,255:red,212; green,228; blue,210}, right] at (11.5, -1.8) {\footnotesize GPU Primitives};  % Hex: #d4e4d2
+        \node[draw=none, fill={rgb,255:red,229; green,213; blue,230}, right] at (11.5, -2.3) {\footnotesize Cross-platform Framework};  % Hex: #e5d5e6
+        \node[draw=none, fill=gray!20, right] at (11.5, -2.8) {\footnotesize High-level Language};
+        \node[draw=none, fill=blue!20, right] at (11.5, -3.3) {\footnotesize DNN Framework};
     \end{tikzpicture}
     \caption{Timeline of Major GPU Programming Libraries and Frameworks}
     \label{fig:gpu_timeline}
