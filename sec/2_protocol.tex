@@ -14,9 +14,6 @@
 
 \section{Related Work}
 \label{sec:related_work}
-
-\TODO{Reference the related work on survying the present methods both in DDL and CUDA}
-
 For documenting the review process, this study follows primarily the guidelines laid out in
 \cite{keele_systematic_2007}, however advice for conducting the review is synthesized from a wider
 range of related articles
@@ -71,6 +68,14 @@ referred to \cite{chahal_hitchhikers_2018}.
 
 \section{Research method}
 \label{sec:protocol}
+\begin{figure*}[th]
+	\centering
+	\includegraphics[width=\linewidth]{figures/survey-dnn.pdf}
+	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
+		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
+		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
+	\label{fig:workflow-study-cuda}
+\end{figure*}
 
 Multiple studies emphasize that a literature survey should be both transparent and replicable
 \cite{keele_systematic_2007, dos_santos_sustainable_2024-1}, as this can ensure that review bias is
@@ -131,15 +136,6 @@ In order to identify relevant studies, I conducted a secondary study\footnote{A 
 defines a research protocol which formally defines the key attributes of the search process. This
 basically entails expanding on the research questions and search strategy.
 
-\begin{figure*}[th]
-	\centering
-	\includegraphics[width=\linewidth]{figures/survey-dnn.pdf}
-	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
-		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
-		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
-	\label{fig:workflow-study-cuda}
-\end{figure*}
-
 \paragraph{S.1.2 -- Research questions.}
 After an initial literature review, the research questions (RQ) defined in Section
 \ref{sec:initial_research_questions} are refined using the guidelines defined in
@@ -183,10 +179,6 @@ questions below are ordered based on their priority in the survey:
 
 \end{itemize}
 
-\input{tables/taxonomy}
-The questions play a key role in guiding the search strategy, data extraction process and results
-synthesis phase.
-
 \paragraph{S.1.3 -- Search Strategy.}
 The search strategy represents represents a systematic approach for identifying relevant studies
 that adequately answer the research questions.
@@ -223,6 +215,15 @@ In Step S.1.3, I inquired about the literature using the following search string
 		AND
 		( "framework" OR "implementation" )}
 \end{quote}
+
+\begin{figure*}[th]
+	\centering
+	\includegraphics[width=\linewidth]{figures/survey-cuda3.pdf}
+	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
+		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
+		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
+	\label{fig:workflow-study-dnn}
+\end{figure*}
 
 The details and justification to define this search string can be found in the supplementary
 material in Section \ref{sec:search_strategy}. \TODO{...}
@@ -269,8 +270,6 @@ After investigating the results of both approaches, I found that the NotebookLM 
 effective at identifying key studies. This is likely due to Gemini being a more powerful
 model than the classifier used by Swift-Review. The number of selected studies was 32.
 
-\input{tables/dnn_studies.tex}
-
 \paragraph{S.1.6 - S.1.8 -- Manual selection.}
 In Step S.1.6, a manual inspection over the the title, abstract and keywords was made. This
 resulted in a total of 13 studies that appeared to be relevant. After checking their full text,
@@ -279,22 +278,6 @@ revisiting the references of the 4 studies, as well as checking available prepri
 identified other 8 studies (Step 1.8). Hence, a total of 12 studies (4 + 8) were selected. A
 subsequent 5 frameworks were found with no accompanying papers by reviewing the references. All 17
 libraries are listed in Table \ref{tab:dnn_papers}.
-
-\begin{table}[h!]
-	\centering
-	\caption{The Search Engines Used in this Survey}
-	\label{tab:databases}
-	\begin{tabular}{llllr}
-		\hline
-		ID    & Tool             & Step  & Results & Filtered \\
-		\hline
-		1     & Scopus           & S.1.4 & 182     & 4        \\
-		2     & Semantic Scholar & S.1.8 & --      & 8        \\
-		3     & Proprietary      & S.1.8 & --      & 5        \\
-		\hline
-		Total &                  &       &         & 17       \\
-	\end{tabular}
-\end{table}
 
 \paragraph{S.1.9 -- Quality assessment.}
 To evaluate the quality of these studies (Step S.1.9), I adapted the quality appraisal instrument
@@ -305,14 +288,6 @@ relevance, I verified whether the studies presented relevant information to ensu
 practitioners and researchers. Finally, all 17 studies identified in the previous steps passed the
 quality checks.
 
-\begin{figure*}[th]
-	\centering
-	\includegraphics[width=\linewidth]{figures/survey-cuda3.pdf}
-	\caption{The diagram suggests the key steps for finding papers related to the CUDA programming survey. The phases
-		include planning the review (aims, research questions, search strategy) and conducting the review (study selection phase). The research questions
-		were transformed according to the PICOC (Population, Intervention, Comparison, Outcome, Context) criterion suggested by \cite{keele_systematic_2007}.}.
-	\label{fig:workflow-study-dnn}
-\end{figure*}
 \subsubsection{S.2 -- Survey on GPU programming libraries}
 \label{sec:gpu-programming-libraries}
 This step involved identifying popular frameworks that facilitate programming on the GPU. The
@@ -336,6 +311,8 @@ To find relevant materials (Github repositories, documentation pages and tutoria
 tools were used: \href{https://github.com/search/advanced}{Advanced Github Search} and two AI
 search engines: DeepSeek Search Engine \cite{noauthor_deepseek_nodate} and Perplexity AI
 \cite{noauthor_perplexity_nodate}.
+
+\input{tables/timeline.tex}
 
 \textbf{Inclusion/Exclusion criteria.}
 The following criteria were identified to guide the selection process:
@@ -372,9 +349,6 @@ keywords and categories (Step S.2.4). This led to identifying \cite{noauthor_enc
 offers an excellent introduction to the topic covering general aspects of GPU programming as well
 as specific frameworks.
 
-\input{tables/timeline.tex}
-
-\input{tables/gpu_studies.tex}
 % ===== STEP 3: Selection of Relevant Studies =====
 % This section details: 
 % - Study 1: Distributed learning techniques
@@ -386,43 +360,26 @@ identifying 21 libraries (S.2.6). The libraries had only 2 accompanying papers
 \cite{chetlur_cudnn_2014,okuta_cupy_2017} in the academic literature (S.2.7). The quality
 assessment step (S.2.8) ensured that the libraries are relevant to training neural networks and the
 resulting papers are shown in Table \ref{tab:gpu_libraries}. The categories that were included
-pertain to the main GPU manufacturers: AMD, Intel and NVIDIA. Across each category, libraries for
+belong to the main GPU manufacturers: AMD, Intel and NVIDIA. Across each category, libraries for
 algebraic operations include \cite{noauthor_cublas_nodate,noauthor_rocmrocblas_2025,
-	noauthor_uxlfoundationonemath_2025}, which are useful as building blocks for building more complex
+	noauthor_uxlfoundationonemath_2025}. These are useful as building blocks for building more complex
 deep learning primitives
 \cite{chetlur_cudnn_2014,noauthor_rocmmiopen_2025,onednn_contributors_oneapi_2025}. Existing
 approaches that bridge the gap between GPU programming and DNNs are related to communication
 protocols such as
 \cite{noauthor_nvidianccl_2025,noauthor_rocmrccl_2025,noauthor_uxlfoundationoneccl_2025}. These
 frameworks are used in distributed training to synchronize calculations by providing a low-level
-API that manages across-GPU communication. Moreover, cross-platform and high-level libraries are
+API that manages cross-GPU communication. Moreover, cross-platform and high-level libraries are
 also reported as they allow to effectively build upon core libraries in a faster and more efficient
 manner.
 
 \subsection{M.4 -- Reading the studies}
 \label{sec:reading-studies}
-\subsubsection{Distributed Neural Networks.}
+\subsubsection{V.1 -- Distributed Neural Networks}
 
 In order to more easily extract useful information from the studies, I identified four key criteria
 which aim to facilitate answering the research questions defined in Section
 \ref{sec:research_questions_refined}.
-
-\begin{figure*}
-	\centering
-	\begin{subfigure}{0.48\linewidth}
-		\includegraphics[width=\textwidth]{figures/mindmap}
-		\caption{Accuracy for the EasyVQA training split.}
-		\label{fig:base-a}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.48\linewidth}
-		\includegraphics[width=\textwidth]{figures/mindmap-cuda}
-		\caption{Accuracy for the DAQUAR training split.}
-		\label{fig:base-b}
-	\end{subfigure}
-	\caption{Accuracy during training/validation on the baseline generator models.}
-	\label{fig:base}
-\end{figure*}
 
 \begin{itemize}
 	\item C1: Key Motivating Factors
@@ -431,6 +388,9 @@ which aim to facilitate answering the research questions defined in Section
 	\item C4: Tool Limitations and challenges
 \end{itemize}
 
+\input{tables/taxonomy}
+\input{tables/dnn_studies.tex}
+\input{tables/gpu_studies.tex}
 The resulting artifacts are available in the supplementary material in Table
 \ref{tab:dnn_passages}. Each contributing factor is associated with an exact passage and various
 codes (categories) that were used to classify the passage. The studies are summarized below.
@@ -510,11 +470,27 @@ also algorithmic limitations, tight coupling, and issues related to debugging co
 Finally, the need for manual tuning and best-configuration selection points towards the need to
 create more user-friendly machine learning frameworks \cellrefs{D411}.
 
-\subsubsection{GPU Programming.}
+\subsubsection{V.2 -- GPU Programming}
 \paragraph{Motivating Factors.}
 Below are summarized the motivating factors for the development of GPU programming libraries,
 making use of the characteristics displayed in Table \ref{tab:gpu_passages}.
 
+\begin{figure*}
+	\centering
+	\begin{subfigure}{0.48\linewidth}
+		\includegraphics[width=\textwidth]{figures/mindmap}
+		\caption{Accuracy for the EasyVQA training split.}
+		\label{fig:base-a}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\linewidth}
+		\includegraphics[width=\textwidth]{figures/mindmap-cuda}
+		\caption{Accuracy for the DAQUAR training split.}
+		\label{fig:base-b}
+	\end{subfigure}
+	\caption{Accuracy during training/validation on the baseline generator models.}
+	\label{fig:base}
+\end{figure*}
 \textbf{Scalability and performance optimizations.}
 The development of GPU programming libraries is primarily driven by the need to increase
 performance \cellrefs{G1013,G1031,G1051}. This is most often done through focused % Also G1011,G1071
@@ -686,11 +662,6 @@ motivated by the need to minimize network bandwidth latency and achieve better s
 models would likely achieve better performance), while GPU programming provides optimized deep-learning
 primitives by optimizing large-matrix operations. To facilitate this, thorough knowledge of the GPU
 architecture is required.
-
-\include{tables/translation_motivating_factors}
-\include{tables/translation_critical_factors}
-\include{tables/translation_evaluation_metrics}
-
 \textbf{CF4. Network and hardware communication.}
 Multi-GPU training is particularly relevant in DNNs. There exist multiple algorithms to minimize
 network latency, however GPU programming frameworks still struggle with multi-GPU communication
@@ -726,6 +697,10 @@ while generally geared towards deep learning tasks (like cuDNN), some tools also
 use (like CuPy in scientific computing). As a result, GPU programming focuses on depth by ensuring
 high-performance in a focused field, while DNNs aim for breadth by showing general applicability.
 
+\include{tables/translation_motivating_factors}
+\include{tables/translation_critical_factors}
+\include{tables/translation_evaluation_metrics}
+
 \textbf{EM4. Evaluation}
 DNN evaluation focuses on overall performance gains and broad applicability in different domains (vision,
 NLP, etc.). GPU programming, on the other hand, focuses on the potential performance gains achievable through
@@ -753,8 +728,93 @@ with this, leading to performance bottlenecks that are challenging to overcome. 
 optimal solutions, as the best approaches are dependent on model architectures and hardware configurations.
 Community involvement is essential for progress as this has proven to promote innovation and faster progress.
 
-\subsection{M.7 -- Report findings}
+\subsection{M.7 -- Practical evaluation}
 \label{sec:study_selection_results}
+The study contained also a practical evaluation of \texttt{cuDNN}, \texttt{cuBLAS} and \texttt{Pytorch DDP}.
+This is a more pragmatic approach that is meant to provide a more intimate understanding of what
+these libraries are capable of.
+
+\paragraph{V.1 -- GPU programming.}
+The GPU experiments implement a toy neural network that is meant to be a proof-of-concept for
+the capabilities of the utilized libraries (cuDNN and cuBLAS). The following components were implemented:
+
+\begin{itemize}
+	\item The \textbf{forward} and \textbf{backward} training steps.
+	\item The \textbf{backward step} is performed via \textbf{two distinct operations}: w.r.t. the weights and w.r.t. the inputs.
+	\item The \textbf{gradients can be nulled} in a similar way to Pytorch.
+	\item The \textbf{updateWeights} operation has configurable learning rate.
+	\item The \textbf{MSELoss function} is used to calculate the mean squared error loss after the forward pass. 
+	\item Three types of layers:
+	\begin{itemize}
+		\item \textbf{Convolutional}: Uses cuDNN for the convolution operation.
+		\item \textbf{Linear}: Uses cuBLAS for the matrix multiplication.
+		\item \textbf{ReLU}: Uses manual kernel implementation.
+	\end{itemize}
+\end{itemize}
+
+\textbf{GPU Kernels.}
+There were developed two GPU kernels that run code directly on the GPU. The first one is used 
+to compute the forward and backward pass for the ReLU activation function. The second one is used
+for the MSELoss after the forward pass.
+
+\paragraph{V.2 - V.3 -- Distributed Training.}
+The distributed training experiments allow to:
+
+\begin{itemize}
+	\item Simulate multi-GPU training on a single machine.
+	\item Simulate multi-node training across multiple machines.
+	\item Performance metrics are collected using Weights and Biases.
+	\item Facilitate experimentation through Docker containers.
+\end{itemize}
+
+The code is written in a way to dynamically span multiple GPU ids corresponding to the number of
+GPUs used in the launch command (see \texttt{torchrun --nproc\_per\_node}. This conveniently allows
+the code to use more memory on a single GPU, effectively allowing to simulate multi-GPU training on
+a single machine. In a similar fashion, the \texttt{--nnodes} flag allows to simulate multi-node
+training across multiple machines from a single machine.
+
+\textbf{Limitations.}
+It should be noted that although the seamless integration with Docker represents a way to simulate
+the distributed training environment, it does not provide a true multi-GPU and multi-node performance.
+The reason is that using a single GPU, it is not possible to run two code instances truly in a concurrent manner.
+Due to the context switching mechanism, the performance can even be even lower than when using a single GPU.
+This effectively allows to deploy multiple GPU/node code while relying on a single machine. This should
+translate to a more realistic environment with minimal code changes.
+
+\subsection{M.8 Report findings}
+
+Although, it was shown that ML libraries can provide optimal code for specific GPU architectures,
+supporting newer hardware becomes a maintenance burden. This is not the case for companies like NVidia,
+as they can afford to have specialized teams to support their hardware.
+
+\section{Conclusion}
+In conclusion, the results of the survey provided experience in conducting a systematic review. 
+The systematic mapping of existing programming frameworks shows that while GPU programming libraries
+are a precursor to DNNs, over time they have become more integrated with the DNN frameworks.
+
+GPU programming is a more niche field, where fewer experts are involved with. On the other hand,
+DNNs have a larger community and are more widely used. There exist a plethora of frameworks available
+for DNNs, characteristic largely due to the large open-source ecosystem. On the other hand, GPU programming
+is a more specialized field, with fewer libraries available. This is a natural consequence to the fact
+that developing fast primitives requires deep knowledge of the hardware, which is not required for DNNs.
+
+
+\paragraph{Future work.}
+The GPU training experiments could be expanded to more realistic architectures. Although,
+the existing code works and shows that the network effectively learns, it would be instructive
+to implement other primitives such as pooling layers, dropout and batch normalization modules,
+which could expand the scope and usefulness of the existing primitives.
+
+\paragraph{Learning outcomes.}
+The study helped me develop experience with reading and summarizing scientific literature. 
+This would likely be useful for finding out relevant literature in future work, as by documenting
+the workflow, it is easier to replicate and adapt the search for future topics.
+
+The practical experience with libraries such as cuDNN and cuBLAS provides a more thorough
+understanding of how neural networks learn and how they are implemented in practice. Similarly,
+the distributed training experiments actually demonstrate that the workflows are not at all complicated
+and even from a single machine, multi-GPU and multi-node training can be simulated.
+
 
 
 \begin{itemize}
@@ -768,11 +828,5 @@ Community involvement is essential for progress as this has proven to promote in
 	\item Systematic mapping of programming frameworks.
 	\item Comparative analysis with strengths and weaknesses.
 	\item Identification of research gaps. \\
-	\item \textbf{Constraints:}
-	\item Time period limited to 2012-2024\footnote{CUDA: 2012 is the year when AlexNet was published.} and
-	      2015-2024\footnote{DDL: 2015 is the year when the shift towards scalability was noticed.}.
-	\item Peer-reviewed articles and conference papers only.
-	\item English language publications only.
-	\item Technical implementation details must be present. \\
 \end{itemize}
 

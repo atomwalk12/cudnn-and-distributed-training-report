@@ -1,9 +1,23 @@
 \begin{abstract}
-This paper presents a systematic literature review of distributed techniques for parallelizing stochastic descent backpropagation in neural networks. The review synthesizes research from the past decade, examining various approaches to distributed training, their effectiveness, and implementation challenges. Our analysis covers [X] primary studies, identifying key patterns in algorithmic design, communication strategies, and convergence properties. The findings indicate [brief summary of key findings]. This review contributes to the field by providing a comprehensive overview of current distributed training techniques, highlighting research gaps, and suggesting future research directions. The work serves as a valuable resource for researchers and practitioners working on large-scale neural network training systems.
+	This paper presents a systematic literature review of distributed and parallel techniques for running
+	deep neural networks on multiple machines and GPUs. It is composed of three parts: 1) a review of the
+	available libraries that enable distributed training across GPU clusters, 2) a review of the
+	most popular frameworks that facilitate parallelizing the training process on GPUs, and 3) a
+	practical section that demonstrates a proof-of-concept implementation of the training process
+	using common frameworks, namely PyTorch DDP and cuDNN.
+
+	The review synthesizes research from the past decade, examining various approaches to distributed
+	training, their effectiveness, and implementation challenges. The work is aimed at students and
+	practitioners working on large-scale neural network training systems, with the goal to provide an
+	introduction to the topic and form a general idea of the most common libraries in each domain.
+
+	The distributed experiments make use of data parallelism to accelerate the training process, while the
+	GPU experiments utilize cuDNN, cuBLAS and manual kernel implementations to train a small network.
+	The effectiveness of each approach is demonstrated and in order to aid reproduction and experimentation
+    Docker environments are provided to easily execute each individual example.
 \end{abstract}
 
 % Due to its many applications across various fields of research, engineering, and daily life, deep learning has seen a surge in popularity. Therefore, larger and more expressive models have been proposed, with examples like Turing-NLG using as many as 17 billion parameters. Training these very large models becomes increasingly difficult due to the high computational costs and large memory footprint. Therefore, several approaches for distributed training based on data parallelism (e.g., Horovod) and model/pipeline parallelism (e.g., GPipe, PipeDream) have emerged.  In this work, we focus on an in-depth comparison of three different parallelism models that address these needs: data, model and pipeline parallelism.
-
 
 % Because training a deep neural network (DNN) takes arduous amounts of time and computation, often researchers expedite the training process via distributed parallel training on GPUs.
 % On one hand, this lower computing-to-communication ratio makes traditional data parallelism difficult to scale, and traditional model parallelism leads to low GPU utilization. Both make it difficult to obtain a higher speedup. On the other hand, multi-GPU systems exhibit complex connectivity among GPUs.
