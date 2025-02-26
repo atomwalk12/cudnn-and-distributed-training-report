@@ -1,0 +1,125 @@
+%% Creator: Inkscape 1.3.2 (091e20ef0f, 2023-11-25, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'img3_user_query_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{492.11306114bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.33359943)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(-0.08361131,0.97615931){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}30/06/2024, 14:21\end{tabular}}}}%
+    \put(0.11622842,0.97615931){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}mermaid.ink/svg/pako:eNp1VNtq4zAQ_ZVBkLcsFLZPeiiUJlsCLXtp-1L8oliTeMCWvLo0lJB_78hKHMdxbQiZ0TmjMxfPXpR\end{tabular}}}}%
+    \put(1.00202903,0.97615931){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}…\end{tabular}}}}%
+    \put(-0.08361131,-0.65608755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}https://mermaid.ink/svg/pako:eNp1VNtq4zAQ_ZVBkLcsFLZPeiiUJlsCLXtp-1L8oliTeMCWvLo0lJB_78hKHMdxbQiZ0TmjMxfPXpRWo5BiNtuTo\end{tabular}}}}%
+    \put(0.95275963,-0.65608755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}…\end{tabular}}}}%
+    \put(0.99750449,-0.65608755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(1.00681543,-0.65608755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}/\end{tabular}}}}%
+    \put(1.01286399,-0.65608755){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{img3_user_query_svg-tex.pdf}}%
+    \put(0.90567005,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Embedding Model\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{img3_user_query_svg-tex.pdf}}%
+    \put(0.76648233,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Action\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{img3_user_query_svg-tex.pdf}}%
+    \put(0.60579139,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Observation\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{img3_user_query_svg-tex.pdf}}%
+    \put(0.45693558,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thought\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{img3_user_query_svg-tex.pdf}}%
+    \put(0.29850688,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}React Agent\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{img3_user_query_svg-tex.pdf}}%
+    \put(0.14917477,0.01198365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Librarian\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{img3_user_query_svg-tex.pdf}}%
+    \put(0.90567005,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Embedding Model\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{img3_user_query_svg-tex.pdf}}%
+    \put(0.76648233,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Action\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{img3_user_query_svg-tex.pdf}}%
+    \put(0.60579139,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Observation\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{img3_user_query_svg-tex.pdf}}%
+    \put(0.45693558,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thought\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{img3_user_query_svg-tex.pdf}}%
+    \put(0.29850688,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}React Agent\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{img3_user_query_svg-tex.pdf}}%
+    \put(0.14917477,0.31912534){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Librarian\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{img3_user_query_svg-tex.pdf}}%
+    \put(0.31298527,0.26885586){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}loop\end{tabular}}}}%
+    \put(0.60798221,0.26859389){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[Iterate Until Enough Information is Retrieved]\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{img3_user_query_svg-tex.pdf}}%
+    \put(0.00048562,0.30717118){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}User\end{tabular}}}}%
+    \put(0.06873402,0.29752684){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}User Query\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{img3_user_query_svg-tex.pdf}}%
+    \put(0.22109041,0.281834){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Query Agent\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{img3_user_query_svg-tex.pdf}}%
+    \put(0.36025431,0.25075787){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Decide which tool to use\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{img3_user_query_svg-tex.pdf}}%
+    \put(0.45150619,0.23575562){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tool Decided\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{img3_user_query_svg-tex.pdf}}%
+    \put(0.37344677,0.21048986){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Retrieved Tool\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{img3_user_query_svg-tex.pdf}}%
+    \put(0.51356325,0.19548761){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Retrieve Top Documents\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{img3_user_query_svg-tex.pdf}}%
+    \put(0.827182,0.17979477){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Embed User Query\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{img3_user_query_svg-tex.pdf}}%
+    \put(0.89826417,0.16407808){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Find Closest Documents\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{img3_user_query_svg-tex.pdf}}%
+    \put(0.81910938,0.13883618){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Return top 3 similar results\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{img3_user_query_svg-tex.pdf}}%
+    \put(0.51470624,0.12314333){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Intermediate Documents\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{img3_user_query_svg-tex.pdf}}%
+    \put(0.42778832,0.10811723){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Comment Retrieved Documents\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{img3_user_query_svg-tex.pdf}}%
+    \put(0.5925037,0.09311497){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Generate Partial Result\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{img3_user_query_svg-tex.pdf}}%
+    \put(0.44245721,0.06784922){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Return Partial Result\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{img3_user_query_svg-tex.pdf}}%
+    \put(0.21075551,0.04941789){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Generate Final Result\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=28]{img3_user_query_svg-tex.pdf}}%
+    \put(0.06840064,0.03441563){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Show Result\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=29]{img3_user_query_svg-tex.pdf}}%
+    \put(0.00048562,0.00005328){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}User\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

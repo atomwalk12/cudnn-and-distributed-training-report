@@ -1,0 +1,260 @@
+\tikzstyle{my-box}=[
+    rectangle,
+    draw=hidden-black,
+    rounded corners,
+    text opacity=1,
+    minimum height=1.5em,
+    minimum width=5em,
+    inner sep=2pt,
+    align=center,
+    fill opacity=.5,
+    % line width=0.8pt,
+]
+\tikzstyle{leaf}=[
+    my-box, 
+    minimum height=1.5em,
+    % fill=hidden-orange!60, 
+    fill=hidden-blue!90, 
+    text=black,
+    align=left,
+    font=\normalsize,
+    % font=\scriptsize,
+    inner xsep=2pt,
+    inner ysep=4pt,
+    % line width=0.8pt,
+]
+\begin{figure}[th!]
+    \vspace{-2mm}
+    \centering
+    \resizebox{\textwidth}{!}{
+        \begin{forest}
+            forked edges,
+            for tree={
+                grow=east,
+                reversed=true,
+                anchor=base west,
+                parent anchor=east,
+                child anchor=west,
+                base=left,
+                font=\large,
+                rectangle,
+                draw=hidden-black,
+                rounded corners,
+                align=left,
+                minimum width=5em,
+                edge+={darkgray, line width=1pt},
+                s sep=3pt,
+                inner xsep=2pt,
+                inner ysep=3pt,
+                line width=0.8pt,
+                ver/.style={rotate=90, child anchor=north, parent anchor=south, anchor=center},
+            },
+            where level=1{text width=10.2em,font=\normalsize,}{},
+            where level=2{text width=8.5em,font=\normalsize,}{},
+            where level=3{text width=10.5em,font=\normalsize,}{},
+            where level=4{text width=12em,font=\normalsize,}{},
+            [
+                Deep Learning (DL), ver
+                [
+                    GPU Programming
+                    [
+                        Core Libraries
+                        [
+                            Linear Algebra
+                            [
+                                \eg cuBLAS (NVIDIA){,}
+                                rocBLAS (AMD){,}
+                                oneMKL (Intel)
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            DL. Primitives
+                            [
+                                \eg cuDNN (NVIDIA){,}
+                                MIOpen (AMD){,}
+                                oneDNN (Intel)
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Communication
+                            [
+                                \eg NCCL (NVIDIA){,}
+                                RCCL (AMD){,}
+                                oneCCL (Intel)
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Programming Libs.
+                        [
+                            Cross-Platform APIs
+                            [
+                                \eg OpenCL{,}
+                                SYCL{,}
+                                Kokkos
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Vendor-Specific
+                            [
+                                \eg HIP{,}
+                                CUTLASS
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Language Bindings
+                        [
+                            Julia Packages
+                            [
+                                \eg CUDA.jl{,}
+                                AMDGPU.jl{,}
+                                oneAPI.jl
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Python Packages 
+                            [
+                                \eg CuPy{,}
+                                Numba
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Learning Resources
+                        [
+                            Official Tutorials
+                            [
+                                \eg NVIDIA-Samples{,}
+                                AMD-Lab-Notes{,}
+                                Intel-Compute
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        Learning Resources
+                        [
+                            Literature Reviews
+                            [
+                                \eg See Table \ref{tab:surveys}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                ]
+                [
+                    Distributed DL.
+                    [
+                        Cloud Solutions
+                        [
+                            Cloud Platforms
+                            [
+                                \eg SageMaker{,}
+                                BytePS{,}
+                                AzureML{,}
+                                Vertex AI
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Framework-Specific
+                        [
+                            Core Frameworks
+                            [
+                                \eg PyTorch{,}
+                                TensorFlow{,}
+                                MXNet{,}
+                                JAX
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Extensions
+                            [
+                                \eg Transformers{,}
+                                Lightning
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        General-Purpose
+                        [
+                            Universal Frameworks
+                            [
+                                \eg Colossal-AI{,}
+                                Ray{,}
+                                Horovod
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Specialized Tools
+                        [
+                            Large Model Training
+                            [
+                                \eg Megatron-LM{,}
+                                GPipe{,}
+                                DeepSpeed{,}
+                                FairScale
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        [
+                            Research
+                            [
+                                \eg GShard
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Native CUDA Libs
+                        [
+                            Distributed
+                            [
+                                \eg Pylearn2{,}
+                                Torch7{,}
+                                Caffe{,}
+                                Cuda-Convnet
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                    [
+                        Learning Resources
+                        [
+                            Official Tutorials
+                            [
+                                \eg Pytorch DDP
+                                , leaf, text width=32em
+                            ]
+                        ]
+                        Learning Resources
+                        [
+                            Literature Reviews
+                            [
+                                \eg Distributed Deep Learning Surveys~\cite{dehghani_distributed_2023}{,}
+                                \cite{chahal_hitchhikers_2018}{,}
+                                \cite{berloco_systematic_2022}
+                                , leaf, text width=32em
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        \end{forest}
+    }
+    \vspace{-4mm}
+    \caption{Taxonomy of distributed deep learning frameworks and GPU programming libraries. References were clear-out due to space constraints but are available in the report.}
+    \label{fig:taxonomy}
+    \vspace{-3mm}
+\end{figure}
