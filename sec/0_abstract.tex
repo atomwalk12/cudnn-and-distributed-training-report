@@ -8,13 +8,15 @@
 
 	The review synthesizes research from the past decade, examining various approaches to distributed
 	training, their effectiveness, and implementation challenges. The work is aimed at students and
-	practitioners working on large-scale neural network training systems, with the goal to provide an
-	introduction to the topic and form a general idea of the most common libraries in each domain.
+	practitioners, with the goal to provide an introduction to the topic and help create a general idea
+	of the most common libraries in each domain.
 
-	The distributed experiments make use of data parallelism to accelerate the training process, while the
-	GPU experiments utilize cuDNN, cuBLAS and manual kernel implementations to train a small network.
-	The effectiveness of each approach is demonstrated and in order to aid reproduction and experimentation
-    Docker environments are provided to easily execute each individual example.
+	The distributed experiments use data parallelism to accelerate the training process, while the GPU
+	experiments use cuDNN, cuBLAS and manual kernel implementations to train a small network. The
+	effectiveness of each approach is demonstrated and to aid reproduction and experimentation Docker
+	environments are provided. This allows to simulate a multi-GPU setup on a single NVidia GPU, promoting
+	ease of use by not relying on cloud services. The repository is available at 
+	\url{https://github.com/atomwalk12/deep-bridge-survey}.
 \end{abstract}
 
 % Due to its many applications across various fields of research, engineering, and daily life, deep learning has seen a surge in popularity. Therefore, larger and more expressive models have been proposed, with examples like Turing-NLG using as many as 17 billion parameters. Training these very large models becomes increasingly difficult due to the high computational costs and large memory footprint. Therefore, several approaches for distributed training based on data parallelism (e.g., Horovod) and model/pipeline parallelism (e.g., GPipe, PipeDream) have emerged.  In this work, we focus on an in-depth comparison of three different parallelism models that address these needs: data, model and pipeline parallelism.
