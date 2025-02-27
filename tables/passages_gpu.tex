@@ -220,7 +220,7 @@
          & \label{G4013} G4013 \newline\centering\cite{chetlur_cudnn_2014}
          & There are several ways to implement convolutions efficiently. Our goal is to provide performance as close as possible to matrix multiplication, while using no auxiliary memory. GPU memory is high bandwidth, but low capacity, and is therefore a scarce resource. (...) Some approaches, like lowering convolutions to matrix multiplication or using Fast Fourier Transform (FFT), have drawbacks (...) Another common approach is to compute the convolutions directly. This can be very efficient, but requires a large number of specialized implementations to handle the many corner cases implicit in the 11-dimensional parameter space of the convolutions. (...) Additionally, the FFT based approach does not per-form efficiently when the striding parameters u and v are greater than 1, which is common in many state-of-the art networks
          & \cite{chetlur_cudnn_2014,chetlur_cudnn_2014}
-         & \textbullet\ Algorithmic limitation: high memory usage (FFT, matrix multiplication), direct compute (specialized implementations) \\
+         & \textbullet\ Algorithmic limitation: high memory usage (FFT, matrix multip. operations), direct compute (specialized implementations) \\
          \cline{2-5}
 
         
