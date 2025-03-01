@@ -1,3 +1,224 @@
+In short, studies about distributed neural networks are quite recent and offer interesting insights
+into the key factors that motivate the development of DNNs. The key factors for developing such
+frameworks range from the drive to improve performance and create general purpose intelligent
+systems by leveraging increasingly abundant computational resources and data
+availability~\cite{chen_mxnet_2015,lepikhin_gshard_2020,shoeybi_megatron-lm_2020}.
+
+\paragraph{C1. Key Motivating Factors.}
+The motivating factors for training DNNs include the pursuit of better performance through more
+efficient training and increased usability in practical scenarios. It has been widely regarded that
+by scaling the architectures to a large number of parameters and leveraging larger datasets, the
+evaluation accuracy on many benchmarks would be improved \cite{hestness_deep_2017}. However, it was
+recently demonstrated by Deepseek R1
+\cite{deepseekai2025deepseekr1incentivizingreasoningcapability} that scaling up the computational
+power is not the only possible method of progress. As a result, future research is likely to focus
+not only on distributed training, but also on innovating existing architectures. Nonetheless, below
+is a review of the key properties
+
+\textbf{Performance.}
+For example, this was demonstrated in GShard \cite{kaplan_scaling_2020} and GPipe
+\cite{huang_gpipe_2019} also shows that "by increasing the model capacity from 400M params to 1.3B,
+and further to 6B, leads to significant quality improvements across all languages". In particular,
+the NLP field is particularly sensitive to the model capacity, as shown in Megatron-LM
+\cite{shoeybi_megatron-lm_2020}, noting that "empirical evidence indicates that larger language
+models are dramatically more useful for NLP tasks such as article completion, question answering
+and natural language inference". The need for larger models is not limited to text generation
+tasks, as GPipe was also motivated by the desire to improve translation quality through increased
+model size in low-resource languages \cite{huang_gpipe_2019}.
+
+\textbf{Resource Utilization.}
+However, the pursuit of larger models introduces challenges related to efficient training. The
+BytePS paper \cite{jiang_unified_nodate} shows that existing frameworks that utilize solely the
+CPU or the GPU are suboptimal. It demonstrates that utilizing all available resources leads to
+significant performance improvements, where the CPU is used to perform summation of gradients,
+while the parameter updates are performed on the GPU. BytePS outperforms all-reduce (traditional)
+methods significantly both when CPUs are or are not available.
+
+\textbf{Efficiency.}
+The need for efficient training is also reflected in the development of systems like Tensorflow
+\cite{abadi_tensorflow_2016} and Ray \cite{moritz_ray_2018}, both of which aimed to provide
+general-purpose deep learning frameworks to address the needs of large communities. DeepSpeed
+\cite{rasley_deepspeed_2020} was also created to facilitate training of large models with over 100
+billion parameters. Deepspeed utilizes PyTorch \cite{noauthor_pytorchpytorch_nodate} as the
+underlying framework in order to "make distributed training and inference easy, efficient, and
+effective".
+
+\textbf{Model and Pipeline Parallelism.}
+In frameworks such as Pytorch DDP \cite{li_pytorch_2020}, the technique they used for distributed
+training involved data parallelism (see \ref{sec:related_work}), which required the entire model to
+fit on a single GPU device. This had the inconvenience that if a model did not fit in memory, the
+approach would not be feasible. To address this issue, techniques such as pipeline parallelism
+\cite{huang_gpipe_2019} and model parallelism \cite{shoeybi_megatron-lm_2020} were developed to
+allow the effective training of models that are too large to fit on a single device.
+
+\textbf{Usability.}
+Another key aspect of motivation is practical usability. Frameworks like PyTorch \cite{li_pytorch_2020}
+and Horovod \cite{sergeev_horovod_2018} ensured that distributed training could easily be integrated
+in existing code with minimal changes. Huggingface Transformers \cite{wolf_huggingfaces_2020} was
+explicitly designed to make NLP models easy to download, fine-tune and share. Colossal-AI
+\cite{li_colossal-ai_2023} sought to create a unified system to simplify the complexities of
+large scale distributed training. It was designed to improve on existing work such as the Alpa library
+\cite{noauthor_alpa-projectsalpa_nodate}, which was discontinued in 2024.
+
+Finally, MxNet \cite{chen_mxnet_2015} aimed to provide a uniform programming interface by bridging
+the gap between imperative and declarative programming, allowing users to express computations in a
+variety of styles.
+
+\paragraph{C2. Critical Factors and Guidelines.}
+This section aims to identify which factors were critical in the development of each library, and
+to some degree what each library excels at.
+
+\textbf{Review of key concepts.}
+Scalability can be achieved through two inter-related ideas. First, it is possible to increase the number of parameters in the
+model, yielding more powerful architectures, that tend to be more general-purpose. Second, it is also possible to increase the
+amount of data being used for training, which yields better generalization capabilities and a lesser chance of
+overfitting\footnote{Overfitting relates to the idea that the model learns the training data too well, and as a result,
+	performs poorly on unseen examples.}.
+
+The former approach is implemented through a technique called {\em{Model parallelism}} (and its
+extension {\em{Pipeline parallelism}}) by distributing layers of the model across the GPU cluster,
+where each individual GPU is responsible for computing the gradients of a portion of the model.
+Pipeline parallelism is a technique that extends model parallelism by also dividing the processing
+of a batch of data across the GPUs. This means that while one GPU is working on a segment of the
+data batch through its assigned model layers, the other GPUs may work on different segments through
+the layers that were assigned to them.
+
+On the other hand, the later approach is implemented through {\em{Data parallelism}}. In this case,
+the model is replicated (exact copy) across the GPU cluster, and each GPU is responsible for
+computing the gradients of portions of the dataset. However, in this case, the model must be small
+enough to fit in the memory of a single GPU.
+
+For more information on the differences the reader is invited to refer to
+\cite{dehghani_distributed_2023}.
+
+\textbf{Scalability.}
+GShard \cite{lepikhin_gshard_2020} uses model parallelism to scale up to large
+datasets, innovating existing frameworks with techniques such as conditional computation and
+automatic sharding. The former allows to activate only a sub-network of the larger model on
+per-input basis, while the later allows to automatically partition a neural network model across
+multiple GPUs without the need for human intervention.
+
+Similarly, Colossal-AI \cite{li_colossal-ai_2023} and Megatron-LM \cite{shoeybi_megatron-lm_2020}
+show methods to scale up large architecture through model parallelism, leading to models of up to
+8.3 billion parameters.
+
+Conversely, GPipe \cite{huang_gpipe_2019} introduces pipeline parallelism allowing to "split the
+model into several chunks of consecutive layers and each chunk is allocated to a device" and "as a
+result, this method reduces cross-node communication", leading to higher throughput. This leads to
+training models of up to 83 billion parameters.
+
+\textbf{Performance.}
+The immediate thought that comes to mind when pondering over performance optimizations of a GPU cluster involves
+efficient communication protocols that reduce the communication overhead or optimizations involving the
+both the model or the data. Pytorch DDP \cite{li_pytorch_2020} attempts to optimize data parallelism by
+using techniques like bucketing gradients and overlapping communication with computation.
+
+Megatron-LM \cite{shoeybi_megatron-lm_2020}, aims to reduce communication and keep the GPUs busy by
+duplicating computations across GPUs, technique called fused operations. GShard
+\cite{lepikhin_gshard_2020} aims to give the programmer enough flexibility to easily change the
+parallelisation strategy (through automatic sharding), without having to heavily modify existing
+code.
+
+\textbf{Automatic Configuration.}
+This allows the library to adapt to diverse hardware setups and automatically configure the best
+backend library when executing code. This is a connection between GPU programming and DNN frameworks.
+
+For instance, Tensorflow \cite{abadi_tensorflow_2016} and MxNet \cite{chen_mxnet_2015} can
+autonomously choose the most efficient algorithms considering different hardware configurations,
+allowing seamless integration for mobile devices or large GPU clusters.
+
+However, BytePS \cite{jiang_unified_nodate} attempts to improve the communication overhead by
+leveraging heterogeneous GPU/CPU clusters. This is done by analyzing the network traffic for
+finding the optimal way to allocate resources. Similarly, GPipe \cite{huang_gpipe_2019} can also
+leverage automatic communication strategies achieving task independent parallelism in heterogeneous
+environments (clusters featuring different hardware configurations).
+
+\textbf{Ease of use.}
+This category is primarily focused towards creating tools that enable practitioners and researchers to easily
+use state-of-the-art models. The Huggingface Transformers \cite{wolf_huggingfaces_2020} is a prime example
+that provides access to open-source models through the Huggingface hub \cite{noauthor_hugging_2025}.
+Finally, Tensorflow \cite{abadi_tensorflow_2016} provides Tensorboard, which is a tool for recording
+experimental data in a distributed cluster.
+
+\paragraph{C3. Practical Evaluation Scenarios.}
+The evaluation factors can be classified into the following categories:
+
+\textbf{Scalability and Performance.}
+For scaling neural networks across GPU clusters, the ideal scenario involves achieving linear speedup
+with respect to the setting involving a single machines (with possibly multiple GPUs). The difficulties
+that arise as a result of network communication are due to limitations involving the bandwidth of the
+network making linear speedup challenging to achieve. Some libraries have shown demonstrated
+effective techniques for reducing the communication overhead.
+
+% Concepts definition checkpoint
+%\textbf{Near Linear Speedup.}
+GPipe \cite{huang_gpipe_2019}, GShard \cite{lepikhin_gshard_2020} and Pytorch DDP
+\cite{li_pytorch_2020} achieve "near linear" speedup by leveraging pipeline parallelism and model
+parallelism. For example, Pytorch DDP achieved this by aggregating gradients into buckets for
+communication and overlapping communication with computation, over a cluster with 256 GPUs. GShard
+took a practical approach by assessing the trade-offs between model size, training time and
+resulting accuracy.
+
+%\textbf{Heterogeneous Clusters.}
+Other frameworks such as BytePS \cite{jiang_unified_nodate} excel at optimizing communication
+overhead in heterogenous GPU/CPU clusters. They outperformed Parameter Server and All-Reduce
+methods by scaling GPU clusters to 2048 devices and training for a time period of 4 days.
+
+%\textbf{Efficiency Techniques.}
+Effective techniques such as automatic parallelization, sharding and offloading have been proposed
+by Colossal-AI \cite{li_colossal-ai_2023}, effectively training models of up to 13B parameters.
+
+%\textbf{Reinforcement Learning.}
+Other libraries such as Ray \cite{moritz_ray_2018} focused on specialized techniques for training
+reinforcement learning models.
+
+\begin{table*}[ht]
+
+	\centering
+	\caption{Concepts recurring in the papers.}
+	\label{tab:concepts}
+	\resizebox{\textwidth}{!}{%
+		\footnotesize
+		\begin{tabular}{lll} % NOTE: concepts definition checkpoint
+			\hline
+			\textbf{Area}    & \textbf{Concept}                           & \textbf{Definition} \\
+			\hline
+			\multirow{8}{*}{DNNs}
+			                 & Bucket Gradient Aggregation                & \makecell[l]{...}   \\ % Pytorch DDP \cite{li_pytorch_2020}
+			                 & Overlapping Communication with Computation & ...                 \\ % Pytorch DDP \cite{li_pytorch_2020}
+			                 & Heterogeneous Clusters                     & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & Parameter Server                           & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & All-Reduce                                 & ...                 \\ % BytePS \cite{jiang_unified_nodate}
+			                 & Automatic Parallelization                  & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			                 & Offloading                                 & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			                 & Sharding                                   & ...                 \\ % Colossal-AI \cite{li_colossal-ai_2023}
+			\hline
+			\multirow{2}{*}{GPU Programming}
+			                 & Model Parallelism                          &                     \\
+			                 & Model Parallelism                          &                     \\
+			\hline
+			Data Parallelism & Data Parallelism                           &                     \\
+			\hline
+		\end{tabular}
+	}
+\end{table*}
+
+
+\begin{itemize}
+	\item \textbf{Goals:}
+	\item To analyze parallelization frameworks in DDL.
+	\item To evaluate libraries that support CUDA programming.
+	\item To find out how these concepts are intertwined.
+	\item To get practical experience with popular frameworks. \\
+	\item \textbf{Expected Outputs:}
+	\item Experience for conducting a systematic review.
+	\item Systematic mapping of programming frameworks.
+	\item Comparative analysis with strengths and weaknesses.
+	\item Identification of research gaps. \\
+\end{itemize}
+
+
+
 Okay, I can do that. Here are the generalized categories of key motivating factors, now with the corresponding IDs from the table that seem most relevant to each category:
 
 **General Categories of Key Motivating Factors (with IDs):**
