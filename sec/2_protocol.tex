@@ -11,21 +11,26 @@ range of related articles
 \cite{brereton_lessons_2007-1,kitchenham_procedures_nodate,budgen_reporting_2018,dos_santos_sustainable_2024}.
 
 A summary of existing work in the field is summarized in Table \ref{tab:related_surveys}. Our study
-differs from previous surveys in a few different aspects. First, concerning DNNs, related work
-focuses on techniques and algorithms for training models across multiple machines
-\cite{dehghani_distributed_2023, chahal_hitchhikers_2018, berloco_systematic_2022}, where themes
-such as data and model parallelization techniques and communication protocols are explored. As a
-result, existing literature tackles architectural patterns and design choices, none focusing
-explicitly on providing a broad review of the available frameworks. Secondly, although existing
-repositories do provide examples on how to use the CUDA library
-\cite{noauthor_nvidiacuda-samples_2025}, as well as DDP
-\cite{noauthor_examplesdistributedddpreadmemd_nodate}, none provide end-to-end implementations that
-would allow the community to easily build on. This study aims to answer both of these concerns.
+differs from previous surveys in a few different aspects.
+
+First, concerning DNNs, related work focuses on techniques and algorithms for training models
+across multiple machines \cite{dehghani_distributed_2023, chahal_hitchhikers_2018,
+	berloco_systematic_2022}, where themes such as data and model parallelization techniques and
+communication protocols are explored. As a result, existing literature tackles architectural
+patterns and design choices, none focusing explicitly on providing a broad review of the available
+frameworks.
 
 Another relevant article which aims to provide an overview of massive parallel frameworks available
 for deep learning is \cite{nguyen_machine_2019}. It describes specialized tools for hardware
 accelerators (GPUs, FPGAs, TPUs), however does not focus on auxiliary libraries for linear algebra,
-numerical computing and GPU communication, gap which this study aims to fill.
+numerical computing and GPU communication. These libraries are arguably relevant since they are
+actively used by other higher level frameworks which provide optimized primitives (i.e. cuDNN,
+MIOpen, oneDNN, etc.).
+
+Secondly, although existing repositories do provide examples on how to use the CUDA library
+\cite{noauthor_nvidiacuda-samples_2025}, as well as DDP
+\cite{noauthor_examplesdistributedddpreadmemd_nodate}, none provide end-to-end implementations that
+would allow the community to easily build on. This study aims to answer both of these concerns.
 
 \begin{figure*}[th]
 	\centering
@@ -82,21 +87,21 @@ shown.
 
 % Now detail Step 1 content
 The main workflow is displayed in Figure \ref{fig:workflow} where the key phases are annotated as
-follows: Getting Started (M.1, M.2), Planning the Review (M.3, M.4), Conducting the Review (M.5,
-M.6), and Reporting the Review (M.7, M.8).
+follows: getting started (M.1, M.2), planning the review (M.3, M.4), conducting the review (M.5,
+M.6), and reporting the results (M.7, M.8).
 
 \paragraph{M.1 -- The need for a survey}
 \label{sec:need_for_survey}
-The importance follows from the need for a survey that discusses both general frameworks as well as
-the connection between the two topics. Also, by supplying practical end-to-end implementations, this
-survey can prove useful to students or practitioners that would like to apply the techniques in practice.
-It has been shown in Section \ref{sec:related_work} that a survey that focuses on both topics is lacking
-in the literature.
+A comprehensive survey bridging general frameworks and their practical application to these two
+topics is currently absent from the literature, as demonstrated in Section \ref{sec:related_work}.
+This survey addresses this gap by not only discussing theoretical frameworks but also providing
+practical, end-to-end implementations, making it a valuable resource for both students and
+practitioners.
 
 \textbf{Learning outcomes.}
-Conducting a review is also a good way of becoming accustomed with the two topics. By following a
-systematic approach, it becomes easier to find relevant frameworks and research publications which
-is a skill that can be applied to other domains as well.
+Conducting a review is a good way of learning about the two topics. By following a systematic approach,
+it will become easier to find relevant frameworks and research publications in the future, which is a
+skill that can be applied to other domains as well.
 
 \paragraph{M.2 -- Getting started}
 \label{sec:research_questions}
@@ -181,8 +186,8 @@ proceedings and journal papers, considering three metadata fields (title, abstra
 \textbf{Inclusion/Exclusion Criteria.}
 There were defined three inclusion criteria (IC) and three exclusion criteria (EC). In particular, I
 decided to select only primary studies, however secondary studies were mentioned in Section
-\ref{sec:related_work}. The identification of secondary studies was useful since the selected
-studies synthesize evidence and can make it possible to access primary studies:
+\ref{sec:related_work}. The identification of secondary studies is useful as it allows to synthesize
+evidence and can make it possible to access primary studies:
 
 \begin{itemize}
 	\item \textbf{IC\textsubscript{1}}: Study is a primary study.
@@ -214,7 +219,7 @@ In Step S.1.3, I inquired about the literature using the following search string
 \paragraph{Publication year criteria.}
 For the DDL task, papers were considered between the time period $\yearstartddl$-$\yearendddl$. The
 start year ($\yearstartddl$) was chosen due to being the year where there was a shift towards
-resource conservation, which resulted in a focus on concurrency within mini-batches
+resource conservation, which resulted in a focus on parallelization techniques
 \cite{ben-nun_demystifying_2020}. This is the year by which the effectiveness of deep learning
 algorithms was more widely recognized and more research was published that focused on scalability.
 
@@ -238,8 +243,8 @@ The downside of the previous approach is that it still involves a lot of work to
 studies. To address this, \cite{bolanos_artificial_2024} suggests many emerging tools that use Large Language Models (LLMs)
 to automatically classify relevant material. However, one important factor that limits their usability and effectiveness is the
 context window being relatively small to handle a large corpus of text. Nonetheless, Gemini \cite{team_gemini_2024}
-is an effective tool to classify the studies, a particularly strong choice due to its massive
-context window (over 2M tokens). The drawback is that Gemini does not provide citations when using the web interface
+is an effective tool for the initial search, as its massive context window -- over 2M tokens -- allows it to handle a large corpus of text.
+One inconvenience is that Gemini does not provide citations when using the web interface
 \cite{noauthor_gemini_nodate}. However, NotebookLM \cite{notebooklm_google_2024} solves the issue by providing references
 to portions of the text that are relevant to the query. This initial screening is an iterative process that involves
 reading the abstracts and keywords of each study to ascertain about the reliability of each response.
@@ -257,7 +262,8 @@ reduced to 4. I performed backward snowballing \cite{jalali_systematic_2012} by 
 references of the 4 studies, as well as checking available preprint articles and finally identified
 other 8 studies (Step 1.8). Hence, a total of 12 studies (4 + 8) were selected. A subsequent 5
 frameworks were found with no accompanying papers by reviewing the references. All 17 libraries are
-listed in Table \ref{tab:dnn_papers}.
+listed in Table \ref{tab:dnn_papers}. The results are classified based on the parallelization
+techniques they support, namely data, model, hybrid and pipeline parallelism.
 
 \paragraph{S.1.9 -- Quality assessment.}
 To evaluate the quality of these studies (Step S.1.9), I adapted the quality appraisal instrument
@@ -281,8 +287,8 @@ and tutorials being the main source of information. As a result, I had to widen 
 articles to include in the review by referencing useful tutorials and key documentation pages.
 
 \paragraph{S.2.2 -- Research Questions.}
-The relevant research questions -- RQ\textsubscript{2}, RQ\textsubscript{3} and RQ\textsubscript{4}
--- are listed in Section \ref{sec:research_questions_refined}.
+The relevant research questions from Section \ref{sec:research_questions_refined} are
+RQ\textsubscript{2}, RQ\textsubscript{3} and RQ\textsubscript{4}:
 
 \paragraph{S.2.3 -- Search strategy.}
 To find relevant materials (Github repositories, documentation pages and tutorials),
@@ -304,14 +310,14 @@ The following criteria were identified to guide the selection process:
 \end{itemize}
 \input{tables/timeline.tex}
 \textbf{Search terms.}
-Search terms similar to the following ones are used to refine the search process:
+The search terms are similar to the following ones:
 
 \begin{quote}
 	\textit{user:ROCm user:oneAPI-SRC user:NVIDIA}
 \end{quote}
 
 \textbf{Publication year criteria.}
-The GPU programming search was restricted to papers published between
+The GPU programming search was restricted to resources published between
 $\yearstartcuda$-$\yearendcuda$. The start year ($\yearstartcuda$) was chosen as the baseline due
 to being the year when AlexNet \cite{krizhevsky_imagenet_2012} was published. This paper
 revolutionized research in neural networks by allowing advanced AI models to be trained on GPUs.
@@ -330,38 +336,37 @@ as specific frameworks.
 
 Given the relevant keywords, I followed an iterative approach using search engines, Github
 repositories and documentation pages to identify relevant material (Step S.2.5). This lead to
-identifying 21 libraries (S.2.6). The libraries had only 2 accompanying papers
-\cite{chetlur_cudnn_2014,okuta_cupy_2017} in the literature (S.2.7). The quality assessment step
-(S.2.8) ensured that the libraries are relevant to training neural networks and the resulting
-papers are shown in Table \ref{tab:gpu_papers}. The categories that were included belong to the
-main GPU manufacturers: AMD, Intel and NVIDIA. Across each category, libraries for algebraic
-operations (matrix multiplications) include \cite{noauthor_cublas_nodate,noauthor_rocmrocblas_2025,
-	noauthor_uxlfoundationonemath_2025}. These are used as building blocks for more complex deep
-learning primitives as shown in
-\cite{chetlur_cudnn_2014,noauthor_rocmmiopen_2025,onednn_contributors_oneapi_2025}. Existing
-approaches that bridge the gap between GPU programming and DNNs are related to communication
-protocols such as
+identifying 21 libraries (S.2.6). Step S.2.7 individuated 2 accompanying papers
+\cite{chetlur_cudnn_2014,okuta_cupy_2017}. The quality assessment step (S.2.8) ensured that the
+libraries are relevant to training neural networks and the resulting papers are shown in Table
+\ref{tab:gpu_papers}. The categories that were included belong to the main GPU manufacturers: AMD,
+Intel and NVIDIA. Across each category, libraries for algebraic operations (matrix multiplications)
+include \cite{noauthor_cublas_nodate,noauthor_rocmrocblas_2025,
+	noauthor_uxlfoundationonemath_2025}, which are used as building blocks for more complex deep
+learning primitives
+\cite{chetlur_cudnn_2014,noauthor_rocmmiopen_2025,onednn_contributors_oneapi_2025}. Libraries that
+bridge the gap between GPU programming and DNNs include communication protocols
 \cite{noauthor_nvidianccl_2025,noauthor_rocmrccl_2025,noauthor_uxlfoundationoneccl_2025}. These
 frameworks are used in distributed training to synchronize calculations by providing a low-level
-APIs that manages cross-GPU communication. Moreover, cross-platform and high-level libraries are
-also reported as they allow to effectively build upon core libraries in a faster and more efficient
-manner.
-
-The column concerning the NN libraries \cite{Jia.EtAl_2014a,krizhevsky_imagenet_2012,
-	Goodfellow.EtAl_2013,Collobert.EtAl_} represent pioneering frameworks that implemented GPU
-acceleration prior to the advent of optimized frameworks such as cuDNN.
+APIs that manages cross-GPU communication. Moreover, cross-platform and high-level libraries
+enhance usability and promote wider community adoption. The column concerning the NN libraries
+\cite{Jia.EtAl_2014a,krizhevsky_imagenet_2012, Goodfellow.EtAl_2013,Collobert.EtAl_} represent
+pioneering frameworks that implement GPU acceleration prior to the advent of optimized frameworks
+such as cuDNN.
 
 \section{M.4 -- Reading the studies}
 \label{sec:reading-studies}
-Figure \ref{fig:timeline} shows a timeline of the evolution of the field. Also, Figure \ref{fig:taxonomy}
-shows a taxonomy of the libraries in a unified, hierarchical view.
+Figure \ref{fig:timeline} shows a timeline of the evolution of the field, suggesting a wide range
+of available DNN frameworks, intertwined with pioneering GPU programming libraries.
+Moreover, Figure \ref{fig:taxonomy} shows a taxonomy of the libraries in a unified, hierarchical
+view.
 
 \subsection{S.1 -- Distributed Neural Networks}
 \label{sec:dnn-studies}
 
 In order to more easily extract useful information from the studies, I identified four key criteria
 which aim to facilitate answering the research questions defined in Section
-\ref{sec:research_questions_refined}.
+\ref{sec:research_questions_refined}:
 
 \begin{itemize}
 	\item C1: Key Motivating Factors
@@ -370,10 +375,8 @@ which aim to facilitate answering the research questions defined in Section
 	\item C4: Tool Limitations and Challenges
 \end{itemize}
 
-The following text draws conclusions from various passages present in the studies, and for
-convenience the resulting artifacts are available in the supplementary material in Table
-\ref{tab:dnn_passages}. Each contributing factor is associated with an exact passage and various
-codes (categories) were used to classify the passage. The results are summarized below.
+The studies' findings are summarized below, with supporting artifacts and passages displayed in
+Table \ref{tab:dnn_passages}.
 
 \paragraph{Motivating Factors.}
 The motivating factors for training DNNs include the pursuit of better performance through more
@@ -383,15 +386,15 @@ efficient training and increased usability in practical scenarios.
 It has been widely thought that
 by scaling the architectures to a large number of parameters and leveraging larger datasets, the
 evaluation accuracy on many benchmarks would be improved \cellrefs{D102,D103,D105,D111}, idea which
-is supported by multiple deep learning frameworks. However, it was recently demonstrated by
+is supported by multiple deep learning frameworks. However, it has been recently demonstrated by
 Deepseek R1 \cite{deepseekai2025deepseekr1incentivizingreasoningcapability} that scaling up the
 computational power is not the only possible method of progress. As a result, future research is
 likely to focus not only on distributed training, but also on innovating existing architectures.
 Nonetheless, through scaling, many applications become viable in industrial settings
-\cellrefs{D101,D105,D106}, which otherwise would be infeasible to train due to the large training time
-requirements.
+\cellrefs{D101,D105,D106}, which otherwise would be infeasible to train due to the large required
+training time.
 
-\textbf{Execution speed.}
+\textbf{Raw performance.}
 Apart from scalability, execution speed is also a key motivating factor
 \cellrefs{D103,D105}. Some studies have shown that increasing the depth of the network overcomes
 performance bottlenecks \cellrefs{D103}, ensuring applicability in a wide range of domains.
@@ -439,7 +442,7 @@ a short description about what each category means:
 	      when the model is too large to fit on a single machine.
 
 	\item \textbf{Pipeline Parallelism:}
-	      The training process is divided into sequential stages, similar to an assembly line,
+	      The training process is divided into sequential stages,
 	      where the output of one stage becomes the input for the next. This allows different parts
 	      of the model to train simultaneously while maintaining dependencies.
 
@@ -449,11 +452,9 @@ a short description about what each category means:
 	      data parallelism is applied to each model segment.
 \end{itemize}
 
-Other possible optimizations include gradient compression, mixed precision training, and tensor
-fusion \cite{dehghani_distributed_2023}. The choice of the specific technique depends on factors
-including model architecture, available hardware, and training requirements. For a comprehensive
-review of these techniques and their implementations, the reader is referred to
-\cite{chahal_hitchhikers_2018}.
+The choice of the specific technique depends on factors including model architecture, available
+hardware, and training requirements. For a comprehensive review of these techniques and their
+implementations, the reader is referred to \cite{chahal_hitchhikers_2018}.
 
 % TODO: ???
 %There are also other critical factors such as cost and communication efficiency \cellrefs{D204}.
@@ -468,7 +469,7 @@ review of these techniques and their implementations, the reader is referred to
 \textbf{Evaluation Scenarios.}
 Evaluation is done by measuring accuracy across a wide range of tasks, including image classification,
 vision and Natural Language Processing \cellrefs{D303,D305,D306,D308,D311}. In order to provide a more
-fair performance assessment, many libraries are evaluated in real-world scenarios \cellrefs{D301}.
+fair assessment, many libraries are evaluated in real-world scenarios \cellrefs{D301}.
 Some algorithms have also focused on cross-framework evaluation to ensure broader applicability
 \cellrefs{D304}.
 
@@ -521,11 +522,11 @@ making use of the characteristics displayed in Table \ref{tab:gpu_passages}.
 
 \textbf{Scalability and performance optimizations.}
 Similarly to DNNs, the development of GPU programming libraries is primarily driven by the need to increase
-performance \cellrefs{G1013,G1031,G1051}. This is most often done through focused optimizations
+performance \cellrefs{G1013,G1051}. This is most often done through focused optimizations % G1031 [RazvanTODO]
 involving the learning kernels, which consist in performing large matrix multiplications at a
 faster speed and reducing the amount of auxiliary memory required. These improvements are
 intrinsically linked to scalability and the ability to develop larger and more powerful
-architectures \cellrefs{G1011,G1012,G1071}.
+architectures \cellrefs{G1011,G1012}. % G1071 [RazvanTODO]
 
 \textbf{Compatibility.}
 Another important concern is the integration and compatibility of GPU libraries with existing
@@ -573,14 +574,14 @@ experience \cellrefs{G2012,G2041}.
 To measure performance, both quantitative and qualitative metrics are used.
 
 \textbf{Quantitative evaluation.}
-Quantitative metrics assess solutions based on measured performance like convolution
-speed and raw throughput, frequently benchmarked against established baselines
-\cellrefs{G3011,G3013}. One approach to assess raw performance involves varying mini-batch sizes
+Quantitative metrics assess solutions based on raw performance like convolution
+speed and raw throughput. This is frequently benchmarked against established baselines
+\cellrefs{G3011,G3013}. As an example, many frameworks assess raw performance by varying mini-batch sizes
 against popular neural network architectures \cellrefs{G3011}.
 
-Other types of assessments consist in verifying whether experiments are reproducible across varying
-hardware configurations \cellrefs{G3012,G3013,G3061}. This is an important factor as without
-deterministic results, it becomes difficult to fairly evaluate performance.
+Additionally, reproducibility across diverse hardware configurations is also an assessment
+criterion \cellrefs{G3012,G3013,G3061}. Without deterministic results, fair performance evaluation
+is difficult.
 
 %\textbf{Generalization capabilities.}
 %Given that generalization is important, the documents also touch on the effectiveness of the neural
@@ -601,30 +602,34 @@ libraries is is necessary, otherwise the replication of the results would be cha
 execution times can vary significantly across frameworks \cellrefs{G4041}.
 
 \textbf{Algorithmic constraints.}
-Performance bottlenecks are due to matrix operation computations and cross GPU-communication. The
-former is an intrinsic algorithmic limitation \cellrefs{G4051,G4061}, while the later is due to the
-lack of a standardized API for cross-GPU communication, where the user must more-than-often
-manually manage it \cellrefs{G4051}.
+Performance bottlenecks are due to matrix operation computations and cross GPU-communication
+operations. The former is an intrinsic algorithmic limitation \cellrefs{G4061}, while the
+later must be manually managed due to the absence of a standardized API \cellrefs{G4051}.
 
 Algorithmic and memory constraints are also present, with some algorithms being limited by high
-memory usage \cellrefs{G4013}, and others requiring specialized implementations for various corner
+memory usage \cellrefs{G4013}, and others requiring specialized implementations for various edge
 cases \cellrefs{G4013}.
 
 \textbf{Evolving architectures.}
 Lastly, the field also faces ongoing challenges with evolving architectures, both in terms of hardware advancements
-and new neural network innovations, requiring continuous adaptation~\cellrefs{G4011}.
+and new neural network innovations, requiring continuous adaptation as new ideas emerge~\cellrefs{G4011}.
 
 \section{M.5 -- Translate concepts}
 \label{sec:translate-concepts}
-The translated results describe the relationships between the two topics. The following makes use of Tables \ref{tab:translations_motivating_factors},
-\ref{tab:translations_critical_factors} and \ref{tab:translations_evaluation_metrics}.
+
+The relationships between these two topics are reviewed below. The 'translations' presented in
+Tables \ref{tab:translations_motivating_factors}, \ref{tab:translations_critical_factors}, and
+\ref{tab:translations_evaluation_metrics} are deductions derived from the studies' findings. These
+deductions are based on specific passages detailed in Tables \ref{tab:dnn_passages} and
+\ref{tab:gpu_passages} (Appendix).
 
 \include{tables/translation_motivating_factors}
 \include{tables/translation_critical_factors}
 \include{tables/translation_evaluation_metrics}
 % ======== CORE THEME 1: SCALABILITY ========
-\section*{Scalability Relationships}
-Scalability motivation (MF1) leads to modular implementation approaches (CF2), ultimately resulting in communication limitations (LF3).
+\paragraph{Scalability Relationships}
+The motivation for scalability (MF1) leads to modular implementation approaches (CF2), ultimately
+resulting in communication limitations (LF3).
 
 \textbf{MF1. Scalability.} The connection is that scalability is a major shared motivating factor for both DNNs and GPU programming.
 The increasing scale of data and complexity of DNNs necessitates scalable solutions. GPU programming is
@@ -637,24 +642,23 @@ strategies when executing the code -- while ML frameworks leveraging GPU acceler
 low-level hardware details, allowing developers to focus on the application logic.
 % Related to: MF1 (motivation), LF3 (limitation)
 
-\textbf{LF3. Communication Overhead and Scalability.} One limitation involves the communication overhead. Both areas struggle
+\textbf{LF3. Communication Overhead.}
+One limitation involves the communication overhead. Both areas struggle
 to effectively manage cross-GPU communication, leading to performance bottlenecks that are challenging to overcome. There are not universally
 optimal solutions, as the best approaches are dependent on model architectures and hardware configurations.
-Community involvement is essential for progress as this can promote innovation.
+Community involvement is essential for innovation as this ensures faster progress.
 % Emerges from: CF2 implementation challenges
 
 % ======== CORE THEME 2: HARDWARE COMMUNICATION ======== 
-\subsection*{Hardware Communication Challenges}
-Hardware heterogeneity motivation leads to multi-GPU challenges (CF4), ultimately creating
-scalability limitations (LF3).
+\paragraph{Hardware Communication Challenges}
+The motivation for hardware heterogeneity (MF4) leads to limitations in GPU programming, while
+there exist effective algorithms in DNNs, partly due to the open ecosystem (CF4).
 
 \textbf{MF4. Heterogeneous hardware.}
 While DNNs are motivated to use heterogenous hardware to ensure broader applicability and
 performance, GPU programming acknowledge its importance by providing C APIs for CPU-GPU
-communication. Nonetheless, there do exist limitations due to latency and sub-optimal bandwidth
-utilization in both domains. A related concern is that GPU libraries like cuDNN do not provide
-integrated support for multi-GPU training, which must be achieved manually by the user. This
-highlights existing challenges concerning the underlying hardware.
+communication. Limitations in the GPU programming field exist due to latency and sub-optimal bandwidth
+utilization. Specifically, GPU libraries like cuDNN do not provide integrated support for multi-GPU communication, which must be handled manually by the user.
 
 \textbf{CF4. Network and hardware communication.}
 Concerning DNNs, there do exist multiple algorithms to optimally minimize network latency, which
@@ -662,69 +666,59 @@ indicates that the open ecosystem is effective in coming up with solutions.
 % Direct progression from MF4 motivation
 
 % ======== CORE THEME 3: PERFORMANCE OPTIMIZATION ========
-\subsection*{Performance Considerations}
-The key idea is that performance requires extensive architectural knowledge (CF3), and evaluation
-is done through model-specific metrics (EM2).
+\paragraph{Performance}
+Improving performance (MF2) involves managing computational complexity (CF3), while evaluation is
+done through model-specific metrics (EM2).
 
 \textbf{MF2. Complexity and performance.}
-The key shared motivator is to manage computational complexity while at the same time ensure higher accuracy
-in common applications (i.e. NLP tasks). The increased accuracy is due to the guarantee that performance
-is likely to increase thanks to the scaling laws that neural networks exhibit.
-GPU programming directly provides the necessary primitives to facilitate the scaling laws and DNNs build on
-top of them to improve performance.
+The key shared motivation is to manage computational complexity while at the same time reach higher accuracy
+in common applications (i.e. NLP tasks). The neural network scaling laws predict that accuracy increases
+linearly with the computational power, which is why there is an ever increasing interest to develop
+sophisticated algorithms to increase both the model and dataset sizes.
 
 \textbf{CF3. Performance.}
 Performance optimizations are achieved through specialized techniques. DNNs are motivated by the need to
 minimize network bandwidth latency and achieve better scalability, while GPU programming provides
-optimized primitives by implementing large-matrix operations, through extensive knowledge of the GPU architecture.
+optimized primitives by implementing large-matrix operations, harnessing extensive knowledge of the
+GPU architecture.
 % Implements MF2 motivations
 
 \textbf{EM2. Model architectures.}
-In some evaluating scenarios, special attention is payed to assess performance across different
-architectures to ensure thorough evaluation and fairness. For DNNs, this involves assessing
-scalability with increasingly complex model architectures, while for GPU programming, assessment is
-geared towards optimizing performance by providing efficient primitives for the most popular
-operations (convolutions, self-attention, fully connected layers, etc.).
+Regarding the evaluation metrics, for DNNs, this involves assessing scalability with increasingly
+complex model architectures, while for GPU programming, assessment is geared towards optimizing
+performance by providing efficient primitives for the most popular operations (convolutions,
+self-attention, fully connected layers, etc.).
 % Assesses CF3 implementations
 
 % ======== CORE THEME 4: COMMUNITY & ECOSYSTEM ========
-\subsection*{Community and the Available Tools}
-%There are multiple motivation factors for Tool leverage (MF6) enables programming paradigms (CF1) but creates usability limitations (LF1).
+\paragraph{Community and the Available Tools}
+DNNs favour an open ecosystem, while state-of-the-art solutions in GPU programming are proprietary
+(MF6). This leads to a trade-off between programming ease and performance (CF1).
 
-%\textbf{MF3. Critical in many domains.}
-%GPU programming itself might be considered a more specialized domain, but its motivation is to
-%enable the use of a wide range of critical applications across the field. GPU programming enable
-%DNNs to function efficiently in these domains by providing the building blocks and as a result,
-%DNNs could be considered an extension of GPU programming to provide.
-
-\textbf{MF6-MF7. Leveraging existing tools.}
+\textbf{MF6 - MF7. Leveraging existing tools.}
 DNN libraries promote an open ecosystem, and while there do exist open alternatives in the GPU programming field (i.e. CuPy),
-the dominant companies promote closed-source solutions (i.e. cuDNN). There have been some effort to create
-open alternatives (i.e. oneDNN), with attention to provide cross-framework compatibility to facilitate broad adoption.
+the dominant companies promote closed-source solutions (i.e. cuDNN). Despite ongoing effort to create
+open alternatives (i.e. MIOpen by AMD), currently they provide subpar performance with respect to Nvidia's
+proprietary solutions.
 
-%\textbf{MF7. Cross-framework use...}
-%Open-source DNN framework aim for cross-framework compatibility and usability to foster community innovation.
-%GPU programming libraries show a trade-off between low-level, highly optimized primitives (like cuDNN), and offering
-%user-friendly interfaces (like CuPy and Torch7). Community involvement is important in both areas, however
-%less so for GPU programming due to the proprietary nature of the frameworks.
-
-\textbf{CF1. Paradigms, programming ease...}
+\textbf{CF1. Programming ease.}
 DNNs are generally flexible and often use popular interpreted programming languages like Python to
-promote ease of use. On the other hand, GPU programming usually relies on C++ and CUDA, which are
+promote ease of use. On the other hand, GPU programming relies on C++ and CUDA, which are
 critical in areas where speed is important. Many GPU programming libraries provide bindings to
 popular languages like Python to facilitate ease of use, which shows that the community has a critical
 role in both areas,
 % Connects to LF1
 
 % ======== CORE THEME 5: USABILITY & FLEXIBILITY ========
-\subsection*{Usability Tradeoffs}
-Application motivation (MF5) drives flexibility needs (CF5) evaluated through deployment (EM1).
+\paragraph{Usability Tradeoffs}
+The requirement to cover a broad range of applications (MF5) leading to ease of use (CF5), however
+this creates a trade-off between usability and performance (LF1).
 
 \textbf{MF5. Applications.}
 A shared motivation is to simplify development and improve the practical utility of both DNNs and
 GPU programming. Both fields are driven by the need to make life easier for developers to leverage
-parallel hardware effectively, and the motivation is to fulfill practical requirements of
-simplified deployment and reproducible research.
+parallel hardware effectively, and the motivation is to simplify deployment and provide reproducible
+research.
 
 \textbf{CF5. Ease of use and hardware flexibility.}
 The main challenge resides around the trade-off between ease of use and hardware flexibility.
@@ -734,36 +728,34 @@ ease of use for lower-level control and potentially higher performance (i.e. cuD
 strive for more user-friendly APIs (i.e. CuPy, Caffe).
 
 \textbf{LF1. Usability.}
-DNN libraries attempt to improve usability through common APIs to facilitate broader
-reproducibility. On the other hand, GPU programming frameworks have performance as a main objective.
-As a result, this sacrifices usability by hiding internal implementation details. To circumvent this,
-many frameworks provide profiling tools and specialized debuggers to aid developer productivity.
+Due to the central role of the community in DNN libraries, reproducibility is important. GPU programming
+frameworks have performance as a main objective. However, due to their proprietary nature, they sacrifice
+usability by hiding internal implementation details. To circumvent this, many frameworks provide
+profiling tools and specialized debuggers to aid developer productivity.
 % Result of EM1  tensions
 
 % ======== CORE THEME 6: DEPLOYMENT & EVALUATION ========
-\subsection*{Deployment Strategies}
-Domain criticality (MF3) influences task-specific evaluation (EM3).
+%\subsection*{Deployment Strategies}
 
-\textbf{EM4. Evaluation.}
-DNN evaluation focuses on overall performance gains and broad applicability in different domains (vision,
-NLP, etc.). Conversely, GPU programming focuses on the potential performance gains achievable through
-hardware-specific optimizations. There exists a continuous effort to improve both fields when new
-hardware architectures become available and new deep learning algorithms are developed.
+%\textbf{EM4. Evaluation.}
+%DNN evaluation focuses on overall performance gains and broad applicability in different domains (vision,
+%NLP, etc.). Conversely, GPU programming focuses on the potential performance gains achievable through
+%hardware-specific optimizations. There exists a continuous effort to improve both fields when new
+%hardware architectures become available and new deep learning algorithms are developed.
 
-\textbf{EM1. Deployment.}
-To be more specific, while DNN libraries follow a staged deployment process for safe evaluation (i.e.
-Google products), offering a degree of safety in real world scenarios, GPU programming frameworks are
-easily switched on and off using compiler flags, making them more configurable and easier to integrate
-into ML frameworks.
+\paragraph{EM1. Deployment.}
+DNN libraries follow a staged deployment process. For example, models are frequently deployed as
+part of a larger product (i.e. Google Search, advertising products, etc.), leading to safer
+deployment in real world applications. On the other hand, GPU programming frameworks can be easily
+switched on and off at execution time, making them more configurable and easier to integrate into
+ML frameworks.
 
 % ======== CORE THEME 7: ALGORITHMIC CHALLENGES ========
-\subsection*{Algorithmic Limitations}
-Performance requirements (CF3) reveal algorithmic limitations (LF2).
-
-\textbf{LF2. Algorithmic limitations.}
-Algorithmic limitations are present in both domains. DNNs pose problems related to memory management in data and model parallelism,
-while GPU programming faces issues related to matrix multiplication algorithms and difficulties in optimizing
-algorithms for certain hyperparameter ranges (i.e. small batch size).
+\paragraph{LF2. Algorithmic limitations.}
+Algorithmic limitations are present in both domains. DNNs pose problems related to memory
+management in data and model parallelism, while GPU programming faces issues related to matrix
+multiplication algorithms and difficulties in optimizing algorithms for certain hyperparameter
+ranges (i.e. small batch size).
 
 % Connects to CF3 (Performance)
 
@@ -782,54 +774,54 @@ algorithms for certain hyperparameter ranges (i.e. small batch size).
 
 \section{M.7 -- Practical evaluation}
 \label{sec:practical-evaluation}
-The study contained also a practical evaluation of \texttt{cuDNN}, \texttt{cuBLAS} and \texttt{Pytorch DDP}.
-The following examples introduce each topic and demonstrate complete training pipelines.
+The repository contains a practical evaluation of \texttt{cuDNN}, \texttt{cuBLAS} and \texttt{Pytorch DDP}.
+The following represents an introduction to each topic, highlighting the code's main components.
 
 \paragraph{V.1 -- GPU programming.}
-The GPU experiments implement a toy neural network that is meant to be a proof-of-concept for the
-capabilities of the utilized libraries (cuDNN and cuBLAS). The following components were
+The GPU experiments implement a small neural network that represents a proof-of-concept for the
+capabilities each library provides (i.e. cuDNN and cuBLAS). The following components were
 implemented:
 
 \begin{itemize}
-	\item The forward and backward training steps.
-	\item The backward step is performed via two distinct operations: w.r.t. the weights and w.r.t. the
-	      inputs.
-	\item The gradients can be zeroed on request.
-	\item The \texttt{updateWeights} operation has configurable learning rate.
-	\item The \texttt{MSELoss} class is used to calculate the mean squared error loss after the forward pass.
-
+	\item \textbf{forward}: Performs the forward pass.
+	\item \textbf{backwardInput}: The backward step w.r.t. the inputs.
+	\item \textbf{backwardWeights}: The backward step w.r.t. the weights.
+	\item \textbf{zeroGradients}: This manually zeros the gradients, allowing their inspection using a Pytorch-like API.
+	\item \textbf{updateWeights}: Takes a step in the opposite direction of the gradient with configurable learning rate.
+	\item \textbf{MSELoss}: Calculates the mean squared error loss after the forward pass.
+	\item \textbf{ReLU}: Activation function that uses manual kernel implementation.
 \end{itemize}
 
-Three types of layers are implemented:
-\begin{itemize}
-	\item \textbf{Convolutional}: Uses cuDNN for the convolution operation.
-	\item \textbf{Linear}: Uses cuBLAS for the matrix multiplication.
-	\item \textbf{ReLU}: Uses manual kernel implementation.
-\end{itemize}
-
-%\textbf{GPU Kernels.}
 There were developed two GPU kernels that run code directly on the GPU. The first one is used to
-compute the forward and backward pass for the ReLU activation function. The second one is used for
-the MSELoss after the forward pass.
+compute the forward and backward pass using the ReLU activation function, while the second one is
+used to compute the MSELoss after the forward pass.
+
+The architecture involves simple convolution and linear layers. They have the following
+dependencies:
+\begin{itemize}
+	\item \textbf{Convolution}: Uses cuDNN convolution primitives.
+	\item \textbf{Linear}: Uses cuBLAS for the matrix multiplication.
+\end{itemize}
 
 \paragraph{V.2 - V.3 -- Distributed Training.}
-The distributed training experiments allow to:
+The distributed training experiment uses the AlexNet architecture \cite{krizhevsky_imagenet_2012}
+and generates fake data to simulate the training process. It is possible to do the following:
 
 \begin{itemize}
 	\item Simulate multi-GPU training on a single machine.
 	\item Simulate multi-node training across multiple machines.
-	\item Collect performance metrics using Weights and Biases.
-	\item Facilitate experimentation through Docker containers.
+	\item Collect performance metrics using Weights and Biases to monitor data throughput.
+	\item Facilitate reproducibility through Docker containers.
 \end{itemize}
 
-The code is written to dynamically span multiple GPU ids corresponding to the number of GPUs used
-in the launch command (see \texttt{torchrun --nproc\_per\_node}). This conveniently allows the
-model to use more memory on a single GPU, effectively allowing to simulate multi-GPU training on a
-single machine. In a similar way, the \texttt{--nnodes} flag allows to simulate multi-node training
-across multiple machines.
+The code is dynamically spans multiple GPU ids corresponding to the number of GPUs used in the
+launch command (see \texttt{torchrun --nproc\_per\_node}). This conveniently allows the model to
+use more memory of a single GPU, effectively allowing to run multi-GPU training on a single
+machine. In a similar way, the \texttt{--nnodes} flag allows to simulate multi-node training across
+multiple machines.
 
-\textbf{Limitations.}
-Although the seamless integration with Docker allows to simulate the distributed training
+\textbf{Limitation.}
+Although the the integration with Docker allows to simulate the distributed training
 environment, it does not provide a true multi-GPU and multi-node performance. The reason is that
 using a single GPU, it is not possible to run two code instances truly simultaneously. This is due
 to the context switching mechanism inside the GPU which does not allow for true parallelism. The
@@ -837,8 +829,7 @@ code could potentially be reutilized in a cloud environment with minimal code ch
 
 \section{M.8 Report findings}
 \label{sec:report-findings}
-Now, to wrap-up, I will report the key characteristics that answer the research questions defined
-in Section \ref{sec:research_questions}.
+Now, to swiftly answer the research questions defined in Section \ref{sec:research_questions}.
 
 \textbf{RQ\textsubscript{1}. DNN frameworks and communities.}
 The most common frameworks for distributed neural network training are listed in Table
@@ -882,10 +873,10 @@ libraries and most frameworks are accompanied by academic papers that detail the
 The large open-source ecosystem encourages community contributions, which promotes ease of use,
 developer productivity and a wider range of specialized frameworks.
 
-On the other hand, we have seen that GPU programming is a more specialized field, where few
+On the other hand, GPU programming is a more specialized field, where few
 libraries dominate. There exist few published papers that detail the underlying algorithms, and the
-available resources are focused on providing documentation and tutorials. In some ways this stifles
-innovation, and although some companies (i.e. AMD) strive for an open ecosystem, the field is currently
+available resources are focused on providing documentation and tutorials. In some ways, this stifles
+innovation, and although some companies (i.e. AMD) strive for an open ecosystem, the field is
 dominated by Nvidia GPUs.
 
 \paragraph{Future work.}
